@@ -22,13 +22,55 @@ model User {
 }
 
 model Profile {
-  id               String   @id @default(cuid())
-  userId           String   @unique
-  user             User     @relation(fields: [userId], references: [id])
-  targetRole       String?
-  targetIndustry   String?
-  experienceBlocks Json
-  updatedAt        DateTime @updatedAt
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id])
+  fullName       String?
+  phone          String?
+  location       String?
+  linkedinUrl    String?
+  portfolioUrl   String?
+  targetRole     String?
+  targetIndustry String?
+  updatedAt      DateTime @updatedAt
+
+  workExperiences WorkExperience[]
+  educations      Education[]
+  skills          Skill[]
+}
+
+model WorkExperience {
+  id          String    @id @default(cuid())
+  profileId   String
+  profile     Profile   @relation(fields: [profileId], references: [id])
+  title       String
+  company     String
+  location    String?
+  startDate   DateTime
+  endDate     DateTime?
+  description String?
+  skillsUsed  String[]
+  createdAt   DateTime  @default(now())
+}
+
+model Education {
+  id           String    @id @default(cuid())
+  profileId    String
+  profile      Profile   @relation(fields: [profileId], references: [id])
+  institution  String
+  degree       String?
+  fieldOfStudy String?
+  startDate    DateTime
+  endDate      DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+model Skill {
+  id        String  @id @default(cuid())
+  profileId String
+  profile   Profile @relation(fields: [profileId], references: [id])
+  name      String
+  category  String?
 }
 
 model Resume {
