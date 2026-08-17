@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  certificationSchema,
   educationSchema,
+  languageSchema,
   personalInfoSchema,
+  projectSchema,
   skillSchema,
   workExperienceSchema,
 } from "./profile";
@@ -106,6 +109,69 @@ describe("skillSchema", () => {
       name: "TypeScript",
       category: "Bahasa Pemrograman",
     });
+    expect(result.success).toBe(true);
+  });
+});
+
+describe("personalInfoSchema summary field", () => {
+  it("accepts a summary string", () => {
+    const result = personalInfoSchema.safeParse({ summary: "Experienced engineer." });
+    expect(result.success).toBe(true);
+  });
+
+  it("still accepts input with no summary", () => {
+    expect(personalInfoSchema.safeParse({}).success).toBe(true);
+  });
+});
+
+describe("certificationSchema", () => {
+  it("requires a name and issuer", () => {
+    const result = certificationSchema.safeParse({ name: "", issuer: "" });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a valid certification with no issueDate or url", () => {
+    const result = certificationSchema.safeParse({
+      name: "AWS Certified Developer",
+      issuer: "Amazon",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects an invalid url", () => {
+    const result = certificationSchema.safeParse({
+      name: "AWS Certified Developer",
+      issuer: "Amazon",
+      url: "not-a-url",
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+describe("projectSchema", () => {
+  it("requires a name", () => {
+    expect(projectSchema.safeParse({ name: "" }).success).toBe(false);
+  });
+
+  it("accepts a valid project with bullets and techStack", () => {
+    const result = projectSchema.safeParse({
+      name: "Dulux Design Competition",
+      client: "Dulux Indonesia",
+      role: "Lead Backend",
+      bullets: ["Built a high-traffic competition platform."],
+      techStack: ["Next.js", "Node.js"],
+    });
+    expect(result.success).toBe(true);
+  });
+});
+
+describe("languageSchema", () => {
+  it("requires a name and proficiency", () => {
+    expect(languageSchema.safeParse({ name: "", proficiency: "" }).success).toBe(false);
+  });
+
+  it("accepts a valid language", () => {
+    const result = languageSchema.safeParse({ name: "English", proficiency: "Proficient" });
     expect(result.success).toBe(true);
   });
 });
