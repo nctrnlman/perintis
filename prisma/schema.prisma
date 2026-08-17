@@ -16,9 +16,10 @@ model User {
   oauthProvider String?
   createdAt     DateTime @default(now())
 
-  profile   Profile?
-  resumes   Resume[]
-  atsChecks ATSCheckAnalysis[]
+  profile         Profile?
+  resumes         Resume[]
+  atsChecks       ATSCheckAnalysis[]
+  resumeDocuments ResumeDocument[]
 }
 
 model Profile {
@@ -32,11 +33,15 @@ model Profile {
   portfolioUrl   String?
   targetRole     String?
   targetIndustry String?
+  summary        String?
   updatedAt      DateTime @updatedAt
 
   workExperiences WorkExperience[]
   educations      Education[]
   skills          Skill[]
+  certifications  Certification[]
+  projects        Project[]
+  languages       Language[]
 }
 
 model WorkExperience {
@@ -71,6 +76,47 @@ model Skill {
   profile   Profile @relation(fields: [profileId], references: [id])
   name      String
   category  String?
+}
+
+model Certification {
+  id        String    @id @default(cuid())
+  profileId String
+  profile   Profile   @relation(fields: [profileId], references: [id])
+  name      String
+  issuer    String
+  issueDate DateTime?
+  url       String?
+  createdAt DateTime  @default(now())
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  name      String
+  client    String?
+  role      String?
+  bullets   String[]
+  techStack String[]
+  createdAt DateTime @default(now())
+}
+
+model Language {
+  id          String  @id @default(cuid())
+  profileId   String
+  profile     Profile @relation(fields: [profileId], references: [id])
+  name        String
+  proficiency String
+}
+
+model ResumeDocument {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  title     String
+  content   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Resume {
