@@ -12,6 +12,10 @@ import { updateResumeContent } from "@/app/[locale]/(app)/resume-builder/actions
 import { ContactInfoCard } from "@/components/resume-builder/contact-info-card";
 import { SummaryCard } from "@/components/resume-builder/summary-card";
 import { WorkExperienceSection } from "@/components/resume-builder/work-experience-section";
+import { EducationSection } from "@/components/resume-builder/education-section";
+import { SkillsSection } from "@/components/resume-builder/skills-section";
+import { CertificationsSection } from "@/components/resume-builder/certifications-section";
+import { LanguagesSection } from "@/components/resume-builder/languages-section";
 
 interface BuilderClientProps {
   id: string;
@@ -60,6 +64,22 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
       <WorkExperienceSection
         entries={content.workExperiences}
         onChange={(workExperiences) => setContent({ ...content, workExperiences })}
+      />
+      <EducationSection
+        entries={content.educations}
+        onChange={(educations) => setContent({ ...content, educations })}
+      />
+      <SkillsSection
+        entries={content.skills}
+        onChange={(skills) => setContent({ ...content, skills })}
+      />
+      <CertificationsSection
+        entries={content.certifications}
+        onChange={(certifications) => setContent({ ...content, certifications })}
+      />
+      <LanguagesSection
+        entries={content.languages}
+        onChange={(languages) => setContent({ ...content, languages })}
       />
 
       <div className="flex items-center justify-between rounded-2xl border border-border p-6">
