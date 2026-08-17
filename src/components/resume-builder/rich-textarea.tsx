@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { Bold } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 import { parseBoldSegments } from "@/lib/resume-builder/parse-bold-text";
 
 interface RichTextareaProps {
@@ -47,13 +48,12 @@ export function RichTextarea({ id, value, onChange, rows = 3, boldLabel }: RichT
       >
         <Bold className="size-3.5" />
       </button>
-      <textarea
+      <Textarea
         ref={textareaRef}
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
-        className="w-full rounded-lg border border-input bg-transparent px-2.5 py-1.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
       />
       {hasContent && (
         <p className="text-xs text-muted-foreground">

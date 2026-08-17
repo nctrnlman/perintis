@@ -6,6 +6,7 @@ import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
 import {
   addWorkExperience,
@@ -210,12 +211,11 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="we-description">{t("descriptionLabel")}</Label>
-            <textarea
+            <Textarea
               id="we-description"
               name="description"
               defaultValue={editingItem?.description ?? ""}
               rows={3}
-              className="w-full rounded-lg border border-input bg-transparent px-2.5 py-1.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             />
           </div>
           <div className="flex gap-2">
