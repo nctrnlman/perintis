@@ -26,7 +26,10 @@ async function makeDocx(options: {
     zip.file("word/header1.xml", options.headerXml);
   }
   const buffer = await zip.generateAsync({ type: "nodebuffer" });
-  return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+  return buffer.buffer.slice(
+    buffer.byteOffset,
+    buffer.byteOffset + buffer.byteLength
+  ) as ArrayBuffer;
 }
 
 const SIMPLE_DOC = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

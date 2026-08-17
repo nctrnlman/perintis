@@ -14,7 +14,10 @@ async function makeSingleColumnPdf(): Promise<ArrayBuffer> {
     font,
   });
   const bytes = await doc.save();
-  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+  return bytes.buffer.slice(
+    bytes.byteOffset,
+    bytes.byteOffset + bytes.byteLength
+  ) as ArrayBuffer;
 }
 
 async function makeTwoColumnPdf(): Promise<ArrayBuffer> {
@@ -27,7 +30,10 @@ async function makeTwoColumnPdf(): Promise<ArrayBuffer> {
     page.drawText("Right column line", { x: 350, y, size: 11, font });
   }
   const bytes = await doc.save();
-  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+  return bytes.buffer.slice(
+    bytes.byteOffset,
+    bytes.byteOffset + bytes.byteLength
+  ) as ArrayBuffer;
 }
 
 async function makeUnusualFontPdf(): Promise<ArrayBuffer> {
@@ -36,7 +42,10 @@ async function makeUnusualFontPdf(): Promise<ArrayBuffer> {
   const font = await doc.embedFont(StandardFonts.Courier);
   page.drawText("Budi Santoso", { x: 50, y: 750, size: 14, font });
   const bytes = await doc.save();
-  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+  return bytes.buffer.slice(
+    bytes.byteOffset,
+    bytes.byteOffset + bytes.byteLength
+  ) as ArrayBuffer;
 }
 
 describe("extractPdfText", () => {
