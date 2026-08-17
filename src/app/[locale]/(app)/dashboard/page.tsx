@@ -1,5 +1,16 @@
+import {
+  FileCheck2,
+  FileEdit,
+  Mail,
+  ListChecks,
+  MessagesSquare,
+  ShieldCheck,
+} from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ModuleCard } from "@/components/shared/module-card";
+import { Reveal } from "@/components/shared/reveal";
+
+const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
@@ -11,12 +22,14 @@ export default async function DashboardPage() {
       <p className="mt-1 text-muted-foreground">{t("description")}</p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {modules.map((module) => (
-          <ModuleCard
-            key={module.title}
-            {...module}
-            comingSoonLabel={t("comingSoon")}
-          />
+        {modules.map((module, index) => (
+          <Reveal key={module.title} delay={index * 60}>
+            <ModuleCard
+              icon={moduleIcons[index]}
+              {...module}
+              comingSoonLabel={t("comingSoon")}
+            />
+          </Reveal>
         ))}
       </div>
     </div>

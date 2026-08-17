@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { KeyRound, MailCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Reveal } from "@/components/shared/reveal";
 import { createClient } from "@/lib/supabase/client";
 import {
   forgotPasswordSchema,
@@ -45,8 +47,11 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-border bg-card p-8 text-center">
-        <h1 className="text-2xl font-semibold">{t("sentTitle")}</h1>
+      <Reveal className="rounded-2xl border border-border bg-card p-8 text-center">
+        <div className="mx-auto flex size-11 items-center justify-center rounded-full bg-muted">
+          <MailCheck className="size-5 text-foreground" />
+        </div>
+        <h1 className="mt-5 text-2xl font-semibold">{t("sentTitle")}</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           {t("sentDescription")}
         </p>
@@ -56,13 +61,16 @@ export default function ForgotPasswordPage() {
         >
           {t("backToLogin")}
         </Link>
-      </div>
+      </Reveal>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8">
-      <h1 className="text-2xl font-semibold">{t("title")}</h1>
+    <Reveal className="rounded-2xl border border-border bg-card p-8">
+      <div className="flex size-11 items-center justify-center rounded-full bg-muted">
+        <KeyRound className="size-5 text-foreground" />
+      </div>
+      <h1 className="mt-5 text-2xl font-semibold">{t("title")}</h1>
       <p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
@@ -93,6 +101,6 @@ export default function ForgotPasswordPage() {
           {t("backToLogin")}
         </Link>
       </p>
-    </div>
+    </Reveal>
   );
 }
