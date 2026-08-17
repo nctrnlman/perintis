@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 
 export const metadata: Metadata = {
-  title: "Perintis — Toolkit Karir Bertenaga AI",
+  title: "Perintis: Toolkit Karir Bertenaga AI",
   description:
-    "Optimasi resume, cek kompatibilitas ATS, dan persiapan wawancara untuk pencari kerja Indonesia — dengan reasoning AI yang transparan dan bisa diaudit.",
+    "Optimasi resume, cek kompatibilitas ATS, dan persiapan wawancara untuk pencari kerja Indonesia. Reasoning AI yang transparan dan bisa diaudit, bukan skor buta.",
 };
 
 const features = [
@@ -15,7 +15,7 @@ const features = [
     icon: FileCheck2,
     title: "Resume Optimizer",
     description:
-      "Skor kecocokan resume terhadap lowongan — lengkap dengan alasannya, bukan cuma angka.",
+      "Skor kecocokan resume terhadap lowongan, lengkap dengan alasannya. Bukan cuma angka.",
   },
   {
     icon: ShieldCheck,
@@ -50,11 +50,13 @@ export default function HomePage() {
           <div className="mt-10 flex gap-4">
             <Button
               size="lg"
+              nativeButton={false}
               render={<Link href="/register">Mulai Sekarang</Link>}
             />
             <Button
               size="lg"
               variant="outline"
+              nativeButton={false}
               render={<Link href="/login">Masuk</Link>}
             />
           </div>
@@ -66,9 +68,9 @@ export default function HomePage() {
           <div className="grid gap-8 sm:grid-cols-3">
             {features.map((feature, index) => (
               <Reveal key={feature.title} delay={index * 100}>
-                <div className="h-full rounded-2xl bg-background p-8 transition-transform hover:scale-[1.02]">
-                  <div className="flex size-11 items-center justify-center rounded-full bg-primary/10">
-                    <feature.icon className="size-5 text-primary" />
+                <div className="h-full rounded-2xl border border-border p-8 transition-transform hover:scale-[1.02]">
+                  <div className="flex size-11 items-center justify-center rounded-full bg-muted">
+                    <feature.icon className="size-5 text-foreground" />
                   </div>
                   <h2 className="mt-5 text-xl font-semibold">
                     {feature.title}
@@ -83,15 +85,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-primary py-24">
+      <section className="bg-muted py-24">
         <Reveal className="mx-auto flex max-w-2xl flex-col items-center px-6 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Langkah pertama Anda dimulai hari ini.
           </h2>
           <Button
             size="lg"
-            variant="secondary"
             className="mt-8"
+            nativeButton={false}
             render={<Link href="/register">Buat Akun Gratis</Link>}
           />
         </Reveal>

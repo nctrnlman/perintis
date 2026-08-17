@@ -11,8 +11,12 @@ export function Navbar() {
         </Link>
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Button variant="ghost" render={<Link href="/login">Masuk</Link>} />
-          <Button render={<Link href="/register">Daftar</Link>} />
+          <Button
+            variant="ghost"
+            nativeButton={false}
+            render={<Link href="/login">Masuk</Link>}
+          />
+          <Button nativeButton={false} render={<Link href="/register">Daftar</Link>} />
         </div>
       </div>
     </header>

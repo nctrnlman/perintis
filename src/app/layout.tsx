@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Perintis — Setiap karir besar, dimulai dari langkah pertama",
+    default: "Perintis: setiap karir besar, dimulai dari langkah pertama",
     template: "%s | Perintis",
   },
   description:
-    "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia: optimasi resume, cek kompatibilitas ATS, simulasi wawancara, dan pelacakan lamaran — dengan reasoning AI yang transparan.",
+    "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia: optimasi resume, cek kompatibilitas ATS, simulasi wawancara, dan pelacakan lamaran, dengan reasoning AI yang transparan.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
