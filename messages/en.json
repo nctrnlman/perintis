@@ -369,6 +369,8 @@
       "linkedinLabel": "LinkedIn URL",
       "portfolioLabel": "Portfolio URL",
       "summaryTitle": "Professional Summary",
+      "boldLabel": "Bold",
+      "newEntryLabel": "New Entry",
       "workExperienceTitle": "Work Experience",
       "educationTitle": "Education",
       "skillsTitle": "Skills",

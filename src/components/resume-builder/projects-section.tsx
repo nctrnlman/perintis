@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { ProjectEntry } from "@/lib/resume-builder/types";
+import { RichTextarea } from "@/components/resume-builder/rich-textarea";
 
 interface ProjectsSectionProps {
   entries: ProjectEntry[];
@@ -78,41 +79,8 @@ export function ProjectsSection({ entries, onChange }: ProjectsSectionProps) {
       <div className="mt-6 space-y-4">
         {entries.map((entry) => (
           <div key={entry.id} className="rounded-2xl border border-border p-6">
-            <div className="flex items-start justify-between gap-4">
-              <div className="grid flex-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <Label htmlFor={`pr-name-${entry.id}`}>{t("nameLabel")}</Label>
-                  <Input
-                    id={`pr-name-${entry.id}`}
-                    value={entry.name}
-                    onChange={(e) => updateEntry(entry.id, { name: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`pr-client-${entry.id}`}>{t("clientLabel")}</Label>
-                  <Input
-                    id={`pr-client-${entry.id}`}
-                    value={entry.client}
-                    onChange={(e) => updateEntry(entry.id, { client: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`pr-role-${entry.id}`}>{t("roleLabel")}</Label>
-                  <Input
-                    id={`pr-role-${entry.id}`}
-                    value={entry.role}
-                    onChange={(e) => updateEntry(entry.id, { role: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`pr-tech-${entry.id}`}>{t("techStackLabel")}</Label>
-                  <Input
-                    id={`pr-tech-${entry.id}`}
-                    value={entry.techStack.join(", ")}
-                    onChange={(e) => updateTechStack(entry.id, e.target.value)}
-                  />
-                </div>
-              </div>
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <p className="text-sm font-medium">{entry.name || t("newEntryLabel")}</p>
               <Button
                 variant="ghost"
                 size="icon-sm"
@@ -123,14 +91,53 @@ export function ProjectsSection({ entries, onChange }: ProjectsSectionProps) {
               </Button>
             </div>
 
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor={`pr-name-${entry.id}`}>{t("nameLabel")}</Label>
+                <Input
+                  id={`pr-name-${entry.id}`}
+                  value={entry.name}
+                  onChange={(e) => updateEntry(entry.id, { name: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`pr-client-${entry.id}`}>{t("clientLabel")}</Label>
+                <Input
+                  id={`pr-client-${entry.id}`}
+                  value={entry.client}
+                  onChange={(e) => updateEntry(entry.id, { client: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`pr-role-${entry.id}`}>{t("roleLabel")}</Label>
+                <Input
+                  id={`pr-role-${entry.id}`}
+                  value={entry.role}
+                  onChange={(e) => updateEntry(entry.id, { role: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`pr-tech-${entry.id}`}>{t("techStackLabel")}</Label>
+                <Input
+                  id={`pr-tech-${entry.id}`}
+                  value={entry.techStack.join(", ")}
+                  onChange={(e) => updateTechStack(entry.id, e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-3">
               <Label>{t("bulletsLabel")}</Label>
               {entry.bullets.map((bullet, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <Input
-                    value={bullet}
-                    onChange={(e) => updateBullet(entry.id, index, e.target.value)}
-                  />
+                <div key={index} className="flex items-start gap-2">
+                  <div className="flex-1">
+                    <RichTextarea
+                      value={bullet}
+                      onChange={(value) => updateBullet(entry.id, index, value)}
+                      rows={2}
+                      boldLabel={t("boldLabel")}
+                    />
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon-sm"

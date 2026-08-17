@@ -53,61 +53,10 @@ export function EducationSection({ entries, onChange }: EducationSectionProps) {
       <div className="mt-6 space-y-4">
         {entries.map((entry) => (
           <div key={entry.id} className="rounded-2xl border border-border p-6">
-            <div className="flex items-start justify-between gap-4">
-              <div className="grid flex-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-institution-${entry.id}`}>{t("institutionLabel")}</Label>
-                  <Input
-                    id={`ed-institution-${entry.id}`}
-                    value={entry.institution}
-                    onChange={(e) => updateEntry(entry.id, { institution: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-degree-${entry.id}`}>{t("degreeLabel")}</Label>
-                  <Input
-                    id={`ed-degree-${entry.id}`}
-                    value={entry.degree}
-                    onChange={(e) => updateEntry(entry.id, { degree: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-field-${entry.id}`}>{t("fieldOfStudyLabel")}</Label>
-                  <Input
-                    id={`ed-field-${entry.id}`}
-                    value={entry.fieldOfStudy}
-                    onChange={(e) => updateEntry(entry.id, { fieldOfStudy: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-location-${entry.id}`}>{t("locationLabel")}</Label>
-                  <Input
-                    id={`ed-location-${entry.id}`}
-                    value={entry.location}
-                    onChange={(e) => updateEntry(entry.id, { location: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-start-${entry.id}`}>{t("startDateLabel")}</Label>
-                  <Input
-                    id={`ed-start-${entry.id}`}
-                    type="date"
-                    value={entry.startDate ?? ""}
-                    onChange={(e) =>
-                      updateEntry(entry.id, { startDate: e.target.value || null })
-                    }
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`ed-end-${entry.id}`}>{t("endDateLabel")}</Label>
-                  <Input
-                    id={`ed-end-${entry.id}`}
-                    type="date"
-                    value={entry.endDate ?? ""}
-                    onChange={(e) => updateEntry(entry.id, { endDate: e.target.value || null })}
-                  />
-                </div>
-              </div>
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <p className="text-sm font-medium">
+                {entry.institution || t("newEntryLabel")}
+              </p>
               <Button
                 variant="ghost"
                 size="icon-sm"
@@ -116,6 +65,59 @@ export function EducationSection({ entries, onChange }: EducationSectionProps) {
               >
                 <Trash2 className="size-4" />
               </Button>
+            </div>
+
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-institution-${entry.id}`}>{t("institutionLabel")}</Label>
+                <Input
+                  id={`ed-institution-${entry.id}`}
+                  value={entry.institution}
+                  onChange={(e) => updateEntry(entry.id, { institution: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-degree-${entry.id}`}>{t("degreeLabel")}</Label>
+                <Input
+                  id={`ed-degree-${entry.id}`}
+                  value={entry.degree}
+                  onChange={(e) => updateEntry(entry.id, { degree: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-field-${entry.id}`}>{t("fieldOfStudyLabel")}</Label>
+                <Input
+                  id={`ed-field-${entry.id}`}
+                  value={entry.fieldOfStudy}
+                  onChange={(e) => updateEntry(entry.id, { fieldOfStudy: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-location-${entry.id}`}>{t("locationLabel")}</Label>
+                <Input
+                  id={`ed-location-${entry.id}`}
+                  value={entry.location}
+                  onChange={(e) => updateEntry(entry.id, { location: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-start-${entry.id}`}>{t("startDateLabel")}</Label>
+                <Input
+                  id={`ed-start-${entry.id}`}
+                  type="date"
+                  value={entry.startDate ?? ""}
+                  onChange={(e) => updateEntry(entry.id, { startDate: e.target.value || null })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`ed-end-${entry.id}`}>{t("endDateLabel")}</Label>
+                <Input
+                  id={`ed-end-${entry.id}`}
+                  type="date"
+                  value={entry.endDate ?? ""}
+                  onChange={(e) => updateEntry(entry.id, { endDate: e.target.value || null })}
+                />
+              </div>
             </div>
           </div>
         ))}

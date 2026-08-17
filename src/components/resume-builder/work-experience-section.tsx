@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
 import type { WorkExperienceEntry } from "@/lib/resume-builder/types";
 import { enhanceWorkExperienceBullets } from "@/app/[locale]/(app)/resume-builder/actions";
+import { RichTextarea } from "@/components/resume-builder/rich-textarea";
 
 interface WorkExperienceSectionProps {
   entries: WorkExperienceEntry[];
@@ -112,55 +113,17 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
       <div className="mt-6 space-y-4">
         {entries.map((entry) => (
           <div key={entry.id} className="rounded-2xl border border-border p-6">
-            <div className="flex items-start justify-between gap-4">
-              <div className="grid flex-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <Label htmlFor={`we-title-${entry.id}`}>{t("titleLabelField")}</Label>
-                  <Input
-                    id={`we-title-${entry.id}`}
-                    value={entry.title}
-                    onChange={(e) => updateEntry(entry.id, { title: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`we-company-${entry.id}`}>{t("companyLabel")}</Label>
-                  <Input
-                    id={`we-company-${entry.id}`}
-                    value={entry.company}
-                    onChange={(e) => updateEntry(entry.id, { company: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor={`we-location-${entry.id}`}>{t("locationLabel")}</Label>
-                  <Input
-                    id={`we-location-${entry.id}`}
-                    value={entry.location}
-                    onChange={(e) => updateEntry(entry.id, { location: e.target.value })}
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <Label htmlFor={`we-start-${entry.id}`}>{t("startDateLabel")}</Label>
-                    <Input
-                      id={`we-start-${entry.id}`}
-                      type="date"
-                      value={entry.startDate ?? ""}
-                      onChange={(e) =>
-                        updateEntry(entry.id, { startDate: e.target.value || null })
-                      }
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label htmlFor={`we-end-${entry.id}`}>{t("endDateLabel")}</Label>
-                    <Input
-                      id={`we-end-${entry.id}`}
-                      type="date"
-                      value={entry.endDate ?? ""}
-                      onChange={(e) => updateEntry(entry.id, { endDate: e.target.value || null })}
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <p className="text-sm font-medium">
+                {entry.title || entry.company ? (
+                  <>
+                    {entry.title || t("titleLabelField")}
+                    {entry.company ? ` — ${entry.company}` : ""}
+                  </>
+                ) : (
+                  t("newEntryLabel")
+                )}
+              </p>
               <Button
                 variant="ghost"
                 size="icon-sm"
@@ -171,14 +134,64 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
               </Button>
             </div>
 
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor={`we-title-${entry.id}`}>{t("titleLabelField")}</Label>
+                <Input
+                  id={`we-title-${entry.id}`}
+                  value={entry.title}
+                  onChange={(e) => updateEntry(entry.id, { title: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`we-company-${entry.id}`}>{t("companyLabel")}</Label>
+                <Input
+                  id={`we-company-${entry.id}`}
+                  value={entry.company}
+                  onChange={(e) => updateEntry(entry.id, { company: e.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`we-location-${entry.id}`}>{t("locationLabel")}</Label>
+                <Input
+                  id={`we-location-${entry.id}`}
+                  value={entry.location}
+                  onChange={(e) => updateEntry(entry.id, { location: e.target.value })}
+                />
+              </div>
+              <div />
+              <div className="space-y-1.5">
+                <Label htmlFor={`we-start-${entry.id}`}>{t("startDateLabel")}</Label>
+                <Input
+                  id={`we-start-${entry.id}`}
+                  type="date"
+                  value={entry.startDate ?? ""}
+                  onChange={(e) => updateEntry(entry.id, { startDate: e.target.value || null })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor={`we-end-${entry.id}`}>{t("endDateLabel")}</Label>
+                <Input
+                  id={`we-end-${entry.id}`}
+                  type="date"
+                  value={entry.endDate ?? ""}
+                  onChange={(e) => updateEntry(entry.id, { endDate: e.target.value || null })}
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-3">
               <Label>{t("bulletsLabel")}</Label>
               {entry.bullets.map((bullet, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <Input
-                    value={bullet}
-                    onChange={(e) => updateBullet(entry.id, index, e.target.value)}
-                  />
+                <div key={index} className="flex items-start gap-2">
+                  <div className="flex-1">
+                    <RichTextarea
+                      value={bullet}
+                      onChange={(value) => updateBullet(entry.id, index, value)}
+                      rows={2}
+                      boldLabel={t("boldLabel")}
+                    />
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon-sm"
@@ -207,9 +220,9 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
             </div>
 
             {suggestions[entry.id] && (
-              <div className="mt-4 rounded-2xl border border-primary/30 bg-primary/5 p-4">
+              <div className="mt-4 border-l-2 border-l-primary py-1 pl-4">
                 <p className="text-sm font-medium">{t("aiSuggestionTitle")}</p>
-                <ul className="mt-2 list-inside list-disc space-y-1 text-sm">
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-muted-foreground">
                   {suggestions[entry.id].map((bullet, i) => (
                     <li key={i}>{bullet}</li>
                   ))}

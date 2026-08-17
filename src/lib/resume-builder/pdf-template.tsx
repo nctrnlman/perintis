@@ -1,6 +1,19 @@
 import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { ResumeContent } from "./types";
 import { formatMonthYear } from "./format-date";
+import { parseBoldSegments } from "./parse-bold-text";
+
+function renderBoldSpans(text: string) {
+  return parseBoldSegments(text).map((segment, index) =>
+    segment.bold ? (
+      <Text key={index} style={{ fontFamily: "Helvetica-Bold" }}>
+        {segment.text}
+      </Text>
+    ) : (
+      <Text key={index}>{segment.text}</Text>
+    )
+  );
+}
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 10, fontFamily: "Helvetica", color: "#000000" },
@@ -50,7 +63,7 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
         {content.summary && (
           <>
             <Text style={styles.sectionHeading}>Summary</Text>
-            <Text style={styles.paragraph}>{content.summary}</Text>
+            <Text style={styles.paragraph}>{renderBoldSpans(content.summary)}</Text>
           </>
         )}
 
@@ -68,7 +81,7 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                 </Text>
                 {entry.bullets.map((bullet, i) => (
                   <Text key={i} style={styles.bullet}>
-                    &bull; {bullet}
+                    &bull; {renderBoldSpans(bullet)}
                   </Text>
                 ))}
               </View>
@@ -133,7 +146,7 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                 {proj.role && <Text style={styles.entrySubtitle}>{proj.role}</Text>}
                 {proj.bullets.map((bullet, i) => (
                   <Text key={i} style={styles.bullet}>
-                    &bull; {bullet}
+                    &bull; {renderBoldSpans(bullet)}
                   </Text>
                 ))}
                 {proj.techStack.length > 0 && (
