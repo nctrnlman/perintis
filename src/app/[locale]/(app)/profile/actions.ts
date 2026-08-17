@@ -4,8 +4,11 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
 import {
+  certificationSchema,
   educationSchema,
+  languageSchema,
   personalInfoSchema,
+  projectSchema,
   skillSchema,
   workExperienceSchema,
 } from "@/lib/validations/profile";
@@ -256,6 +259,186 @@ export async function deleteSkill(
   if (!existing || existing.profileId !== profileId) return { error: "not-found" };
 
   await db.skill.delete({ where: { id } });
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+function parseTechStack(formData: FormData): string[] {
+  const raw = formData.get("techStack");
+  if (typeof raw !== "string" || !raw.trim()) return [];
+  return raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function parseBullets(formData: FormData): string[] {
+  const raw = formData.get("bullets");
+  if (typeof raw !== "string" || !raw.trim()) return [];
+  return raw
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+export async function addCertification(
+  formData: FormData
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const parsed = certificationSchema.safeParse({
+    name: formData.get("name") ?? "",
+    issuer: formData.get("issuer") ?? "",
+    issueDate: formData.get("issueDate") || undefined,
+    url: formData.get("url") ?? "",
+  });
+
+  if (!parsed.success) return { error: "validation-failed" };
+
+  await db.certification.create({
+    data: {
+      profileId,
+      name: parsed.data.name,
+      issuer: parsed.data.issuer,
+      issueDate: parsed.data.issueDate ? new Date(parsed.data.issueDate) : null,
+      url: parsed.data.url || null,
+    },
+  });
+
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function deleteCertification(
+  id: string
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const existing = await db.certification.findUnique({ where: { id } });
+  if (!existing || existing.profileId !== profileId) return { error: "not-found" };
+
+  await db.certification.delete({ where: { id } });
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function addProject(
+  formData: FormData
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const parsed = projectSchema.safeParse({
+    name: formData.get("name") ?? "",
+    client: formData.get("client") ?? "",
+    role: formData.get("role") ?? "",
+    bullets: parseBullets(formData),
+    techStack: parseTechStack(formData),
+  });
+
+  if (!parsed.success) return { error: "validation-failed" };
+
+  await db.project.create({
+    data: {
+      profileId,
+      name: parsed.data.name,
+      client: parsed.data.client || null,
+      role: parsed.data.role || null,
+      bullets: parsed.data.bullets,
+      techStack: parsed.data.techStack,
+    },
+  });
+
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function updateProject(
+  id: string,
+  formData: FormData
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const existing = await db.project.findUnique({ where: { id } });
+  if (!existing || existing.profileId !== profileId) return { error: "not-found" };
+
+  const parsed = projectSchema.safeParse({
+    name: formData.get("name") ?? "",
+    client: formData.get("client") ?? "",
+    role: formData.get("role") ?? "",
+    bullets: parseBullets(formData),
+    techStack: parseTechStack(formData),
+  });
+
+  if (!parsed.success) return { error: "validation-failed" };
+
+  await db.project.update({
+    where: { id },
+    data: {
+      name: parsed.data.name,
+      client: parsed.data.client || null,
+      role: parsed.data.role || null,
+      bullets: parsed.data.bullets,
+      techStack: parsed.data.techStack,
+    },
+  });
+
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function deleteProject(
+  id: string
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const existing = await db.project.findUnique({ where: { id } });
+  if (!existing || existing.profileId !== profileId) return { error: "not-found" };
+
+  await db.project.delete({ where: { id } });
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function addLanguage(
+  formData: FormData
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const parsed = languageSchema.safeParse({
+    name: formData.get("name") ?? "",
+    proficiency: formData.get("proficiency") ?? "",
+  });
+
+  if (!parsed.success) return { error: "validation-failed" };
+
+  await db.language.create({
+    data: {
+      profileId,
+      name: parsed.data.name,
+      proficiency: parsed.data.proficiency,
+    },
+  });
+
+  revalidatePath("/profile");
+  return { success: true };
+}
+
+export async function deleteLanguage(
+  id: string
+): Promise<{ success: true } | { error: string }> {
+  const profileId = await getOwnedProfileId();
+  if (!profileId) return { error: "not-authenticated" };
+
+  const existing = await db.language.findUnique({ where: { id } });
+  if (!existing || existing.profileId !== profileId) return { error: "not-found" };
+
+  await db.language.delete({ where: { id } });
   revalidatePath("/profile");
   return { success: true };
 }
