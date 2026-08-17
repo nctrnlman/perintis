@@ -53,8 +53,10 @@ export async function uploadAndAnalyzeResume(
 
   try {
     if (fileType === "pdf") {
-      rawText = await extractPdfText(arrayBuffer);
-      findings = await analyzePdfStructure(arrayBuffer);
+      // pdfjs-dist detaches the ArrayBuffer it's given, so each call needs
+      // its own independent copy of the bytes.
+      rawText = await extractPdfText(arrayBuffer.slice(0));
+      findings = await analyzePdfStructure(arrayBuffer.slice(0));
     } else {
       rawText = await extractDocxText(arrayBuffer);
       findings = await analyzeDocxStructure(arrayBuffer);
