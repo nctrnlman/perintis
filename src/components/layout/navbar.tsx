@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { LanguageToggle } from "@/components/shared/language-toggle";
 
 export async function Navbar() {
   const t = await getTranslations("nav");
@@ -13,6 +14,7 @@ export async function Navbar() {
           Perintis
         </Link>
         <div className="flex items-center gap-3">
+          <LanguageToggle />
           <ThemeToggle />
           <Button
             variant="ghost"

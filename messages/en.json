@@ -12,7 +12,8 @@
     "resumeBuilder": "Resume Builder",
     "dashboard": "Dashboard",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "switchLanguage": "Switch to {locale}"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",

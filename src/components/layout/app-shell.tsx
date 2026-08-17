@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { LanguageToggle } from "@/components/shared/language-toggle";
 import { UserMenu } from "@/components/layout/user-menu";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
@@ -137,6 +138,7 @@ export function AppShell({ userEmail, userName, children }: AppShellProps) {
             <Menu className="size-5" />
           </button>
           <div className="flex items-center gap-3">
+            <LanguageToggle />
             <ThemeToggle />
             <UserMenu userEmail={userEmail} userName={userName} />
           </div>
