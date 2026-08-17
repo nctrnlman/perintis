@@ -7,6 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { ModuleCard } from "@/components/shared/module-card";
 import { Reveal } from "@/components/shared/reveal";
 
@@ -22,15 +23,30 @@ export default async function DashboardPage() {
       <p className="mt-1 text-muted-foreground">{t("description")}</p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {modules.map((module, index) => (
-          <Reveal key={module.title} delay={index * 60}>
+        {modules.map((module, index) => {
+          const card = (
             <ModuleCard
               icon={moduleIcons[index]}
               {...module}
+              comingSoon={index !== 1}
               comingSoonLabel={t("comingSoon")}
             />
-          </Reveal>
-        ))}
+          );
+
+          if (index === 1) {
+            return (
+              <Reveal key={module.title} delay={index * 60}>
+                <Link href="/ats-check">{card}</Link>
+              </Reveal>
+            );
+          }
+
+          return (
+            <Reveal key={module.title} delay={index * 60}>
+              {card}
+            </Reveal>
+          );
+        })}
       </div>
     </div>
   );
