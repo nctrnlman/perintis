@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "defaultTitle": "Perintis: setiap karir besar, dimulai dari langkah pertama",
+    "description": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia: optimasi resume, cek kompatibilitas ATS, simulasi wawancara, dan pelacakan lamaran, dengan reasoning AI yang transparan."
+  },
+  "nav": {
+    "login": "Masuk",
+    "register": "Daftar",
+    "logout": "Keluar"
+  },
+  "footer": {
+    "copyright": "© {year} Devino Labs. Perintis.",
+    "privacyPolicy": "Kebijakan Privasi",
+    "termsOfService": "Syarat Layanan"
+  },
+  "home": {
+    "meta": {
+      "title": "Perintis: Toolkit Karir Bertenaga AI",
+      "description": "Optimasi resume, cek kompatibilitas ATS, dan persiapan wawancara untuk pencari kerja Indonesia. Reasoning AI yang transparan dan bisa diaudit, bukan skor buta."
+    },
+    "hero": {
+      "headlineLine1": "Setiap karir besar,",
+      "headlineLine2": "dimulai dari langkah pertama.",
+      "subhead": "Resume yang lolos ATS. Wawancara yang siap. Satu tempat, dipandu AI yang transparan.",
+      "ctaPrimary": "Mulai Sekarang",
+      "ctaSecondary": "Masuk"
+    },
+    "reasons": {
+      "eyebrow": "Kenapa Perintis",
+      "heading": "Transparan. Kontekstual. Jujur.",
+      "items": [
+        {
+          "title": "Transparan",
+          "description": "Setiap skor disertai alasan yang bisa Anda telusuri sendiri, bukan angka yang jatuh dari langit."
+        },
+        {
+          "title": "Kontekstual",
+          "description": "Bilingual, dan paham budaya wawancara startup, korporat, sampai BUMN."
+        },
+        {
+          "title": "Jujur",
+          "description": "Perintis tidak pernah menambah pencapaian yang tidak ada di resume Anda. Data kurang, kami tandai, bukan ditebak."
+        }
+      ]
+    },
+    "core": {
+      "eyebrow": "Toolkit Inti",
+      "heading": "Dari resume sampai hari pertama kerja.",
+      "description": "Enam modul inti menemani seluruh perjalanan pencarian kerja Anda.",
+      "items": [
+        {
+          "title": "Resume Optimizer",
+          "description": "Skor kecocokan resume terhadap lowongan, lengkap dengan alasannya. Bukan cuma angka."
+        },
+        {
+          "title": "ATS Compatibility Check",
+          "description": "Lolos sistem ATS sebelum sampai ke manusia."
+        },
+        {
+          "title": "Resume Builder",
+          "description": "Susun resume baru dari profil Anda, langsung dalam format yang ramah ATS."
+        },
+        {
+          "title": "Mock Interview",
+          "description": "Latihan wawancara adaptif, gaya startup sampai BUMN."
+        },
+        {
+          "title": "Cover Letter",
+          "description": "Cover letter yang pas nada bicaranya, dari formal sampai santai ala startup."
+        },
+        {
+          "title": "Application Tracker",
+          "description": "Pantau setiap lamaran dari apply sampai offer, di satu papan yang rapi."
+        }
+      ]
+    },
+    "upcoming": {
+      "label": "Dan akan terus bertambah:",
+      "items": [
+        "Interview Prep",
+        "Company & Market Intel",
+        "LinkedIn Optimizer",
+        "Skill Development",
+        "Dokumen Pendukung"
+      ]
+    },
+    "closing": {
+      "heading": "Langkah pertama Anda dimulai hari ini.",
+      "cta": "Buat Akun Gratis"
+    }
+  },
+  "auth": {
+    "register": {
+      "title": "Buat akun Perintis",
+      "description": "Mulai optimasi resume dan persiapan karir Anda.",
+      "nameLabel": "Nama",
+      "namePlaceholder": "Budi Santoso",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Konfirmasi Password",
+      "submit": "Daftar",
+      "submitting": "Membuat akun...",
+      "googleButton": "Daftar dengan Google (Segera hadir)",
+      "haveAccount": "Sudah punya akun?",
+      "loginLink": "Masuk"
+    },
+    "login": {
+      "title": "Masuk ke Perintis",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "forgotPassword": "Lupa password?",
+      "submit": "Masuk",
+      "submitting": "Memproses...",
+      "googleButton": "Masuk dengan Google (Segera hadir)",
+      "noAccount": "Belum punya akun?",
+      "registerLink": "Daftar"
+    },
+    "forgotPassword": {
+      "title": "Reset password",
+      "description": "Masukkan email Anda, kami akan kirim tautan reset password.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Kirim tautan reset",
+      "submitting": "Mengirim...",
+      "backToLogin": "Kembali ke halaman masuk",
+      "sentTitle": "Cek email Anda",
+      "sentDescription": "Kami sudah mengirim tautan untuk reset password."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Modul-modul di bawah akan aktif secara bertahap.",
+    "modules": [
+      {
+        "title": "Resume Optimizer",
+        "description": "Optimasi resume terhadap lowongan target."
+      },
+      {
+        "title": "ATS Compatibility Check",
+        "description": "Cek struktur resume terhadap sistem ATS."
+      },
+      {
+        "title": "Resume Builder",
+        "description": "Susun resume baru dari profil Anda."
+      },
+      {
+        "title": "Mock Interview",
+        "description": "Simulasi wawancara adaptif."
+      },
+      {
+        "title": "Cover Letter",
+        "description": "Buat cover letter dari profil dan lowongan."
+      },
+      {
+        "title": "Application Tracker",
+        "description": "Lacak status lamaran Anda."
+      }
+    ],
+    "comingSoon": "Segera hadir"
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "Kebijakan Privasi",
+      "description": "Kebijakan privasi Perintis oleh Devino Labs.",
+      "body": "Halaman ini akan diperbarui dengan kebijakan privasi lengkap Perintis sebelum peluncuran publik. Devino Labs berkomitmen menjaga kerahasiaan data resume, riwayat lamaran, dan informasi pribadi pengguna."
+    },
+    "termsOfService": {
+      "title": "Syarat Layanan",
+      "description": "Syarat layanan Perintis oleh Devino Labs.",
+      "body": "Halaman ini akan diperbarui dengan syarat layanan lengkap Perintis sebelum peluncuran publik."
+    }
+  }
+}

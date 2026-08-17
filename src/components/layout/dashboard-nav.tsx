@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { createClient } from "@/lib/supabase/client";
 
 export function DashboardNav({ userEmail }: { userEmail: string }) {
+  const t = useTranslations("nav");
   const router = useRouter();
   const supabase = createClient();
 
@@ -26,7 +27,7 @@ export function DashboardNav({ userEmail }: { userEmail: string }) {
           <span className="text-sm text-muted-foreground">{userEmail}</span>
           <ThemeToggle />
           <Button variant="ghost" onClick={handleLogout}>
-            Keluar
+            {t("logout")}
           </Button>
         </div>
       </div>

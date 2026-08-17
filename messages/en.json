@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "defaultTitle": "Perintis: every great career starts with a first step",
+    "description": "Perintis is an AI-powered career toolkit for Indonesian jobseekers: resume optimization, ATS compatibility checks, mock interviews, and application tracking, with transparent AI reasoning."
+  },
+  "nav": {
+    "login": "Log in",
+    "register": "Sign up",
+    "logout": "Log out"
+  },
+  "footer": {
+    "copyright": "© {year} Devino Labs. Perintis.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "home": {
+    "meta": {
+      "title": "Perintis: AI-Powered Career Toolkit",
+      "description": "Resume optimization, ATS compatibility checks, and interview prep for Indonesian jobseekers. Transparent, auditable AI reasoning, not a blind score."
+    },
+    "hero": {
+      "headlineLine1": "Every great career",
+      "headlineLine2": "starts with a first step.",
+      "subhead": "A resume that passes ATS. An interview you're ready for. One place, guided by transparent AI.",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Log in"
+    },
+    "reasons": {
+      "eyebrow": "Why Perintis",
+      "heading": "Transparent. Contextual. Honest.",
+      "items": [
+        {
+          "title": "Transparent",
+          "description": "Every score comes with reasoning you can trace yourself, not a number that appears out of nowhere."
+        },
+        {
+          "title": "Contextual",
+          "description": "Bilingual, and built for startup, corporate, and state-owned enterprise interview culture."
+        },
+        {
+          "title": "Honest",
+          "description": "Perintis never adds an achievement that isn't in your resume. If the data is missing, we flag it, we don't guess."
+        }
+      ]
+    },
+    "core": {
+      "eyebrow": "Core Toolkit",
+      "heading": "From resume to your first day on the job.",
+      "description": "Six core modules to guide your entire job search journey.",
+      "items": [
+        {
+          "title": "Resume Optimizer",
+          "description": "A match score against the job posting, with the reasoning behind it. Not just a number."
+        },
+        {
+          "title": "ATS Compatibility Check",
+          "description": "Pass ATS systems before a human ever reads it."
+        },
+        {
+          "title": "Resume Builder",
+          "description": "Build a new resume from your profile, formatted to be ATS-friendly from the start."
+        },
+        {
+          "title": "Mock Interview",
+          "description": "Adaptive interview practice, from startup to state-owned enterprise style."
+        },
+        {
+          "title": "Cover Letter",
+          "description": "A cover letter with the right tone, from formal to startup-casual."
+        },
+        {
+          "title": "Application Tracker",
+          "description": "Track every application from applied to offer, on one tidy board."
+        }
+      ]
+    },
+    "upcoming": {
+      "label": "And more on the way:",
+      "items": [
+        "Interview Prep",
+        "Company & Market Intel",
+        "LinkedIn Optimizer",
+        "Skill Development",
+        "Supporting Documents"
+      ]
+    },
+    "closing": {
+      "heading": "Your first step starts today.",
+      "cta": "Create Free Account"
+    }
+  },
+  "auth": {
+    "register": {
+      "title": "Create your Perintis account",
+      "description": "Start optimizing your resume and preparing for your career.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Budi Santoso",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "submit": "Sign up",
+      "submitting": "Creating account...",
+      "googleButton": "Sign up with Google (Coming soon)",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Log in"
+    },
+    "login": {
+      "title": "Log in to Perintis",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log in",
+      "submitting": "Processing...",
+      "googleButton": "Log in with Google (Coming soon)",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Sign up"
+    },
+    "forgotPassword": {
+      "title": "Reset password",
+      "description": "Enter your email and we'll send you a password reset link.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Send reset link",
+      "submitting": "Sending...",
+      "backToLogin": "Back to log in",
+      "sentTitle": "Check your email",
+      "sentDescription": "We've sent you a link to reset your password."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "The modules below will roll out gradually.",
+    "modules": [
+      {
+        "title": "Resume Optimizer",
+        "description": "Optimize your resume against a target job posting."
+      },
+      {
+        "title": "ATS Compatibility Check",
+        "description": "Check your resume's structure against ATS systems."
+      },
+      {
+        "title": "Resume Builder",
+        "description": "Build a new resume from your profile."
+      },
+      {
+        "title": "Mock Interview",
+        "description": "Adaptive interview simulation."
+      },
+      {
+        "title": "Cover Letter",
+        "description": "Generate a cover letter from your profile and a job posting."
+      },
+      {
+        "title": "Application Tracker",
+        "description": "Track the status of your applications."
+      }
+    ],
+    "comingSoon": "Coming soon"
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "description": "Perintis's privacy policy, by Devino Labs.",
+      "body": "This page will be updated with Perintis's full privacy policy before public launch. Devino Labs is committed to keeping resume data, application history, and personal information confidential."
+    },
+    "termsOfService": {
+      "title": "Terms of Service",
+      "description": "Perintis's terms of service, by Devino Labs.",
+      "body": "This page will be updated with Perintis's full terms of service before public launch."
+    }
+  }
+}
