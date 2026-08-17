@@ -7,7 +7,8 @@
     "login": "Masuk",
     "register": "Daftar",
     "logout": "Keluar",
-    "toastLoggedOut": "Anda telah keluar"
+    "toastLoggedOut": "Anda telah keluar",
+    "profile": "Profil"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -228,6 +229,77 @@
       "title": "Syarat Layanan",
       "description": "Syarat layanan Perintis oleh Devino Labs.",
       "body": "Halaman ini akan diperbarui dengan syarat layanan lengkap Perintis sebelum peluncuran publik."
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "description": "Data karir Anda, sumber kebenaran untuk semua modul Perintis.",
+    "personalInfo": {
+      "title": "Info Pribadi",
+      "fullNameLabel": "Nama Lengkap",
+      "phoneLabel": "Nomor Telepon",
+      "locationLabel": "Lokasi",
+      "linkedinLabel": "URL LinkedIn",
+      "portfolioLabel": "URL Portofolio",
+      "targetCareerTitle": "Target Karir",
+      "targetRoleLabel": "Posisi Target",
+      "targetIndustryLabel": "Industri Target",
+      "save": "Simpan",
+      "saving": "Menyimpan...",
+      "toastSuccess": "Info pribadi disimpan",
+      "toastError": "Gagal menyimpan"
+    },
+    "workExperience": {
+      "title": "Pengalaman Kerja",
+      "empty": "Belum ada pengalaman kerja ditambahkan.",
+      "addButton": "Tambah Pengalaman",
+      "titleLabel": "Jabatan",
+      "companyLabel": "Perusahaan",
+      "locationLabel": "Lokasi",
+      "startDateLabel": "Tanggal Mulai",
+      "endDateLabel": "Tanggal Selesai",
+      "stillWorkingLabel": "Kosongkan jika masih bekerja di sini",
+      "descriptionLabel": "Deskripsi",
+      "skillsUsedLabel": "Skill yang Digunakan (pisahkan dengan koma)",
+      "save": "Simpan",
+      "saving": "Menyimpan...",
+      "cancel": "Batal",
+      "edit": "Ubah",
+      "delete": "Hapus",
+      "present": "Sekarang",
+      "toastAddSuccess": "Pengalaman kerja ditambahkan",
+      "toastUpdateSuccess": "Pengalaman kerja diperbarui",
+      "toastDeleteSuccess": "Pengalaman kerja dihapus",
+      "toastError": "Terjadi kesalahan"
+    },
+    "education": {
+      "title": "Pendidikan",
+      "empty": "Belum ada pendidikan ditambahkan.",
+      "addButton": "Tambah Pendidikan",
+      "institutionLabel": "Institusi",
+      "degreeLabel": "Gelar",
+      "fieldOfStudyLabel": "Bidang Studi",
+      "startDateLabel": "Tanggal Mulai",
+      "endDateLabel": "Tanggal Selesai",
+      "save": "Simpan",
+      "saving": "Menyimpan...",
+      "cancel": "Batal",
+      "edit": "Ubah",
+      "delete": "Hapus",
+      "toastAddSuccess": "Pendidikan ditambahkan",
+      "toastUpdateSuccess": "Pendidikan diperbarui",
+      "toastDeleteSuccess": "Pendidikan dihapus",
+      "toastError": "Terjadi kesalahan"
+    },
+    "skills": {
+      "title": "Skills",
+      "empty": "Belum ada skill ditambahkan.",
+      "nameLabel": "Nama Skill",
+      "categoryLabel": "Kategori (opsional)",
+      "addButton": "Tambah",
+      "toastAddSuccess": "Skill ditambahkan",
+      "toastDeleteSuccess": "Skill dihapus",
+      "toastError": "Terjadi kesalahan"
     }
   }
 }

@@ -7,7 +7,8 @@
     "login": "Log in",
     "register": "Sign up",
     "logout": "Log out",
-    "toastLoggedOut": "You've been logged out"
+    "toastLoggedOut": "You've been logged out",
+    "profile": "Profile"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -228,6 +229,77 @@
       "title": "Terms of Service",
       "description": "Perintis's terms of service, by Devino Labs.",
       "body": "This page will be updated with Perintis's full terms of service before public launch."
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "Your career data, the source of truth for every Perintis module.",
+    "personalInfo": {
+      "title": "Personal Info",
+      "fullNameLabel": "Full Name",
+      "phoneLabel": "Phone Number",
+      "locationLabel": "Location",
+      "linkedinLabel": "LinkedIn URL",
+      "portfolioLabel": "Portfolio URL",
+      "targetCareerTitle": "Target Career",
+      "targetRoleLabel": "Target Role",
+      "targetIndustryLabel": "Target Industry",
+      "save": "Save",
+      "saving": "Saving...",
+      "toastSuccess": "Personal info saved",
+      "toastError": "Failed to save"
+    },
+    "workExperience": {
+      "title": "Work Experience",
+      "empty": "No work experience added yet.",
+      "addButton": "Add Experience",
+      "titleLabel": "Job Title",
+      "companyLabel": "Company",
+      "locationLabel": "Location",
+      "startDateLabel": "Start Date",
+      "endDateLabel": "End Date",
+      "stillWorkingLabel": "Leave empty if you still work here",
+      "descriptionLabel": "Description",
+      "skillsUsedLabel": "Skills Used (comma-separated)",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "present": "Present",
+      "toastAddSuccess": "Work experience added",
+      "toastUpdateSuccess": "Work experience updated",
+      "toastDeleteSuccess": "Work experience deleted",
+      "toastError": "Something went wrong"
+    },
+    "education": {
+      "title": "Education",
+      "empty": "No education added yet.",
+      "addButton": "Add Education",
+      "institutionLabel": "Institution",
+      "degreeLabel": "Degree",
+      "fieldOfStudyLabel": "Field of Study",
+      "startDateLabel": "Start Date",
+      "endDateLabel": "End Date",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "toastAddSuccess": "Education added",
+      "toastUpdateSuccess": "Education updated",
+      "toastDeleteSuccess": "Education deleted",
+      "toastError": "Something went wrong"
+    },
+    "skills": {
+      "title": "Skills",
+      "empty": "No skills added yet.",
+      "nameLabel": "Skill Name",
+      "categoryLabel": "Category (optional)",
+      "addButton": "Add",
+      "toastAddSuccess": "Skill added",
+      "toastDeleteSuccess": "Skill deleted",
+      "toastError": "Something went wrong"
     }
   }
 }
