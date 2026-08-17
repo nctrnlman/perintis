@@ -6,6 +6,9 @@ import { PersonalInfoCard } from "@/components/profile/personal-info-card";
 import { WorkExperienceCard } from "@/components/profile/work-experience-card";
 import { EducationCard } from "@/components/profile/education-card";
 import { SkillsCard } from "@/components/profile/skills-card";
+import { CertificationsCard } from "@/components/profile/certifications-card";
+import { ProjectsCard } from "@/components/profile/projects-card";
+import { LanguagesCard } from "@/components/profile/languages-card";
 
 export default async function ProfilePage() {
   const t = await getTranslations("profile");
@@ -26,6 +29,9 @@ export default async function ProfilePage() {
       workExperiences: { orderBy: { startDate: "desc" } },
       educations: { orderBy: { startDate: "desc" } },
       skills: { orderBy: { name: "asc" } },
+      certifications: { orderBy: { issueDate: "desc" } },
+      projects: { orderBy: { createdAt: "asc" } },
+      languages: { orderBy: { name: "asc" } },
     },
   });
 
@@ -40,6 +46,9 @@ export default async function ProfilePage() {
       <WorkExperienceCard experiences={profile.workExperiences} />
       <EducationCard educations={profile.educations} />
       <SkillsCard skills={profile.skills} />
+      <CertificationsCard certifications={profile.certifications} />
+      <ProjectsCard projects={profile.projects} />
+      <LanguagesCard languages={profile.languages} />
     </div>
   );
 }
