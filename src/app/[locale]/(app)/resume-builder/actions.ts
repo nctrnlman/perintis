@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { encryptId } from "@/lib/id-crypto";
 import { ensureProfileRecord } from "@/lib/ensure-profile";
 import { buildContentFromProfile } from "@/lib/resume-builder/build-content";
+import { resumeContentSchema, type ResumeContentInput } from "@/lib/validations/resume-content";
 
 export async function createResumeDocument(): Promise<
   { token: string } | { error: string }
@@ -58,6 +59,38 @@ export async function deleteResumeDocument(
   if (!existing || existing.userId !== user.id) return { error: "not-found" };
 
   await db.resumeDocument.delete({ where: { id } });
+  revalidatePath("/resume-builder");
+  return { success: true };
+}
+
+export async function updateResumeContent(
+  id: string,
+  title: string,
+  content: ResumeContentInput
+): Promise<{ success: true } | { error: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return { error: "not-authenticated" };
+
+  const existing = await db.resumeDocument.findUnique({ where: { id } });
+  if (!existing || existing.userId !== user.id) return { error: "not-found" };
+
+  const parsed = resumeContentSchema.safeParse(content);
+  if (!parsed.success) return { error: "validation-failed" };
+
+  if (!title.trim()) return { error: "validation-failed" };
+
+  await db.resumeDocument.update({
+    where: { id },
+    data: {
+      title,
+      content: JSON.parse(JSON.stringify(parsed.data)),
+    },
+  });
+
   revalidatePath("/resume-builder");
   return { success: true };
 }
