@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
 import type { WorkExperienceEntry } from "@/lib/resume-builder/types";
 import { enhanceWorkExperienceBullets } from "@/app/[locale]/(app)/resume-builder/actions";
-import { RichTextarea } from "@/components/resume-builder/rich-textarea";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
+import { stripHtml } from "@/lib/resume-builder/strip-html";
 
 interface WorkExperienceSectionProps {
   entries: WorkExperienceEntry[];
@@ -34,7 +35,7 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
   const [suggestions, setSuggestions] = useState<Record<string, string[]>>({});
 
   function handleEnhance(entry: WorkExperienceEntry) {
-    if (entry.bullets.filter((b) => b.trim()).length === 0) return;
+    if (entry.bullets.filter((b) => stripHtml(b)).length === 0) return;
 
     startEnhance(async () => {
       const result = await enhanceWorkExperienceBullets(
@@ -185,11 +186,11 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
               {entry.bullets.map((bullet, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <div className="flex-1">
-                    <RichTextarea
+                    <RichTextEditor
                       value={bullet}
                       onChange={(value) => updateBullet(entry.id, index, value)}
-                      rows={2}
                       boldLabel={t("boldLabel")}
+                      italicLabel={t("italicLabel")}
                     />
                   </div>
                   <Button

@@ -49,19 +49,12 @@ export function UserMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex w-full items-center gap-2.5 rounded-xl px-2 py-2 text-left outline-none hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="flex size-9 items-center justify-center rounded-full bg-muted text-sm font-medium text-foreground outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         aria-label={userName ?? userEmail}
       >
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-medium text-foreground">
-          {initials}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block truncate text-sm font-medium">
-            {userName || userEmail}
-          </span>
-        </span>
+        {initials}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" side="top" sideOffset={8} className="min-w-56">
+      <DropdownMenuContent align="end" side="bottom" sideOffset={8} className="min-w-56">
         <div className="px-2 py-1.5">
           {userName && <p className="text-sm font-medium text-foreground">{userName}</p>}
           <p className="truncate text-xs text-muted-foreground">{userEmail}</p>

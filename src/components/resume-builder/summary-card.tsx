@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { RichTextarea } from "@/components/resume-builder/rich-textarea";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 
 interface SummaryCardProps {
   summary: string;
@@ -15,7 +15,12 @@ export function SummaryCard({ summary, onChange }: SummaryCardProps) {
     <div className="rounded-2xl border border-border p-8">
       <h2 className="text-xl font-semibold">{t("summaryTitle")}</h2>
       <div className="mt-4">
-        <RichTextarea value={summary} onChange={onChange} rows={4} boldLabel={t("boldLabel")} />
+        <RichTextEditor
+          value={summary}
+          onChange={onChange}
+          boldLabel={t("boldLabel")}
+          italicLabel={t("italicLabel")}
+        />
       </div>
     </div>
   );

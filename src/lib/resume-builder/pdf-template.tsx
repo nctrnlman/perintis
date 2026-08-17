@@ -1,19 +1,11 @@
 import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import Html from "react-pdf-html";
 import type { ResumeContent } from "./types";
 import { formatMonthYear } from "./format-date";
-import { parseBoldSegments } from "./parse-bold-text";
+import { stripHtml } from "./strip-html";
 
-function renderBoldSpans(text: string) {
-  return parseBoldSegments(text).map((segment, index) =>
-    segment.bold ? (
-      <Text key={index} style={{ fontFamily: "Helvetica-Bold" }}>
-        {segment.text}
-      </Text>
-    ) : (
-      <Text key={index}>{segment.text}</Text>
-    )
-  );
-}
+const richTextStyle = { fontSize: 10, fontFamily: "Helvetica" };
+const richTextStylesheet = { p: { margin: 0 } };
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 10, fontFamily: "Helvetica", color: "#000000" },
@@ -31,10 +23,10 @@ const styles = StyleSheet.create({
   entryRow: { flexDirection: "row", justifyContent: "space-between" },
   entryTitle: { fontFamily: "Helvetica-Bold" },
   entrySubtitle: { fontStyle: "italic", color: "#333333", marginBottom: 2 },
-  bullet: { marginLeft: 10, marginTop: 2 },
+  bulletRow: { flexDirection: "row", marginTop: 2 },
+  bulletMarker: { width: 10 },
+  bulletContent: { flex: 1 },
   paragraph: { marginTop: 2, lineHeight: 1.4 },
-  tagRow: { flexDirection: "row", flexWrap: "wrap", marginTop: 2 },
-  tag: { marginRight: 8 },
 });
 
 function contactParts(content: ResumeContent): string[] {
@@ -53,6 +45,19 @@ function dateRange(startDate: string | null, endDate: string | null): string {
   return start ? `${start} - ${end}` : "";
 }
 
+function RichTextBullet({ html }: { html: string }) {
+  return (
+    <View style={styles.bulletRow}>
+      <Text style={styles.bulletMarker}>&bull;</Text>
+      <View style={styles.bulletContent}>
+        <Html style={richTextStyle} stylesheet={richTextStylesheet}>
+          {html}
+        </Html>
+      </View>
+    </View>
+  );
+}
+
 export function ResumePdfDocument({ content }: { content: ResumeContent }) {
   return (
     <Document>
@@ -60,10 +65,15 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
         <Text style={styles.name}>{content.personalInfo.fullName}</Text>
         <Text style={styles.contactLine}>{contactParts(content).join(" | ")}</Text>
 
-        {content.summary && (
+        {stripHtml(content.summary) && (
           <>
             <Text style={styles.sectionHeading}>Summary</Text>
-            <Text style={styles.paragraph}>{renderBoldSpans(content.summary)}</Text>
+            <Html
+              style={{ ...richTextStyle, marginTop: 2, lineHeight: 1.4 }}
+              stylesheet={richTextStylesheet}
+            >
+              {content.summary}
+            </Html>
           </>
         )}
 
@@ -79,11 +89,11 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                 <Text style={styles.entrySubtitle}>
                   {[entry.company, entry.location].filter(Boolean).join(" | ")}
                 </Text>
-                {entry.bullets.map((bullet, i) => (
-                  <Text key={i} style={styles.bullet}>
-                    &bull; {renderBoldSpans(bullet)}
-                  </Text>
-                ))}
+                {entry.bullets
+                  .filter((bullet) => stripHtml(bullet))
+                  .map((bullet, i) => (
+                    <RichTextBullet key={i} html={bullet} />
+                  ))}
               </View>
             ))}
           </>
@@ -102,7 +112,7 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                   {[entry.degree, entry.fieldOfStudy, entry.location].filter(Boolean).join(" | ")}
                 </Text>
                 {entry.bullets.map((bullet, i) => (
-                  <Text key={i} style={styles.bullet}>
+                  <Text key={i} style={{ marginLeft: 10, marginTop: 2 }}>
                     &bull; {bullet}
                   </Text>
                 ))}
@@ -144,11 +154,11 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                   {proj.client ? ` - ${proj.client}` : ""}
                 </Text>
                 {proj.role && <Text style={styles.entrySubtitle}>{proj.role}</Text>}
-                {proj.bullets.map((bullet, i) => (
-                  <Text key={i} style={styles.bullet}>
-                    &bull; {renderBoldSpans(bullet)}
-                  </Text>
-                ))}
+                {proj.bullets
+                  .filter((bullet) => stripHtml(bullet))
+                  .map((bullet, i) => (
+                    <RichTextBullet key={i} html={bullet} />
+                  ))}
                 {proj.techStack.length > 0 && (
                   <Text style={styles.paragraph}>
                     Tech Stack: {proj.techStack.join(", ")}

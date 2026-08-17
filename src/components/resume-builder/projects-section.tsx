@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { ProjectEntry } from "@/lib/resume-builder/types";
-import { RichTextarea } from "@/components/resume-builder/rich-textarea";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 
 interface ProjectsSectionProps {
   entries: ProjectEntry[];
@@ -131,11 +131,11 @@ export function ProjectsSection({ entries, onChange }: ProjectsSectionProps) {
               {entry.bullets.map((bullet, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <div className="flex-1">
-                    <RichTextarea
+                    <RichTextEditor
                       value={bullet}
                       onChange={(value) => updateBullet(entry.id, index, value)}
-                      rows={2}
                       boldLabel={t("boldLabel")}
+                      italicLabel={t("italicLabel")}
                     />
                   </div>
                   <Button

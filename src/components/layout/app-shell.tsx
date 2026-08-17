@@ -20,12 +20,13 @@ import { UserMenu } from "@/components/layout/user-menu";
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
 const moduleRoutes: (string | null)[] = [null, "/ats-check", "/resume-builder", null, null, null];
 
-interface SidebarProps {
+interface AppShellProps {
   userEmail: string;
   userName: string | null;
+  children: React.ReactNode;
 }
 
-export function Sidebar({ userEmail, userName }: SidebarProps) {
+export function AppShell({ userEmail, userName, children }: AppShellProps) {
   const t = useTranslations();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,15 +41,23 @@ export function Sidebar({ userEmail, userName }: SidebarProps) {
     })),
   ];
 
-  const body = (
+  const navBody = (
     <>
-      <div className="flex h-16 shrink-0 items-center border-b border-border px-6">
+      <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-border px-6">
         <Link
           href="/dashboard"
-          className="text-lg font-semibold tracking-tight"
+          className="flex items-center gap-2.5"
           onClick={() => setMobileOpen(false)}
         >
-          Perintis
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-foreground text-sm font-semibold text-background">
+            P
+          </span>
+          <span>
+            <span className="block text-sm leading-tight font-semibold">Perintis</span>
+            <span className="block text-xs leading-tight text-muted-foreground">
+              by Rhazes Labs
+            </span>
+          </span>
         </Link>
       </div>
 
@@ -88,32 +97,11 @@ export function Sidebar({ userEmail, userName }: SidebarProps) {
           );
         })}
       </nav>
-
-      <div className="space-y-2 border-t border-border p-4">
-        <div className="flex justify-end px-2">
-          <ThemeToggle />
-        </div>
-        <UserMenu userEmail={userEmail} userName={userName} />
-      </div>
     </>
   );
 
   return (
-    <>
-      <div className="flex h-14 shrink-0 items-center justify-between border-b border-border/40 px-4 lg:hidden">
-        <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
-          Perintis
-        </Link>
-        <button
-          type="button"
-          onClick={() => setMobileOpen(true)}
-          aria-label={t("nav.openMenu")}
-          className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
-        >
-          <Menu className="size-5" />
-        </button>
-      </div>
-
+    <div className="flex min-h-screen bg-background">
       {mobileOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
@@ -129,14 +117,32 @@ export function Sidebar({ userEmail, userName }: SidebarProps) {
             >
               <X className="size-4" />
             </button>
-            {body}
+            {navBody}
           </aside>
         </div>
       )}
 
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-border lg:flex">
-        {body}
+        {navBody}
       </aside>
-    </>
+
+      <div className="flex min-w-0 flex-1 flex-col">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-border/40 px-4 lg:justify-end lg:px-6">
+          <button
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            aria-label={t("nav.openMenu")}
+            className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground lg:hidden"
+          >
+            <Menu className="size-5" />
+          </button>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <UserMenu userEmail={userEmail} userName={userName} />
+          </div>
+        </header>
+        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">{children}</main>
+      </div>
+    </div>
   );
 }

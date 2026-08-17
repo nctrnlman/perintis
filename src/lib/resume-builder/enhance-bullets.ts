@@ -1,4 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
+import { stripHtml } from "./strip-html";
 
 interface EnhanceBulletsInput {
   title: string;
@@ -13,15 +14,17 @@ export async function enhanceBullets({
 }: EnhanceBulletsInput): Promise<string[]> {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+  const plainBullets = bullets.map(stripHtml);
+
   const prompt = `Rewrite the following resume bullet points for a "${title}" role at "${company}" into polished, professional resume language.
 
 Hard rules:
 - Never invent achievements, metrics, or numbers that are not already present in the input bullets.
-- Return exactly ${bullets.length} bullet(s), one rewritten version per input bullet, in the same order.
+- Return exactly ${plainBullets.length} bullet(s), one rewritten version per input bullet, in the same order.
 - Do not merge, split, summarize, or add bullets.
 
 Input bullets:
-${bullets.map((b, i) => `${i + 1}. ${b}`).join("\n")}`;
+${plainBullets.map((b, i) => `${i + 1}. ${b}`).join("\n")}`;
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
