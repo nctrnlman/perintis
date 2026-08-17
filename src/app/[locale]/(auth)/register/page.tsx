@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PasswordInput } from "@/components/shared/password-input";
 import { Reveal } from "@/components/shared/reveal";
+import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 
@@ -17,7 +17,6 @@ export default function RegisterPage() {
   const t = useTranslations("auth.register");
   const tPassword = useTranslations("auth.password");
   const router = useRouter();
-  const [serverError, setServerError] = useState<string | null>(null);
   const supabase = createClient();
 
   const {
@@ -31,7 +30,6 @@ export default function RegisterPage() {
   });
 
   async function onSubmit(values: RegisterInput) {
-    setServerError(null);
     const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
@@ -39,10 +37,15 @@ export default function RegisterPage() {
     });
 
     if (error) {
-      setServerError(error.message);
+      toast.add({
+        title: t("toastErrorTitle"),
+        description: error.message,
+        type: "error",
+      });
       return;
     }
 
+    toast.add({ title: t("toastSuccessTitle"), type: "success" });
     router.push("/dashboard");
   }
 
@@ -109,10 +112,6 @@ export default function RegisterPage() {
             </p>
           )}
         </div>
-
-        {serverError && (
-          <p className="text-sm text-destructive">{serverError}</p>
-        )}
 
         <Button
           type="submit"

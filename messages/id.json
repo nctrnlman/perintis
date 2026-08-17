@@ -6,7 +6,8 @@
   "nav": {
     "login": "Masuk",
     "register": "Daftar",
-    "logout": "Keluar"
+    "logout": "Keluar",
+    "toastLoggedOut": "Anda telah keluar"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -107,7 +108,9 @@
       "submitting": "Membuat akun...",
       "googleNote": "Daftar dengan Google segera hadir.",
       "haveAccount": "Sudah punya akun?",
-      "loginLink": "Masuk"
+      "loginLink": "Masuk",
+      "toastSuccessTitle": "Akun berhasil dibuat",
+      "toastErrorTitle": "Pendaftaran gagal"
     },
     "login": {
       "title": "Masuk ke Perintis",
@@ -119,7 +122,9 @@
       "submitting": "Memproses...",
       "googleNote": "Masuk dengan Google segera hadir.",
       "noAccount": "Belum punya akun?",
-      "registerLink": "Daftar"
+      "registerLink": "Daftar",
+      "toastSuccessTitle": "Berhasil masuk",
+      "toastErrorTitle": "Gagal masuk"
     },
     "forgotPassword": {
       "title": "Reset password",
@@ -130,7 +135,8 @@
       "submitting": "Mengirim...",
       "backToLogin": "Kembali ke halaman masuk",
       "sentTitle": "Cek email Anda",
-      "sentDescription": "Kami sudah mengirim tautan untuk reset password."
+      "sentDescription": "Kami sudah mengirim tautan untuk reset password.",
+      "toastErrorTitle": "Gagal mengirim"
     }
   },
   "dashboard": {
@@ -184,10 +190,25 @@
       "errorTooLarge": "Ukuran file melebihi 5MB.",
       "errorUnsupportedType": "Format file tidak didukung. Unggah PDF atau DOCX.",
       "errorParsing": "File tidak bisa dibaca. Coba simpan ulang resume Anda dan unggah lagi.",
-      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
+      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi.",
+      "toastSuccessTitle": "Analisis selesai",
+      "toastErrorTitle": "Analisis gagal"
     },
     "result": {
       "scoreLabel": "Skor Kompatibilitas",
+      "tierExcellent": "Sangat baik",
+      "tierGood": "Cukup baik",
+      "tierNeedsWork": "Perlu perbaikan",
+      "summary": "{strengthCount} hal sudah bagus, {issueCount} perlu diperbaiki.",
+      "strengthsTitle": "Yang Sudah Bagus",
+      "strengthMultiColumnLayout": "Tata letak satu kolom, mudah dibaca ATS",
+      "strengthNonStandardFont": "Font yang digunakan aman untuk ATS",
+      "strengthTableDetected": "Tidak menggunakan tabel yang bisa mengacaukan urutan baca",
+      "strengthHeaderFooterContent": "Tidak ada info penting yang tersembunyi di header atau footer",
+      "categoryMultiColumnLayout": "Tata letak multi-kolom",
+      "categoryNonStandardFont": "Font tidak standar",
+      "categoryTableDetected": "Tabel terdeteksi",
+      "categoryHeaderFooterContent": "Info di header atau footer",
       "findingsTitle": "Temuan",
       "noFindings": "Tidak ditemukan masalah struktural. Resume Anda ramah ATS.",
       "pdfLimitationNote": "Deteksi tabel dan header/footer untuk file PDF belum didukung di versi ini.",

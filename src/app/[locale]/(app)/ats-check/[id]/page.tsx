@@ -1,3 +1,4 @@
+import { CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -8,6 +9,38 @@ import { ScoreRing } from "@/components/shared/score-ring";
 import type { Finding, FindingSeverity } from "@/lib/resume/types";
 
 const SEVERITY_ORDER: FindingSeverity[] = ["critical", "warning", "suggestion"];
+
+const PDF_CHECK_CATEGORIES = ["multi-column-layout", "non-standard-font"];
+const DOCX_CHECK_CATEGORIES = [
+  "table-detected",
+  "header-footer-content",
+  "non-standard-font",
+];
+
+const CATEGORY_KEYS: Record<string, { strength: string; label: string }> = {
+  "multi-column-layout": {
+    strength: "strengthMultiColumnLayout",
+    label: "categoryMultiColumnLayout",
+  },
+  "non-standard-font": {
+    strength: "strengthNonStandardFont",
+    label: "categoryNonStandardFont",
+  },
+  "table-detected": {
+    strength: "strengthTableDetected",
+    label: "categoryTableDetected",
+  },
+  "header-footer-content": {
+    strength: "strengthHeaderFooterContent",
+    label: "categoryHeaderFooterContent",
+  },
+};
+
+function getTierKey(score: number): "tierExcellent" | "tierGood" | "tierNeedsWork" {
+  if (score >= 90) return "tierExcellent";
+  if (score >= 70) return "tierGood";
+  return "tierNeedsWork";
+}
 
 export default async function AtsCheckResultPage({
   params,
@@ -47,6 +80,11 @@ export default async function AtsCheckResultPage({
     suggestion: t("severitySuggestion"),
   };
 
+  const isDocx = analysis.resume.filename?.toLowerCase().endsWith(".docx") ?? false;
+  const applicableCategories = isDocx ? DOCX_CHECK_CATEGORIES : PDF_CHECK_CATEGORIES;
+  const foundCategories = new Set(findings.map((f) => f.category));
+  const strengths = applicableCategories.filter((cat) => !foundCategories.has(cat));
+
   return (
     <div className="mx-auto max-w-2xl">
       <div className="flex flex-col items-center rounded-2xl border border-border p-10 text-center">
@@ -54,7 +92,28 @@ export default async function AtsCheckResultPage({
         <div className="mt-4">
           <ScoreRing score={analysis.overallScore} />
         </div>
+        <p className="mt-3 text-sm font-medium">{t(getTierKey(analysis.overallScore))}</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {t("summary", { strengthCount: strengths.length, issueCount: findings.length })}
+        </p>
       </div>
+
+      {strengths.length > 0 && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold">{t("strengthsTitle")}</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {strengths.map((category) => (
+              <div
+                key={category}
+                className="flex items-start gap-3 rounded-2xl border border-border p-4"
+              >
+                <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-500" />
+                <p className="text-sm">{t(CATEGORY_KEYS[category].strength)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mt-8">
         <h2 className="text-xl font-semibold">{t("findingsTitle")}</h2>
@@ -76,7 +135,9 @@ export default async function AtsCheckResultPage({
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">
-                      {finding.category}
+                      {CATEGORY_KEYS[finding.category]
+                        ? t(CATEGORY_KEYS[finding.category].label)
+                        : finding.category}
                     </span>
                     <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">
                       {severityLabels[finding.severity]}
@@ -91,9 +152,11 @@ export default async function AtsCheckResultPage({
           </div>
         )}
 
-        <p className="mt-6 text-xs text-muted-foreground">
-          {t("pdfLimitationNote")}
-        </p>
+        {!isDocx && (
+          <p className="mt-6 text-xs text-muted-foreground">
+            {t("pdfLimitationNote")}
+          </p>
+        )}
       </div>
 
       <Link

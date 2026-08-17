@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
 
 export function DashboardNav({ userEmail }: { userEmail: string }) {
@@ -13,6 +14,7 @@ export function DashboardNav({ userEmail }: { userEmail: string }) {
 
   async function handleLogout() {
     await supabase.auth.signOut();
+    toast.add({ title: t("toastLoggedOut"), type: "info" });
     router.push("/login");
     router.refresh();
   }

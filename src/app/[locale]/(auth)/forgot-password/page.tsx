@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/shared/reveal";
+import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
 import {
   forgotPasswordSchema,
@@ -19,7 +20,6 @@ import {
 export default function ForgotPasswordPage() {
   const t = useTranslations("auth.forgotPassword");
   const [sent, setSent] = useState(false);
-  const [serverError, setServerError] = useState<string | null>(null);
   const supabase = createClient();
 
   const {
@@ -33,13 +33,16 @@ export default function ForgotPasswordPage() {
   });
 
   async function onSubmit(values: ForgotPasswordInput) {
-    setServerError(null);
     const { error } = await supabase.auth.resetPasswordForEmail(values.email, {
       redirectTo: `${window.location.origin}/login`,
     });
 
     if (error) {
-      setServerError(error.message);
+      toast.add({
+        title: t("toastErrorTitle"),
+        description: error.message,
+        type: "error",
+      });
       return;
     }
 
@@ -92,10 +95,6 @@ export default function ForgotPasswordPage() {
             </p>
           )}
         </div>
-
-        {serverError && (
-          <p className="text-sm text-destructive">{serverError}</p>
-        )}
 
         <Button
           type="submit"

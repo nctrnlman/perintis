@@ -6,7 +6,8 @@
   "nav": {
     "login": "Log in",
     "register": "Sign up",
-    "logout": "Log out"
+    "logout": "Log out",
+    "toastLoggedOut": "You've been logged out"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -107,7 +108,9 @@
       "submitting": "Creating account...",
       "googleNote": "Sign up with Google is coming soon.",
       "haveAccount": "Already have an account?",
-      "loginLink": "Log in"
+      "loginLink": "Log in",
+      "toastSuccessTitle": "Account created",
+      "toastErrorTitle": "Sign up failed"
     },
     "login": {
       "title": "Log in to Perintis",
@@ -119,7 +122,9 @@
       "submitting": "Processing...",
       "googleNote": "Log in with Google is coming soon.",
       "noAccount": "Don't have an account?",
-      "registerLink": "Sign up"
+      "registerLink": "Sign up",
+      "toastSuccessTitle": "Logged in",
+      "toastErrorTitle": "Login failed"
     },
     "forgotPassword": {
       "title": "Reset password",
@@ -130,7 +135,8 @@
       "submitting": "Sending...",
       "backToLogin": "Back to log in",
       "sentTitle": "Check your email",
-      "sentDescription": "We've sent you a link to reset your password."
+      "sentDescription": "We've sent you a link to reset your password.",
+      "toastErrorTitle": "Failed to send"
     }
   },
   "dashboard": {
@@ -184,10 +190,25 @@
       "errorTooLarge": "File size exceeds 5MB.",
       "errorUnsupportedType": "Unsupported file format. Upload a PDF or DOCX.",
       "errorParsing": "The file couldn't be read. Try re-saving your resume and uploading again.",
-      "errorGeneric": "Something went wrong. Please try again."
+      "errorGeneric": "Something went wrong. Please try again.",
+      "toastSuccessTitle": "Analysis complete",
+      "toastErrorTitle": "Analysis failed"
     },
     "result": {
       "scoreLabel": "Compatibility Score",
+      "tierExcellent": "Excellent",
+      "tierGood": "Good",
+      "tierNeedsWork": "Needs work",
+      "summary": "{strengthCount} things look good, {issueCount} could be improved.",
+      "strengthsTitle": "What's Working Well",
+      "strengthMultiColumnLayout": "Single-column layout, easy for ATS to read",
+      "strengthNonStandardFont": "Fonts used are ATS-safe",
+      "strengthTableDetected": "No tables that could scramble the reading order",
+      "strengthHeaderFooterContent": "No important info hidden in the header or footer",
+      "categoryMultiColumnLayout": "Multi-column layout",
+      "categoryNonStandardFont": "Non-standard font",
+      "categoryTableDetected": "Table detected",
+      "categoryHeaderFooterContent": "Info in header or footer",
       "findingsTitle": "Findings",
       "noFindings": "No structural issues found. Your resume is ATS-friendly.",
       "pdfLimitationNote": "Table and header/footer detection for PDF files isn't supported in this version yet.",

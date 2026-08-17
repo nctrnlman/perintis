@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PasswordInput } from "@/components/shared/password-input";
 import { Reveal } from "@/components/shared/reveal";
+import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
 
@@ -17,7 +17,6 @@ export default function LoginPage() {
   const t = useTranslations("auth.login");
   const tPassword = useTranslations("auth.password");
   const router = useRouter();
-  const [serverError, setServerError] = useState<string | null>(null);
   const supabase = createClient();
 
   const {
@@ -31,14 +30,18 @@ export default function LoginPage() {
   });
 
   async function onSubmit(values: LoginInput) {
-    setServerError(null);
     const { error } = await supabase.auth.signInWithPassword(values);
 
     if (error) {
-      setServerError(error.message);
+      toast.add({
+        title: t("toastErrorTitle"),
+        description: error.message,
+        type: "error",
+      });
       return;
     }
 
+    toast.add({ title: t("toastSuccessTitle"), type: "success" });
     router.push("/dashboard");
   }
 
@@ -91,10 +94,6 @@ export default function LoginPage() {
             </p>
           )}
         </div>
-
-        {serverError && (
-          <p className="text-sm text-destructive">{serverError}</p>
-        )}
 
         <Button
           type="submit"
