@@ -16,6 +16,7 @@ import { EducationSection } from "@/components/resume-builder/education-section"
 import { SkillsSection } from "@/components/resume-builder/skills-section";
 import { CertificationsSection } from "@/components/resume-builder/certifications-section";
 import { LanguagesSection } from "@/components/resume-builder/languages-section";
+import { ProjectsSection } from "@/components/resume-builder/projects-section";
 
 interface BuilderClientProps {
   id: string;
@@ -72,6 +73,10 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
       <SkillsSection
         entries={content.skills}
         onChange={(skills) => setContent({ ...content, skills })}
+      />
+      <ProjectsSection
+        entries={content.projects}
+        onChange={(projects) => setContent({ ...content, projects })}
       />
       <CertificationsSection
         entries={content.certifications}
