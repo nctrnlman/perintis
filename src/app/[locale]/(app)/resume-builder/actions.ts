@@ -7,6 +7,7 @@ import { encryptId } from "@/lib/id-crypto";
 import { ensureProfileRecord } from "@/lib/ensure-profile";
 import { buildContentFromProfile } from "@/lib/resume-builder/build-content";
 import { resumeContentSchema, type ResumeContentInput } from "@/lib/validations/resume-content";
+import { enhanceBullets } from "@/lib/resume-builder/enhance-bullets";
 
 export async function createResumeDocument(): Promise<
   { token: string } | { error: string }
@@ -93,4 +94,26 @@ export async function updateResumeContent(
 
   revalidatePath("/resume-builder");
   return { success: true };
+}
+
+export async function enhanceWorkExperienceBullets(
+  title: string,
+  company: string,
+  bullets: string[]
+): Promise<{ success: true; enhancedBullets: string[] } | { error: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return { error: "not-authenticated" };
+  if (bullets.length === 0) return { error: "no-bullets" };
+
+  try {
+    const enhancedBullets = await enhanceBullets({ title, company, bullets });
+    return { success: true, enhancedBullets };
+  } catch (err) {
+    console.error("[resume-builder] Failed to enhance bullets:", err);
+    return { error: "enhancement-failed" };
+  }
 }
