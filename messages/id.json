@@ -9,7 +9,10 @@
     "logout": "Keluar",
     "toastLoggedOut": "Anda telah keluar",
     "profile": "Profil",
-    "resumeBuilder": "Resume Builder"
+    "resumeBuilder": "Resume Builder",
+    "dashboard": "Dashboard",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -382,6 +385,7 @@
       "portfolioLabel": "URL Portofolio",
       "summaryTitle": "Ringkasan Profesional",
       "boldLabel": "Tebal",
+      "italicLabel": "Miring",
       "newEntryLabel": "Entri Baru",
       "workExperienceTitle": "Pengalaman Kerja",
       "educationTitle": "Pendidikan",

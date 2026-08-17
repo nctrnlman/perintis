@@ -9,7 +9,10 @@
     "logout": "Log out",
     "toastLoggedOut": "You've been logged out",
     "profile": "Profile",
-    "resumeBuilder": "Resume Builder"
+    "resumeBuilder": "Resume Builder",
+    "dashboard": "Dashboard",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "footer": {
     "copyright": "© {year} Devino Labs. Perintis.",
@@ -382,6 +385,7 @@
       "portfolioLabel": "Portfolio URL",
       "summaryTitle": "Professional Summary",
       "boldLabel": "Bold",
+      "italicLabel": "Italic",
       "newEntryLabel": "New Entry",
       "workExperienceTitle": "Work Experience",
       "educationTitle": "Education",
