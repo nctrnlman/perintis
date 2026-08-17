@@ -164,6 +164,39 @@
     ],
     "comingSoon": "Coming soon"
   },
+  "ats": {
+    "list": {
+      "title": "ATS Compatibility Check",
+      "description": "Your resume check history.",
+      "empty": "No checks yet. Upload your first resume.",
+      "newButton": "Check New Resume",
+      "tableFilename": "Filename",
+      "tableScore": "Score",
+      "tableDate": "Date"
+    },
+    "upload": {
+      "title": "Upload Resume",
+      "description": "PDF or DOCX format, 5MB maximum.",
+      "dropzoneLabel": "Drag a file here or click to browse",
+      "dropzoneHint": "PDF or DOCX, max 5MB",
+      "analyzing": "Reading your resume...",
+      "submit": "Analyze Resume",
+      "errorTooLarge": "File size exceeds 5MB.",
+      "errorUnsupportedType": "Unsupported file format. Upload a PDF or DOCX.",
+      "errorParsing": "The file couldn't be read. Try re-saving your resume and uploading again.",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "result": {
+      "scoreLabel": "Compatibility Score",
+      "findingsTitle": "Findings",
+      "noFindings": "No structural issues found. Your resume is ATS-friendly.",
+      "pdfLimitationNote": "Table and header/footer detection for PDF files isn't supported in this version yet.",
+      "severityCritical": "Critical",
+      "severityWarning": "Warning",
+      "severitySuggestion": "Suggestion",
+      "backToList": "Back to list"
+    }
+  },
   "legal": {
     "privacyPolicy": {
       "title": "Privacy Policy",

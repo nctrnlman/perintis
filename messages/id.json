@@ -164,6 +164,39 @@
     ],
     "comingSoon": "Segera hadir"
   },
+  "ats": {
+    "list": {
+      "title": "Cek Kompatibilitas ATS",
+      "description": "Riwayat pengecekan resume Anda.",
+      "empty": "Belum ada pengecekan. Unggah resume pertama Anda.",
+      "newButton": "Cek Resume Baru",
+      "tableFilename": "Nama File",
+      "tableScore": "Skor",
+      "tableDate": "Tanggal"
+    },
+    "upload": {
+      "title": "Unggah Resume",
+      "description": "Format PDF atau DOCX, maksimal 5MB.",
+      "dropzoneLabel": "Seret file ke sini atau klik untuk memilih",
+      "dropzoneHint": "PDF atau DOCX, maks. 5MB",
+      "analyzing": "Membaca resume Anda...",
+      "submit": "Analisis Resume",
+      "errorTooLarge": "Ukuran file melebihi 5MB.",
+      "errorUnsupportedType": "Format file tidak didukung. Unggah PDF atau DOCX.",
+      "errorParsing": "File tidak bisa dibaca. Coba simpan ulang resume Anda dan unggah lagi.",
+      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
+    },
+    "result": {
+      "scoreLabel": "Skor Kompatibilitas",
+      "findingsTitle": "Temuan",
+      "noFindings": "Tidak ditemukan masalah struktural. Resume Anda ramah ATS.",
+      "pdfLimitationNote": "Deteksi tabel dan header/footer untuk file PDF belum didukung di versi ini.",
+      "severityCritical": "Kritis",
+      "severityWarning": "Peringatan",
+      "severitySuggestion": "Saran",
+      "backToList": "Kembali ke daftar"
+    }
+  },
   "legal": {
     "privacyPolicy": {
       "title": "Kebijakan Privasi",
