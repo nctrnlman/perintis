@@ -26,12 +26,6 @@ export function DashboardNav({ userEmail }: { userEmail: string }) {
           Perintis
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            href="/resume-builder"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            {t("resumeBuilder")}
-          </Link>
           <Link href="/profile" className="text-sm text-muted-foreground hover:text-foreground">
             {t("profile")}
           </Link>

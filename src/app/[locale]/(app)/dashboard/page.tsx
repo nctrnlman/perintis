@@ -13,6 +13,11 @@ import { Reveal } from "@/components/shared/reveal";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
 
+const moduleRoutes: Record<number, string> = {
+  1: "/ats-check",
+  2: "/resume-builder",
+};
+
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
   const modules = t.raw("modules") as { title: string; description: string }[];
@@ -24,19 +29,20 @@ export default async function DashboardPage() {
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map((module, index) => {
+          const route = moduleRoutes[index];
           const card = (
             <ModuleCard
               icon={moduleIcons[index]}
               {...module}
-              comingSoon={index !== 1}
+              comingSoon={!route}
               comingSoonLabel={t("comingSoon")}
             />
           );
 
-          if (index === 1) {
+          if (route) {
             return (
               <Reveal key={module.title} delay={index * 60}>
-                <Link href="/ats-check">{card}</Link>
+                <Link href={route}>{card}</Link>
               </Reveal>
             );
           }
