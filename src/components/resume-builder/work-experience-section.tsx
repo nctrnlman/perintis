@@ -1,11 +1,14 @@
 "use client";
 
+import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Sparkles, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "@/components/ui/toast";
 import type { WorkExperienceEntry } from "@/lib/resume-builder/types";
+import { enhanceWorkExperienceBullets } from "@/app/[locale]/(app)/resume-builder/actions";
 
 interface WorkExperienceSectionProps {
   entries: WorkExperienceEntry[];
@@ -26,6 +29,44 @@ function emptyEntry(): WorkExperienceEntry {
 
 export function WorkExperienceSection({ entries, onChange }: WorkExperienceSectionProps) {
   const t = useTranslations("resumeBuilder.builder");
+  const [isEnhancing, startEnhance] = useTransition();
+  const [suggestions, setSuggestions] = useState<Record<string, string[]>>({});
+
+  function handleEnhance(entry: WorkExperienceEntry) {
+    if (entry.bullets.filter((b) => b.trim()).length === 0) return;
+
+    startEnhance(async () => {
+      const result = await enhanceWorkExperienceBullets(
+        entry.title,
+        entry.company,
+        entry.bullets
+      );
+      if ("error" in result) {
+        toast.add({ title: t("toastEnhanceError"), type: "error" });
+        return;
+      }
+      setSuggestions((prev) => ({ ...prev, [entry.id]: result.enhancedBullets }));
+    });
+  }
+
+  function applySuggestion(entryId: string) {
+    const suggested = suggestions[entryId];
+    if (!suggested) return;
+    updateEntry(entryId, { bullets: suggested });
+    setSuggestions((prev) => {
+      const next = { ...prev };
+      delete next[entryId];
+      return next;
+    });
+  }
+
+  function discardSuggestion(entryId: string) {
+    setSuggestions((prev) => {
+      const next = { ...prev };
+      delete next[entryId];
+      return next;
+    });
+  }
 
   function updateEntry(id: string, patch: Partial<WorkExperienceEntry>) {
     onChange(entries.map((entry) => (entry.id === id ? { ...entry, ...patch } : entry)));
@@ -148,11 +189,45 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
                   </Button>
                 </div>
               ))}
-              <Button variant="outline" size="sm" onClick={() => addBullet(entry.id)}>
-                <Plus className="size-4" />
-                {t("addBulletButton")}
-              </Button>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" onClick={() => addBullet(entry.id)}>
+                  <Plus className="size-4" />
+                  {t("addBulletButton")}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleEnhance(entry)}
+                  disabled={isEnhancing}
+                >
+                  <Sparkles className="size-4" />
+                  {isEnhancing ? t("enhancing") : t("enhanceButton")}
+                </Button>
+              </div>
             </div>
+
+            {suggestions[entry.id] && (
+              <div className="mt-4 rounded-2xl border border-primary/30 bg-primary/5 p-4">
+                <p className="text-sm font-medium">{t("aiSuggestionTitle")}</p>
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm">
+                  {suggestions[entry.id].map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
+                <div className="mt-3 flex gap-2">
+                  <Button size="sm" onClick={() => applySuggestion(entry.id)}>
+                    {t("applyAll")}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => discardSuggestion(entry.id)}
+                  >
+                    {t("discardSuggestion")}
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
