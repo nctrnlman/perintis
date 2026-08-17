@@ -49,10 +49,14 @@ export async function analyzePdfStructure(buffer: ArrayBuffer): Promise<Finding[
     if (!("str" in item) || !item.str.trim()) continue;
     xPositions.push(item.transform[4]);
     if ("fontName" in item) {
-      const fontObj = page.commonObjs.get(item.fontName) as
-        | { name?: string }
-        | undefined;
-      if (fontObj?.name) fontNames.add(fontObj.name);
+      try {
+        const fontObj = page.commonObjs.get(item.fontName) as
+          | { name?: string }
+          | undefined;
+        if (fontObj?.name) fontNames.add(fontObj.name);
+      } catch {
+        // A single unresolved font shouldn't fail the whole analysis.
+      }
     }
   }
 

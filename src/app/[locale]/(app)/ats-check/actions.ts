@@ -59,7 +59,8 @@ export async function uploadAndAnalyzeResume(
       rawText = await extractDocxText(arrayBuffer);
       findings = await analyzeDocxStructure(arrayBuffer);
     }
-  } catch {
+  } catch (err) {
+    console.error("[ats-check] Failed to parse resume:", err);
     return { error: "parsing-failed" };
   }
 
