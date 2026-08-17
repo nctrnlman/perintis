@@ -11,6 +11,7 @@ import type { ResumeContent } from "@/lib/resume-builder/types";
 import { updateResumeContent } from "@/app/[locale]/(app)/resume-builder/actions";
 import { ContactInfoCard } from "@/components/resume-builder/contact-info-card";
 import { SummaryCard } from "@/components/resume-builder/summary-card";
+import { WorkExperienceSection } from "@/components/resume-builder/work-experience-section";
 
 interface BuilderClientProps {
   id: string;
@@ -55,6 +56,10 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
       <SummaryCard
         summary={content.summary}
         onChange={(summary) => setContent({ ...content, summary })}
+      />
+      <WorkExperienceSection
+        entries={content.workExperiences}
+        onChange={(workExperiences) => setContent({ ...content, workExperiences })}
       />
 
       <div className="flex items-center justify-between rounded-2xl border border-border p-6">
