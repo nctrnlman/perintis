@@ -16,7 +16,9 @@ model User {
   oauthProvider String?
   createdAt     DateTime @default(now())
 
-  profile Profile?
+  profile   Profile?
+  resumes   Resume[]
+  atsChecks ATSCheckAnalysis[]
 }
 
 model Profile {
@@ -27,4 +29,29 @@ model Profile {
   targetIndustry   String?
   experienceBlocks Json
   updatedAt        DateTime @updatedAt
+}
+
+model Resume {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  filename   String?
+  rawText    String
+  source     String
+  uploadedAt DateTime @default(now())
+
+  atsChecks ATSCheckAnalysis[]
+}
+
+model ATSCheckAnalysis {
+  id                 String   @id @default(cuid())
+  userId             String
+  user               User     @relation(fields: [userId], references: [id])
+  resumeId           String
+  resume             Resume   @relation(fields: [resumeId], references: [id])
+  jobPostingText     String?
+  overallScore       Int
+  structuralFindings Json
+  keywordFindings    Json?
+  createdAt          DateTime @default(now())
 }
