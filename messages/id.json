@@ -144,6 +144,18 @@
   "dashboard": {
     "title": "Dashboard",
     "description": "Modul-modul di bawah akan aktif secara bertahap.",
+    "greeting": {
+      "morning": "Selamat pagi",
+      "afternoon": "Selamat siang",
+      "evening": "Selamat sore",
+      "night": "Selamat malam"
+    },
+    "stats": {
+      "resumesLabel": "Resume Dibuat",
+      "atsChecksLabel": "ATS Check Dijalankan",
+      "latestScoreLabel": "Skor Terakhir",
+      "noScoreYet": "Belum ada"
+    },
     "modules": [
       {
         "title": "Resume Optimizer",

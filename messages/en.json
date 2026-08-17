@@ -144,6 +144,18 @@
   "dashboard": {
     "title": "Dashboard",
     "description": "The modules below will roll out gradually.",
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening",
+      "night": "Good night"
+    },
+    "stats": {
+      "resumesLabel": "Resumes Built",
+      "atsChecksLabel": "ATS Checks Run",
+      "latestScoreLabel": "Latest Score",
+      "noScoreYet": "Not yet"
+    },
     "modules": [
       {
         "title": "Resume Optimizer",
