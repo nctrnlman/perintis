@@ -17,6 +17,7 @@ interface PersonalInfoCardProps {
     portfolioUrl: string | null;
     targetRole: string | null;
     targetIndustry: string | null;
+    summary: string | null;
   };
 }
 
@@ -69,6 +70,17 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
               defaultValue={profile.portfolioUrl ?? ""}
             />
           </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="summary">{t("summaryLabel")}</Label>
+          <textarea
+            id="summary"
+            name="summary"
+            defaultValue={profile.summary ?? ""}
+            rows={4}
+            className="w-full rounded-lg border border-input bg-transparent px-2.5 py-1.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          />
         </div>
 
         <div className="border-t border-border pt-6">
