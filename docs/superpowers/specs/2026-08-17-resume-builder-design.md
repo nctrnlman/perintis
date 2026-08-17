@@ -196,6 +196,7 @@ Button on each Work Experience entry calls Server Action `enhanceWorkExperienceB
 
 - Package: `@google/genai` (Google's current official unified GenAI SDK)
 - Model: `gemini-2.5-flash` (free tier via Google AI Studio)
+- **Hard constraint: free tier only.** No paid model, no paid API tier, and no automatic fallback to a paid model/provider if the free tier's rate limit is hit — a rate-limit or quota error is just another `{ error: "enhancement-failed" }` case (§8), surfaced as a toast asking the user to try again shortly. This must not be "upgraded" later without the user explicitly asking for it.
 - New env var: `GEMINI_API_KEY` — will be requested from the user when this task is reached during implementation, added to `.env` (never committed, same handling as all other secrets this session)
 - New file: `src/lib/resume-builder/enhance-bullets.ts`, exporting `enhanceBullets({ title, company, bullets }: { title: string; company: string; bullets: string[] }): Promise<string[]>`
 - Prompt requirements (hard constraints, stated explicitly in the system/user prompt):
