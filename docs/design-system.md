@@ -19,7 +19,7 @@ Tailwind v4, CSS-first config — colors are OKLCH, defined once in `:root` and 
 | `--card` / `--secondary` / `--muted` | `oklch(0.971 0.003 286.4)` | `oklch(0.232 0.004 286.1)` | `--bg-secondary` (`#F5F5F7`) |
 | `--foreground` | `oklch(0.232 0.004 286.1)` | `oklch(0.971 0.003 286.4)` | `--text-primary` |
 | `--muted-foreground` | `oklch(0.540 0.008 286.1)` | `oklch(0.65 0.008 286.1)` | `--text-secondary` (`#6E6E73`) |
-| `--primary` (accent) | `oklch(0.511 0.230 277.0)` | `oklch(0.585 0.204 277.1)` | `#4F46E5` |
+| `--primary` (accent) | `oklch(0.563 0.193 256.2)` | `oklch(0.669 0.181 251.8)` | Apple blue `#0071E3` / `#2997FF` |
 | `--radius` | `0.75rem` (12px) | same | button radius |
 
 Cards use `rounded-2xl` (~21.6px) directly in markup for the PRD's 16–24px card radius — not the shared `--radius`, which governs buttons/inputs.
