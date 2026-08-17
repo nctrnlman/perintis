@@ -26,6 +26,9 @@ export function DashboardNav({ userEmail }: { userEmail: string }) {
           Perintis
         </Link>
         <div className="flex items-center gap-4">
+          <Link href="/profile" className="text-sm text-muted-foreground hover:text-foreground">
+            {t("profile")}
+          </Link>
           <span className="text-sm text-muted-foreground">{userEmail}</span>
           <ThemeToggle />
           <Button variant="ghost" onClick={handleLogout}>
