@@ -205,6 +205,14 @@ Button on each Work Experience entry calls Server Action `enhanceWorkExperienceB
   - Preserve the same number of bullets as the input (one-to-one rewrite, not summarization or expansion)
 - Server Action wraps the raw SDK call, catches and logs errors, returns `{ error: "enhancement-failed" }` on any failure (network, rate limit, malformed response) — never throws to the client
 
+### Token efficiency (verified against `@google/genai` v2 docs)
+
+The `generateContent` call sets three config options together to keep every request cheap, since this runs on a free tier with real rate limits:
+
+- `thinkingConfig: { thinkingBudget: 0 }` — `gemini-2.5-flash` allocates extended "thinking" tokens by default; a bullet rewrite is not a reasoning task, so thinking is turned off entirely (unlike `gemini-2.5-pro`, `flash` supports a budget of exactly `0`)
+- `responseMimeType: "application/json"` + `responseJsonSchema: { type: Type.ARRAY, items: { type: Type.STRING } }` — forces the model to answer with a bare JSON array of strings, no markdown fencing or conversational preamble, which both shortens the response and removes the need for fragile text-parsing
+- `maxOutputTokens: 512` — hard cap; a handful of resume bullets never needs more, and this bounds the worst case if the model were to misbehave
+
 ## 5. PDF generation
 
 - New file: `src/lib/resume-builder/pdf-template.tsx` — a `@react-pdf/renderer` `Document`/`Page` component tree, `ResumeContent` in, PDF out. Font: Helvetica (built into `@react-pdf/renderer`, no embedding needed, clean and ATS-conventional). Layout follows the reference structure section-by-section (§3 above), single column, underlined section headings, bold name/entry titles, right-aligned date ranges. No inline bold-within-bullet parsing in v1 (see Out of Scope).
