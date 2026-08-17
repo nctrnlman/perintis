@@ -244,6 +244,7 @@
       "targetCareerTitle": "Target Karir",
       "targetRoleLabel": "Posisi Target",
       "targetIndustryLabel": "Industri Target",
+      "summaryLabel": "Ringkasan Profesional",
       "save": "Simpan",
       "saving": "Menyimpan...",
       "toastSuccess": "Info pribadi disimpan",
@@ -299,6 +300,48 @@
       "addButton": "Tambah",
       "toastAddSuccess": "Skill ditambahkan",
       "toastDeleteSuccess": "Skill dihapus",
+      "toastError": "Terjadi kesalahan"
+    },
+    "certifications": {
+      "title": "Sertifikasi",
+      "empty": "Belum ada sertifikasi ditambahkan.",
+      "addButton": "Tambah Sertifikasi",
+      "nameLabel": "Nama Sertifikasi",
+      "issuerLabel": "Penerbit",
+      "issueDateLabel": "Tanggal Terbit",
+      "urlLabel": "URL (opsional)",
+      "toastAddSuccess": "Sertifikasi ditambahkan",
+      "toastDeleteSuccess": "Sertifikasi dihapus",
+      "toastError": "Terjadi kesalahan"
+    },
+    "projects": {
+      "title": "Proyek Unggulan",
+      "empty": "Belum ada proyek ditambahkan.",
+      "addButton": "Tambah Proyek",
+      "editButton": "Ubah Proyek",
+      "nameLabel": "Nama Proyek",
+      "clientLabel": "Klien (opsional)",
+      "roleLabel": "Peran",
+      "bulletsLabel": "Poin-poin (satu per baris)",
+      "techStackLabel": "Tech Stack (pisahkan dengan koma)",
+      "save": "Simpan",
+      "saving": "Menyimpan...",
+      "cancel": "Batal",
+      "edit": "Ubah",
+      "delete": "Hapus",
+      "toastAddSuccess": "Proyek ditambahkan",
+      "toastUpdateSuccess": "Proyek diperbarui",
+      "toastDeleteSuccess": "Proyek dihapus",
+      "toastError": "Terjadi kesalahan"
+    },
+    "languages": {
+      "title": "Bahasa",
+      "empty": "Belum ada bahasa ditambahkan.",
+      "nameLabel": "Bahasa",
+      "proficiencyLabel": "Level",
+      "addButton": "Tambah",
+      "toastAddSuccess": "Bahasa ditambahkan",
+      "toastDeleteSuccess": "Bahasa dihapus",
       "toastError": "Terjadi kesalahan"
     }
   }

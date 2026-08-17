@@ -244,6 +244,7 @@
       "targetCareerTitle": "Target Career",
       "targetRoleLabel": "Target Role",
       "targetIndustryLabel": "Target Industry",
+      "summaryLabel": "Professional Summary",
       "save": "Save",
       "saving": "Saving...",
       "toastSuccess": "Personal info saved",
@@ -299,6 +300,48 @@
       "addButton": "Add",
       "toastAddSuccess": "Skill added",
       "toastDeleteSuccess": "Skill deleted",
+      "toastError": "Something went wrong"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "empty": "No certifications added yet.",
+      "addButton": "Add Certification",
+      "nameLabel": "Certification Name",
+      "issuerLabel": "Issuer",
+      "issueDateLabel": "Issue Date",
+      "urlLabel": "URL (optional)",
+      "toastAddSuccess": "Certification added",
+      "toastDeleteSuccess": "Certification deleted",
+      "toastError": "Something went wrong"
+    },
+    "projects": {
+      "title": "Highlight Projects",
+      "empty": "No projects added yet.",
+      "addButton": "Add Project",
+      "editButton": "Edit Project",
+      "nameLabel": "Project Name",
+      "clientLabel": "Client (optional)",
+      "roleLabel": "Role",
+      "bulletsLabel": "Bullet Points (one per line)",
+      "techStackLabel": "Tech Stack (comma-separated)",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "toastAddSuccess": "Project added",
+      "toastUpdateSuccess": "Project updated",
+      "toastDeleteSuccess": "Project deleted",
+      "toastError": "Something went wrong"
+    },
+    "languages": {
+      "title": "Languages",
+      "empty": "No languages added yet.",
+      "nameLabel": "Language",
+      "proficiencyLabel": "Proficiency",
+      "addButton": "Add",
+      "toastAddSuccess": "Language added",
+      "toastDeleteSuccess": "Language deleted",
       "toastError": "Something went wrong"
     }
   }
