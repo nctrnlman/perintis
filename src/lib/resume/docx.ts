@@ -14,6 +14,17 @@ const SAFE_FONTS = [
   "verdana",
 ];
 
+// Symbol/bullet glyph fonts are almost always used for a single decorative
+// character (bullet points, checkmarks), not body text — flagging them as
+// "non-standard" is a false positive that fires on nearly every bulleted
+// resume, so they're ignored entirely rather than judged as safe/unsafe.
+const IGNORED_DECORATIVE_FONTS = ["symbol", "wingdings", "webdings", "marlett"];
+
+function isIgnoredDecorativeFont(fontName: string): boolean {
+  const normalized = fontName.toLowerCase();
+  return IGNORED_DECORATIVE_FONTS.some((f) => normalized.includes(f));
+}
+
 function isSafeFont(fontName: string): boolean {
   const normalized = fontName.toLowerCase();
   return SAFE_FONTS.some((safe) => normalized.includes(safe));
@@ -61,7 +72,9 @@ export async function analyzeDocxStructure(buffer: ArrayBuffer): Promise<Finding
   }
 
   const fontMatches = [...documentXml.matchAll(/<w:rFonts[^>]*w:ascii="([^"]+)"/g)];
-  const fontNames = new Set(fontMatches.map((m) => m[1]));
+  const fontNames = new Set(
+    fontMatches.map((m) => m[1]).filter((name) => !isIgnoredDecorativeFont(name))
+  );
   for (const fontName of fontNames) {
     if (!isSafeFont(fontName)) {
       findings.push({

@@ -48,6 +48,25 @@ async function makeUnusualFontPdf(): Promise<ArrayBuffer> {
   ) as ArrayBuffer;
 }
 
+async function makeBulletSymbolFontPdf(): Promise<ArrayBuffer> {
+  const doc = await PDFDocument.create();
+  const page = doc.addPage([600, 800]);
+  const bodyFont = await doc.embedFont(StandardFonts.Helvetica);
+  const symbolFont = await doc.embedFont(StandardFonts.Symbol);
+  page.drawText("!", { x: 50, y: 750, size: 12, font: symbolFont });
+  page.drawText("Managed a team of five engineers", {
+    x: 65,
+    y: 750,
+    size: 12,
+    font: bodyFont,
+  });
+  const bytes = await doc.save();
+  return bytes.buffer.slice(
+    bytes.byteOffset,
+    bytes.byteOffset + bytes.byteLength
+  ) as ArrayBuffer;
+}
+
 describe("extractPdfText", () => {
   it("extracts visible text from a PDF", async () => {
     const buffer = await makeSingleColumnPdf();
@@ -78,6 +97,12 @@ describe("analyzePdfStructure", () => {
 
   it("does not flag a standard font", async () => {
     const buffer = await makeSingleColumnPdf();
+    const findings = await analyzePdfStructure(buffer);
+    expect(findings.some((f) => f.category === "non-standard-font")).toBe(false);
+  });
+
+  it("does not flag a Symbol-font bullet glyph next to a standard body font", async () => {
+    const buffer = await makeBulletSymbolFontPdf();
     const findings = await analyzePdfStructure(buffer);
     expect(findings.some((f) => f.category === "non-standard-font")).toBe(false);
   });

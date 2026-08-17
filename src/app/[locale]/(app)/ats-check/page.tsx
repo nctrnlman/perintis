@@ -36,34 +36,27 @@ export default async function AtsCheckListPage() {
       {checks.length === 0 ? (
         <p className="mt-10 text-center text-muted-foreground">{t("empty")}</p>
       ) : (
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border text-left text-muted-foreground">
-                <th className="p-4 font-medium">{t("tableFilename")}</th>
-                <th className="p-4 font-medium">{t("tableScore")}</th>
-                <th className="p-4 font-medium">{t("tableDate")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {checks.map((check) => (
-                <tr key={check.id} className="border-b border-border last:border-0">
-                  <td className="p-4">
-                    <Link
-                      href={`/ats-check/${encryptId(check.id)}`}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      {check.resume.filename ?? "-"}
-                    </Link>
-                  </td>
-                  <td className="p-4">{check.overallScore}</td>
-                  <td className="p-4 text-muted-foreground">
-                    {check.createdAt.toLocaleDateString()}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-8 overflow-hidden rounded-2xl border border-border">
+          <div className="grid grid-cols-3 gap-4 border-b border-border bg-muted/50 p-4 text-xs font-medium text-muted-foreground">
+            <span>{t("tableFilename")}</span>
+            <span>{t("tableScore")}</span>
+            <span>{t("tableDate")}</span>
+          </div>
+          {checks.map((check) => (
+            <Link
+              key={check.id}
+              href={`/ats-check/${encryptId(check.id)}`}
+              className="grid grid-cols-3 items-center gap-4 border-b border-border p-4 text-sm transition-colors last:border-0 hover:bg-muted"
+            >
+              <span className="truncate font-medium">
+                {check.resume.filename ?? "-"}
+              </span>
+              <span>{check.overallScore}</span>
+              <span className="text-muted-foreground">
+                {check.createdAt.toLocaleDateString()}
+              </span>
+            </Link>
+          ))}
         </div>
       )}
     </div>

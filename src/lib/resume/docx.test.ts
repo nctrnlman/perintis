@@ -50,6 +50,23 @@ const HEADER_WITH_CONTENT = `<?xml version="1.0" encoding="UTF-8" standalone="ye
 <w:p><w:r><w:t>budi@example.com | 08123456789</w:t></w:r></w:p>
 </w:hdr>`;
 
+const DOC_WITH_BULLET_SYMBOL_FONT = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:body>
+<w:p>
+<w:r><w:rPr><w:rFonts w:ascii="Wingdings"/></w:rPr><w:t></w:t></w:r>
+<w:r><w:rPr><w:rFonts w:ascii="Arial"/></w:rPr><w:t>Managed a team of five engineers</w:t></w:r>
+</w:p>
+</w:body>
+</w:document>`;
+
+const DOC_WITH_UNSAFE_BODY_FONT = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:body>
+<w:p><w:r><w:rPr><w:rFonts w:ascii="Comic Sans MS"/></w:rPr><w:t>Resume text</w:t></w:r></w:p>
+</w:body>
+</w:document>`;
+
 describe("extractDocxText", () => {
   it("extracts visible text", async () => {
     const buffer = await makeDocx({ documentXml: SIMPLE_DOC });
@@ -84,5 +101,17 @@ describe("analyzeDocxStructure", () => {
     const buffer = await makeDocx({ documentXml: SIMPLE_DOC });
     const findings = await analyzeDocxStructure(buffer);
     expect(findings.some((f) => f.category === "header-footer-content")).toBe(false);
+  });
+
+  it("does not flag a Wingdings bullet glyph next to a standard body font", async () => {
+    const buffer = await makeDocx({ documentXml: DOC_WITH_BULLET_SYMBOL_FONT });
+    const findings = await analyzeDocxStructure(buffer);
+    expect(findings.some((f) => f.category === "non-standard-font")).toBe(false);
+  });
+
+  it("still flags a genuinely non-standard body font", async () => {
+    const buffer = await makeDocx({ documentXml: DOC_WITH_UNSAFE_BODY_FONT });
+    const findings = await analyzeDocxStructure(buffer);
+    expect(findings.some((f) => f.category === "non-standard-font")).toBe(true);
   });
 });
