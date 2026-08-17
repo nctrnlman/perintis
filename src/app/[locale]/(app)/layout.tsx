@@ -1,5 +1,6 @@
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { ensureUserRecord } from "@/lib/ensure-user";
 import { DashboardNav } from "@/components/layout/dashboard-nav";
 
 export default async function AppLayout({
@@ -18,6 +19,8 @@ export default async function AppLayout({
   if (!user) {
     redirect({ href: "/login", locale });
   }
+
+  await ensureUserRecord(user!);
 
   return (
     <div className="min-h-screen bg-background">
