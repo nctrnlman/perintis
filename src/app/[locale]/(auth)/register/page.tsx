@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { UserPlus } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/shared/password-input";
 import { Reveal } from "@/components/shared/reveal";
 import { createClient } from "@/lib/supabase/client";
 import { registerSchema, type RegisterInput } from "@/lib/validations/auth";
 
 export default function RegisterPage() {
   const t = useTranslations("auth.register");
+  const tPassword = useTranslations("auth.password");
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
   const supabase = createClient();
@@ -25,7 +26,8 @@ export default function RegisterPage() {
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
-    defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
+    mode: "onBlur",
+    defaultValues: { name: "", email: "", password: "" },
   });
 
   async function onSubmit(values: RegisterInput) {
@@ -45,23 +47,26 @@ export default function RegisterPage() {
   }
 
   return (
-    <Reveal className="rounded-2xl border border-border bg-card p-8">
-      <div className="flex size-11 items-center justify-center rounded-full bg-muted">
-        <UserPlus className="size-5 text-foreground" />
-      </div>
-      <h1 className="mt-5 text-2xl font-semibold">{t("title")}</h1>
-      <p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>
+    <Reveal className="rounded-2xl border border-border bg-card p-10">
+      <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
+      <p className="mt-2 text-sm text-muted-foreground">{t("description")}</p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5" noValidate>
         <div className="space-y-1.5">
           <Label htmlFor="name">{t("nameLabel")}</Label>
           <Input
             id="name"
+            autoFocus
+            autoComplete="name"
             placeholder={t("namePlaceholder")}
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
             {...register("name")}
           />
           {errors.name && (
-            <p className="text-sm text-destructive">{errors.name.message}</p>
+            <p id="name-error" className="text-sm text-destructive">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
@@ -70,34 +75,37 @@ export default function RegisterPage() {
           <Input
             id="email"
             type="email"
+            autoComplete="email"
             placeholder={t("emailPlaceholder")}
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
             {...register("email")}
           />
           {errors.email && (
-            <p className="text-sm text-destructive">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-1.5">
-          <Label htmlFor="password">{t("passwordLabel")}</Label>
-          <Input id="password" type="password" {...register("password")} />
-          {errors.password && (
-            <p className="text-sm text-destructive">
-              {errors.password.message}
+            <p id="email-error" className="text-sm text-destructive">
+              {errors.email.message}
             </p>
           )}
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="confirmPassword">{t("confirmPasswordLabel")}</Label>
-          <Input
-            id="confirmPassword"
-            type="password"
-            {...register("confirmPassword")}
+          <Label htmlFor="password">{t("passwordLabel")}</Label>
+          <PasswordInput
+            id="password"
+            autoComplete="new-password"
+            showLabel={tPassword("show")}
+            hideLabel={tPassword("hide")}
+            aria-invalid={!!errors.password}
+            aria-describedby={errors.password ? "password-error" : "password-hint"}
+            {...register("password")}
           />
-          {errors.confirmPassword && (
-            <p className="text-sm text-destructive">
-              {errors.confirmPassword.message}
+          {errors.password ? (
+            <p id="password-error" className="text-sm text-destructive">
+              {errors.password.message}
+            </p>
+          ) : (
+            <p id="password-hint" className="text-xs text-muted-foreground">
+              {t("passwordHint")}
             </p>
           )}
         </div>
@@ -106,16 +114,21 @@ export default function RegisterPage() {
           <p className="text-sm text-destructive">{serverError}</p>
         )}
 
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? t("submitting") : t("submit")}
-        </Button>
-
-        <Button type="button" variant="outline" className="w-full" disabled>
-          {t("googleButton")}
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-xs text-muted-foreground">
+        {t("googleNote")}
+      </p>
+
+      <p className="mt-4 text-center text-sm text-muted-foreground">
         {t("haveAccount")}{" "}
         <Link href="/login" className="font-medium text-primary hover:underline">
           {t("loginLink")}

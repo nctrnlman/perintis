@@ -10,7 +10,7 @@ export default function AuthLayout({
       <div className="w-full max-w-sm">
         <Link
           href="/"
-          className="mb-8 block text-center text-lg font-semibold tracking-tight"
+          className="mb-10 block text-center text-xl font-semibold tracking-tight"
         >
           Perintis
         </Link>

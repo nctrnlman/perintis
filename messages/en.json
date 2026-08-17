@@ -90,18 +90,22 @@
     }
   },
   "auth": {
+    "password": {
+      "show": "Show password",
+      "hide": "Hide password"
+    },
     "register": {
       "title": "Create your Perintis account",
-      "description": "Start optimizing your resume and preparing for your career.",
+      "description": "One account for your resume, interviews, and your whole job search.",
       "nameLabel": "Name",
       "namePlaceholder": "Budi Santoso",
       "emailLabel": "Email",
       "emailPlaceholder": "you@example.com",
       "passwordLabel": "Password",
-      "confirmPasswordLabel": "Confirm Password",
+      "passwordHint": "At least 8 characters, with an uppercase letter and a number.",
       "submit": "Sign up",
       "submitting": "Creating account...",
-      "googleButton": "Sign up with Google (Coming soon)",
+      "googleNote": "Sign up with Google is coming soon.",
       "haveAccount": "Already have an account?",
       "loginLink": "Log in"
     },
@@ -113,7 +117,7 @@
       "forgotPassword": "Forgot password?",
       "submit": "Log in",
       "submitting": "Processing...",
-      "googleButton": "Log in with Google (Coming soon)",
+      "googleNote": "Log in with Google is coming soon.",
       "noAccount": "Don't have an account?",
       "registerLink": "Sign up"
     },

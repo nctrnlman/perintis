@@ -90,18 +90,22 @@
     }
   },
   "auth": {
+    "password": {
+      "show": "Tampilkan password",
+      "hide": "Sembunyikan password"
+    },
     "register": {
       "title": "Buat akun Perintis",
-      "description": "Mulai optimasi resume dan persiapan karir Anda.",
+      "description": "Satu akun untuk resume, wawancara, dan seluruh proses lamaran kerja Anda.",
       "nameLabel": "Nama",
       "namePlaceholder": "Budi Santoso",
       "emailLabel": "Email",
       "emailPlaceholder": "you@example.com",
       "passwordLabel": "Password",
-      "confirmPasswordLabel": "Konfirmasi Password",
+      "passwordHint": "Minimal 8 karakter, dengan huruf besar dan angka.",
       "submit": "Daftar",
       "submitting": "Membuat akun...",
-      "googleButton": "Daftar dengan Google (Segera hadir)",
+      "googleNote": "Daftar dengan Google segera hadir.",
       "haveAccount": "Sudah punya akun?",
       "loginLink": "Masuk"
     },
@@ -113,7 +117,7 @@
       "forgotPassword": "Lupa password?",
       "submit": "Masuk",
       "submitting": "Memproses...",
-      "googleButton": "Masuk dengan Google (Segera hadir)",
+      "googleNote": "Masuk dengan Google segera hadir.",
       "noAccount": "Belum punya akun?",
       "registerLink": "Daftar"
     },

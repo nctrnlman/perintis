@@ -7,17 +7,24 @@ describe("registerSchema", () => {
       name: "Budi Santoso",
       email: "budi@example.com",
       password: "lowercase1",
-      confirmPassword: "lowercase1",
     });
     expect(result.success).toBe(false);
   });
 
-  it("rejects mismatched confirmPassword", () => {
+  it("rejects a password without a number", () => {
     const result = registerSchema.safeParse({
       name: "Budi Santoso",
       email: "budi@example.com",
-      password: "Password1",
-      confirmPassword: "Password2",
+      password: "NoNumberHere",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a password shorter than 8 characters", () => {
+    const result = registerSchema.safeParse({
+      name: "Budi Santoso",
+      email: "budi@example.com",
+      password: "Ab1",
     });
     expect(result.success).toBe(false);
   });
@@ -27,7 +34,6 @@ describe("registerSchema", () => {
       name: "Budi Santoso",
       email: "budi@example.com",
       password: "Password1",
-      confirmPassword: "Password1",
     });
     expect(result.success).toBe(true);
   });
