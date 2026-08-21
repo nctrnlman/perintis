@@ -16,7 +16,8 @@
     "switchLanguage": "Switch to {locale}"
   },
   "footer": {
-    "copyright": "© {year} Devino Labs. Perintis.",
+    "madeBy": "Made by Rhazes Labs",
+    "copyright": "© {year} Rhazes Labs. Perintis.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
@@ -31,6 +32,47 @@
       "subhead": "A resume that passes ATS. An interview you're ready for. One place, guided by transparent AI.",
       "ctaPrimary": "Get Started",
       "ctaSecondary": "Log in"
+    },
+    "showcase": {
+      "atsCheck": {
+        "eyebrow": "ATS Compatibility Check",
+        "headline": "Your resume looks great. But can an ATS actually read it?",
+        "subhead": "Before a recruiter ever sees your resume, an ATS reads it first, and it often misreads formatting that looks perfectly clean to a human. Perintis breaks down structure, contact-info completeness, writing strength, and keyword match against the job you're targeting.",
+        "bullets": [
+          "Instant compatibility score, with clear improvement recommendations",
+          "Keyword match analysis against a job posting",
+          "Detects hidden formatting issues: tables, multi-column layouts, non-standard fonts"
+        ],
+        "cta": "Check Your Resume",
+        "preview": {
+          "tierLabel": "Excellent",
+          "summaryLabel": "3 things look good, 1 area to improve.",
+          "matchedLabel": "Matched",
+          "missingLabel": "Missing"
+        }
+      },
+      "resumeBuilder": {
+        "eyebrow": "Resume Builder",
+        "headline": "One career profile. An ATS-safe resume whenever you need it.",
+        "subhead": "Fill in your career profile once, and Resume Builder turns it into a clean, single-column resume that's safe for ATS systems to read, with AI assistance to strengthen every achievement bullet.",
+        "bullets": [
+          "Auto-filled from your Profile, no retyping needed",
+          "AI helps rewrite achievement bullets to be stronger",
+          "Download as a ready-to-send PDF, ATS-safe format"
+        ],
+        "cta": "Build Your Resume Now",
+        "preview": {
+          "name": "Dinda Pratama",
+          "role": "Product Designer",
+          "experienceLabel": "Work Experience",
+          "bullets": [
+            "Led a redesign of the user onboarding flow",
+            "Built a design system adopted across product teams"
+          ],
+          "skillsLabel": "Skills",
+          "skills": ["Figma", "Design System", "User Research"]
+        }
+      }
     },
     "reasons": {
       "eyebrow": "Why Perintis",
@@ -147,12 +189,34 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "description": "The modules below will roll out gradually.",
+    "description": "Each module below covers one stage of your job search, from setting up your profile to tracking applications.",
+    "modulesTitle": "What You Can Do in Perintis",
+    "quickStartTitle": "Start Here",
+    "quickStartDescription": "These two features are live and ready to use right now.",
+    "profileCompleteness": {
+      "title": "Profile Completeness",
+      "missingIntro": "Fill in the following so Resume Builder and CV Import give you the best results:",
+      "complete": "Your profile is complete. Nice work!",
+      "items": {
+        "basicInfo": "Basic info (name, phone, location)",
+        "summary": "Professional summary",
+        "targetRole": "Target career role",
+        "workExperience": "At least one work experience",
+        "education": "At least one education entry",
+        "skills": "At least one skill"
+      }
+    },
+    "moduleStatus": {
+      "atsChecksDone": "{count} checks run so far",
+      "resumesCreated": "{count} resumes created so far"
+    },
+    "howToLabel": "How to use",
     "greeting": {
       "morning": "Good morning",
       "afternoon": "Good afternoon",
       "evening": "Good evening",
-      "night": "Good night"
+      "night": "Good night",
+      "subtitle": "Let's continue your career journey today."
     },
     "stats": {
       "resumesLabel": "Resumes Built",
@@ -167,11 +231,21 @@
       },
       {
         "title": "ATS Compatibility Check",
-        "description": "Check your resume's structure against ATS systems."
+        "description": "Check your resume's structure against ATS systems.",
+        "steps": [
+          "Open the \"ATS Compatibility Check\" menu in the sidebar",
+          "Upload your resume (PDF/DOCX, max 5MB), a job posting is optional for keyword matching",
+          "Review the score, keywords, and improvement suggestions"
+        ]
       },
       {
         "title": "Resume Builder",
-        "description": "Build a new resume from your profile."
+        "description": "Build a new resume from your profile.",
+        "steps": [
+          "Open the \"Resume Builder\" menu in the sidebar",
+          "Click \"Create New Resume\", it's pre-filled from your Profile",
+          "Edit each section, then download it as a ready-to-send PDF"
+        ]
       },
       {
         "title": "Mock Interview",
@@ -196,13 +270,27 @@
       "newButton": "Check New Resume",
       "tableFilename": "Filename",
       "tableScore": "Score",
-      "tableDate": "Date"
+      "tableFindings": "Findings",
+      "tableDate": "Date",
+      "searchPlaceholder": "Search filename...",
+      "filterAll": "All",
+      "findingsCount": "{count, plural, =0 {No issues} one {# issue} other {# issues}}",
+      "noResults": "No matching results.",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageInfo": "Page {page} of {totalPages}",
+      "delete": "Delete",
+      "toastDeleteSuccess": "Check deleted",
+      "toastDeleteError": "Failed to delete check"
     },
     "upload": {
       "title": "Upload Resume",
       "description": "PDF or DOCX format, 5MB maximum.",
       "dropzoneLabel": "Drag a file here or click to browse",
       "dropzoneHint": "PDF or DOCX, max 5MB",
+      "jobPostingLabel": "Job Posting (optional)",
+      "jobPostingPlaceholder": "Paste the job posting text here for keyword match analysis...",
+      "jobPostingHint": "If filled in, we'll compare your resume against the important keywords from this posting.",
       "analyzing": "Reading your resume...",
       "submit": "Analyze Resume",
       "errorTooLarge": "File size exceeds 5MB.",
@@ -210,26 +298,55 @@
       "errorParsing": "The file couldn't be read. Try re-saving your resume and uploading again.",
       "errorGeneric": "Something went wrong. Please try again.",
       "toastSuccessTitle": "Analysis complete",
-      "toastErrorTitle": "Analysis failed"
+      "toastErrorTitle": "Analysis failed",
+      "toastJobMatchFailed": "Job match analysis isn't available right now (AI server is busy). Your structural results were still saved.",
+      "toastKeywordExtractionFailed": "Keyword extraction isn't available right now (AI server is busy). Your structural results were still saved."
     },
     "result": {
       "scoreLabel": "Compatibility Score",
       "tierExcellent": "Excellent",
       "tierGood": "Good",
       "tierNeedsWork": "Needs work",
-      "summary": "{strengthCount} things look good, {issueCount} could be improved.",
+      "summary": "{strengthCount} aspects already meet ATS standards, {issueCount} areas could be improved.",
+      "scoreHistoryChange": "{delta} points vs. your previous check",
+      "resumeKeywordsTitle": "Keywords in Your Resume",
+      "resumeKeywordsSubtitle": "These are the keywords an ATS system and recruiters would find when searching for candidates by keyword.",
+      "categoryTechnicalSkills": "Technical Skills",
+      "categoryTools": "Tools & Platforms",
+      "categoryCertifications": "Certifications",
+      "categorySoftSkills": "Soft Skills",
+      "noKeywordsFound": "No keywords detected from this resume yet.",
+      "keywordMatchTitle": "Job Match",
+      "keywordMatchUnavailable": "Job match analysis failed because the AI server was busy when this check ran. Re-upload your resume to try again.",
+      "keywordMatchSummary": "{matched} of {total} important keywords found in your resume.",
+      "missingKeywordsTitle": "Missing Keywords",
+      "matchedKeywordsTitle": "Matched Keywords",
+      "noMissingKeywords": "All important keywords are covered.",
+      "noMatchedKeywords": "No matching keywords yet.",
       "strengthsTitle": "What's Working Well",
       "strengthMultiColumnLayout": "Single-column layout, easy for ATS to read",
       "strengthNonStandardFont": "Fonts used are ATS-safe",
       "strengthTableDetected": "No tables that could scramble the reading order",
       "strengthHeaderFooterContent": "No important info hidden in the header or footer",
+      "strengthEmailFound": "Email address found and easy for ATS to read",
+      "strengthPhoneFound": "Phone number found and easy for ATS to read",
+      "strengthConsistentDates": "Consistent date format throughout the resume",
+      "strengthQuantifiedAchievements": "Achievements are backed by clear numbers and metrics",
+      "strengthStrongActionVerbs": "Uses strong, active verbs",
       "categoryMultiColumnLayout": "Multi-column layout",
       "categoryNonStandardFont": "Non-standard font",
       "categoryTableDetected": "Table detected",
       "categoryHeaderFooterContent": "Info in header or footer",
-      "findingsTitle": "Findings",
+      "categoryMissingEmail": "Email not found",
+      "categoryMissingPhone": "Phone number not found",
+      "categoryInconsistentDates": "Inconsistent date format",
+      "categoryNoQuantifiedAchievements": "Achievements aren't quantified",
+      "categoryWeakActionVerbs": "Uses passive phrasing",
+      "findingsTitle": "Format & Structure Issues",
       "noFindings": "No structural issues found. Your resume is ATS-friendly.",
       "pdfLimitationNote": "Table and header/footer detection for PDF files isn't supported in this version yet.",
+      "contentQualityTitle": "Content Quality",
+      "contentQualitySubtitle": "How strongly your achievements and contact info are written.",
       "severityCritical": "Critical",
       "severityWarning": "Warning",
       "severitySuggestion": "Suggestion",
@@ -239,18 +356,174 @@
   "legal": {
     "privacyPolicy": {
       "title": "Privacy Policy",
-      "description": "Perintis's privacy policy, by Devino Labs.",
-      "body": "This page will be updated with Perintis's full privacy policy before public launch. Devino Labs is committed to keeping resume data, application history, and personal information confidential."
+      "description": "Perintis's privacy policy, by Rhazes Labs.",
+      "lastUpdated": "Last updated: August 18, 2026",
+      "intro": "Perintis (\"we\") is developed by Rhazes Labs. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use Perintis, in line with Indonesia's Law No. 27 of 2022 on Personal Data Protection (\"PDP Law\"). By using Perintis, you agree to the practices described in this policy.",
+      "sections": [
+        {
+          "heading": "1. Data Controller",
+          "body": "Rhazes Labs acts as the data controller for personal data collected through Perintis. Questions or requests regarding your personal data can be sent through the contact listed in the \"Contact Us\" section of this policy."
+        },
+        {
+          "heading": "2. Personal Data We Collect",
+          "body": "We collect data you provide directly, as well as data generated from your use of the service, including:",
+          "list": [
+            "Account data: your email address and encrypted password when you register through Supabase Auth.",
+            "Career profile data: full name, phone number, location, LinkedIn/portfolio links, professional summary, work experience, education, skills, certifications, projects, and languages that you enter yourself.",
+            "Resume files and text: PDF/DOCX files you upload for the ATS Compatibility Check and CV Import features, plus the text extracted from those files.",
+            "Job posting data: job description text you optionally paste in for the keyword-match analysis feature.",
+            "Resumes you build: content created through the Resume Builder feature.",
+            "Technical data: IP address, device and browser type, and access logs collected automatically for security and service maintenance."
+          ]
+        },
+        {
+          "heading": "3. How We Use Your Data",
+          "body": "We use your personal data to:",
+          "list": [
+            "Provide and operate Perintis's core features, including Profile, Resume Builder, and ATS Compatibility Check.",
+            "Automatically analyze your resume (document structure, contact-info completeness, writing strength, and keyword match against a job posting) using artificial intelligence technology.",
+            "Authenticate your account and maintain the security of your login session.",
+            "Communicate with you about your account, service updates, or support requests.",
+            "Comply with applicable legal obligations."
+          ]
+        },
+        {
+          "heading": "4. Legal Basis for Processing",
+          "body": "Processing of your personal data is based on: (a) your explicit consent when registering and using certain features (such as uploading a resume or job posting); (b) performance of the service contract between you and Rhazes Labs to provide the features you use; and (c) our legitimate interest in maintaining security and improving service quality."
+        },
+        {
+          "heading": "5. Third-Party Processing and Data Transfers",
+          "body": "To provide the service, we use the following third-party providers, which may process your data on servers located outside Indonesia:",
+          "list": [
+            "Supabase, for account authentication and database storage (profile, resumes, analysis results).",
+            "Google Gemini API, for AI-powered features (resume content analysis, keyword extraction, job matching, and CV import). Relevant resume and/or job posting text is sent to Google for processing under Google AI's privacy policy and terms of service, and is not shared with any other party beyond that purpose.",
+            "We do not sell your personal data to any third party for marketing purposes."
+          ]
+        },
+        {
+          "heading": "6. Data Storage and Security",
+          "body": "Your data is stored in a managed PostgreSQL database via Supabase, with encryption in transit (HTTPS/TLS) and authentication-based access control. We apply reasonable technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction. That said, no system is completely immune to security risks."
+        },
+        {
+          "heading": "7. Data Retention",
+          "body": "We retain your personal data for as long as your account is active and as needed to provide the service. You may request deletion of your data or account at any time via the contact in \"Contact Us\". Once a deletion request is processed, your data will be removed from our production systems, except data we are legally required to retain."
+        },
+        {
+          "heading": "8. Your Rights as a Data Subject",
+          "body": "Under Indonesia's PDP Law, you have the right to:",
+          "list": [
+            "Obtain access to and a copy of the personal data we process about you.",
+            "Complete, update, and/or correct inaccurate personal data.",
+            "Terminate processing, delete, and/or destroy your personal data.",
+            "Withdraw consent you previously gave for processing your personal data.",
+            "Object to automated decision-making, including profiling.",
+            "Request the delay or restriction of processing of your personal data, proportionally.",
+            "Claim and receive compensation for violations in the processing of your personal data, as regulated by applicable law.",
+            "Lodge a complaint with the relevant Personal Data Protection supervisory authority."
+          ]
+        },
+        {
+          "heading": "9. Cookies and Similar Technologies",
+          "body": "We use essential session cookies to maintain your login state via Supabase Auth. We do not use third-party advertising cookies or cross-site trackers for advertising purposes."
+        },
+        {
+          "heading": "10. Children's Privacy",
+          "body": "Perintis is intended for users aged 18 and above, or who have entered the workforce. We do not knowingly collect personal data from children under that age. If you become aware that a child's data has been collected without valid consent, please contact us for prompt deletion."
+        },
+        {
+          "heading": "11. Changes to This Policy",
+          "body": "We may update this Privacy Policy from time to time to reflect changes in the service or legal requirements. Material changes will be communicated through the app or by email before taking effect. The \"Last updated\" date above reflects the most recent revision."
+        },
+        {
+          "heading": "12. Contact Us",
+          "body": "For questions, data access/deletion requests, or privacy-related complaints, please contact us at rhazesd@gmail.com."
+        }
+      ]
     },
     "termsOfService": {
       "title": "Terms of Service",
-      "description": "Perintis's terms of service, by Devino Labs.",
-      "body": "This page will be updated with Perintis's full terms of service before public launch."
+      "description": "Perintis's terms of service, by Rhazes Labs.",
+      "lastUpdated": "Last updated: August 18, 2026",
+      "intro": "These Terms of Service (\"Terms\") govern your use of Perintis, a software service developed by Rhazes Labs (\"we\"). By accessing or using Perintis, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our service.",
+      "sections": [
+        {
+          "heading": "1. Description of Service",
+          "body": "Perintis is an AI-powered platform that helps job seekers in Indonesia build a career profile, construct a resume, and check resume compatibility against Applicant Tracking Systems (ATS). AI-powered features generate suggestions and estimated scores based on automated analysis, and do not guarantee selection outcomes, interviews, or job offers."
+        },
+        {
+          "heading": "2. User Accounts",
+          "body": "You must register with a valid email address to use this service. You are solely responsible for keeping your account credentials confidential and for all activity that occurs under your account. Notify us promptly if you suspect unauthorized access to your account."
+        },
+        {
+          "heading": "3. Acceptable Use",
+          "body": "You agree not to:",
+          "list": [
+            "Upload content that is unlawful, defamatory, or infringes on another party's intellectual property.",
+            "Attempt to reverse engineer, scrape, or interfere with the technical operation of the service.",
+            "Use the service for fraudulent purposes, including falsifying identity or qualifications in generated documents.",
+            "Access another user's account without authorization."
+          ]
+        },
+        {
+          "heading": "4. User Content and Intellectual Property",
+          "body": "You retain all ownership rights to the profile data, resumes, and other content you upload or create through Perintis (\"User Content\"). By uploading User Content, you grant us a limited, non-exclusive, revocable license to process that content solely to provide and improve the service for you. All rights to Perintis's software, design, and branding remain the property of Rhazes Labs."
+        },
+        {
+          "heading": "5. Use of Artificial Intelligence",
+          "body": "Certain Perintis features use third-party AI models (Google Gemini) to analyze, extract, and generate suggestions from your resume content. AI-generated output may contain inaccuracies or misinterpretations. You are responsible for reviewing and verifying any suggestion or generated content before relying on it, including in an actual job application."
+        },
+        {
+          "heading": "6. Service Fees",
+          "body": "Perintis is currently provided free of charge. We reserve the right to introduce paid features in the future and will provide clear notice before any such change takes effect."
+        },
+        {
+          "heading": "7. Termination",
+          "body": "We reserve the right to suspend or terminate your access to the service if you violate these Terms. You may stop using the service and request deletion of your account and data at any time via the contact listed below."
+        },
+        {
+          "heading": "8. Disclaimer of Warranties",
+          "body": "The service is provided \"as is\" and \"as available\" without warranties of any kind, express or implied. We do not guarantee that using Perintis will result in a perfect ATS score, an interview invitation, or a job offer."
+        },
+        {
+          "heading": "9. Limitation of Liability",
+          "body": "To the extent permitted by applicable law, Rhazes Labs is not liable for indirect, incidental, or consequential damages arising from your use of, or inability to use, the service, including damages related to third-party hiring decisions."
+        },
+        {
+          "heading": "10. Governing Law and Dispute Resolution",
+          "body": "These Terms are governed by and construed in accordance with the laws of the Republic of Indonesia. Any dispute arising from these Terms will first be pursued through amicable resolution; if no agreement is reached, the dispute will be settled through the competent courts in Indonesia."
+        },
+        {
+          "heading": "11. Changes to These Terms",
+          "body": "We may update these Terms from time to time. Material changes will be communicated through the app or by email before taking effect. Continued use of the service after such changes constitutes your acceptance of the updated Terms."
+        },
+        {
+          "heading": "12. Contact Us",
+          "body": "For questions about these Terms of Service, please contact us at rhazesd@gmail.com."
+        }
+      ]
     }
   },
   "profile": {
     "title": "Profile",
     "description": "Your career data, the source of truth for every Perintis module.",
+    "autoSaving": "Saving...",
+    "autoSaved": "Saved",
+    "autoSaveError": "Failed to save",
+    "importResume": {
+      "title": "Import from CV",
+      "description": "Upload your CV (PDF/DOCX) to auto-fill your profile. Existing data won't be overwritten, and new entries will be added.",
+      "dropzoneLabel": "Drag a file here or click to choose",
+      "dropzoneHint": "PDF or DOCX, max 5MB",
+      "submit": "Import Data",
+      "analyzing": "Reading and analyzing your CV...",
+      "toastSuccessTitle": "Profile updated from your CV",
+      "toastErrorTitle": "CV import failed",
+      "errorTooLarge": "File size exceeds 5MB.",
+      "errorUnsupportedType": "Unsupported file format. Upload a PDF or DOCX.",
+      "errorParsing": "File couldn't be read. Try re-saving your CV and uploading again.",
+      "errorExtraction": "Failed to analyze the CV content. Please try again.",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
     "personalInfo": {
       "title": "Personal Info",
       "fullNameLabel": "Full Name",
@@ -264,6 +537,11 @@
       "summaryLabel": "Professional Summary",
       "save": "Save",
       "saving": "Saving...",
+      "close": "Close",
+      "edit": "Edit",
+      "empty": "No info yet. Click to add.",
+      "boldLabel": "Bold",
+      "italicLabel": "Italic",
       "toastSuccess": "Personal info saved",
       "toastError": "Failed to save"
     },
@@ -279,9 +557,17 @@
       "stillWorkingLabel": "Leave empty if you still work here",
       "descriptionLabel": "Description",
       "skillsUsedLabel": "Skills Used (comma-separated)",
+      "boldLabel": "Bold",
+      "italicLabel": "Italic",
+      "bulletListLabel": "Bullet List",
+      "orderedListLabel": "Numbered List",
+      "strikeLabel": "Strikethrough",
+      "codeLabel": "Code",
+      "horizontalRuleLabel": "Horizontal Rule",
       "save": "Save",
       "saving": "Saving...",
       "cancel": "Cancel",
+      "close": "Close",
       "edit": "Edit",
       "delete": "Delete",
       "present": "Present",
@@ -302,6 +588,7 @@
       "save": "Save",
       "saving": "Saving...",
       "cancel": "Cancel",
+      "close": "Close",
       "edit": "Edit",
       "delete": "Delete",
       "toastAddSuccess": "Education added",
@@ -327,6 +614,9 @@
       "issuerLabel": "Issuer",
       "issueDateLabel": "Issue Date",
       "urlLabel": "URL (optional)",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
       "toastAddSuccess": "Certification added",
       "toastDeleteSuccess": "Certification deleted",
       "toastError": "Something went wrong"
@@ -341,9 +631,12 @@
       "roleLabel": "Role",
       "bulletsLabel": "Bullet Points (one per line)",
       "techStackLabel": "Tech Stack (comma-separated)",
+      "boldLabel": "Bold",
+      "italicLabel": "Italic",
       "save": "Save",
       "saving": "Saving...",
       "cancel": "Cancel",
+      "close": "Close",
       "edit": "Edit",
       "delete": "Delete",
       "toastAddSuccess": "Project added",
@@ -370,6 +663,11 @@
       "newButton": "Create New Resume",
       "tableTitle": "Title",
       "tableDate": "Last Updated",
+      "searchPlaceholder": "Search resume title...",
+      "noResults": "No matching results.",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageInfo": "Page {page} of {totalPages}",
       "delete": "Delete",
       "toastDeleteSuccess": "Resume deleted",
       "toastDeleteError": "Failed to delete resume",
@@ -430,5 +728,64 @@
       "downloadButton": "Download PDF",
       "backToList": "Back to list"
     }
+  },
+  "coverLetter": {
+    "list": {
+      "title": "Cover Letter",
+      "description": "Generate and save cover letters tailored to each job you apply to.",
+      "empty": "No cover letters yet. Create your first one.",
+      "newButton": "Create Cover Letter",
+      "tableCompany": "Company",
+      "tablePosition": "Position",
+      "tableDate": "Last Updated",
+      "searchPlaceholder": "Search by company...",
+      "noResults": "No matching results.",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageInfo": "Page {page} of {totalPages}",
+      "delete": "Delete",
+      "toastDeleteSuccess": "Cover letter deleted",
+      "toastDeleteError": "Failed to delete cover letter"
+    },
+    "new": {
+      "title": "Create Cover Letter",
+      "description": "Paste the job posting and we'll draft a cover letter from your Profile data.",
+      "companyLabel": "Company Name",
+      "positionLabel": "Position",
+      "jobPostingLabel": "Job Posting",
+      "jobPostingPlaceholder": "Paste the job posting text here...",
+      "toneLabel": "Tone",
+      "toneFormal": "Formal",
+      "toneCasual": "Casual",
+      "lengthLabel": "Length",
+      "lengthShort": "Short",
+      "lengthStandard": "Standard",
+      "generating": "Drafting your cover letter...",
+      "submit": "Generate Cover Letter",
+      "toastGenerateSuccess": "Cover letter drafted",
+      "toastGenerateErrorTitle": "Draft failed",
+      "toastGenerateError": "Something went wrong. Please try again."
+    },
+    "editor": {
+      "backToList": "Back to list",
+      "detailsTitle": "Cover Letter",
+      "companyLabel": "Company Name",
+      "positionLabel": "Position",
+      "bodyLabel": "Letter Body",
+      "boldLabel": "Bold",
+      "italicLabel": "Italic",
+      "bulletListLabel": "Bullet List",
+      "orderedListLabel": "Numbered List",
+      "strikeLabel": "Strikethrough",
+      "codeLabel": "Inline Code",
+      "horizontalRuleLabel": "Horizontal Rule",
+      "downloadPdfButton": "Download PDF",
+      "downloadWordButton": "Download Word",
+      "deleteButton": "Delete",
+      "toastDeleteError": "Failed to delete cover letter"
+    },
+    "autoSaving": "Auto-saving...",
+    "autoSaved": "Saved",
+    "autoSaveError": "Failed to save"
   }
 }

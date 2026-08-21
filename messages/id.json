@@ -16,7 +16,8 @@
     "switchLanguage": "Ganti ke {locale}"
   },
   "footer": {
-    "copyright": "© {year} Devino Labs. Perintis.",
+    "madeBy": "Dibuat oleh Rhazes Labs",
+    "copyright": "© {year} Rhazes Labs. Perintis.",
     "privacyPolicy": "Kebijakan Privasi",
     "termsOfService": "Syarat Layanan"
   },
@@ -31,6 +32,47 @@
       "subhead": "Resume yang lolos ATS. Wawancara yang siap. Satu tempat, dipandu AI yang transparan.",
       "ctaPrimary": "Mulai Sekarang",
       "ctaSecondary": "Masuk"
+    },
+    "showcase": {
+      "atsCheck": {
+        "eyebrow": "Cek Kompatibilitas ATS",
+        "headline": "Resume Anda bagus. Tapi apakah sistem ATS bisa membacanya?",
+        "subhead": "Sebelum recruiter melihat resume Anda, sistem ATS membacanya lebih dulu, dan sistem itu sering salah baca format yang justru terlihat rapi di mata manusia. Perintis membedah struktur, kelengkapan info kontak, kekuatan penulisan, sampai kecocokan kata kunci dengan lowongan yang Anda incar.",
+        "bullets": [
+          "Skor kompatibilitas instan, lengkap dengan rekomendasi perbaikan",
+          "Analisis kecocokan kata kunci terhadap deskripsi lowongan",
+          "Deteksi masalah format tersembunyi: tabel, kolom ganda, font tidak standar"
+        ],
+        "cta": "Cek Resume Anda",
+        "preview": {
+          "tierLabel": "Sangat Baik",
+          "summaryLabel": "3 hal sudah bagus, 1 area bisa ditingkatkan.",
+          "matchedLabel": "Cocok",
+          "missingLabel": "Belum Ada"
+        }
+      },
+      "resumeBuilder": {
+        "eyebrow": "Resume Builder",
+        "headline": "Satu profil karir. Resume ATS-safe kapan pun dibutuhkan.",
+        "subhead": "Isi profil karir Anda sekali, dan Resume Builder menyusunnya jadi resume yang rapi, satu kolom, dan aman dibaca sistem ATS, dengan bantuan AI untuk memperkuat setiap poin pencapaian.",
+        "bullets": [
+          "Terisi otomatis dari data Profil, tidak perlu ketik ulang",
+          "AI membantu menulis ulang poin pencapaian jadi lebih kuat",
+          "Unduh sebagai PDF siap kirim, format aman untuk sistem ATS"
+        ],
+        "cta": "Buat Resume Sekarang",
+        "preview": {
+          "name": "Dinda Pratama",
+          "role": "Product Designer",
+          "experienceLabel": "Pengalaman Kerja",
+          "bullets": [
+            "Memimpin desain ulang alur onboarding pengguna",
+            "Membangun design system yang dipakai lintas tim produk"
+          ],
+          "skillsLabel": "Skill",
+          "skills": ["Figma", "Design System", "User Research"]
+        }
+      }
     },
     "reasons": {
       "eyebrow": "Kenapa Perintis",
@@ -147,12 +189,34 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "description": "Modul-modul di bawah akan aktif secara bertahap.",
+    "description": "Setiap modul di bawah membantu satu tahap pencarian kerja Anda, dari menyiapkan profil hingga melacak lamaran.",
+    "modulesTitle": "Yang Bisa Anda Lakukan di Perintis",
+    "quickStartTitle": "Mulai Dari Sini",
+    "quickStartDescription": "Dua fitur ini sudah aktif dan siap dipakai sekarang.",
+    "profileCompleteness": {
+      "title": "Kelengkapan Profil",
+      "missingIntro": "Lengkapi bagian berikut agar Resume Builder dan Impor CV memberi hasil terbaik:",
+      "complete": "Profil Anda sudah lengkap. Kerja bagus!",
+      "items": {
+        "basicInfo": "Info dasar (nama, telepon, lokasi)",
+        "summary": "Ringkasan profesional",
+        "targetRole": "Target posisi karir",
+        "workExperience": "Minimal satu pengalaman kerja",
+        "education": "Minimal satu riwayat pendidikan",
+        "skills": "Minimal satu skill"
+      }
+    },
+    "moduleStatus": {
+      "atsChecksDone": "{count} pengecekan telah dilakukan",
+      "resumesCreated": "{count} resume telah dibuat"
+    },
+    "howToLabel": "Cara pakai",
     "greeting": {
       "morning": "Selamat pagi",
       "afternoon": "Selamat siang",
       "evening": "Selamat sore",
-      "night": "Selamat malam"
+      "night": "Selamat malam",
+      "subtitle": "Mari lanjutkan langkah karier Anda hari ini."
     },
     "stats": {
       "resumesLabel": "Resume Dibuat",
@@ -167,11 +231,21 @@
       },
       {
         "title": "ATS Compatibility Check",
-        "description": "Cek struktur resume terhadap sistem ATS."
+        "description": "Cek struktur resume terhadap sistem ATS.",
+        "steps": [
+          "Buka menu \"Cek Kompatibilitas ATS\" di sidebar",
+          "Unggah resume Anda (PDF/DOCX, maks 5MB), lowongan kerja opsional untuk cek kecocokan kata kunci",
+          "Lihat skor, kata kunci, dan rekomendasi perbaikan"
+        ]
       },
       {
         "title": "Resume Builder",
-        "description": "Susun resume baru dari profil Anda."
+        "description": "Susun resume baru dari profil Anda.",
+        "steps": [
+          "Buka menu \"Resume Builder\" di sidebar",
+          "Klik \"Buat Resume Baru\", datanya otomatis diambil dari Profil Anda",
+          "Edit tiap bagian, lalu unduh sebagai PDF siap kirim"
+        ]
       },
       {
         "title": "Mock Interview",
@@ -196,13 +270,27 @@
       "newButton": "Cek Resume Baru",
       "tableFilename": "Nama File",
       "tableScore": "Skor",
-      "tableDate": "Tanggal"
+      "tableFindings": "Temuan",
+      "tableDate": "Tanggal",
+      "searchPlaceholder": "Cari nama file...",
+      "filterAll": "Semua",
+      "findingsCount": "{count} masalah",
+      "noResults": "Tidak ada hasil yang cocok.",
+      "prevPage": "Sebelumnya",
+      "nextPage": "Berikutnya",
+      "pageInfo": "Halaman {page} dari {totalPages}",
+      "delete": "Hapus",
+      "toastDeleteSuccess": "Pengecekan dihapus",
+      "toastDeleteError": "Gagal menghapus pengecekan"
     },
     "upload": {
       "title": "Unggah Resume",
       "description": "Format PDF atau DOCX, maksimal 5MB.",
       "dropzoneLabel": "Seret file ke sini atau klik untuk memilih",
       "dropzoneHint": "PDF atau DOCX, maks. 5MB",
+      "jobPostingLabel": "Deskripsi Lowongan (opsional)",
+      "jobPostingPlaceholder": "Tempel deskripsi lowongan kerja di sini untuk analisis kecocokan kata kunci...",
+      "jobPostingHint": "Jika diisi, kami akan bandingkan resume Anda dengan kata kunci penting dari lowongan ini.",
       "analyzing": "Membaca resume Anda...",
       "submit": "Analisis Resume",
       "errorTooLarge": "Ukuran file melebihi 5MB.",
@@ -210,26 +298,55 @@
       "errorParsing": "File tidak bisa dibaca. Coba simpan ulang resume Anda dan unggah lagi.",
       "errorGeneric": "Terjadi kesalahan. Silakan coba lagi.",
       "toastSuccessTitle": "Analisis selesai",
-      "toastErrorTitle": "Analisis gagal"
+      "toastErrorTitle": "Analisis gagal",
+      "toastJobMatchFailed": "Analisis kecocokan lowongan tidak tersedia saat ini (server AI sedang sibuk). Hasil struktural tetap tersimpan.",
+      "toastKeywordExtractionFailed": "Ekstraksi kata kunci tidak tersedia saat ini (server AI sedang sibuk). Hasil struktural tetap tersimpan."
     },
     "result": {
       "scoreLabel": "Skor Kompatibilitas",
       "tierExcellent": "Sangat baik",
       "tierGood": "Cukup baik",
       "tierNeedsWork": "Perlu perbaikan",
-      "summary": "{strengthCount} hal sudah bagus, {issueCount} perlu diperbaiki.",
+      "summary": "{strengthCount} aspek sudah sesuai standar ATS, {issueCount} area yang bisa ditingkatkan.",
+      "scoreHistoryChange": "{delta} poin dari pengecekan sebelumnya",
+      "resumeKeywordsTitle": "Kata Kunci dalam Resume Anda",
+      "resumeKeywordsSubtitle": "Ini kata kunci yang akan ditemukan sistem ATS dan recruiter saat mencari kandidat berdasarkan pencarian kata kunci.",
+      "categoryTechnicalSkills": "Skill Teknis",
+      "categoryTools": "Tools & Platform",
+      "categoryCertifications": "Sertifikasi",
+      "categorySoftSkills": "Soft Skill",
+      "noKeywordsFound": "Belum ada kata kunci yang terdeteksi dari resume ini.",
+      "keywordMatchTitle": "Kecocokan dengan Lowongan",
+      "keywordMatchUnavailable": "Analisis kecocokan lowongan gagal karena server AI sedang sibuk saat pengecekan ini dijalankan. Unggah ulang resume Anda untuk mencoba lagi.",
+      "keywordMatchSummary": "{matched} dari {total} kata kunci penting ditemukan di resume Anda.",
+      "missingKeywordsTitle": "Kata Kunci yang Belum Ada",
+      "matchedKeywordsTitle": "Kata Kunci yang Sudah Ada",
+      "noMissingKeywords": "Semua kata kunci penting sudah ada.",
+      "noMatchedKeywords": "Belum ada kata kunci yang cocok.",
       "strengthsTitle": "Yang Sudah Bagus",
       "strengthMultiColumnLayout": "Tata letak satu kolom, mudah dibaca ATS",
       "strengthNonStandardFont": "Font yang digunakan aman untuk ATS",
       "strengthTableDetected": "Tidak menggunakan tabel yang bisa mengacaukan urutan baca",
       "strengthHeaderFooterContent": "Tidak ada info penting yang tersembunyi di header atau footer",
+      "strengthEmailFound": "Alamat email ditemukan dan mudah dibaca ATS",
+      "strengthPhoneFound": "Nomor telepon ditemukan dan mudah dibaca ATS",
+      "strengthConsistentDates": "Format tanggal konsisten di seluruh resume",
+      "strengthQuantifiedAchievements": "Pencapaian sudah didukung angka dan metrik yang jelas",
+      "strengthStrongActionVerbs": "Menggunakan kata kerja aktif yang kuat",
       "categoryMultiColumnLayout": "Tata letak multi-kolom",
       "categoryNonStandardFont": "Font tidak standar",
       "categoryTableDetected": "Tabel terdeteksi",
       "categoryHeaderFooterContent": "Info di header atau footer",
-      "findingsTitle": "Temuan",
+      "categoryMissingEmail": "Email tidak ditemukan",
+      "categoryMissingPhone": "Nomor telepon tidak ditemukan",
+      "categoryInconsistentDates": "Format tanggal tidak konsisten",
+      "categoryNoQuantifiedAchievements": "Pencapaian belum terukur dengan angka",
+      "categoryWeakActionVerbs": "Menggunakan frasa pasif",
+      "findingsTitle": "Masalah Format & Struktur",
       "noFindings": "Tidak ditemukan masalah struktural. Resume Anda ramah ATS.",
       "pdfLimitationNote": "Deteksi tabel dan header/footer untuk file PDF belum didukung di versi ini.",
+      "contentQualityTitle": "Kualitas Konten",
+      "contentQualitySubtitle": "Seberapa kuat cara Anda menulis pencapaian dan info kontak.",
       "severityCritical": "Kritis",
       "severityWarning": "Peringatan",
       "severitySuggestion": "Saran",
@@ -239,18 +356,174 @@
   "legal": {
     "privacyPolicy": {
       "title": "Kebijakan Privasi",
-      "description": "Kebijakan privasi Perintis oleh Devino Labs.",
-      "body": "Halaman ini akan diperbarui dengan kebijakan privasi lengkap Perintis sebelum peluncuran publik. Devino Labs berkomitmen menjaga kerahasiaan data resume, riwayat lamaran, dan informasi pribadi pengguna."
+      "description": "Kebijakan privasi Perintis oleh Rhazes Labs.",
+      "lastUpdated": "Terakhir diperbarui: 18 Agustus 2026",
+      "intro": "Perintis (\"kami\") dikembangkan oleh Rhazes Labs. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi data pribadi Anda saat menggunakan layanan Perintis, sesuai dengan Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (\"UU PDP\"). Dengan menggunakan Perintis, Anda menyetujui praktik yang dijelaskan dalam kebijakan ini.",
+      "sections": [
+        {
+          "heading": "1. Pengendali Data Pribadi",
+          "body": "Rhazes Labs bertindak sebagai pengendali data pribadi untuk data yang dikumpulkan melalui Perintis. Pertanyaan atau permintaan terkait data pribadi Anda dapat disampaikan melalui kontak yang tercantum di bagian \"Hubungi Kami\" pada kebijakan ini."
+        },
+        {
+          "heading": "2. Data Pribadi yang Kami Kumpulkan",
+          "body": "Kami mengumpulkan data yang Anda berikan secara langsung maupun data yang dihasilkan dari penggunaan layanan, meliputi:",
+          "list": [
+            "Data akun: alamat email dan kata sandi terenkripsi saat Anda mendaftar melalui Supabase Auth.",
+            "Data profil karir: nama lengkap, nomor telepon, lokasi, tautan LinkedIn/portofolio, ringkasan profesional, riwayat pengalaman kerja, pendidikan, skill, sertifikasi, proyek, dan bahasa yang Anda isi sendiri.",
+            "Berkas dan teks resume: file PDF/DOCX yang Anda unggah pada fitur Cek Kompatibilitas ATS dan Impor CV, beserta teks yang diekstrak dari berkas tersebut.",
+            "Data lowongan kerja: teks deskripsi lowongan yang Anda tempelkan untuk fitur analisis kecocokan kata kunci (opsional).",
+            "Resume yang Anda susun: konten resume yang dibuat melalui fitur Resume Builder.",
+            "Data teknis: alamat IP, jenis perangkat dan peramban, serta log akses yang dikumpulkan secara otomatis untuk keperluan keamanan dan pemeliharaan layanan."
+          ]
+        },
+        {
+          "heading": "3. Tujuan Penggunaan Data",
+          "body": "Kami menggunakan data pribadi Anda untuk:",
+          "list": [
+            "Menyediakan dan mengoperasikan fitur inti Perintis, termasuk Profil, Resume Builder, dan Cek Kompatibilitas ATS.",
+            "Melakukan analisis otomatis atas resume Anda (struktur dokumen, kelengkapan info kontak, kekuatan penulisan, dan kecocokan kata kunci dengan lowongan kerja) menggunakan teknologi kecerdasan buatan.",
+            "Mengautentikasi akun dan menjaga keamanan sesi login Anda.",
+            "Berkomunikasi dengan Anda terkait akun, pembaruan layanan, atau permintaan dukungan.",
+            "Memenuhi kewajiban hukum yang berlaku."
+          ]
+        },
+        {
+          "heading": "4. Dasar Hukum Pemrosesan",
+          "body": "Pemrosesan data pribadi Anda didasarkan pada: (a) persetujuan eksplisit Anda saat mendaftar dan menggunakan fitur tertentu (misalnya mengunggah resume atau lowongan kerja); (b) pelaksanaan kontrak layanan antara Anda dan Rhazes Labs untuk menyediakan fitur yang Anda gunakan; dan (c) kepentingan sah kami untuk menjaga keamanan dan meningkatkan kualitas layanan."
+        },
+        {
+          "heading": "5. Pemrosesan oleh Pihak Ketiga dan Transfer Data",
+          "body": "Untuk menyediakan layanan, kami menggunakan penyedia pihak ketiga berikut, yang dapat memproses data Anda di server yang berlokasi di luar wilayah Indonesia:",
+          "list": [
+            "Supabase, untuk autentikasi akun dan penyimpanan basis data (profil, resume, hasil analisis).",
+            "Google Gemini API, untuk fitur berbasis kecerdasan buatan (analisis konten resume, ekstraksi kata kunci, pencocokan lowongan kerja, dan impor data CV). Teks resume dan/atau lowongan kerja yang relevan dikirim ke Google untuk diproses sesuai kebijakan privasi dan ketentuan layanan Google AI, dan tidak dibagikan ke pihak lain di luar keperluan tersebut.",
+            "Kami tidak menjual data pribadi Anda kepada pihak ketiga mana pun untuk tujuan pemasaran."
+          ]
+        },
+        {
+          "heading": "6. Penyimpanan dan Keamanan Data",
+          "body": "Data Anda disimpan pada basis data PostgreSQL terkelola melalui Supabase dengan enkripsi saat transmisi (HTTPS/TLS) dan kontrol akses berbasis autentikasi. Kami menerapkan langkah teknis dan organisasi yang wajar untuk melindungi data dari akses, perubahan, pengungkapan, atau penghapusan yang tidak sah. Meskipun demikian, tidak ada sistem yang sepenuhnya kebal terhadap risiko keamanan."
+        },
+        {
+          "heading": "7. Retensi Data",
+          "body": "Kami menyimpan data pribadi Anda selama akun Anda aktif dan diperlukan untuk menyediakan layanan. Anda dapat meminta penghapusan data atau akun kapan saja melalui kontak pada bagian \"Hubungi Kami\". Setelah permintaan penghapusan diproses, data akan dihapus dari sistem produksi kami, kecuali data yang wajib disimpan untuk memenuhi kewajiban hukum."
+        },
+        {
+          "heading": "8. Hak Anda sebagai Subjek Data",
+          "body": "Sesuai UU PDP, Anda memiliki hak untuk:",
+          "list": [
+            "Mendapatkan akses dan salinan atas data pribadi Anda yang kami proses.",
+            "Melengkapi, memperbarui, dan/atau memperbaiki data pribadi Anda yang tidak akurat.",
+            "Mengakhiri pemrosesan, menghapus, dan/atau memusnahkan data pribadi Anda.",
+            "Menarik kembali persetujuan atas pemrosesan data pribadi yang telah Anda berikan.",
+            "Mengajukan keberatan atas tindakan pengambilan keputusan otomatis, termasuk pemrofilan.",
+            "Menunda atau membatasi pemrosesan data pribadi Anda secara proporsional.",
+            "Menggugat dan menerima ganti rugi atas pelanggaran pemrosesan data pribadi Anda sesuai peraturan perundang-undangan.",
+            "Mengajukan pengaduan kepada lembaga pengawas Pelindungan Data Pribadi yang berwenang."
+          ]
+        },
+        {
+          "heading": "9. Cookie dan Teknologi Serupa",
+          "body": "Kami menggunakan cookie sesi yang bersifat esensial untuk menjaga status login Anda melalui Supabase Auth. Kami tidak menggunakan cookie iklan pihak ketiga atau pelacak lintas situs untuk tujuan periklanan."
+        },
+        {
+          "heading": "10. Privasi Anak",
+          "body": "Layanan Perintis ditujukan untuk pengguna berusia 18 tahun ke atas atau yang telah memasuki dunia kerja. Kami tidak dengan sengaja mengumpulkan data pribadi dari anak di bawah usia tersebut. Jika Anda mengetahui adanya data anak yang terkumpul tanpa persetujuan yang sah, silakan hubungi kami untuk penghapusan segera."
+        },
+        {
+          "heading": "11. Perubahan Kebijakan Ini",
+          "body": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan layanan atau ketentuan hukum. Perubahan material akan diberitahukan melalui aplikasi atau email sebelum berlaku efektif. Tanggal \"Terakhir diperbarui\" di atas menunjukkan revisi terbaru."
+        },
+        {
+          "heading": "12. Hubungi Kami",
+          "body": "Untuk pertanyaan, permintaan akses/penghapusan data, atau pengaduan terkait privasi, silakan hubungi kami melalui email di rhazesd@gmail.com."
+        }
+      ]
     },
     "termsOfService": {
       "title": "Syarat Layanan",
-      "description": "Syarat layanan Perintis oleh Devino Labs.",
-      "body": "Halaman ini akan diperbarui dengan syarat layanan lengkap Perintis sebelum peluncuran publik."
+      "description": "Syarat layanan Perintis oleh Rhazes Labs.",
+      "lastUpdated": "Terakhir diperbarui: 18 Agustus 2026",
+      "intro": "Syarat Layanan ini (\"Syarat\") mengatur penggunaan Anda atas Perintis, layanan perangkat lunak yang dikembangkan oleh Rhazes Labs (\"kami\"). Dengan mengakses atau menggunakan Perintis, Anda menyetujui untuk terikat oleh Syarat ini. Jika Anda tidak menyetujui Syarat ini, mohon untuk tidak menggunakan layanan kami.",
+      "sections": [
+        {
+          "heading": "1. Deskripsi Layanan",
+          "body": "Perintis adalah platform berbasis kecerdasan buatan yang membantu pencari kerja di Indonesia menyusun profil karir, membangun resume, dan memeriksa kompatibilitas resume terhadap sistem Applicant Tracking System (ATS). Fitur yang ditenagai kecerdasan buatan menghasilkan saran dan estimasi skor berdasarkan analisis otomatis, dan bukan merupakan jaminan hasil seleksi, wawancara, atau penerimaan kerja."
+        },
+        {
+          "heading": "2. Akun Pengguna",
+          "body": "Anda harus mendaftar menggunakan alamat email yang valid untuk menggunakan layanan ini. Anda bertanggung jawab penuh atas kerahasiaan kredensial akun Anda dan seluruh aktivitas yang terjadi di bawah akun tersebut. Segera beri tahu kami jika Anda menduga terjadi akses tidak sah ke akun Anda."
+        },
+        {
+          "heading": "3. Penggunaan yang Dapat Diterima",
+          "body": "Anda setuju untuk tidak:",
+          "list": [
+            "Mengunggah konten yang melanggar hukum, memfitnah, atau melanggar hak kekayaan intelektual pihak lain.",
+            "Mencoba merekayasa balik (reverse engineer), men-scrape, atau mengganggu operasional teknis layanan.",
+            "Menggunakan layanan untuk tujuan penipuan, termasuk memalsukan identitas atau kualifikasi dalam dokumen yang dihasilkan.",
+            "Mengakses akun pengguna lain tanpa izin."
+          ]
+        },
+        {
+          "heading": "4. Konten Pengguna dan Kekayaan Intelektual",
+          "body": "Anda tetap memegang seluruh hak kepemilikan atas data profil, resume, dan konten lain yang Anda unggah atau buat melalui Perintis (\"Konten Pengguna\"). Dengan mengunggah Konten Pengguna, Anda memberikan kami lisensi terbatas, non-eksklusif, dan dapat dicabut untuk memproses konten tersebut semata-mata guna menyediakan dan meningkatkan layanan kepada Anda. Seluruh hak atas perangkat lunak, desain, dan merek Perintis tetap menjadi milik Rhazes Labs."
+        },
+        {
+          "heading": "5. Penggunaan Kecerdasan Buatan",
+          "body": "Fitur tertentu pada Perintis menggunakan model kecerdasan buatan pihak ketiga (Google Gemini) untuk menganalisis, mengekstraksi, dan menghasilkan saran atas konten resume Anda. Hasil yang dihasilkan AI dapat mengandung ketidakakuratan atau kesalahan interpretasi. Anda bertanggung jawab untuk meninjau dan memverifikasi setiap saran atau konten yang dihasilkan sebelum menggunakannya, termasuk dalam lamaran kerja sesungguhnya."
+        },
+        {
+          "heading": "6. Biaya Layanan",
+          "body": "Layanan Perintis saat ini disediakan tanpa biaya (gratis). Kami berhak untuk memperkenalkan fitur berbayar di masa mendatang, dan akan memberikan pemberitahuan yang jelas sebelum perubahan tersebut berlaku."
+        },
+        {
+          "heading": "7. Penghentian Layanan",
+          "body": "Kami berhak menangguhkan atau mengakhiri akses Anda ke layanan jika Anda melanggar Syarat ini. Anda dapat menghentikan penggunaan layanan dan meminta penghapusan akun beserta data Anda kapan saja melalui kontak yang tercantum di bawah."
+        },
+        {
+          "heading": "8. Penafian Jaminan",
+          "body": "Layanan disediakan \"sebagaimana adanya\" (as is) dan \"sebagaimana tersedia\" (as available) tanpa jaminan dalam bentuk apa pun, baik tersurat maupun tersirat. Kami tidak menjamin bahwa penggunaan Perintis akan menghasilkan skor ATS yang sempurna, panggilan wawancara, atau penerimaan kerja."
+        },
+        {
+          "heading": "9. Batasan Tanggung Jawab",
+          "body": "Sepanjang diizinkan oleh hukum yang berlaku, Rhazes Labs tidak bertanggung jawab atas kerugian tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan atau ketidakmampuan menggunakan layanan, termasuk kerugian terkait keputusan perekrutan pihak ketiga."
+        },
+        {
+          "heading": "10. Hukum yang Berlaku dan Penyelesaian Sengketa",
+          "body": "Syarat ini diatur dan ditafsirkan sesuai dengan hukum Republik Indonesia. Setiap sengketa yang timbul akan diupayakan penyelesaiannya secara musyawarah terlebih dahulu; apabila tidak tercapai kesepakatan, sengketa akan diselesaikan melalui pengadilan yang berwenang di Indonesia."
+        },
+        {
+          "heading": "11. Perubahan Syarat",
+          "body": "Kami dapat memperbarui Syarat ini dari waktu ke waktu. Perubahan material akan diberitahukan melalui aplikasi atau email sebelum berlaku efektif. Penggunaan layanan secara berkelanjutan setelah perubahan berarti Anda menyetujui Syarat yang telah diperbarui."
+        },
+        {
+          "heading": "12. Hubungi Kami",
+          "body": "Untuk pertanyaan terkait Syarat Layanan ini, silakan hubungi kami melalui email di rhazesd@gmail.com."
+        }
+      ]
     }
   },
   "profile": {
     "title": "Profil",
     "description": "Data karir Anda, sumber kebenaran untuk semua modul Perintis.",
+    "autoSaving": "Menyimpan...",
+    "autoSaved": "Tersimpan",
+    "autoSaveError": "Gagal menyimpan",
+    "importResume": {
+      "title": "Impor dari CV",
+      "description": "Unggah CV (PDF/DOCX) untuk mengisi profil secara otomatis. Data yang sudah ada tidak akan ditimpa, dan entri baru akan ditambahkan.",
+      "dropzoneLabel": "Seret file ke sini atau klik untuk memilih",
+      "dropzoneHint": "PDF atau DOCX, maks. 5MB",
+      "submit": "Impor Data",
+      "analyzing": "Membaca dan menganalisis CV Anda...",
+      "toastSuccessTitle": "Profil berhasil diperbarui dari CV",
+      "toastErrorTitle": "Impor CV gagal",
+      "errorTooLarge": "Ukuran file melebihi 5MB.",
+      "errorUnsupportedType": "Format file tidak didukung. Unggah PDF atau DOCX.",
+      "errorParsing": "File tidak bisa dibaca. Coba simpan ulang CV Anda dan unggah lagi.",
+      "errorExtraction": "Gagal menganalisis isi CV. Silakan coba lagi.",
+      "errorGeneric": "Terjadi kesalahan. Silakan coba lagi."
+    },
     "personalInfo": {
       "title": "Info Pribadi",
       "fullNameLabel": "Nama Lengkap",
@@ -264,6 +537,11 @@
       "summaryLabel": "Ringkasan Profesional",
       "save": "Simpan",
       "saving": "Menyimpan...",
+      "close": "Tutup",
+      "edit": "Ubah",
+      "empty": "Belum ada info. Klik untuk menambahkan.",
+      "boldLabel": "Tebal",
+      "italicLabel": "Miring",
       "toastSuccess": "Info pribadi disimpan",
       "toastError": "Gagal menyimpan"
     },
@@ -279,9 +557,17 @@
       "stillWorkingLabel": "Kosongkan jika masih bekerja di sini",
       "descriptionLabel": "Deskripsi",
       "skillsUsedLabel": "Skill yang Digunakan (pisahkan dengan koma)",
+      "boldLabel": "Tebal",
+      "italicLabel": "Miring",
+      "bulletListLabel": "Poin-poin",
+      "orderedListLabel": "Daftar Bernomor",
+      "strikeLabel": "Coret",
+      "codeLabel": "Kode",
+      "horizontalRuleLabel": "Garis Pemisah",
       "save": "Simpan",
       "saving": "Menyimpan...",
       "cancel": "Batal",
+      "close": "Tutup",
       "edit": "Ubah",
       "delete": "Hapus",
       "present": "Sekarang",
@@ -302,6 +588,7 @@
       "save": "Simpan",
       "saving": "Menyimpan...",
       "cancel": "Batal",
+      "close": "Tutup",
       "edit": "Ubah",
       "delete": "Hapus",
       "toastAddSuccess": "Pendidikan ditambahkan",
@@ -327,6 +614,9 @@
       "issuerLabel": "Penerbit",
       "issueDateLabel": "Tanggal Terbit",
       "urlLabel": "URL (opsional)",
+      "save": "Simpan",
+      "saving": "Menyimpan...",
+      "cancel": "Batal",
       "toastAddSuccess": "Sertifikasi ditambahkan",
       "toastDeleteSuccess": "Sertifikasi dihapus",
       "toastError": "Terjadi kesalahan"
@@ -341,9 +631,12 @@
       "roleLabel": "Peran",
       "bulletsLabel": "Poin-poin (satu per baris)",
       "techStackLabel": "Tech Stack (pisahkan dengan koma)",
+      "boldLabel": "Tebal",
+      "italicLabel": "Miring",
       "save": "Simpan",
       "saving": "Menyimpan...",
       "cancel": "Batal",
+      "close": "Tutup",
       "edit": "Ubah",
       "delete": "Hapus",
       "toastAddSuccess": "Proyek ditambahkan",
@@ -370,6 +663,11 @@
       "newButton": "Buat Resume Baru",
       "tableTitle": "Judul",
       "tableDate": "Terakhir Diubah",
+      "searchPlaceholder": "Cari judul resume...",
+      "noResults": "Tidak ada hasil yang cocok.",
+      "prevPage": "Sebelumnya",
+      "nextPage": "Berikutnya",
+      "pageInfo": "Halaman {page} dari {totalPages}",
       "delete": "Hapus",
       "toastDeleteSuccess": "Resume dihapus",
       "toastDeleteError": "Gagal menghapus resume",
@@ -430,5 +728,64 @@
       "downloadButton": "Download PDF",
       "backToList": "Kembali ke daftar"
     }
+  },
+  "coverLetter": {
+    "list": {
+      "title": "Cover Letter",
+      "description": "Buat dan simpan cover letter yang disesuaikan untuk setiap lowongan yang Anda lamar.",
+      "empty": "Belum ada cover letter. Buat yang pertama.",
+      "newButton": "Buat Cover Letter",
+      "tableCompany": "Perusahaan",
+      "tablePosition": "Posisi",
+      "tableDate": "Terakhir Diperbarui",
+      "searchPlaceholder": "Cari berdasarkan perusahaan...",
+      "noResults": "Tidak ada hasil yang cocok.",
+      "prevPage": "Sebelumnya",
+      "nextPage": "Berikutnya",
+      "pageInfo": "Halaman {page} dari {totalPages}",
+      "delete": "Hapus",
+      "toastDeleteSuccess": "Cover letter dihapus",
+      "toastDeleteError": "Gagal menghapus cover letter"
+    },
+    "new": {
+      "title": "Buat Cover Letter",
+      "description": "Tempel deskripsi lowongan, kami akan susun draf cover letter dari data Profil Anda.",
+      "companyLabel": "Nama Perusahaan",
+      "positionLabel": "Posisi",
+      "jobPostingLabel": "Deskripsi Lowongan",
+      "jobPostingPlaceholder": "Tempel teks deskripsi lowongan di sini...",
+      "toneLabel": "Nada",
+      "toneFormal": "Formal",
+      "toneCasual": "Santai",
+      "lengthLabel": "Panjang",
+      "lengthShort": "Singkat",
+      "lengthStandard": "Standar",
+      "generating": "Menyusun cover letter Anda...",
+      "submit": "Buat Cover Letter",
+      "toastGenerateSuccess": "Cover letter berhasil dibuat",
+      "toastGenerateErrorTitle": "Gagal membuat draf",
+      "toastGenerateError": "Terjadi kesalahan. Silakan coba lagi."
+    },
+    "editor": {
+      "backToList": "Kembali ke daftar",
+      "detailsTitle": "Cover Letter",
+      "companyLabel": "Nama Perusahaan",
+      "positionLabel": "Posisi",
+      "bodyLabel": "Isi Surat",
+      "boldLabel": "Tebal",
+      "italicLabel": "Miring",
+      "bulletListLabel": "Daftar Poin",
+      "orderedListLabel": "Daftar Bernomor",
+      "strikeLabel": "Coret",
+      "codeLabel": "Kode Inline",
+      "horizontalRuleLabel": "Garis Horizontal",
+      "downloadPdfButton": "Unduh PDF",
+      "downloadWordButton": "Unduh Word",
+      "deleteButton": "Hapus",
+      "toastDeleteError": "Gagal menghapus cover letter"
+    },
+    "autoSaving": "Menyimpan otomatis...",
+    "autoSaved": "Tersimpan",
+    "autoSaveError": "Gagal menyimpan"
   }
 }
