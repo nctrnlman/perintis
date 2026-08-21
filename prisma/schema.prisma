@@ -20,6 +20,7 @@ model User {
   resumes         Resume[]
   atsChecks       ATSCheckAnalysis[]
   resumeDocuments ResumeDocument[]
+  coverLetters    CoverLetter[]
 }
 
 model Profile {
@@ -141,5 +142,21 @@ model ATSCheckAnalysis {
   overallScore       Int
   structuralFindings Json
   keywordFindings    Json?
+  contentFindings    Json?
+  resumeKeywords     Json?
   createdAt          DateTime @default(now())
+}
+
+model CoverLetter {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  companyName    String
+  positionTitle  String
+  jobPostingText String
+  tone           String
+  length         String
+  bodyHtml       String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
