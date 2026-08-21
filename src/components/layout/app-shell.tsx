@@ -17,9 +17,10 @@ import {
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { LanguageToggle } from "@/components/shared/language-toggle";
 import { UserMenu } from "@/components/layout/user-menu";
+import { HeaderClock } from "@/components/layout/header-clock";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
-const moduleRoutes: (string | null)[] = [null, "/ats-check", "/resume-builder", null, null, null];
+const moduleRoutes: (string | null)[] = [null, "/ats-check", "/resume-builder", null, "/cover-letter", null];
 
 interface AppShellProps {
   userEmail: string;
@@ -128,15 +129,18 @@ export function AppShell({ userEmail, userName, children }: AppShellProps) {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 shrink-0 items-center justify-between border-b border-border/40 px-4 lg:justify-end lg:px-6">
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label={t("nav.openMenu")}
-            className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground lg:hidden"
-          >
-            <Menu className="size-5" />
-          </button>
+        <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-border/40 bg-background/95 px-4 backdrop-blur-sm lg:px-6">
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-label={t("nav.openMenu")}
+              className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground lg:hidden"
+            >
+              <Menu className="size-5" />
+            </button>
+            <HeaderClock />
+          </div>
           <div className="flex items-center gap-3">
             <LanguageToggle />
             <ThemeToggle />

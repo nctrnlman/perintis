@@ -208,7 +208,8 @@
     },
     "moduleStatus": {
       "atsChecksDone": "{count} checks run so far",
-      "resumesCreated": "{count} resumes created so far"
+      "resumesCreated": "{count} resumes created so far",
+      "coverLettersCreated": "{count} cover letters created so far"
     },
     "howToLabel": "How to use",
     "greeting": {
@@ -253,7 +254,12 @@
       },
       {
         "title": "Cover Letter",
-        "description": "Generate a cover letter from your profile and a job posting."
+        "description": "Generate a cover letter from your profile and a job posting.",
+        "steps": [
+          "Open the \"Cover Letter\" menu in the sidebar",
+          "Paste the job posting, fill in the company and position, and pick a tone and length",
+          "Edit the AI-drafted letter, then download it as PDF or Word"
+        ]
       },
       {
         "title": "Application Tracker",
