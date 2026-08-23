@@ -37,7 +37,7 @@ export default async function AboutPage({
 
   return (
     <div>
-      <div className="mx-auto max-w-3xl px-6 py-24 text-center">
+      <div className="mx-auto max-w-4xl px-6 py-24 text-center">
         <Reveal>
           <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
             {t("eyebrow")}
@@ -75,10 +75,12 @@ export default async function AboutPage({
         </Reveal>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 pb-24">
+      <div className="mx-auto max-w-4xl px-6 pb-24">
         <Reveal>
           <h2 className="text-2xl font-semibold tracking-tight">{t("missionHeading")}</h2>
-          <p className="mt-3 leading-relaxed text-muted-foreground">{t("missionBody")}</p>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+            {t("missionBody")}
+          </p>
         </Reveal>
 
         <Reveal delay={100}>
@@ -131,7 +133,7 @@ export default async function AboutPage({
         <Reveal delay={200}>
           <div className="mt-16">
             <h2 className="text-2xl font-semibold tracking-tight">{t("whoHeading")}</h2>
-            <div className="mt-6 rounded-2xl border border-border p-8">
+            <div className="mt-6 max-w-2xl rounded-2xl border border-border p-8">
               <div className="flex size-12 items-center justify-center rounded-full bg-muted text-sm font-semibold">
                 RD
               </div>
