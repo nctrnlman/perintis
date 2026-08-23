@@ -9,6 +9,7 @@ import { generateCoverLetterSchema, updateCoverLetterSchema } from "@/lib/valida
 import { buildProfileContext } from "@/lib/cover-letter/build-profile-context";
 import { generateCoverLetterBody } from "@/lib/cover-letter/generate-letter";
 import { paragraphsToHtml } from "@/lib/cover-letter/paragraphs-to-html";
+import { htmlToPlainText } from "@/lib/cover-letter/html-to-plain-text";
 
 export async function generateCoverLetter(
   formData: FormData
@@ -19,10 +20,12 @@ export async function generateCoverLetter(
   } = await supabase.auth.getUser();
   if (!user) return { error: "not-authenticated" };
 
+  const jobPostingHtml = String(formData.get("jobPostingText") ?? "");
+
   const parsed = generateCoverLetterSchema.safeParse({
     companyName: formData.get("companyName") ?? "",
     positionTitle: formData.get("positionTitle") ?? "",
-    jobPostingText: formData.get("jobPostingText") ?? "",
+    jobPostingText: htmlToPlainText(jobPostingHtml),
     tone: formData.get("tone") ?? "formal",
     length: formData.get("length") ?? "standard",
   });

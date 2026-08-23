@@ -6,9 +6,10 @@ import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Reveal } from "@/components/shared/reveal";
 import { toast } from "@/components/ui/toast";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
+import { stripHtml } from "@/lib/resume-builder/strip-html";
 import { cn } from "@/lib/utils";
 import { generateCoverLetter } from "../actions";
 
@@ -26,7 +27,7 @@ export default function NewCoverLetterPage() {
   const [isPending, startTransition] = useTransition();
 
   const canSubmit = Boolean(
-    companyName.trim() && positionTitle.trim() && jobPostingText.trim()
+    companyName.trim() && positionTitle.trim() && stripHtml(jobPostingText).trim()
   );
 
   function toggleClass(active: boolean) {
@@ -99,13 +100,19 @@ export default function NewCoverLetterPage() {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="jobPostingText">{t("jobPostingLabel")}</Label>
-          <Textarea
-            id="jobPostingText"
+          <Label>{t("jobPostingLabel")}</Label>
+          <RichTextEditor
             value={jobPostingText}
-            onChange={(e) => setJobPostingText(e.target.value)}
+            onChange={setJobPostingText}
             placeholder={t("jobPostingPlaceholder")}
-            rows={8}
+            boldLabel={t("boldLabel")}
+            italicLabel={t("italicLabel")}
+            bulletListLabel={t("bulletListLabel")}
+            orderedListLabel={t("orderedListLabel")}
+            strikeLabel={t("strikeLabel")}
+            codeLabel={t("codeLabel")}
+            horizontalRuleLabel={t("horizontalRuleLabel")}
+            allowExtendedFormatting
           />
         </div>
 
