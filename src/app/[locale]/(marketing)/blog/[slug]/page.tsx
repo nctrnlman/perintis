@@ -9,6 +9,7 @@ interface BlogPostContent {
   title: string;
   excerpt: string;
   publishedLabel: string;
+  category: string;
   sections: { heading: string; body?: string; list?: string[] }[];
 }
 
@@ -52,6 +53,9 @@ export default async function BlogPostPage({
       <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
         &larr; {t("backToBlog")}
       </Link>
+      <span className="mt-6 inline-block rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+        {post.category}
+      </span>
       <LegalDocument
         title={post.title}
         lastUpdated={post.publishedLabel}

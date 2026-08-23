@@ -1029,15 +1029,16 @@
   },
   "blog": {
     "metaTitle": "Blog | Perintis",
-    "metaDescription": "Career tips, resume advice, and ATS insights for Indonesian job seekers.",
+    "metaDescription": "10 practical, no-fluff guides on resumes, cover letters, and getting past the ATS, for Indonesian job seekers.",
     "heading": "From the blog",
-    "description": "Practical advice on resumes, cover letters, and getting past the ATS.",
+    "description": "10 practical, no-fluff guides on resumes, cover letters, and getting past the ATS.",
     "backToBlog": "Back to blog",
     "posts": {
       "ats-friendly-resume": {
         "title": "How to Write a Resume That Actually Passes an ATS",
         "excerpt": "Most resumes never reach a human. Here's how to make sure yours does.",
         "publishedLabel": "Published August 2026",
+        "category": "Resume",
         "sections": [
           {
             "heading": "Why formatting matters more than you think",
@@ -1065,6 +1066,7 @@
         "title": "5 Cover Letter Mistakes That Get Applications Ignored",
         "excerpt": "A generic cover letter is often worse than no cover letter at all. Here's what to avoid.",
         "publishedLabel": "Published August 2026",
+        "category": "Cover Letter",
         "sections": [
           {
             "heading": "1. Starting with \"To Whom It May Concern\"",
@@ -1085,6 +1087,198 @@
           {
             "heading": "5. Ending without a clear close",
             "body": "\"I look forward to hearing from you\" is a fine closing line, but pair it with confidence, not just politeness. State plainly that you're excited about the opportunity and available to discuss it further."
+          }
+        ]
+      },
+      "resume-scan-time": {
+        "title": "The Truth About How Long Recruiters Actually Look at Your Resume",
+        "excerpt": "The \"6-second resume\" myth isn't quite right, but the real number should still change how you write.",
+        "publishedLabel": "Published August 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Where the \"6-second\" number actually comes from",
+            "body": "You've probably heard some version of \"recruiters only look at your resume for 6 seconds.\" The number traces back to a 2018 eye-tracking study by TheLadders, which found an average of 7.4 seconds for a recruiter's first pass through a resume. That's a real, widely cited figure, not internet folklore, but it describes one specific moment: the initial screening glance, not the total time a resume that clears that first cut gets reviewed."
+          },
+          {
+            "heading": "What that first glance is actually judging",
+            "body": "In those first seconds, a recruiter isn't reading your resume the way you'd read an article. Eye-tracking data shows they scan for a handful of anchor points: your most recent job title and company, your current or most recent role's dates, and whether the layout looks organized enough to trust. If nothing in that scan earns a second look, the rest of the resume, however strong, may never get read."
+          },
+          {
+            "heading": "Design for the scan, not just the read",
+            "body": "This is why layout choices matter as much as content. Your most recent, most relevant role should be immediately visible without scrolling or hunting. Job titles and company names should stand out visually from dates and descriptions. Dense paragraphs are easy to skip; short, specific bullet points are easier to scan and land."
+          },
+          {
+            "heading": "The good news: a strong resume earns more time",
+            "body": "The 7-second figure isn't a hard ceiling, it's a filter. A resume that passes that first scan gets a real, longer read afterward. The goal isn't to cram your entire story into 7 seconds; it's to make sure the most convincing, relevant information is what a recruiter's eyes land on first."
+          }
+        ]
+      },
+      "quantify-achievements": {
+        "title": "How to Quantify Your Achievements When You Don't Have Exact Numbers",
+        "excerpt": "\"Increased revenue\" says nothing. Here's how to add real numbers, even in roles that don't naturally produce them.",
+        "publishedLabel": "Published August 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Why recruiters trust numbers over adjectives",
+            "body": "\"Improved team efficiency\" could mean almost anything. \"Cut onboarding time from 3 weeks to 9 days\" tells a specific, verifiable story. Numbers give a recruiter something concrete to evaluate instead of asking them to take your word for it."
+          },
+          {
+            "heading": "Start with what you can count, not what you measured",
+            "body": "You don't need a formal KPI dashboard to quantify a bullet. Team size you managed, number of projects delivered, frequency of a task, size of a budget you were responsible for, all of these are countable even if you never tracked a formal metric at the time."
+          },
+          {
+            "heading": "Estimate honestly when exact figures aren't available",
+            "body": "If you genuinely don't have the exact number, a reasonable, honest estimate is still more useful than none. \"Supported a team of roughly 15 people\" or \"handled an estimated 30-40 support tickets weekly\" is defensible and specific. What matters is that the estimate is genuine, not a number invented to sound impressive."
+          },
+          {
+            "heading": "Numbers alone aren't the whole story",
+            "body": "A number without context can undersell you. \"Increased signups by 12%\" is stronger when it's clear that's against a flat baseline, or came during a period with a shrinking marketing budget. Where it's relevant, briefly note the context that makes the number meaningful."
+          }
+        ]
+      },
+      "hard-skills-vs-soft-skills": {
+        "title": "Hard Skills vs. Soft Skills: What Actually Belongs on Your Resume",
+        "excerpt": "Both matter, but they don't belong in the same place, or written the same way.",
+        "publishedLabel": "Published August 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "The difference, quickly",
+            "body": "Hard skills are specific, teachable, and usually verifiable: a programming language, a certification, fluency in a tool like Excel or Figma. Soft skills are behavioral: communication, leadership, adaptability. Both matter to employers, but they need very different treatment on a resume."
+          },
+          {
+            "heading": "Hard skills: be specific and list them plainly",
+            "body": "A dedicated Skills section works well for hard skills because they're exactly what an ATS keyword search and a recruiter's skim are both looking for. List them plainly: \"SQL\", \"Adobe Premiere Pro\", \"Google Analytics\", rather than folding them into a sentence where a keyword scan might miss them."
+          },
+          {
+            "heading": "Soft skills: show them, don't just claim them",
+            "body": "Writing \"strong communicator\" as a bullet point is easy to write and easy to ignore, everyone claims it. Soft skills land better when they're demonstrated through an achievement: \"Led weekly cross-team syncs between design and engineering to resolve scope conflicts\" shows communication and leadership without naming either word."
+          },
+          {
+            "heading": "Match the mix to the role",
+            "body": "A technical role weighted toward hard skills still needs a couple of demonstrated soft skills, most jobs involve working with other people. A people-facing role heavy on soft skills still benefits from listing the specific tools and platforms you're fluent in. Neither category should be entirely absent."
+          }
+        ]
+      },
+      "resume-length": {
+        "title": "One Page or Two? How Long Your Resume Should Actually Be",
+        "excerpt": "The one-page rule isn't dead, but it's not universal either. Here's what actually determines the right length.",
+        "publishedLabel": "Published August 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "The old rule, and why it's changing",
+            "body": "\"Keep it to one page\" made sense when resumes were printed and physically handed across a desk. Today, most resumes are read on a screen or parsed by software, and a well-organized second page costs a reader nothing extra. A 2025 survey of over 1,000 HR professionals found the majority now consider one to two pages acceptable, a real shift from the old single-page-only expectation."
+          },
+          {
+            "heading": "Length should follow experience, not a fixed rule",
+            "body": "The most useful guideline ties length to career stage: candidates with under five years of experience generally fit comfortably on one page, and forcing more onto it usually means padding. Candidates with five or more years of relevant experience, especially with multiple roles worth describing in detail, often need two pages to do that experience justice without cutting real substance."
+          },
+          {
+            "heading": "A second page only helps if every line earns its place",
+            "body": "Two pages is not permission to include everything. Every bullet still has to compete for a recruiter's limited attention. If a line doesn't support your case for this specific role, it doesn't belong, whether it's page one or page two."
+          },
+          {
+            "heading": "When in doubt, cut before you extend",
+            "body": "If you're unsure whether an entry justifies a second page, try cutting it first. A tight one-page resume beats a two-page resume padded with filler nearly every time."
+          }
+        ]
+      },
+      "career-gap": {
+        "title": "How to Explain a Career Gap Without Apologizing for It",
+        "excerpt": "A gap in your resume isn't automatically a red flag, how you frame it is what matters.",
+        "publishedLabel": "Published August 2026",
+        "category": "Career Tips",
+        "sections": [
+          {
+            "heading": "Recruiters see gaps more often than you think",
+            "body": "Career breaks for caregiving, health, layoffs, further study, or a difficult job market are common, not rare exceptions. Most recruiters have seen far more gaps than perfectly continuous timelines. The problem isn't usually the gap itself, it's an unexplained gap that reads as something being hidden."
+          },
+          {
+            "heading": "Address it briefly, don't over-explain",
+            "body": "A short, factual line is enough: \"Took a 10-month career break for family caregiving\" or \"Focused on an intensive certification program from March to November.\" You don't owe a lengthy justification. Over-explaining can accidentally signal more insecurity about the gap than the gap itself does."
+          },
+          {
+            "heading": "If you used the time productively, say so, briefly",
+            "body": "If the gap included freelance work, volunteering, coursework, or a personal project, a one-line mention adds useful context without turning it into the centerpiece of your resume. If it didn't, that's fine too, honesty reads better than a stretched explanation."
+          },
+          {
+            "heading": "Let your interview do the rest of the talking",
+            "body": "The resume doesn't need to resolve every question about a gap, it just needs to not raise unnecessary alarm. Save the fuller story, and your confidence in telling it, for the interview itself."
+          }
+        ]
+      },
+      "linkedin-vs-resume": {
+        "title": "LinkedIn Profile vs. Resume: What's Different, and Why It Matters",
+        "excerpt": "They tell the same career story, but for different readers, at different moments.",
+        "publishedLabel": "Published August 2026",
+        "category": "Career Tips",
+        "sections": [
+          {
+            "heading": "Different readers, different intent",
+            "body": "A resume is read by someone who already has a specific role in mind and is deciding whether you fit it. A LinkedIn profile is often the first thing a recruiter finds before any role is on the table, or the thing a hiring manager checks after your resume already made an impression. Same person, different job."
+          },
+          {
+            "heading": "Your resume should be sharp; your LinkedIn can be broader",
+            "body": "A resume works best tailored tightly to one role, trimmed to what's relevant. LinkedIn has room to be more complete: past roles you're not actively pitching for a current application, projects and interests that show range, recommendations from former colleagues that a resume can't carry."
+          },
+          {
+            "heading": "Keep the facts consistent, even if the framing differs",
+            "body": "Job titles, company names, and dates should match between the two. A mismatch, even an innocent one from an old update, is one of the fastest ways to make a recruiter double back and scrutinize everything else more closely."
+          },
+          {
+            "heading": "Use LinkedIn to do what a resume can't",
+            "body": "A resume can't show ongoing activity, but a LinkedIn profile can: posts, comments, and engagement in your field signal that you're active and current, not just a static document. It's also the place recommendations and endorsements actually add credibility a resume alone can't provide."
+          }
+        ]
+      },
+      "cover-letter-tone": {
+        "title": "Formal or Casual? How to Match Your Cover Letter's Tone to the Company",
+        "excerpt": "The same achievements, written the wrong way, can make you look like the wrong fit.",
+        "publishedLabel": "Published August 2026",
+        "category": "Cover Letter",
+        "sections": [
+          {
+            "heading": "Tone signals fit before content does",
+            "body": "A recruiter reading your cover letter is unconsciously asking a second question alongside \"can they do the job\": \"would they fit here?\" A stiff, overly formal letter to a scrappy startup can read as out of step with the culture, just as an overly casual letter to a conservative corporate or state-owned enterprise can read as underprepared."
+          },
+          {
+            "heading": "Read the job posting for tone cues, not just requirements",
+            "body": "A job posting itself is a tone sample. Formal, structured language with a lot of qualification requirements usually signals a formal reading is safer. Casual, personality-driven copy, especially at startups, is often an invitation to write with some of that same energy back."
+          },
+          {
+            "heading": "Formal doesn't mean stiff, and casual doesn't mean unprofessional",
+            "body": "A formal cover letter can still be warm and specific, it just avoids slang and keeps sentence structure more traditional. A casual cover letter still needs to be well-written and typo-free, casual is a register, not a license to be careless."
+          },
+          {
+            "heading": "When you're not sure, default slightly more formal",
+            "body": "It's easier to recover from a cover letter that reads as a little more polished than the company culture than one that reads as underdressed for it. If the signals are mixed, leaning formal is the safer default."
+          }
+        ]
+      },
+      "tailor-resume-per-job": {
+        "title": "How to Tailor One Resume for Different Jobs Without Starting From Scratch",
+        "excerpt": "You don't need a brand new resume for every application, you need one that adapts fast.",
+        "publishedLabel": "Published August 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Why a single generic resume underperforms",
+            "body": "A resume written to apply broadly, to nothing in particular, ends up speaking clearly to no one. Recruiters and ATS keyword matches both respond to specificity: language that mirrors the actual posting, achievements framed around what this particular role cares about."
+          },
+          {
+            "heading": "Build a master version first",
+            "body": "Keep one comprehensive version of your resume, with every role, bullet, and achievement you might ever want to use. This isn't the version you send anywhere, it's your source material. Tailoring becomes a matter of selecting and reordering from this master, not writing from a blank page each time."
+          },
+          {
+            "heading": "Match language to the job posting, not just responsibilities",
+            "body": "If a posting says \"stakeholder management\" and your master resume says \"worked with clients\", align the wording. This isn't dishonest, it's translating your real experience into the vocabulary the reader, and the ATS scanning for it, is actually looking for."
+          },
+          {
+            "heading": "Reorder before you rewrite",
+            "body": "The fastest tailoring often isn't new writing, it's reordering. Move your most relevant bullets and roles higher, push less relevant ones lower or cut them for this specific application. A recruiter's first scan matters most, put your best match for this job where that scan will land."
           }
         ]
       }

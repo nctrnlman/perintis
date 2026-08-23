@@ -5,10 +5,10 @@ import { Reveal } from "@/components/shared/reveal";
 import { BLOG_SLUGS } from "@/lib/blog-slugs";
 
 interface BlogPostSummary {
-  slug: string;
   title: string;
   excerpt: string;
   publishedLabel: string;
+  category: string;
 }
 
 export async function generateMetadata({
@@ -29,9 +29,6 @@ export default async function BlogIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("blog");
-  const posts = BLOG_SLUGS.map(
-    (slug) => t.raw(`posts.${slug}`) as BlogPostSummary
-  );
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
@@ -41,20 +38,28 @@ export default async function BlogIndexPage({
       </Reveal>
 
       <div className="mt-14 space-y-8">
-        {posts.map((post, index) => (
-          <Reveal key={post.slug} delay={index * 80}>
-            <Link
-              href={`/blog/${post.slug}`}
-              className="block rounded-2xl border border-border p-8 transition-transform hover:scale-[1.01]"
-            >
-              <p className="text-xs text-muted-foreground">{post.publishedLabel}</p>
-              <h2 className="mt-2 text-xl font-semibold">{post.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {post.excerpt}
-              </p>
-            </Link>
-          </Reveal>
-        ))}
+        {BLOG_SLUGS.map((slug, index) => {
+          const post = t.raw(`posts.${slug}`) as BlogPostSummary;
+          return (
+            <Reveal key={slug} delay={index * 80}>
+              <Link
+                href={`/blog/${slug}`}
+                className="block rounded-2xl border border-border p-8 transition-transform hover:scale-[1.01]"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
+                    {post.category}
+                  </span>
+                  <p className="text-xs text-muted-foreground">{post.publishedLabel}</p>
+                </div>
+                <h2 className="mt-3 text-xl font-semibold">{post.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {post.excerpt}
+                </p>
+              </Link>
+            </Reveal>
+          );
+        })}
       </div>
     </div>
   );

@@ -1029,15 +1029,16 @@
   },
   "blog": {
     "metaTitle": "Blog | Perintis",
-    "metaDescription": "Tips karir, saran resume, dan wawasan ATS untuk pencari kerja Indonesia.",
+    "metaDescription": "10 panduan praktis dan langsung ke intinya soal resume, cover letter, dan cara lolos ATS, untuk pencari kerja Indonesia.",
     "heading": "Dari blog kami",
-    "description": "Saran praktis soal resume, cover letter, dan cara lolos ATS.",
+    "description": "10 panduan praktis dan langsung ke intinya soal resume, cover letter, dan cara lolos ATS.",
     "backToBlog": "Kembali ke blog",
     "posts": {
       "ats-friendly-resume": {
         "title": "Cara Membuat Resume yang Benar-Benar Lolos ATS",
         "excerpt": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Ini cara memastikan resume Anda berbeda.",
         "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
         "sections": [
           {
             "heading": "Kenapa format lebih penting dari yang Anda kira",
@@ -1065,6 +1066,7 @@
         "title": "5 Kesalahan Cover Letter yang Bikin Lamaran Diabaikan",
         "excerpt": "Cover letter generik seringkali lebih buruk daripada tidak pakai cover letter sama sekali. Ini yang perlu dihindari.",
         "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Cover Letter",
         "sections": [
           {
             "heading": "1. Mulai dengan \"Kepada Yth. Bapak/Ibu HRD\"",
@@ -1085,6 +1087,198 @@
           {
             "heading": "5. Menutup tanpa penutup yang jelas",
             "body": "\"Saya menantikan kabar dari Anda\" adalah kalimat penutup yang oke, tapi padukan dengan rasa percaya diri, bukan cuma kesopanan. Nyatakan dengan jelas bahwa Anda antusias dengan kesempatan ini dan siap membahasnya lebih lanjut."
+          }
+        ]
+      },
+      "resume-scan-time": {
+        "title": "Fakta Sebenarnya Soal Berapa Lama Recruiter Melihat Resume Anda",
+        "excerpt": "Mitos \"resume 6 detik\" tidak sepenuhnya akurat, tapi angka sebenarnya tetap harus mengubah cara Anda menulis resume.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Dari mana angka \"6 detik\" itu sebenarnya berasal",
+            "body": "Anda mungkin pernah dengar versi \"recruiter cuma lihat resume selama 6 detik.\" Angka ini berasal dari studi eye-tracking tahun 2018 oleh TheLadders, yang menemukan rata-rata 7.4 detik untuk sekali lirikan pertama recruiter terhadap resume. Itu angka nyata yang banyak dikutip, bukan mitos internet, tapi menggambarkan satu momen spesifik: lirikan penyaringan awal, bukan total waktu resume yang lolos saringan pertama itu ditinjau."
+          },
+          {
+            "heading": "Apa yang sebenarnya dinilai dalam lirikan pertama itu",
+            "body": "Dalam detik-detik pertama itu, recruiter tidak membaca resume Anda seperti membaca artikel. Data eye-tracking menunjukkan mereka memindai beberapa titik jangkar: jabatan dan perusahaan terakhir Anda, tanggal peran terakhir atau saat ini, dan apakah layout-nya terlihat cukup rapi untuk dipercaya. Kalau tidak ada yang menarik perhatian dalam pindaian itu, sisa resume, sekuat apa pun, mungkin tidak akan pernah dibaca."
+          },
+          {
+            "heading": "Rancang untuk dipindai, bukan cuma dibaca",
+            "body": "Ini kenapa pilihan layout sama pentingnya dengan isi. Peran terbaru dan paling relevan Anda harus langsung terlihat tanpa perlu scroll atau mencari-cari. Jabatan dan nama perusahaan harus menonjol secara visual dari tanggal dan deskripsi. Paragraf padat mudah dilewati; poin-poin singkat dan spesifik lebih mudah dipindai dan tertangkap mata."
+          },
+          {
+            "heading": "Kabar baiknya: resume yang kuat mendapat lebih banyak waktu",
+            "body": "Angka 7 detik itu bukan batas mutlak, itu filter. Resume yang lolos pindaian pertama akan mendapat pembacaan yang lebih lama dan sungguhan setelahnya. Tujuannya bukan menjejalkan seluruh cerita Anda dalam 7 detik; tujuannya memastikan informasi paling meyakinkan dan relevan adalah yang pertama kali tertangkap mata recruiter."
+          }
+        ]
+      },
+      "quantify-achievements": {
+        "title": "Cara Mengukur Pencapaian Anda Walau Tidak Punya Angka Pasti",
+        "excerpt": "\"Meningkatkan efisiensi tim\" tidak menyampaikan apa-apa. Ini cara menambahkan angka nyata, bahkan di peran yang tidak secara alami menghasilkan data.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Kenapa recruiter lebih percaya angka daripada kata sifat",
+            "body": "\"Meningkatkan efisiensi tim\" bisa berarti apa saja. \"Memangkas waktu onboarding dari 3 minggu jadi 9 hari\" menceritakan sesuatu yang spesifik dan bisa diverifikasi. Angka memberi recruiter sesuatu yang konkret untuk dinilai, bukan sekadar meminta mereka percaya begitu saja."
+          },
+          {
+            "heading": "Mulai dari apa yang bisa dihitung, bukan apa yang pernah diukur",
+            "body": "Anda tidak butuh dashboard KPI formal untuk mengukur satu poin pencapaian. Jumlah anggota tim yang Anda kelola, jumlah proyek yang diselesaikan, frekuensi suatu tugas, besaran budget yang jadi tanggung jawab Anda, semua ini bisa dihitung meski Anda tidak pernah mencatat metrik formal saat itu."
+          },
+          {
+            "heading": "Perkirakan dengan jujur kalau angka pastinya tidak ada",
+            "body": "Kalau Anda memang tidak punya angka pasti, perkiraan yang wajar dan jujur tetap lebih berguna daripada tidak ada sama sekali. \"Mendukung tim sekitar 15 orang\" atau \"menangani perkiraan 30-40 tiket dukungan per minggu\" itu masuk akal dan spesifik. Yang penting perkiraannya jujur, bukan angka yang dikarang supaya terdengar mengesankan."
+          },
+          {
+            "heading": "Angka saja bukan keseluruhan cerita",
+            "body": "Angka tanpa konteks bisa mengecilkan pencapaian Anda. \"Meningkatkan pendaftaran 12%\" jadi lebih kuat kalau jelas itu dibandingkan baseline yang stagnan, atau terjadi di periode dengan budget marketing yang justru menyusut. Kalau relevan, sebutkan singkat konteks yang membuat angka itu bermakna."
+          }
+        ]
+      },
+      "hard-skills-vs-soft-skills": {
+        "title": "Hard Skill vs. Soft Skill: Apa yang Sebenarnya Perlu Masuk Resume",
+        "excerpt": "Keduanya sama penting, tapi tidak ditulis di tempat yang sama, atau dengan cara yang sama.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Bedanya, secara singkat",
+            "body": "Hard skill itu spesifik, bisa diajarkan, dan biasanya bisa diverifikasi: bahasa pemrograman, sertifikasi, kefasihan pakai tool seperti Excel atau Figma. Soft skill itu perilaku: komunikasi, kepemimpinan, adaptabilitas. Keduanya penting buat employer, tapi butuh perlakuan yang sangat berbeda di resume."
+          },
+          {
+            "heading": "Hard skill: spesifik dan tulis apa adanya",
+            "body": "Bagian Skill khusus cocok untuk hard skill karena itu persis yang dicari pencarian kata kunci ATS maupun pindaian recruiter. Tulis apa adanya: \"SQL\", \"Adobe Premiere Pro\", \"Google Analytics\", bukan dimasukkan ke dalam kalimat panjang yang bisa terlewat saat dipindai."
+          },
+          {
+            "heading": "Soft skill: tunjukkan, jangan cuma klaim",
+            "body": "Menulis \"komunikator yang kuat\" sebagai poin itu gampang ditulis dan gampang diabaikan, semua orang mengklaim itu. Soft skill lebih terasa kalau ditunjukkan lewat pencapaian: \"Memimpin sinkronisasi mingguan lintas tim desain dan engineering untuk menyelesaikan konflik scope\" menunjukkan komunikasi dan kepemimpinan tanpa menyebut kedua kata itu sama sekali."
+          },
+          {
+            "heading": "Sesuaikan kombinasinya dengan posisi",
+            "body": "Posisi teknis yang berat di hard skill tetap butuh beberapa soft skill yang ditunjukkan, kebanyakan pekerjaan tetap melibatkan kerja dengan orang lain. Posisi yang berhadapan dengan orang dan berat di soft skill tetap diuntungkan dengan mencantumkan tool dan platform spesifik yang Anda kuasai. Tidak ada kategori yang boleh sama sekali absen."
+          }
+        ]
+      },
+      "resume-length": {
+        "title": "Satu Halaman atau Dua? Panjang Resume yang Sebenarnya Ideal",
+        "excerpt": "Aturan satu halaman belum mati, tapi juga tidak berlaku universal. Ini yang sebenarnya menentukan panjang yang tepat.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Aturan lama, dan kenapa itu berubah",
+            "body": "\"Cukup satu halaman\" masuk akal saat resume dicetak dan diserahkan langsung lewat meja. Sekarang, kebanyakan resume dibaca di layar atau diparsing software, dan halaman kedua yang tertata rapi tidak menambah beban apa pun untuk pembaca. Survei tahun 2025 terhadap lebih dari 1.000 profesional HR menemukan mayoritas kini menganggap satu sampai dua halaman itu wajar, pergeseran nyata dari ekspektasi satu-halaman-saja yang lama."
+          },
+          {
+            "heading": "Panjang seharusnya mengikuti pengalaman, bukan aturan baku",
+            "body": "Panduan paling berguna mengaitkan panjang dengan tahap karir: kandidat dengan pengalaman di bawah lima tahun umumnya muat nyaman dalam satu halaman, dan memaksakan lebih dari itu biasanya berarti mengisi dengan hal yang tidak perlu. Kandidat dengan lima tahun pengalaman relevan atau lebih, apalagi dengan beberapa peran yang layak dijelaskan detail, sering butuh dua halaman untuk memberi keadilan pada pengalaman itu tanpa memotong substansi nyata."
+          },
+          {
+            "heading": "Halaman kedua hanya membantu kalau setiap barisnya layak",
+            "body": "Dua halaman bukan izin untuk memasukkan semuanya. Setiap poin tetap harus bersaing memperebutkan perhatian recruiter yang terbatas. Kalau satu baris tidak mendukung argumen Anda untuk posisi spesifik ini, itu tidak layak masuk, entah di halaman satu atau dua."
+          },
+          {
+            "heading": "Kalau ragu, potong dulu sebelum menambah",
+            "body": "Kalau Anda tidak yakin apakah satu entri layak membuat resume jadi dua halaman, coba potong dulu. Resume satu halaman yang padat hampir selalu mengalahkan resume dua halaman yang diisi hal-hal pengisi."
+          }
+        ]
+      },
+      "career-gap": {
+        "title": "Cara Menjelaskan Jeda Karir Tanpa Perlu Minta Maaf",
+        "excerpt": "Jeda di resume tidak otomatis jadi red flag, cara Anda membingkainya yang menentukan.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Tips Karir",
+        "sections": [
+          {
+            "heading": "Recruiter melihat jeda karir lebih sering dari yang Anda kira",
+            "body": "Jeda karir karena mengurus keluarga, kesehatan, PHK, melanjutkan studi, atau pasar kerja yang sulit itu umum, bukan pengecualian langka. Kebanyakan recruiter sudah melihat jauh lebih banyak jeda dibanding riwayat kerja yang sempurna berkesinambungan. Masalahnya biasanya bukan jedanya itu sendiri, tapi jeda yang tidak dijelaskan sehingga terkesan ada yang disembunyikan."
+          },
+          {
+            "heading": "Jelaskan singkat, jangan berlebihan menjelaskan",
+            "body": "Satu baris singkat dan faktual sudah cukup: \"Mengambil jeda karir 10 bulan untuk mengurus keluarga\" atau \"Fokus pada program sertifikasi intensif dari Maret sampai November.\" Anda tidak berutang penjelasan panjang lebar. Menjelaskan berlebihan justru bisa menandakan lebih banyak rasa tidak aman soal jeda itu dibanding jedanya sendiri."
+          },
+          {
+            "heading": "Kalau waktu itu dipakai produktif, sebutkan, singkat saja",
+            "body": "Kalau selama jeda ada kerja freelance, volunteer, kursus, atau proyek pribadi, satu baris penyebutan menambah konteks yang berguna tanpa menjadikannya pusat perhatian resume. Kalau tidak ada, itu juga tidak masalah, kejujuran lebih baik daripada penjelasan yang dipaksakan."
+          },
+          {
+            "heading": "Biarkan wawancara yang menyelesaikan sisa ceritanya",
+            "body": "Resume tidak perlu menjawab semua pertanyaan soal jeda, cukup tidak memicu kekhawatiran yang tidak perlu. Simpan cerita lengkap, dan rasa percaya diri Anda menceritakannya, untuk sesi wawancara langsung."
+          }
+        ]
+      },
+      "linkedin-vs-resume": {
+        "title": "Profil LinkedIn vs. Resume: Bedanya Apa, dan Kenapa Itu Penting",
+        "excerpt": "Keduanya menceritakan kisah karir yang sama, tapi untuk pembaca dan momen yang berbeda.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Tips Karir",
+        "sections": [
+          {
+            "heading": "Pembaca beda, tujuan beda",
+            "body": "Resume dibaca oleh seseorang yang sudah punya posisi spesifik di kepala dan sedang memutuskan apakah Anda cocok untuk itu. Profil LinkedIn seringkali jadi hal pertama yang ditemukan recruiter sebelum ada posisi spesifik di meja, atau hal yang dicek hiring manager setelah resume Anda sudah meninggalkan kesan. Orang yang sama, pekerjaan yang berbeda."
+          },
+          {
+            "heading": "Resume harus tajam; LinkedIn boleh lebih luas",
+            "body": "Resume paling efektif kalau disesuaikan ketat ke satu posisi, dipangkas ke yang relevan saja. LinkedIn punya ruang untuk lebih lengkap: peran lama yang tidak sedang Anda tawarkan untuk lamaran saat ini, proyek dan minat yang menunjukkan keluasan, rekomendasi dari kolega lama yang tidak bisa dimuat di resume."
+          },
+          {
+            "heading": "Jaga faktanya tetap konsisten, meski framing-nya beda",
+            "body": "Jabatan, nama perusahaan, dan tanggal harus cocok di keduanya. Ketidakcocokan, bahkan yang tidak disengaja dari update lama, adalah salah satu cara tercepat membuat recruiter balik lagi dan meneliti semua hal lain dengan lebih ketat."
+          },
+          {
+            "heading": "Pakai LinkedIn untuk hal yang tidak bisa dilakukan resume",
+            "body": "Resume tidak bisa menunjukkan aktivitas berkelanjutan, tapi profil LinkedIn bisa: postingan, komentar, dan keterlibatan di bidang Anda menandakan Anda aktif dan up-to-date, bukan sekadar dokumen statis. Ini juga tempat rekomendasi dan endorsement benar-benar menambah kredibilitas yang tidak bisa diberikan resume sendirian."
+          }
+        ]
+      },
+      "cover-letter-tone": {
+        "title": "Formal atau Santai? Cara Menyesuaikan Nada Cover Letter dengan Perusahaan",
+        "excerpt": "Pencapaian yang sama, ditulis dengan cara yang salah, bisa membuat Anda terlihat tidak cocok.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Cover Letter",
+        "sections": [
+          {
+            "heading": "Nada menandakan kecocokan sebelum isinya",
+            "body": "Recruiter yang membaca cover letter Anda secara tidak sadar bertanya pertanyaan kedua selain \"apakah dia bisa kerjakan tugasnya\": \"apakah dia cocok di sini?\" Surat yang terlalu formal dan kaku ke startup yang santai bisa terkesan tidak selaras dengan budaya, sama seperti surat yang terlalu santai ke korporat konservatif atau BUMN bisa terkesan kurang persiapan."
+          },
+          {
+            "heading": "Baca deskripsi lowongan untuk petunjuk nada, bukan cuma requirement",
+            "body": "Deskripsi lowongan itu sendiri adalah contoh nada. Bahasa formal dan terstruktur dengan banyak syarat kualifikasi biasanya menandakan pembacaan formal lebih aman. Copy yang santai dan penuh personality, terutama di startup, seringkali jadi undangan untuk menulis balik dengan energi yang sama."
+          },
+          {
+            "heading": "Formal tidak berarti kaku, dan santai tidak berarti tidak profesional",
+            "body": "Cover letter formal tetap bisa hangat dan spesifik, cuma menghindari bahasa gaul dan menjaga struktur kalimat lebih tradisional. Cover letter santai tetap harus ditulis dengan baik dan bebas typo, santai itu register bahasa, bukan izin untuk sembarangan."
+          },
+          {
+            "heading": "Kalau ragu, defaultnya sedikit lebih formal",
+            "body": "Lebih mudah pulih dari cover letter yang terkesan sedikit lebih rapi dibanding budaya perusahaan daripada yang terkesan kurang siap untuknya. Kalau sinyalnya campur aduk, condong ke formal adalah pilihan default yang lebih aman."
+          }
+        ]
+      },
+      "tailor-resume-per-job": {
+        "title": "Cara Menyesuaikan Satu Resume untuk Berbagai Lowongan Tanpa Mulai dari Nol",
+        "excerpt": "Anda tidak butuh resume baru untuk setiap lamaran, Anda butuh satu yang bisa cepat beradaptasi.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Resume",
+        "sections": [
+          {
+            "heading": "Kenapa resume generik tunggal kurang efektif",
+            "body": "Resume yang ditulis untuk melamar secara luas, tidak ke posisi tertentu, akhirnya tidak berbicara jelas ke siapa pun. Recruiter dan pencocokan kata kunci ATS sama-sama merespons kespesifikan: bahasa yang mencerminkan deskripsi lowongan sebenarnya, pencapaian yang dibingkai sesuai apa yang dipedulikan posisi tertentu itu."
+          },
+          {
+            "heading": "Bangun versi induk dulu",
+            "body": "Simpan satu versi resume yang komprehensif, dengan semua peran, poin, dan pencapaian yang mungkin ingin Anda pakai kapan saja. Ini bukan versi yang dikirim ke mana pun, ini bahan sumber Anda. Menyesuaikan jadi soal memilih dan menyusun ulang dari versi induk ini, bukan menulis dari halaman kosong setiap kali."
+          },
+          {
+            "heading": "Cocokkan bahasa dengan deskripsi lowongan, bukan cuma tanggung jawabnya",
+            "body": "Kalau lowongan bilang \"manajemen stakeholder\" dan resume induk Anda bilang \"bekerja dengan klien\", selaraskan kata-katanya. Ini bukan ketidakjujuran, ini menerjemahkan pengalaman nyata Anda ke kosakata yang sebenarnya dicari pembaca, dan ATS yang memindainya."
+          },
+          {
+            "heading": "Susun ulang sebelum menulis ulang",
+            "body": "Penyesuaian tercepat seringkali bukan tulisan baru, tapi penyusunan ulang. Pindahkan poin dan peran paling relevan ke atas, dorong yang kurang relevan ke bawah atau potong untuk lamaran spesifik ini. Pindaian pertama recruiter paling penting, taruh kecocokan terbaik Anda untuk posisi ini di tempat yang akan tertangkap pindaian itu."
           }
         ]
       }
