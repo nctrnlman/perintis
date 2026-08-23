@@ -72,6 +72,28 @@
           "skillsLabel": "Skill",
           "skills": ["Figma", "Design System", "User Research"]
         }
+      },
+      "coverLetter": {
+        "eyebrow": "Cover Letter",
+        "headline": "Setiap lowongan berbeda. Cover letter Anda pun seharusnya begitu.",
+        "subhead": "Tempel deskripsi lowongan, dapatkan draf cover letter dari data Profil Anda yang sebenarnya, bukan template generik, siap diedit dan dikirim.",
+        "bullets": [
+          "Personal sesuai perusahaan dan posisi dari lowongan yang Anda tempel",
+          "Pilih nada formal atau santai, dan panjang singkat atau standar",
+          "Simpan, edit kapan saja, lalu unduh sebagai PDF atau Word"
+        ],
+        "cta": "Buat Cover Letter Anda",
+        "preview": {
+          "companyLabel": "Acme Corp",
+          "positionLabel": "Product Designer",
+          "greetingLine": "Kepada Tim Rekrutmen Acme Corp,",
+          "bodyLines": [
+            "Saya sangat tertarik melamar posisi Product Designer...",
+            "Di posisi saya saat ini, saya memimpin redesain yang..."
+          ],
+          "pdfLabel": "PDF",
+          "wordLabel": "Word"
+        }
       }
     },
     "reasons": {

@@ -72,6 +72,28 @@
           "skillsLabel": "Skills",
           "skills": ["Figma", "Design System", "User Research"]
         }
+      },
+      "coverLetter": {
+        "eyebrow": "Cover Letter",
+        "headline": "Every job posting is different. Your cover letter should be too.",
+        "subhead": "Paste in a job posting and get a cover letter drafted from your real Profile data, not generic filler, ready to edit and send.",
+        "bullets": [
+          "Personalized to the company and role from the job posting you paste in",
+          "Choose a formal or casual tone, and a short or standard length",
+          "Save it, edit it anytime, then export as PDF or Word"
+        ],
+        "cta": "Draft Your Cover Letter",
+        "preview": {
+          "companyLabel": "Acme Corp",
+          "positionLabel": "Product Designer",
+          "greetingLine": "Dear Hiring Team at Acme Corp,",
+          "bodyLines": [
+            "I'm excited to apply for the Product Designer role...",
+            "In my current position, I led a redesign that..."
+          ],
+          "pdfLabel": "PDF",
+          "wordLabel": "Word"
+        }
       }
     },
     "reasons": {

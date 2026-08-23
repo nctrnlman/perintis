@@ -10,10 +10,14 @@ import {
   SearchCheck,
   ShieldCheck,
 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
+import { AtsPreviewCard } from "@/components/marketing/ats-preview-card";
+import { ResumePreviewCard } from "@/components/marketing/resume-preview-card";
+import { CoverLetterPreviewCard } from "@/components/marketing/cover-letter-preview-card";
 
 const reasonIcons = [SearchCheck, Languages, BadgeCheck];
 const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
@@ -34,6 +38,49 @@ export default async function HomePage({
   const reasons = t.raw("reasons.items") as { title: string; description: string }[];
   const coreFeatures = t.raw("core.items") as { title: string; description: string }[];
   const upcomingModules = t.raw("upcoming.items") as string[];
+  const atsShowcase = t.raw("showcase.atsCheck") as {
+    eyebrow: string;
+    headline: string;
+    subhead: string;
+    bullets: string[];
+    cta: string;
+    preview: {
+      tierLabel: string;
+      summaryLabel: string;
+      matchedLabel: string;
+      missingLabel: string;
+    };
+  };
+  const resumeShowcase = t.raw("showcase.resumeBuilder") as {
+    eyebrow: string;
+    headline: string;
+    subhead: string;
+    bullets: string[];
+    cta: string;
+    preview: {
+      name: string;
+      role: string;
+      experienceLabel: string;
+      bullets: string[];
+      skillsLabel: string;
+      skills: string[];
+    };
+  };
+  const coverLetterShowcase = t.raw("showcase.coverLetter") as {
+    eyebrow: string;
+    headline: string;
+    subhead: string;
+    bullets: string[];
+    cta: string;
+    preview: {
+      companyLabel: string;
+      positionLabel: string;
+      greetingLine: string;
+      bodyLines: string[];
+      pdfLabel: string;
+      wordLabel: string;
+    };
+  };
 
   return (
     <>
@@ -65,6 +112,124 @@ export default async function HomePage({
             />
           </div>
         </Reveal>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                {atsShowcase.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {atsShowcase.headline}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{atsShowcase.subhead}</p>
+              <ul className="mt-6 space-y-3">
+                {atsShowcase.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-foreground" />
+                    <span className="text-muted-foreground">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                size="lg"
+                className="mt-8"
+                nativeButton={false}
+                render={<Link href="/register">{atsShowcase.cta}</Link>}
+              />
+            </Reveal>
+            <Reveal delay={150}>
+              <AtsPreviewCard
+                tierLabel={atsShowcase.preview.tierLabel}
+                summaryLabel={atsShowcase.preview.summaryLabel}
+                matchedLabel={atsShowcase.preview.matchedLabel}
+                missingLabel={atsShowcase.preview.missingLabel}
+              />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal className="lg:order-2">
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                {resumeShowcase.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {resumeShowcase.headline}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{resumeShowcase.subhead}</p>
+              <ul className="mt-6 space-y-3">
+                {resumeShowcase.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-foreground" />
+                    <span className="text-muted-foreground">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                size="lg"
+                className="mt-8"
+                nativeButton={false}
+                render={<Link href="/register">{resumeShowcase.cta}</Link>}
+              />
+            </Reveal>
+            <Reveal delay={150} className="lg:order-1">
+              <ResumePreviewCard
+                name={resumeShowcase.preview.name}
+                role={resumeShowcase.preview.role}
+                experienceLabel={resumeShowcase.preview.experienceLabel}
+                bullets={resumeShowcase.preview.bullets}
+                skillsLabel={resumeShowcase.preview.skillsLabel}
+                skills={resumeShowcase.preview.skills}
+              />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                {coverLetterShowcase.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {coverLetterShowcase.headline}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{coverLetterShowcase.subhead}</p>
+              <ul className="mt-6 space-y-3">
+                {coverLetterShowcase.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-foreground" />
+                    <span className="text-muted-foreground">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button
+                size="lg"
+                className="mt-8"
+                nativeButton={false}
+                render={<Link href="/register">{coverLetterShowcase.cta}</Link>}
+              />
+            </Reveal>
+            <Reveal delay={150}>
+              <CoverLetterPreviewCard
+                companyLabel={coverLetterShowcase.preview.companyLabel}
+                positionLabel={coverLetterShowcase.preview.positionLabel}
+                greetingLine={coverLetterShowcase.preview.greetingLine}
+                bodyLines={coverLetterShowcase.preview.bodyLines}
+                pdfLabel={coverLetterShowcase.preview.pdfLabel}
+                wordLabel={coverLetterShowcase.preview.wordLabel}
+              />
+            </Reveal>
+          </div>
+        </div>
       </section>
 
       <section className="bg-card py-24">
