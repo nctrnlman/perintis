@@ -6,6 +6,7 @@ import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { deleteResumeDocument } from "@/app/[locale]/(app)/resume-builder/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 export function DeleteResumeButton({ id }: { id: string }) {
   const t = useTranslations("resumeBuilder.list");
@@ -18,6 +19,7 @@ export function DeleteResumeButton({ id }: { id: string }) {
         toast.add({ title: t("toastDeleteError"), type: "error" });
         return;
       }
+      trackEvent("resume_deleted");
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }

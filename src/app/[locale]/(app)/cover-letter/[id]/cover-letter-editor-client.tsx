@@ -10,6 +10,7 @@ import { toast } from "@/components/ui/toast";
 import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 import { SaveStatus } from "@/components/profile/save-status";
 import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
+import { trackEvent } from "@/lib/analytics-events";
 import { deleteCoverLetter, updateCoverLetterFields } from "../actions";
 
 interface CoverLetterEditorClientProps {
@@ -45,6 +46,7 @@ export function CoverLetterEditorClient({
         toast.add({ title: t("toastDeleteError"), type: "error" });
         return;
       }
+      trackEvent("cover_letter_deleted");
       router.push("/cover-letter");
     });
   }
@@ -101,14 +103,27 @@ export function CoverLetterEditorClient({
         <div className="flex gap-3">
           <Button
             variant="outline"
-            render={<a href={`/cover-letter/${token}/pdf`} target="_blank" rel="noreferrer" />}
+            render={
+              <a
+                href={`/cover-letter/${token}/pdf`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent("cover_letter_export", { format: "pdf" })}
+              />
+            }
             nativeButton={false}
           >
             {t("downloadPdfButton")}
           </Button>
           <Button
             variant="outline"
-            render={<a href={`/cover-letter/${token}/docx`} download />}
+            render={
+              <a
+                href={`/cover-letter/${token}/docx`}
+                download
+                onClick={() => trackEvent("cover_letter_export", { format: "word" })}
+              />
+            }
             nativeButton={false}
           >
             {t("downloadWordButton")}

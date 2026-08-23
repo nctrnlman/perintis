@@ -17,6 +17,7 @@ import { SkillsSection } from "@/components/resume-builder/skills-section";
 import { CertificationsSection } from "@/components/resume-builder/certifications-section";
 import { LanguagesSection } from "@/components/resume-builder/languages-section";
 import { ProjectsSection } from "@/components/resume-builder/projects-section";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface BuilderClientProps {
   id: string;
@@ -38,6 +39,7 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
         toast.add({ title: t("toastSaveError"), type: "error" });
         return;
       }
+      trackEvent("resume_saved");
       toast.add({ title: t("toastSaveSuccess"), type: "success" });
     });
   }
@@ -91,14 +93,27 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
         <div className="flex gap-3">
           <Button
             variant="outline"
-            render={<a href={`/resume-builder/${token}/pdf`} target="_blank" rel="noreferrer" />}
+            render={
+              <a
+                href={`/resume-builder/${token}/pdf`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent("resume_pdf_export", { action: "preview" })}
+              />
+            }
             nativeButton={false}
           >
             {t("previewButton")}
           </Button>
           <Button
             variant="outline"
-            render={<a href={`/resume-builder/${token}/pdf`} download={`${title}.pdf`} />}
+            render={
+              <a
+                href={`/resume-builder/${token}/pdf`}
+                download={`${title}.pdf`}
+                onClick={() => trackEvent("resume_pdf_export", { action: "download" })}
+              />
+            }
             nativeButton={false}
           >
             {t("downloadButton")}

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
+import { trackEvent } from "@/lib/analytics-events";
 
 function getInitials(name: string | null, email: string): string {
   if (name) {
@@ -39,6 +40,7 @@ export function UserMenu({
 
   async function handleLogout() {
     await supabase.auth.signOut();
+    trackEvent("logout");
     toast.add({ title: t("toastLoggedOut"), type: "info" });
     router.push("/login");
     router.refresh();

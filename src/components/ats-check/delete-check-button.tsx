@@ -5,21 +5,21 @@ import { useTranslations } from "next-intl";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
-import { deleteCoverLetter } from "@/app/[locale]/(app)/cover-letter/actions";
+import { deleteAtsCheckAnalysis } from "@/app/[locale]/(app)/ats-check/actions";
 import { trackEvent } from "@/lib/analytics-events";
 
-export function DeleteCoverLetterButton({ id }: { id: string }) {
-  const t = useTranslations("coverLetter.list");
+export function DeleteCheckButton({ id }: { id: string }) {
+  const t = useTranslations("ats.list");
   const [isPending, startTransition] = useTransition();
 
   function handleDelete() {
     startTransition(async () => {
-      const result = await deleteCoverLetter(id);
+      const result = await deleteAtsCheckAnalysis(id);
       if ("error" in result) {
         toast.add({ title: t("toastDeleteError"), type: "error" });
         return;
       }
-      trackEvent("cover_letter_deleted");
+      trackEvent("ats_check_deleted");
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }

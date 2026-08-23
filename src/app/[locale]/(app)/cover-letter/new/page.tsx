@@ -11,6 +11,7 @@ import { toast } from "@/components/ui/toast";
 import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 import { stripHtml } from "@/lib/resume-builder/strip-html";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics-events";
 import { generateCoverLetter } from "../actions";
 
 type Tone = "formal" | "casual";
@@ -67,6 +68,7 @@ export default function NewCoverLetterPage() {
             description: err.message,
           }),
         });
+        trackEvent("generate_cover_letter", { tone, length });
         router.push(`/cover-letter/${result.token}`);
       } catch {
         // toast.promise already surfaced the error toast

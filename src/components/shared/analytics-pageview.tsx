@@ -3,12 +3,6 @@
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 /**
  * The Google Analytics script only fires an automatic page_view on the very
  * first load. Next.js App Router navigations are client-side (no full page

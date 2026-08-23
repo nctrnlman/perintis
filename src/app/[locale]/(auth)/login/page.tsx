@@ -12,6 +12,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { toast } from "@/components/ui/toast";
 import { createClient } from "@/lib/supabase/client";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
+import { trackEvent } from "@/lib/analytics-events";
 
 export default function LoginPage() {
   const t = useTranslations("auth.login");
@@ -41,6 +42,7 @@ export default function LoginPage() {
       return;
     }
 
+    trackEvent("login", { method: "email" });
     toast.add({ title: t("toastSuccessTitle"), type: "success" });
     router.push("/dashboard");
   }
