@@ -3,6 +3,11 @@
     "defaultTitle": "Perintis: every great career starts with a first step",
     "description": "Perintis is an AI-powered career toolkit for Indonesian jobseekers: resume optimization, ATS compatibility checks, mock interviews, and application tracking, with transparent AI reasoning."
   },
+  "cookieConsent": {
+    "message": "We use cookies for analytics, to understand how Perintis is used and improve it. No personal data is sold.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "nav": {
     "login": "Log in",
     "register": "Sign up",

@@ -5,6 +5,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { Toaster } from "@/components/ui/toast";
+import { CookieConsentProvider } from "@/components/shared/cookie-consent-provider";
+import { CookieConsentBanner } from "@/components/shared/cookie-consent-banner";
+import { Analytics } from "@/components/shared/analytics";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -62,15 +65,19 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          <CookieConsentProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+            <CookieConsentBanner />
+            <Analytics />
+          </CookieConsentProvider>
         </NextIntlClientProvider>
       </body>
     </html>

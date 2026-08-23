@@ -3,6 +3,11 @@
     "defaultTitle": "Perintis: setiap karir besar, dimulai dari langkah pertama",
     "description": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia: optimasi resume, cek kompatibilitas ATS, simulasi wawancara, dan pelacakan lamaran, dengan reasoning AI yang transparan."
   },
+  "cookieConsent": {
+    "message": "Kami menggunakan cookie untuk analytics, agar bisa memahami cara Perintis digunakan dan terus memperbaikinya. Tidak ada data pribadi yang dijual.",
+    "accept": "Setuju",
+    "decline": "Tolak"
+  },
   "nav": {
     "login": "Masuk",
     "register": "Daftar",
