@@ -33,12 +33,17 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
   return {
     title: {
       default: t("defaultTitle"),
       template: "%s | Perintis",
     },
     description: t("description"),
+    ...(googleSiteVerification
+      ? { verification: { google: googleSiteVerification } }
+      : {}),
   };
 }
 
