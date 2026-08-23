@@ -987,18 +987,32 @@
   "about": {
     "metaTitle": "About | Perintis",
     "metaDescription": "Perintis is an AI-powered career toolkit for Indonesian job seekers, built on transparency: no fabricated data, no invented achievements, ever.",
-    "title": "About Perintis",
-    "intro": "Perintis is an AI-powered career toolkit built for Indonesian job seekers. It's a solo, independent project, built and maintained in the open by one developer.",
+    "eyebrow": "About Perintis",
+    "headline": "The job hunt shouldn't be a black box.",
+    "intro": "Perintis is an AI-powered career toolkit built for Indonesian job seekers. It's a solo, independent project, built and maintained in the open by one developer who got tired of watching qualified people get filtered out by software they couldn't see.",
     "missionHeading": "Why Perintis exists",
     "missionBody": "Most resumes never reach a human. An Applicant Tracking System reads them first, and rejects qualified people over formatting issues they never even knew existed. Perintis exists to close that gap: to give job seekers the same visibility into their resume that recruiters and their software already have.",
-    "principlesHeading": "Built on transparency",
+    "principlesHeading": "What Perintis stands for",
     "principles": [
-      "Transparent: every score comes with reasoning you can trace yourself, not a number that appears out of nowhere.",
-      "Contextual: bilingual, and built for startup, corporate, and state-owned enterprise interview culture in Indonesia.",
-      "Honest: Perintis never adds an achievement that isn't in your data. If information is missing, it's flagged, never guessed."
+      {
+        "title": "Transparent",
+        "description": "Every score comes with reasoning you can trace yourself, not a number that appears out of nowhere."
+      },
+      {
+        "title": "Contextual",
+        "description": "Bilingual, and built for startup, corporate, and state-owned enterprise interview culture in Indonesia."
+      },
+      {
+        "title": "Honest",
+        "description": "Perintis never adds an achievement that isn't in your data. If information is missing, it's flagged, never guessed."
+      }
     ],
+    "offeringsHeading": "What's live today",
+    "offeringsDescription": "Three tools, all free, with more on the way.",
     "whoHeading": "Who's behind it",
-    "whoBody": "Perintis is built by Rhazes Devino under Rhazes Labs. Questions, feedback, or ideas? Visit the <contact>Contact page</contact>, every message is read personally."
+    "whoBody": "Perintis is designed, built, and maintained by one person, from the first line of code to the copy on this page. Questions, feedback, or ideas are always welcome.",
+    "closingHeading": "Ready to see it for yourself?",
+    "closingCta": "Get Started Free"
   },
   "pricing": {
     "metaTitle": "Pricing | Perintis",

@@ -987,18 +987,32 @@
   "about": {
     "metaTitle": "Tentang Kami | Perintis",
     "metaDescription": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia, dibangun di atas prinsip transparansi: tanpa data yang dikarang, tanpa pencapaian yang direkayasa.",
-    "title": "Tentang Perintis",
-    "intro": "Perintis adalah toolkit karir berbasis AI yang dibangun untuk pencari kerja Indonesia. Ini proyek independen yang dikerjakan sendiri, dibangun dan dikelola secara terbuka oleh satu developer.",
+    "eyebrow": "Tentang Perintis",
+    "headline": "Pencarian kerja tidak seharusnya jadi kotak hitam.",
+    "intro": "Perintis adalah toolkit karir berbasis AI yang dibangun untuk pencari kerja Indonesia. Ini proyek independen yang dikerjakan sendiri, dibangun dan dikelola secara terbuka oleh satu developer yang lelah melihat kandidat yang sebenarnya memenuhi syarat tersaring oleh software yang tidak bisa mereka lihat.",
     "missionHeading": "Kenapa Perintis Ada",
     "missionBody": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Applicant Tracking System membacanya lebih dulu, dan menolak kandidat yang sebenarnya memenuhi syarat karena masalah format yang bahkan tidak mereka sadari. Perintis hadir untuk menutup kesenjangan itu: memberi pencari kerja visibilitas yang sama atas resume mereka, seperti yang sudah dimiliki recruiter dan software mereka.",
-    "principlesHeading": "Dibangun di Atas Transparansi",
+    "principlesHeading": "Apa yang Diperjuangkan Perintis",
     "principles": [
-      "Transparan: setiap skor disertai alasan yang bisa Anda telusuri sendiri, bukan angka yang muncul begitu saja.",
-      "Kontekstual: dwibahasa, dan dibangun untuk budaya wawancara startup, korporat, maupun BUMN di Indonesia.",
-      "Jujur: Perintis tidak pernah menambahkan pencapaian yang tidak ada di data Anda. Kalau informasinya tidak ada, itu ditandai, bukan ditebak."
+      {
+        "title": "Transparan",
+        "description": "Setiap skor disertai alasan yang bisa Anda telusuri sendiri, bukan angka yang muncul begitu saja."
+      },
+      {
+        "title": "Kontekstual",
+        "description": "Dwibahasa, dan dibangun untuk budaya wawancara startup, korporat, maupun BUMN di Indonesia."
+      },
+      {
+        "title": "Jujur",
+        "description": "Perintis tidak pernah menambahkan pencapaian yang tidak ada di data Anda. Kalau informasinya tidak ada, itu ditandai, bukan ditebak."
+      }
     ],
+    "offeringsHeading": "Yang Sudah Aktif Sekarang",
+    "offeringsDescription": "Tiga tools, semuanya gratis, dengan lebih banyak lagi yang akan datang.",
     "whoHeading": "Siapa di Baliknya",
-    "whoBody": "Perintis dibangun oleh Rhazes Devino di bawah Rhazes Labs. Ada pertanyaan, masukan, atau ide? Kunjungi <contact>halaman Kontak</contact>, setiap pesan dibaca langsung."
+    "whoBody": "Perintis dirancang, dibangun, dan dikelola oleh satu orang, dari baris kode pertama sampai copy di halaman ini. Pertanyaan, masukan, atau ide selalu diterima dengan senang hati.",
+    "closingHeading": "Siap mencobanya sendiri?",
+    "closingCta": "Mulai Gratis"
   },
   "pricing": {
     "metaTitle": "Harga | Perintis",
