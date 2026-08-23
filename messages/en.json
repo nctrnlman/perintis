@@ -1033,6 +1033,10 @@
     "heading": "From the blog",
     "description": "10 practical, no-fluff guides on resumes, cover letters, and getting past the ATS.",
     "backToBlog": "Back to blog",
+    "readingTime": "{minutes} min read",
+    "ctaHeading": "Ready to put this into practice?",
+    "ctaButton": "Try {feature} free",
+    "moreFromBlog": "More from the blog",
     "posts": {
       "ats-friendly-resume": {
         "title": "How to Write a Resume That Actually Passes an ATS",

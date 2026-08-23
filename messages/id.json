@@ -1033,6 +1033,10 @@
     "heading": "Dari blog kami",
     "description": "10 panduan praktis dan langsung ke intinya soal resume, cover letter, dan cara lolos ATS.",
     "backToBlog": "Kembali ke blog",
+    "readingTime": "{minutes} menit baca",
+    "ctaHeading": "Siap mempraktikkannya?",
+    "ctaButton": "Coba {feature} gratis",
+    "moreFromBlog": "Artikel lainnya",
     "posts": {
       "ats-friendly-resume": {
         "title": "Cara Membuat Resume yang Benar-Benar Lolos ATS",
