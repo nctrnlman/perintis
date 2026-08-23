@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { LanguageToggle } from "@/components/shared/language-toggle";
+import { FeaturesDropdown } from "@/components/layout/features-dropdown";
 
 export async function Navbar() {
   const t = await getTranslations("nav");
@@ -22,15 +23,7 @@ export async function Navbar() {
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          <Link href="/features/ats-check" className="hover:text-foreground">
-            {t("atsCheck")}
-          </Link>
-          <Link href="/features/resume-builder" className="hover:text-foreground">
-            {t("resumeBuilder")}
-          </Link>
-          <Link href="/features/cover-letter" className="hover:text-foreground">
-            {t("coverLetter")}
-          </Link>
+          <FeaturesDropdown />
           <Link href="/contact" className="hover:text-foreground">
             {t("contact")}
           </Link>
