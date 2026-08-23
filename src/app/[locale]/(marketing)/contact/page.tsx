@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Handshake } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/shared/reveal";
 import { DEVELOPER_LINKS } from "@/lib/developer-links";
+
+const BUSINESS_EMAIL = "rhazesd@gmail.com";
 
 export async function generateMetadata({
   params,
@@ -21,6 +24,7 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
+  const businessMailto = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(t("businessEmailSubject"))}`;
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-24">
@@ -51,6 +55,24 @@ export default async function ContactPage({
               </a>
             ))}
           </div>
+        </div>
+      </Reveal>
+
+      <Reveal delay={150}>
+        <div className="mt-6 rounded-2xl border border-border p-8">
+          <div className="flex size-11 items-center justify-center rounded-full bg-muted">
+            <Handshake className="size-5 text-foreground" />
+          </div>
+          <h2 className="mt-5 text-xl font-semibold">{t("businessTitle")}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {t("businessDescription")}
+          </p>
+          <a
+            href={businessMailto}
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm transition-colors hover:bg-muted"
+          >
+            {t("businessCta")}
+          </a>
         </div>
       </Reveal>
     </div>

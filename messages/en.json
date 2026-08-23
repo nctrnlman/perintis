@@ -957,7 +957,11 @@
     "description": "Questions, feedback, or found a bug? Reach out directly, I read everything myself.",
     "developerLabel": "Built by",
     "about": "Perintis is built and maintained by Rhazes Devino, an independent developer building tools for Indonesian job seekers under Rhazes Labs.",
+    "businessTitle": "Partnerships & Sponsorship",
+    "businessDescription": "Interested in a partnership, sponsorship, or other collaboration with Perintis? Send a message with your proposal, I'd love to hear about it.",
+    "businessCta": "Reach Out for Partnerships",
+    "businessEmailSubject": "Partnership Inquiry - Perintis",
     "metaTitle": "Contact | Perintis",
-    "metaDescription": "Get in touch with the developer behind Perintis, questions, feedback, and bug reports welcome."
+    "metaDescription": "Get in touch with the developer behind Perintis, questions, feedback, partnerships, and bug reports welcome."
   }
 }

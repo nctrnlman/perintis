@@ -957,7 +957,11 @@
     "description": "Ada pertanyaan, masukan, atau menemukan bug? Hubungi langsung, saya baca semuanya sendiri.",
     "developerLabel": "Dibuat oleh",
     "about": "Perintis dibuat dan dikelola oleh Rhazes Devino, developer independen yang membangun tools untuk pencari kerja Indonesia di bawah Rhazes Labs.",
+    "businessTitle": "Kerja Sama & Sponsorship",
+    "businessDescription": "Tertarik menjalin kerja sama, sponsorship, atau kolaborasi lain dengan Perintis? Kirim pesan berisi proposal Anda, saya akan dengan senang hati mendengarkannya.",
+    "businessCta": "Hubungi untuk Kerja Sama",
+    "businessEmailSubject": "Penawaran Kerja Sama - Perintis",
     "metaTitle": "Kontak | Perintis",
-    "metaDescription": "Hubungi developer di balik Perintis, pertanyaan, masukan, dan laporan bug diterima dengan senang hati."
+    "metaDescription": "Hubungi developer di balik Perintis, pertanyaan, masukan, kerja sama, dan laporan bug diterima dengan senang hati."
   }
 }
