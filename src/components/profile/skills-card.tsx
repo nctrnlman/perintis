@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/toast";
 import { addSkill, deleteSkill } from "@/app/[locale]/(app)/profile/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface SkillItem {
   id: string;
@@ -27,9 +28,11 @@ export function SkillsCard({ skills }: SkillsCardProps) {
     startTransition(async () => {
       const result = await addSkill(formData);
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "skill", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "skill", action: "add" });
       toast.add({ title: t("toastAddSuccess"), type: "success" });
       formRef.current?.reset();
     });
@@ -42,6 +45,7 @@ export function SkillsCard({ skills }: SkillsCardProps) {
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "skill", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
@@ -73,22 +77,12 @@ export function SkillsCard({ skills }: SkillsCardProps) {
         </div>
       )}
 
-      <form
-        ref={formRef}
-        action={handleSubmit}
-        className="mt-6 flex flex-wrap items-end gap-3"
-      >
-        <div className="space-y-1.5">
+      <form ref={formRef} action={handleSubmit} className="mt-6 flex items-end gap-3">
+        <div className="flex-1 space-y-1.5">
           <label htmlFor="skill-name" className="text-xs text-muted-foreground">
             {t("nameLabel")}
           </label>
-          <Input id="skill-name" name="name" required className="w-40" />
-        </div>
-        <div className="space-y-1.5">
-          <label htmlFor="skill-category" className="text-xs text-muted-foreground">
-            {t("categoryLabel")}
-          </label>
-          <Input id="skill-category" name="category" className="w-40" />
+          <Input id="skill-name" name="name" required />
         </div>
         <Button type="submit" variant="outline" size="sm" disabled={isPending}>
           <Plus className="size-4" />

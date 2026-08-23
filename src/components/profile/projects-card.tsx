@@ -8,11 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
+import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
+import { SaveStatus } from "@/components/profile/save-status";
 import {
   addProject,
   deleteProject,
   updateProject,
 } from "@/app/[locale]/(app)/profile/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface ProjectItem {
   id: string;
@@ -27,13 +30,74 @@ interface ProjectsCardProps {
   projects: ProjectItem[];
 }
 
+function ProjectFields({ item }: { item: ProjectItem | null }) {
+  const t = useTranslations("profile.projects");
+
+  return (
+    <>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-1.5">
+          <Label htmlFor="proj-name">{t("nameLabel")}</Label>
+          <Input id="proj-name" name="name" defaultValue={item?.name ?? ""} required />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="proj-client">{t("clientLabel")}</Label>
+          <Input id="proj-client" name="client" defaultValue={item?.client ?? ""} />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="proj-role">{t("roleLabel")}</Label>
+          <Input id="proj-role" name="role" defaultValue={item?.role ?? ""} />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="proj-techStack">{t("techStackLabel")}</Label>
+          <Input
+            id="proj-techStack"
+            name="techStack"
+            defaultValue={item?.techStack.join(", ") ?? ""}
+          />
+        </div>
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="proj-bullets">{t("bulletsLabel")}</Label>
+        <Textarea
+          id="proj-bullets"
+          name="bullets"
+          defaultValue={item?.bullets.join("\n") ?? ""}
+          rows={4}
+        />
+      </div>
+    </>
+  );
+}
+
+function EditProjectForm({ item, onClose }: { item: ProjectItem; onClose: () => void }) {
+  const t = useTranslations("profile.projects");
+  const { formRef, status, handleChange } = useAutoSaveForm((formData) =>
+    updateProject(item.id, formData)
+  );
+
+  return (
+    <form
+      ref={formRef}
+      onChange={handleChange}
+      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+    >
+      <div className="flex items-center justify-end">
+        <SaveStatus status={status} />
+      </div>
+      <ProjectFields item={item} />
+      <Button type="button" variant="outline" onClick={onClose}>
+        {t("close")}
+      </Button>
+    </form>
+  );
+}
+
 export function ProjectsCard({ projects }: ProjectsCardProps) {
   const t = useTranslations("profile.projects");
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  const editingItem = projects.find((p) => p.id === editingId) ?? null;
 
   function openAddForm() {
     setEditingId(null);
@@ -50,21 +114,18 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
     setEditingId(null);
   }
 
-  function handleSubmit(formData: FormData) {
+  function handleAddSubmit(formData: FormData) {
     startTransition(async () => {
-      const result = editingId
-        ? await updateProject(editingId, formData)
-        : await addProject(formData);
+      const result = await addProject(formData);
 
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "project", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
 
-      toast.add({
-        title: editingId ? t("toastUpdateSuccess") : t("toastAddSuccess"),
-        type: "success",
-      });
+      trackEvent("profile_section_updated", { section: "project", action: "add" });
+      toast.add({ title: t("toastAddSuccess"), type: "success" });
       closeForm();
     });
   }
@@ -76,6 +137,7 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "project", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
@@ -104,7 +166,7 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
                 <div>
                   <h3 className="font-medium">
                     {proj.name}
-                    {proj.client ? ` – ${proj.client}` : ""}
+                    {proj.client ? ` · ${proj.client}` : ""}
                   </h3>
                   {proj.role && (
                     <p className="text-sm text-muted-foreground">{proj.role}</p>
@@ -148,47 +210,21 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
                   ))}
                 </div>
               )}
+
+              {editingId === proj.id && (
+                <EditProjectForm key={proj.id} item={proj} onClose={closeForm} />
+              )}
             </div>
           ))}
         </div>
       )}
 
-      {formOpen && (
+      {formOpen && editingId === null && (
         <form
-          action={handleSubmit}
+          action={handleAddSubmit}
           className="mt-6 space-y-4 rounded-2xl border border-border p-6"
         >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="proj-name">{t("nameLabel")}</Label>
-              <Input id="proj-name" name="name" defaultValue={editingItem?.name ?? ""} required />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="proj-client">{t("clientLabel")}</Label>
-              <Input id="proj-client" name="client" defaultValue={editingItem?.client ?? ""} />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="proj-role">{t("roleLabel")}</Label>
-              <Input id="proj-role" name="role" defaultValue={editingItem?.role ?? ""} />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="proj-techStack">{t("techStackLabel")}</Label>
-              <Input
-                id="proj-techStack"
-                name="techStack"
-                defaultValue={editingItem?.techStack.join(", ") ?? ""}
-              />
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="proj-bullets">{t("bulletsLabel")}</Label>
-            <Textarea
-              id="proj-bullets"
-              name="bullets"
-              defaultValue={editingItem?.bullets.join("\n") ?? ""}
-              rows={4}
-            />
-          </div>
+          <ProjectFields item={null} />
           <div className="flex gap-2">
             <Button type="submit" disabled={isPending}>
               {isPending ? t("saving") : t("save")}

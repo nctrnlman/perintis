@@ -38,6 +38,7 @@ export default function RegisterPage() {
     });
 
     if (error) {
+      trackEvent("sign_up_failed");
       toast.add({
         title: t("toastErrorTitle"),
         description: error.message,

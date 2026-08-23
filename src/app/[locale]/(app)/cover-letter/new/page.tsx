@@ -50,6 +50,7 @@ export default function NewCoverLetterPage() {
 
     const result = await generateCoverLetter(formData);
     if ("error" in result) {
+      trackEvent("generate_cover_letter_failed", { error: result.error });
       throw new Error(t("toastGenerateError"));
     }
     return result;

@@ -18,6 +18,7 @@ export function CreateResumeButton() {
     startTransition(async () => {
       const result = await createResumeDocument();
       if ("error" in result) {
+        trackEvent("resume_create_failed");
         toast.add({ title: t("toastCreateError"), type: "error" });
         return;
       }

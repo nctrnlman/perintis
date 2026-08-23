@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { AtsPreviewCard } from "@/components/marketing/ats-preview-card";
 import { ResumePreviewCard } from "@/components/marketing/resume-preview-card";
 import { CoverLetterPreviewCard } from "@/components/marketing/cover-letter-preview-card";
+import { TrackedLink } from "@/components/marketing/tracked-link";
 
 const reasonIcons = [SearchCheck, Languages, BadgeCheck];
 const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
@@ -102,13 +102,21 @@ export default async function HomePage({
             <Button
               size="lg"
               nativeButton={false}
-              render={<Link href="/register">{t("hero.ctaPrimary")}</Link>}
+              render={
+                <TrackedLink href="/register" cta="hero_primary">
+                  {t("hero.ctaPrimary")}
+                </TrackedLink>
+              }
             />
             <Button
               size="lg"
               variant="outline"
               nativeButton={false}
-              render={<Link href="/login">{t("hero.ctaSecondary")}</Link>}
+              render={
+                <TrackedLink href="/login" cta="hero_secondary">
+                  {t("hero.ctaSecondary")}
+                </TrackedLink>
+              }
             />
           </div>
         </Reveal>
@@ -137,7 +145,11 @@ export default async function HomePage({
                 size="lg"
                 className="mt-8"
                 nativeButton={false}
-                render={<Link href="/register">{atsShowcase.cta}</Link>}
+                render={
+                  <TrackedLink href="/register" cta="ats_check_showcase">
+                    {atsShowcase.cta}
+                  </TrackedLink>
+                }
               />
             </Reveal>
             <Reveal delay={150}>
@@ -175,7 +187,11 @@ export default async function HomePage({
                 size="lg"
                 className="mt-8"
                 nativeButton={false}
-                render={<Link href="/register">{resumeShowcase.cta}</Link>}
+                render={
+                  <TrackedLink href="/register" cta="resume_builder_showcase">
+                    {resumeShowcase.cta}
+                  </TrackedLink>
+                }
               />
             </Reveal>
             <Reveal delay={150} className="lg:order-1">
@@ -215,7 +231,11 @@ export default async function HomePage({
                 size="lg"
                 className="mt-8"
                 nativeButton={false}
-                render={<Link href="/register">{coverLetterShowcase.cta}</Link>}
+                render={
+                  <TrackedLink href="/register" cta="cover_letter_showcase">
+                    {coverLetterShowcase.cta}
+                  </TrackedLink>
+                }
               />
             </Reveal>
             <Reveal delay={150}>
@@ -331,7 +351,11 @@ export default async function HomePage({
             size="lg"
             className="mt-8"
             nativeButton={false}
-            render={<Link href="/register">{t("closing.cta")}</Link>}
+            render={
+              <TrackedLink href="/register" cta="closing">
+                {t("closing.cta")}
+              </TrackedLink>
+            }
           />
         </Reveal>
       </section>

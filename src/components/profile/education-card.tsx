@@ -7,11 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
+import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
+import { SaveStatus } from "@/components/profile/save-status";
 import {
   addEducation,
   deleteEducation,
   updateEducation,
 } from "@/app/[locale]/(app)/profile/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface EducationItem {
   id: string;
@@ -34,13 +37,79 @@ function toDateInputValue(date: Date | null): string {
   return date ? date.toISOString().slice(0, 10) : "";
 }
 
+function EducationFields({ item }: { item: EducationItem | null }) {
+  const t = useTranslations("profile.education");
+
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      <div className="space-y-1.5">
+        <Label htmlFor="edu-institution">{t("institutionLabel")}</Label>
+        <Input
+          id="edu-institution"
+          name="institution"
+          defaultValue={item?.institution ?? ""}
+          required
+        />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="edu-degree">{t("degreeLabel")}</Label>
+        <Input id="edu-degree" name="degree" defaultValue={item?.degree ?? ""} />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="edu-field">{t("fieldOfStudyLabel")}</Label>
+        <Input id="edu-field" name="fieldOfStudy" defaultValue={item?.fieldOfStudy ?? ""} />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="edu-start">{t("startDateLabel")}</Label>
+        <Input
+          id="edu-start"
+          name="startDate"
+          type="date"
+          defaultValue={toDateInputValue(item?.startDate ?? null)}
+          required
+        />
+      </div>
+      <div className="space-y-1.5">
+        <Label htmlFor="edu-end">{t("endDateLabel")}</Label>
+        <Input
+          id="edu-end"
+          name="endDate"
+          type="date"
+          defaultValue={toDateInputValue(item?.endDate ?? null)}
+        />
+      </div>
+    </div>
+  );
+}
+
+function EditEducationForm({ item, onClose }: { item: EducationItem; onClose: () => void }) {
+  const t = useTranslations("profile.education");
+  const { formRef, status, handleChange } = useAutoSaveForm((formData) =>
+    updateEducation(item.id, formData)
+  );
+
+  return (
+    <form
+      ref={formRef}
+      onChange={handleChange}
+      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+    >
+      <div className="flex items-center justify-end">
+        <SaveStatus status={status} />
+      </div>
+      <EducationFields item={item} />
+      <Button type="button" variant="outline" onClick={onClose}>
+        {t("close")}
+      </Button>
+    </form>
+  );
+}
+
 export function EducationCard({ educations }: EducationCardProps) {
   const t = useTranslations("profile.education");
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  const editingItem = educations.find((e) => e.id === editingId) ?? null;
 
   function openAddForm() {
     setEditingId(null);
@@ -57,21 +126,18 @@ export function EducationCard({ educations }: EducationCardProps) {
     setEditingId(null);
   }
 
-  function handleSubmit(formData: FormData) {
+  function handleAddSubmit(formData: FormData) {
     startTransition(async () => {
-      const result = editingId
-        ? await updateEducation(editingId, formData)
-        : await addEducation(formData);
+      const result = await addEducation(formData);
 
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "education", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
 
-      toast.add({
-        title: editingId ? t("toastUpdateSuccess") : t("toastAddSuccess"),
-        type: "success",
-      });
+      trackEvent("profile_section_updated", { section: "education", action: "add" });
+      toast.add({ title: t("toastAddSuccess"), type: "success" });
       closeForm();
     });
   }
@@ -83,6 +149,7 @@ export function EducationCard({ educations }: EducationCardProps) {
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "education", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
@@ -139,58 +206,21 @@ export function EducationCard({ educations }: EducationCardProps) {
                   </Button>
                 </div>
               </div>
+
+              {editingId === edu.id && (
+                <EditEducationForm key={edu.id} item={edu} onClose={closeForm} />
+              )}
             </div>
           ))}
         </div>
       )}
 
-      {formOpen && (
+      {formOpen && editingId === null && (
         <form
-          action={handleSubmit}
+          action={handleAddSubmit}
           className="mt-6 space-y-4 rounded-2xl border border-border p-6"
         >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="edu-institution">{t("institutionLabel")}</Label>
-              <Input
-                id="edu-institution"
-                name="institution"
-                defaultValue={editingItem?.institution ?? ""}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="edu-degree">{t("degreeLabel")}</Label>
-              <Input id="edu-degree" name="degree" defaultValue={editingItem?.degree ?? ""} />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="edu-field">{t("fieldOfStudyLabel")}</Label>
-              <Input
-                id="edu-field"
-                name="fieldOfStudy"
-                defaultValue={editingItem?.fieldOfStudy ?? ""}
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="edu-start">{t("startDateLabel")}</Label>
-              <Input
-                id="edu-start"
-                name="startDate"
-                type="date"
-                defaultValue={toDateInputValue(editingItem?.startDate ?? null)}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="edu-end">{t("endDateLabel")}</Label>
-              <Input
-                id="edu-end"
-                name="endDate"
-                type="date"
-                defaultValue={toDateInputValue(editingItem?.endDate ?? null)}
-              />
-            </div>
-          </div>
+          <EducationFields item={null} />
           <div className="flex gap-2">
             <Button type="submit" disabled={isPending}>
               {isPending ? t("saving") : t("save")}

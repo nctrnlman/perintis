@@ -11,6 +11,7 @@ import type { WorkExperienceEntry } from "@/lib/resume-builder/types";
 import { enhanceWorkExperienceBullets } from "@/app/[locale]/(app)/resume-builder/actions";
 import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 import { stripHtml } from "@/lib/resume-builder/strip-html";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface WorkExperienceSectionProps {
   entries: WorkExperienceEntry[];
@@ -44,9 +45,11 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
         entry.bullets
       );
       if ("error" in result) {
+        trackEvent("resume_bullet_enhance_failed");
         toast.add({ title: t("toastEnhanceError"), type: "error" });
         return;
       }
+      trackEvent("resume_bullet_enhanced");
       setSuggestions((prev) => ({ ...prev, [entry.id]: result.enhancedBullets }));
     });
   }
@@ -119,7 +122,7 @@ export function WorkExperienceSection({ entries, onChange }: WorkExperienceSecti
                 {entry.title || entry.company ? (
                   <>
                     {entry.title || t("titleLabelField")}
-                    {entry.company ? ` — ${entry.company}` : ""}
+                    {entry.company ? ` · ${entry.company}` : ""}
                   </>
                 ) : (
                   t("newEntryLabel")

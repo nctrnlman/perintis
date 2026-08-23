@@ -6,13 +6,16 @@ import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
+import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
+import { SaveStatus } from "@/components/profile/save-status";
 import {
   addWorkExperience,
   deleteWorkExperience,
   updateWorkExperience,
 } from "@/app/[locale]/(app)/profile/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface WorkExperienceItem {
   id: string;
@@ -37,13 +40,111 @@ function toDateInputValue(date: Date | null): string {
   return date ? date.toISOString().slice(0, 10) : "";
 }
 
+function ExperienceFields({
+  item,
+  onFieldChange,
+}: {
+  item: WorkExperienceItem | null;
+  onFieldChange?: () => void;
+}) {
+  const t = useTranslations("profile.workExperience");
+  const [description, setDescription] = useState(item?.description ?? "");
+
+  return (
+    <>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-1.5">
+          <Label htmlFor="we-title">{t("titleLabel")}</Label>
+          <Input id="we-title" name="title" defaultValue={item?.title ?? ""} required />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="we-company">{t("companyLabel")}</Label>
+          <Input id="we-company" name="company" defaultValue={item?.company ?? ""} required />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="we-location">{t("locationLabel")}</Label>
+          <Input id="we-location" name="location" defaultValue={item?.location ?? ""} />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="we-skills">{t("skillsUsedLabel")}</Label>
+          <Input
+            id="we-skills"
+            name="skillsUsed"
+            defaultValue={item?.skillsUsed.join(", ") ?? ""}
+          />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="we-start">{t("startDateLabel")}</Label>
+          <Input
+            id="we-start"
+            name="startDate"
+            type="date"
+            defaultValue={toDateInputValue(item?.startDate ?? null)}
+            required
+          />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="we-end">{t("endDateLabel")}</Label>
+          <Input
+            id="we-end"
+            name="endDate"
+            type="date"
+            defaultValue={toDateInputValue(item?.endDate ?? null)}
+          />
+        </div>
+        <p className="text-xs text-muted-foreground sm:col-span-2">{t("stillWorkingLabel")}</p>
+      </div>
+      <div className="space-y-1.5">
+        <Label>{t("descriptionLabel")}</Label>
+        <RichTextEditor
+          value={description}
+          onChange={(html) => {
+            setDescription(html);
+            onFieldChange?.();
+          }}
+          boldLabel={t("boldLabel")}
+          italicLabel={t("italicLabel")}
+          bulletListLabel={t("bulletListLabel")}
+          orderedListLabel={t("orderedListLabel")}
+          strikeLabel={t("strikeLabel")}
+          codeLabel={t("codeLabel")}
+          horizontalRuleLabel={t("horizontalRuleLabel")}
+          allowExtendedFormatting
+        />
+        <input type="hidden" name="description" value={description} readOnly />
+      </div>
+    </>
+  );
+}
+
+function EditExperienceForm({ item, onClose }: { item: WorkExperienceItem; onClose: () => void }) {
+  const t = useTranslations("profile.workExperience");
+  const { formRef, status, handleChange } = useAutoSaveForm((formData) =>
+    updateWorkExperience(item.id, formData)
+  );
+
+  return (
+    <form
+      ref={formRef}
+      onChange={handleChange}
+      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+    >
+      <div className="flex items-center justify-end">
+        <SaveStatus status={status} />
+      </div>
+      <ExperienceFields item={item} onFieldChange={handleChange} />
+      <Button type="button" variant="outline" onClick={onClose}>
+        {t("close")}
+      </Button>
+    </form>
+  );
+}
+
 export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
   const t = useTranslations("profile.workExperience");
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  const editingItem = experiences.find((e) => e.id === editingId) ?? null;
 
   function openAddForm() {
     setEditingId(null);
@@ -60,21 +161,18 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
     setEditingId(null);
   }
 
-  function handleSubmit(formData: FormData) {
+  function handleAddSubmit(formData: FormData) {
     startTransition(async () => {
-      const result = editingId
-        ? await updateWorkExperience(editingId, formData)
-        : await addWorkExperience(formData);
+      const result = await addWorkExperience(formData);
 
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "work_experience", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
 
-      toast.add({
-        title: editingId ? t("toastUpdateSuccess") : t("toastAddSuccess"),
-        type: "success",
-      });
+      trackEvent("profile_section_updated", { section: "work_experience", action: "add" });
+      toast.add({ title: t("toastAddSuccess"), type: "success" });
       closeForm();
     });
   }
@@ -86,6 +184,7 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "work_experience", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
@@ -138,7 +237,10 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
                 </div>
               </div>
               {exp.description && (
-                <p className="mt-3 text-sm text-muted-foreground">{exp.description}</p>
+                <div
+                  className="mt-3 text-sm text-muted-foreground [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-xs [&_hr]:my-2 [&_hr]:border-border [&_li_p]:inline [&_ol]:my-0 [&_ol]:list-decimal [&_ol]:list-outside [&_ol]:space-y-0.5 [&_ol]:pl-5 [&_p]:m-0 [&_ul]:my-0 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:space-y-0.5 [&_ul]:pl-5"
+                  dangerouslySetInnerHTML={{ __html: exp.description }}
+                />
               )}
               {exp.skillsUsed.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -152,72 +254,21 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
                   ))}
                 </div>
               )}
+
+              {editingId === exp.id && (
+                <EditExperienceForm key={exp.id} item={exp} onClose={closeForm} />
+              )}
             </div>
           ))}
         </div>
       )}
 
-      {formOpen && (
+      {formOpen && editingId === null && (
         <form
-          action={handleSubmit}
+          action={handleAddSubmit}
           className="mt-6 space-y-4 rounded-2xl border border-border p-6"
         >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="we-title">{t("titleLabel")}</Label>
-              <Input id="we-title" name="title" defaultValue={editingItem?.title ?? ""} required />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="we-company">{t("companyLabel")}</Label>
-              <Input
-                id="we-company"
-                name="company"
-                defaultValue={editingItem?.company ?? ""}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="we-location">{t("locationLabel")}</Label>
-              <Input id="we-location" name="location" defaultValue={editingItem?.location ?? ""} />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="we-skills">{t("skillsUsedLabel")}</Label>
-              <Input
-                id="we-skills"
-                name="skillsUsed"
-                defaultValue={editingItem?.skillsUsed.join(", ") ?? ""}
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="we-start">{t("startDateLabel")}</Label>
-              <Input
-                id="we-start"
-                name="startDate"
-                type="date"
-                defaultValue={toDateInputValue(editingItem?.startDate ?? null)}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="we-end">{t("endDateLabel")}</Label>
-              <Input
-                id="we-end"
-                name="endDate"
-                type="date"
-                defaultValue={toDateInputValue(editingItem?.endDate ?? null)}
-              />
-              <p className="text-xs text-muted-foreground">{t("stillWorkingLabel")}</p>
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="we-description">{t("descriptionLabel")}</Label>
-            <Textarea
-              id="we-description"
-              name="description"
-              defaultValue={editingItem?.description ?? ""}
-              rows={3}
-            />
-          </div>
+          <ExperienceFields item={null} />
           <div className="flex gap-2">
             <Button type="submit" disabled={isPending}>
               {isPending ? t("saving") : t("save")}

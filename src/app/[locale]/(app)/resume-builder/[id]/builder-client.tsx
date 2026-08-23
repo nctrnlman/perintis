@@ -36,6 +36,7 @@ export function BuilderClient({ id, token, initialTitle, initialContent }: Build
     startTransition(async () => {
       const result = await updateResumeContent(id, title, content);
       if ("error" in result) {
+        trackEvent("resume_save_failed");
         toast.add({ title: t("toastSaveError"), type: "error" });
         return;
       }

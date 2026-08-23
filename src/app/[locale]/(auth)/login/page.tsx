@@ -34,6 +34,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithPassword(values);
 
     if (error) {
+      trackEvent("login_failed");
       toast.add({
         title: t("toastErrorTitle"),
         description: error.message,

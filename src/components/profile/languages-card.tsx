@@ -1,12 +1,15 @@
 "use client";
 
-import { useRef, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useRef, useState, useTransition } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Combobox } from "@/components/ui/combobox";
 import { toast } from "@/components/ui/toast";
 import { addLanguage, deleteLanguage } from "@/app/[locale]/(app)/profile/actions";
+import { proficiencyOptions, toComboboxOptions } from "@/lib/combobox-options";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface LanguageItem {
   id: string;
@@ -20,18 +23,23 @@ interface LanguagesCardProps {
 
 export function LanguagesCard({ languages }: LanguagesCardProps) {
   const t = useTranslations("profile.languages");
+  const locale = useLocale() as "id" | "en";
   const [isPending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
+  const [proficiency, setProficiency] = useState("");
 
   function handleSubmit(formData: FormData) {
     startTransition(async () => {
       const result = await addLanguage(formData);
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "language", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "language", action: "add" });
       toast.add({ title: t("toastAddSuccess"), type: "success" });
       formRef.current?.reset();
+      setProficiency("");
     });
   }
 
@@ -42,6 +50,7 @@ export function LanguagesCard({ languages }: LanguagesCardProps) {
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "language", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
@@ -73,22 +82,23 @@ export function LanguagesCard({ languages }: LanguagesCardProps) {
         </div>
       )}
 
-      <form
-        ref={formRef}
-        action={handleSubmit}
-        className="mt-6 flex flex-wrap items-end gap-3"
-      >
-        <div className="space-y-1.5">
-          <label htmlFor="lang-name" className="text-xs text-muted-foreground">
-            {t("nameLabel")}
-          </label>
-          <Input id="lang-name" name="name" required className="w-40" />
-        </div>
-        <div className="space-y-1.5">
-          <label htmlFor="lang-proficiency" className="text-xs text-muted-foreground">
-            {t("proficiencyLabel")}
-          </label>
-          <Input id="lang-proficiency" name="proficiency" required className="w-40" />
+      <form ref={formRef} action={handleSubmit} className="mt-6 space-y-3">
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="space-y-1.5">
+            <label htmlFor="lang-name" className="text-xs text-muted-foreground">
+              {t("nameLabel")}
+            </label>
+            <Input id="lang-name" name="name" required />
+          </div>
+          <div className="space-y-1.5">
+            <span className="text-xs text-muted-foreground">{t("proficiencyLabel")}</span>
+            <Combobox
+              value={proficiency}
+              onChange={setProficiency}
+              options={toComboboxOptions(proficiencyOptions[locale])}
+            />
+            <input type="hidden" name="proficiency" value={proficiency} readOnly />
+          </div>
         </div>
         <Button type="submit" variant="outline" size="sm" disabled={isPending}>
           <Plus className="size-4" />

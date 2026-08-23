@@ -43,6 +43,7 @@ export default function NewAtsCheckPage() {
     const result = await uploadAndAnalyzeResume(formData);
 
     if ("error" in result) {
+      trackEvent("ats_check_failed", { error: result.error });
       const key = ERROR_KEYS[result.error as keyof typeof ERROR_KEYS] ?? "errorGeneric";
       throw new Error(t(key));
     }

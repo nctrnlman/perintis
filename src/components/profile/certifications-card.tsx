@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import {
   addCertification,
   deleteCertification,
 } from "@/app/[locale]/(app)/profile/actions";
+import { trackEvent } from "@/lib/analytics-events";
 
 interface CertificationItem {
   id: string;
@@ -31,17 +32,23 @@ function formatMonthYear(date: Date): string {
 export function CertificationsCard({ certifications }: CertificationsCardProps) {
   const t = useTranslations("profile.certifications");
   const [isPending, startTransition] = useTransition();
-  const formRef = useRef<HTMLFormElement>(null);
+  const [formOpen, setFormOpen] = useState(false);
+
+  function closeForm() {
+    setFormOpen(false);
+  }
 
   function handleSubmit(formData: FormData) {
     startTransition(async () => {
       const result = await addCertification(formData);
       if ("error" in result) {
+        trackEvent("profile_section_update_failed", { section: "certification", action: "add" });
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "certification", action: "add" });
       toast.add({ title: t("toastAddSuccess"), type: "success" });
-      formRef.current?.reset();
+      closeForm();
     });
   }
 
@@ -52,17 +59,28 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
         toast.add({ title: t("toastError"), type: "error" });
         return;
       }
+      trackEvent("profile_section_updated", { section: "certification", action: "delete" });
       toast.add({ title: t("toastDeleteSuccess"), type: "success" });
     });
   }
 
   return (
     <div className="rounded-2xl border border-border p-8">
-      <h2 className="text-xl font-semibold">{t("title")}</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">{t("title")}</h2>
+        {!formOpen && (
+          <Button variant="outline" size="sm" onClick={() => setFormOpen(true)}>
+            <Plus className="size-4" />
+            {t("addButton")}
+          </Button>
+        )}
+      </div>
 
-      {certifications.length === 0 ? (
+      {certifications.length === 0 && !formOpen && (
         <p className="mt-4 text-sm text-muted-foreground">{t("empty")}</p>
-      ) : (
+      )}
+
+      {certifications.length > 0 && (
         <div className="mt-6 space-y-4">
           {certifications.map((cert) => (
             <div
@@ -104,34 +122,39 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
         </div>
       )}
 
-      <form
-        ref={formRef}
-        action={handleSubmit}
-        className="mt-6 space-y-4 rounded-2xl border border-border p-6"
-      >
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-1.5">
-            <Label htmlFor="cert-name">{t("nameLabel")}</Label>
-            <Input id="cert-name" name="name" required />
+      {formOpen && (
+        <form
+          action={handleSubmit}
+          className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="cert-name">{t("nameLabel")}</Label>
+              <Input id="cert-name" name="name" required />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="cert-issuer">{t("issuerLabel")}</Label>
+              <Input id="cert-issuer" name="issuer" required />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="cert-issueDate">{t("issueDateLabel")}</Label>
+              <Input id="cert-issueDate" name="issueDate" type="date" />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="cert-url">{t("urlLabel")}</Label>
+              <Input id="cert-url" name="url" />
+            </div>
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="cert-issuer">{t("issuerLabel")}</Label>
-            <Input id="cert-issuer" name="issuer" required />
+          <div className="flex gap-2">
+            <Button type="submit" disabled={isPending}>
+              {isPending ? t("saving") : t("save")}
+            </Button>
+            <Button type="button" variant="outline" onClick={closeForm}>
+              {t("cancel")}
+            </Button>
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="cert-issueDate">{t("issueDateLabel")}</Label>
-            <Input id="cert-issueDate" name="issueDate" type="date" />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="cert-url">{t("urlLabel")}</Label>
-            <Input id="cert-url" name="url" />
-          </div>
-        </div>
-        <Button type="submit" variant="outline" size="sm" disabled={isPending}>
-          <Plus className="size-4" />
-          {t("addButton")}
-        </Button>
-      </form>
+        </form>
+      )}
     </div>
   );
 }
