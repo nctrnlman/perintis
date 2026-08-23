@@ -24,6 +24,12 @@ export async function Navbar() {
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
           <FeaturesDropdown />
+          <Link href="/pricing" className="hover:text-foreground">
+            {t("pricing")}
+          </Link>
+          <Link href="/blog" className="hover:text-foreground">
+            {t("blog")}
+          </Link>
           <Link href="/contact" className="hover:text-foreground">
             {t("contact")}
           </Link>

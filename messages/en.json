@@ -21,6 +21,9 @@
     "resumeBuilderDescription": "Build a resume from your profile",
     "coverLetter": "Cover Letter",
     "coverLetterDescription": "Generate a personalized cover letter",
+    "seeAllFeatures": "See all features",
+    "pricing": "Pricing",
+    "blog": "Blog",
     "contact": "Contact",
     "dashboard": "Dashboard",
     "openMenu": "Open menu",
@@ -30,9 +33,16 @@
   "footer": {
     "madeBy": "Made by Rhazes Labs",
     "copyright": "© {year} Rhazes Labs. Perintis.",
+    "productHeading": "Product",
+    "companyHeading": "Company",
+    "legalHeading": "Legal",
+    "allFeatures": "All Features",
     "atsCheck": "ATS Check",
     "resumeBuilder": "Resume Builder",
     "coverLetter": "Cover Letter",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
     "contact": "Contact",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
@@ -967,5 +977,117 @@
     "businessEmailSubject": "Partnership Inquiry - Perintis",
     "metaTitle": "Contact | Perintis",
     "metaDescription": "Get in touch with the developer behind Perintis, questions, feedback, partnerships, and bug reports welcome."
+  },
+  "featuresIndex": {
+    "metaTitle": "All Features | Perintis",
+    "metaDescription": "Explore everything Perintis offers: ATS Compatibility Check, Resume Builder, Cover Letter Generator, and more career tools for Indonesian job seekers.",
+    "heading": "Every tool for your job search, in one place.",
+    "description": "From your first resume check to your next offer letter."
+  },
+  "about": {
+    "metaTitle": "About | Perintis",
+    "metaDescription": "Perintis is an AI-powered career toolkit for Indonesian job seekers, built on transparency: no fabricated data, no invented achievements, ever.",
+    "title": "About Perintis",
+    "intro": "Perintis is an AI-powered career toolkit built for Indonesian job seekers. It's a solo, independent project, built and maintained in the open by one developer.",
+    "missionHeading": "Why Perintis exists",
+    "missionBody": "Most resumes never reach a human. An Applicant Tracking System reads them first, and rejects qualified people over formatting issues they never even knew existed. Perintis exists to close that gap: to give job seekers the same visibility into their resume that recruiters and their software already have.",
+    "principlesHeading": "Built on transparency",
+    "principles": [
+      "Transparent: every score comes with reasoning you can trace yourself, not a number that appears out of nowhere.",
+      "Contextual: bilingual, and built for startup, corporate, and state-owned enterprise interview culture in Indonesia.",
+      "Honest: Perintis never adds an achievement that isn't in your data. If information is missing, it's flagged, never guessed."
+    ],
+    "whoHeading": "Who's behind it",
+    "whoBody": "Perintis is built by Rhazes Devino under Rhazes Labs. Questions, feedback, or ideas? Visit the <contact>Contact page</contact>, every message is read personally."
+  },
+  "pricing": {
+    "metaTitle": "Pricing | Perintis",
+    "metaDescription": "Perintis is free. ATS Compatibility Check, Resume Builder, and Cover Letter Generator, all included, no credit card required.",
+    "heading": "Simple pricing: free.",
+    "subhead": "Every tool, every feature, no credit card required.",
+    "freeLabel": "$0",
+    "freeSuffix": "/ forever",
+    "included": [
+      "Unlimited ATS compatibility checks",
+      "Unlimited resumes built and exported",
+      "Unlimited AI-generated cover letters",
+      "Full career Profile with CV import"
+    ],
+    "cta": "Get Started Free",
+    "faqHeading": "Frequently asked questions",
+    "faq": [
+      {
+        "question": "Is there a catch?",
+        "answer": "No hidden fees, no credit card required to sign up, no usage limits designed to push you toward a paywall."
+      },
+      {
+        "question": "Will Perintis stay free forever?",
+        "answer": "There are no plans for paid tiers right now. If that ever changes, it will be communicated clearly in advance."
+      }
+    ],
+    "contactPrompt": "Questions about pricing? <contact>Get in touch</contact>."
+  },
+  "blog": {
+    "metaTitle": "Blog | Perintis",
+    "metaDescription": "Career tips, resume advice, and ATS insights for Indonesian job seekers.",
+    "heading": "From the blog",
+    "description": "Practical advice on resumes, cover letters, and getting past the ATS.",
+    "backToBlog": "Back to blog",
+    "posts": {
+      "ats-friendly-resume": {
+        "title": "How to Write a Resume That Actually Passes an ATS",
+        "excerpt": "Most resumes never reach a human. Here's how to make sure yours does.",
+        "publishedLabel": "Published August 2026",
+        "sections": [
+          {
+            "heading": "Why formatting matters more than you think",
+            "body": "An Applicant Tracking System (ATS) reads your resume before any recruiter does. It's parsing software, not a person, and it can only read what it's built to read. A resume that looks perfectly clean on your screen can come out as a jumbled mess once an ATS tries to extract your work history from it."
+          },
+          {
+            "heading": "Stick to a single column",
+            "body": "Multi-column layouts and text boxes are the most common cause of ATS parsing failures. Most parsers read left to right, top to bottom, in a single stream, so a two-column layout can scramble your work experience and education into the wrong order, or drop sections entirely. A single-column layout is the safest choice."
+          },
+          {
+            "heading": "Avoid tables, images, and headers/footers for key info",
+            "body": "Tables are structured for visual layout, not for a parser trying to extract plain text. The same goes for your contact information: if it's placed inside a header or footer, some ATS parsers skip it entirely, meaning a recruiter's system might not even register that you have a phone number or email."
+          },
+          {
+            "heading": "Use standard section headings",
+            "body": "\"Work Experience\", \"Education\", \"Skills\": these are the headings ATS parsers are trained to recognize. Creative alternatives like \"Where I've Been\" or \"My Journey\" might read fine to a human, but risk confusing the parser about what section it's looking at."
+          },
+          {
+            "heading": "Test it before you send it",
+            "body": "The only way to know for sure how your resume parses is to run it through an actual ATS-style check. Perintis' ATS Compatibility Check scans your resume for exactly these issues, tables, columns, non-standard fonts, missing contact info, and gives you a clear score with what to fix."
+          }
+        ]
+      },
+      "cover-letter-mistakes": {
+        "title": "5 Cover Letter Mistakes That Get Applications Ignored",
+        "excerpt": "A generic cover letter is often worse than no cover letter at all. Here's what to avoid.",
+        "publishedLabel": "Published August 2026",
+        "sections": [
+          {
+            "heading": "1. Starting with \"To Whom It May Concern\"",
+            "body": "A generic salutation signals a generic letter. If the job posting or company website lists a hiring manager or team name, use it. If not, \"Dear [Company] Hiring Team\" already reads as more specific and more effort than a placeholder greeting."
+          },
+          {
+            "heading": "2. Repeating your resume instead of adding to it",
+            "body": "A cover letter that just restates your job titles and dates wastes the reader's time, they already have your resume. Use the space to explain why this specific role and company matter to you, and connect one or two of your strongest achievements directly to what the posting is asking for."
+          },
+          {
+            "heading": "3. Writing more than one page",
+            "body": "Recruiters skim. A cover letter longer than 3-4 short paragraphs is more likely to be skipped than read in full. Say what matters, then stop."
+          },
+          {
+            "heading": "4. Never mentioning the company or role by name",
+            "body": "A letter that could be sent to any company for any job reads exactly like what it is: a template. Reference something specific, the role's responsibilities, the company's product, a detail from the job posting, to show the letter was actually written for this application."
+          },
+          {
+            "heading": "5. Ending without a clear close",
+            "body": "\"I look forward to hearing from you\" is a fine closing line, but pair it with confidence, not just politeness. State plainly that you're excited about the opportunity and available to discuss it further."
+          }
+        ]
+      }
+    }
   }
 }

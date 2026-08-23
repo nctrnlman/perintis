@@ -21,6 +21,9 @@
     "resumeBuilderDescription": "Susun resume dari profil Anda",
     "coverLetter": "Cover Letter",
     "coverLetterDescription": "Buat cover letter yang personal",
+    "seeAllFeatures": "Lihat semua fitur",
+    "pricing": "Harga",
+    "blog": "Blog",
     "contact": "Kontak",
     "dashboard": "Dashboard",
     "openMenu": "Buka menu",
@@ -30,9 +33,16 @@
   "footer": {
     "madeBy": "Dibuat oleh Rhazes Labs",
     "copyright": "© {year} Rhazes Labs. Perintis.",
+    "productHeading": "Produk",
+    "companyHeading": "Perusahaan",
+    "legalHeading": "Legal",
+    "allFeatures": "Semua Fitur",
     "atsCheck": "Cek ATS",
     "resumeBuilder": "Resume Builder",
     "coverLetter": "Cover Letter",
+    "pricing": "Harga",
+    "about": "Tentang Kami",
+    "blog": "Blog",
     "contact": "Kontak",
     "privacyPolicy": "Kebijakan Privasi",
     "termsOfService": "Syarat Layanan"
@@ -967,5 +977,117 @@
     "businessEmailSubject": "Penawaran Kerja Sama - Perintis",
     "metaTitle": "Kontak | Perintis",
     "metaDescription": "Hubungi developer di balik Perintis, pertanyaan, masukan, kerja sama, dan laporan bug diterima dengan senang hati."
+  },
+  "featuresIndex": {
+    "metaTitle": "Semua Fitur | Perintis",
+    "metaDescription": "Jelajahi semua yang ditawarkan Perintis: Cek Kompatibilitas ATS, Resume Builder, Generator Cover Letter, dan tools karir lainnya untuk pencari kerja Indonesia.",
+    "heading": "Semua tools untuk pencarian kerja Anda, dalam satu tempat.",
+    "description": "Dari cek resume pertama Anda, sampai surat penawaran kerja berikutnya."
+  },
+  "about": {
+    "metaTitle": "Tentang Kami | Perintis",
+    "metaDescription": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia, dibangun di atas prinsip transparansi: tanpa data yang dikarang, tanpa pencapaian yang direkayasa.",
+    "title": "Tentang Perintis",
+    "intro": "Perintis adalah toolkit karir berbasis AI yang dibangun untuk pencari kerja Indonesia. Ini proyek independen yang dikerjakan sendiri, dibangun dan dikelola secara terbuka oleh satu developer.",
+    "missionHeading": "Kenapa Perintis Ada",
+    "missionBody": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Applicant Tracking System membacanya lebih dulu, dan menolak kandidat yang sebenarnya memenuhi syarat karena masalah format yang bahkan tidak mereka sadari. Perintis hadir untuk menutup kesenjangan itu: memberi pencari kerja visibilitas yang sama atas resume mereka, seperti yang sudah dimiliki recruiter dan software mereka.",
+    "principlesHeading": "Dibangun di Atas Transparansi",
+    "principles": [
+      "Transparan: setiap skor disertai alasan yang bisa Anda telusuri sendiri, bukan angka yang muncul begitu saja.",
+      "Kontekstual: dwibahasa, dan dibangun untuk budaya wawancara startup, korporat, maupun BUMN di Indonesia.",
+      "Jujur: Perintis tidak pernah menambahkan pencapaian yang tidak ada di data Anda. Kalau informasinya tidak ada, itu ditandai, bukan ditebak."
+    ],
+    "whoHeading": "Siapa di Baliknya",
+    "whoBody": "Perintis dibangun oleh Rhazes Devino di bawah Rhazes Labs. Ada pertanyaan, masukan, atau ide? Kunjungi <contact>halaman Kontak</contact>, setiap pesan dibaca langsung."
+  },
+  "pricing": {
+    "metaTitle": "Harga | Perintis",
+    "metaDescription": "Perintis gratis. Cek Kompatibilitas ATS, Resume Builder, dan Generator Cover Letter, semuanya termasuk, tanpa kartu kredit.",
+    "heading": "Harga sederhana: gratis.",
+    "subhead": "Semua tools, semua fitur, tanpa kartu kredit.",
+    "freeLabel": "Rp0",
+    "freeSuffix": "/ selamanya",
+    "included": [
+      "Cek kompatibilitas ATS tanpa batas",
+      "Resume dibuat dan diunduh tanpa batas",
+      "Cover letter dari AI tanpa batas",
+      "Profil karir lengkap dengan CV Import"
+    ],
+    "cta": "Mulai Gratis",
+    "faqHeading": "Pertanyaan yang sering diajukan",
+    "faq": [
+      {
+        "question": "Ada syarat tersembunyi?",
+        "answer": "Tidak ada biaya tersembunyi, tidak perlu kartu kredit untuk daftar, tidak ada batas pemakaian yang dirancang untuk mengarahkan Anda ke paywall."
+      },
+      {
+        "question": "Apakah Perintis akan tetap gratis selamanya?",
+        "answer": "Saat ini belum ada rencana untuk paket berbayar. Kalau itu berubah nanti, akan dikomunikasikan dengan jelas terlebih dahulu."
+      }
+    ],
+    "contactPrompt": "Ada pertanyaan soal harga? <contact>Hubungi kami</contact>."
+  },
+  "blog": {
+    "metaTitle": "Blog | Perintis",
+    "metaDescription": "Tips karir, saran resume, dan wawasan ATS untuk pencari kerja Indonesia.",
+    "heading": "Dari blog kami",
+    "description": "Saran praktis soal resume, cover letter, dan cara lolos ATS.",
+    "backToBlog": "Kembali ke blog",
+    "posts": {
+      "ats-friendly-resume": {
+        "title": "Cara Membuat Resume yang Benar-Benar Lolos ATS",
+        "excerpt": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Ini cara memastikan resume Anda berbeda.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "sections": [
+          {
+            "heading": "Kenapa format lebih penting dari yang Anda kira",
+            "body": "Applicant Tracking System (ATS) membaca resume Anda sebelum recruiter mana pun. Itu software parsing, bukan manusia, dan cuma bisa membaca apa yang memang dirancang untuk dibaca. Resume yang terlihat rapi sempurna di layar Anda bisa jadi berantakan begitu ATS mencoba mengekstrak riwayat kerja Anda darinya."
+          },
+          {
+            "heading": "Pakai satu kolom saja",
+            "body": "Layout kolom ganda dan text box adalah penyebab paling umum kegagalan parsing ATS. Kebanyakan parser membaca dari kiri ke kanan, atas ke bawah, dalam satu alur, jadi layout dua kolom bisa mengacak pengalaman kerja dan pendidikan Anda jadi urutan yang salah, atau bahkan menghilangkan bagian tertentu sepenuhnya. Layout satu kolom adalah pilihan paling aman."
+          },
+          {
+            "heading": "Hindari tabel, gambar, dan info penting di header/footer",
+            "body": "Tabel dirancang untuk layout visual, bukan untuk parser yang mencoba mengekstrak teks polos. Hal yang sama berlaku untuk info kontak Anda: kalau ditaruh di dalam header atau footer, beberapa parser ATS melewatinya sepenuhnya, artinya sistem recruiter mungkin bahkan tidak mendeteksi Anda punya nomor telepon atau email."
+          },
+          {
+            "heading": "Gunakan judul bagian yang standar",
+            "body": "\"Pengalaman Kerja\", \"Pendidikan\", \"Skill\": itu judul-judul yang dilatih untuk dikenali parser ATS. Alternatif kreatif seperti \"Perjalanan Saya\" mungkin terlihat bagus di mata manusia, tapi berisiko membingungkan parser soal bagian apa yang sedang dibacanya."
+          },
+          {
+            "heading": "Uji dulu sebelum dikirim",
+            "body": "Satu-satunya cara memastikan bagaimana resume Anda diparsing adalah menjalankannya lewat pengecekan bergaya ATS sungguhan. Cek Kompatibilitas ATS Perintis memindai resume Anda untuk masalah-masalah ini persis: tabel, kolom, font tidak standar, info kontak yang hilang, dan memberi Anda skor jelas plus apa yang perlu diperbaiki."
+          }
+        ]
+      },
+      "cover-letter-mistakes": {
+        "title": "5 Kesalahan Cover Letter yang Bikin Lamaran Diabaikan",
+        "excerpt": "Cover letter generik seringkali lebih buruk daripada tidak pakai cover letter sama sekali. Ini yang perlu dihindari.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "sections": [
+          {
+            "heading": "1. Mulai dengan \"Kepada Yth. Bapak/Ibu HRD\"",
+            "body": "Sapaan generik menandakan surat yang generik juga. Kalau deskripsi lowongan atau website perusahaan mencantumkan nama hiring manager atau tim tertentu, pakai itu. Kalau tidak, \"Kepada Tim Rekrutmen [Perusahaan]\" sudah terasa lebih spesifik dan lebih berusaha dibanding sapaan generik."
+          },
+          {
+            "heading": "2. Mengulang isi resume, bukan menambahkannya",
+            "body": "Cover letter yang cuma mengulang jabatan dan tanggal kerja membuang waktu pembaca, mereka sudah punya resume Anda. Pakai ruang itu untuk menjelaskan kenapa posisi dan perusahaan ini penting buat Anda, dan hubungkan satu atau dua pencapaian terkuat Anda langsung dengan apa yang diminta lowongan."
+          },
+          {
+            "heading": "3. Menulis lebih dari satu halaman",
+            "body": "Recruiter membaca sekilas. Cover letter yang lebih panjang dari 3-4 paragraf pendek lebih mungkin dilewati daripada dibaca tuntas. Sampaikan yang penting, lalu selesai."
+          },
+          {
+            "heading": "4. Tidak pernah menyebut nama perusahaan atau posisi",
+            "body": "Surat yang bisa dikirim ke perusahaan mana pun untuk lowongan apa pun terbaca persis seperti apa adanya: template. Sebutkan sesuatu yang spesifik, tanggung jawab posisi tersebut, produk perusahaan, detail dari deskripsi lowongan, untuk menunjukkan surat ini memang ditulis khusus untuk lamaran ini."
+          },
+          {
+            "heading": "5. Menutup tanpa penutup yang jelas",
+            "body": "\"Saya menantikan kabar dari Anda\" adalah kalimat penutup yang oke, tapi padukan dengan rasa percaya diri, bukan cuma kesopanan. Nyatakan dengan jelas bahwa Anda antusias dengan kesempatan ini dan siap membahasnya lebih lanjut."
+          }
+        ]
+      }
+    }
   }
 }

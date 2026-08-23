@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ChevronDown, FileCheck2, FileEdit, Mail } from "lucide-react";
+import { ChevronDown, FileCheck2, FileEdit, LayoutGrid, Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -54,6 +55,11 @@ export function FeaturesDropdown() {
             </div>
           </DropdownMenuItem>
         ))}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem render={<Link href="/features" />} className="gap-3 py-2">
+          <LayoutGrid className="size-4 shrink-0 text-muted-foreground" />
+          <span className="font-medium text-foreground">{t("seeAllFeatures")}</span>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
