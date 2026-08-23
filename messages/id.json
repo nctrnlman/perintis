@@ -55,7 +55,7 @@
     "hero": {
       "headlineLine1": "Setiap karir besar,",
       "headlineLine2": "dimulai dari langkah pertama.",
-      "subhead": "Resume yang lolos ATS. Wawancara yang siap. Satu tempat, dipandu AI yang transparan.",
+      "subhead": "Baik baru mulai, pindah industri, atau mengejar posisi lebih tinggi, Perintis membantu resume dan cover letter Anda bicara dengan jelas, dipandu AI yang transparan.",
       "ctaPrimary": "Mulai Sekarang",
       "ctaSecondary": "Masuk"
     },
@@ -122,6 +122,27 @@
           "wordLabel": "Word"
         }
       }
+    },
+    "personas": {
+      "eyebrow": "Di mana pun tahap karir Anda",
+      "heading": "Perintis bukan cuma soal siap wawancara.",
+      "items": [
+        {
+          "title": "Baru Lulus",
+          "description": "Belum punya riwayat kerja panjang, dan hampir semua lowongan minta pengalaman 2+ tahun yang belum Anda punya.",
+          "helpsWith": "Resume Builder mengubah pendidikan, proyek, dan magang Anda jadi resume yang terlihat siap, bukan kosong."
+        },
+        {
+          "title": "Pindah Karir",
+          "description": "Pengalaman Anda nyata, cuma di bidang berbeda, dan sulit menjelaskan kenapa itu tetap membuat Anda kandidat yang tepat.",
+          "helpsWith": "Cover Letter Generator menghubungkan skill yang sudah Anda punya langsung ke apa yang sebenarnya dibutuhkan posisi baru."
+        },
+        {
+          "title": "Mengembangkan Karir",
+          "description": "Anda sudah punya pengalaman. Sekarang melamar ke posisi yang lebih besar, dan materi lamaran Anda perlu mengimbangi.",
+          "helpsWith": "Cek ATS memastikan resume Anda benar-benar terbaca dulu sebelum dinilai, di level seniority mana pun."
+        }
+      ]
     },
     "reasons": {
       "eyebrow": "Kenapa Perintis",
@@ -988,8 +1009,11 @@
     "metaTitle": "Tentang Kami | Perintis",
     "metaDescription": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia, dibangun di atas prinsip transparansi: tanpa data yang dikarang, tanpa pencapaian yang direkayasa.",
     "eyebrow": "Tentang Perintis",
-    "headline": "Pencarian kerja tidak seharusnya jadi kotak hitam.",
-    "intro": "Perintis adalah toolkit karir berbasis AI yang dibangun untuk pencari kerja Indonesia. Ini proyek independen yang dikerjakan sendiri, dibangun dan dikelola secara terbuka oleh satu developer yang lelah melihat kandidat yang sebenarnya memenuhi syarat tersaring oleh software yang tidak bisa mereka lihat.",
+    "headline": "Satu developer. Satu misi: bikin pencarian kerja tidak lagi jadi kotak hitam.",
+    "intro": "Perintis adalah toolkit karir independen berbasis AI untuk pencari kerja Indonesia, dibangun dan dikelola sepenuhnya secara terbuka.",
+    "heroCta": "Mulai Gratis",
+    "heroSecondaryCta": "Jelajahi Fitur",
+    "trustLine": "Gratis selamanya. Tanpa kartu kredit.",
     "missionHeading": "Kenapa Perintis Ada",
     "missionBody": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Applicant Tracking System membacanya lebih dulu, dan menolak kandidat yang sebenarnya memenuhi syarat karena masalah format yang bahkan tidak mereka sadari. Perintis hadir untuk menutup kesenjangan itu: memberi pencari kerja visibilitas yang sama atas resume mereka, seperti yang sudah dimiliki recruiter dan software mereka.",
     "principlesHeading": "Apa yang Diperjuangkan Perintis",

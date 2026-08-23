@@ -55,7 +55,7 @@
     "hero": {
       "headlineLine1": "Every great career",
       "headlineLine2": "starts with a first step.",
-      "subhead": "A resume that passes ATS. An interview you're ready for. One place, guided by transparent AI.",
+      "subhead": "Whether you're just starting out, changing industries, or aiming higher, Perintis helps your resume and cover letter say it clearly, guided by transparent AI.",
       "ctaPrimary": "Get Started",
       "ctaSecondary": "Log in"
     },
@@ -122,6 +122,27 @@
           "wordLabel": "Word"
         }
       }
+    },
+    "personas": {
+      "eyebrow": "Wherever you are in your career",
+      "heading": "Perintis isn't just for interview prep.",
+      "items": [
+        {
+          "title": "Just Graduated",
+          "description": "No long work history yet, and every job posting seems to want 2+ years of experience you don't have.",
+          "helpsWith": "Resume Builder turns your education, projects, and internships into a resume that reads as ready, not empty."
+        },
+        {
+          "title": "Switching Careers",
+          "description": "Your experience is real, just in a different field, and it's hard to explain why that still makes you the right hire.",
+          "helpsWith": "Cover Letter Generator connects your existing skills directly to what the new role actually needs."
+        },
+        {
+          "title": "Growing Your Career",
+          "description": "You've got the experience. Now you're applying to bigger roles, and your materials need to keep up.",
+          "helpsWith": "ATS Check makes sure your resume actually gets read before it's judged, at any seniority level."
+        }
+      ]
     },
     "reasons": {
       "eyebrow": "Why Perintis",
@@ -988,8 +1009,11 @@
     "metaTitle": "About | Perintis",
     "metaDescription": "Perintis is an AI-powered career toolkit for Indonesian job seekers, built on transparency: no fabricated data, no invented achievements, ever.",
     "eyebrow": "About Perintis",
-    "headline": "The job hunt shouldn't be a black box.",
-    "intro": "Perintis is an AI-powered career toolkit built for Indonesian job seekers. It's a solo, independent project, built and maintained in the open by one developer who got tired of watching qualified people get filtered out by software they couldn't see.",
+    "headline": "One developer. One mission: make the job hunt less of a black box.",
+    "intro": "Perintis is an independent, AI-powered career toolkit for Indonesian job seekers, built and maintained completely in the open.",
+    "heroCta": "Get Started Free",
+    "heroSecondaryCta": "Explore Features",
+    "trustLine": "Free forever. No credit card required.",
     "missionHeading": "Why Perintis exists",
     "missionBody": "Most resumes never reach a human. An Applicant Tracking System reads them first, and rejects qualified people over formatting issues they never even knew existed. Perintis exists to close that gap: to give job seekers the same visibility into their resume that recruiters and their software already have.",
     "principlesHeading": "What Perintis stands for",

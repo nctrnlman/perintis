@@ -49,6 +49,30 @@ export default async function AboutPage({
             {t("intro")}
           </p>
         </Reveal>
+        <Reveal delay={100}>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Button
+              size="lg"
+              nativeButton={false}
+              render={
+                <TrackedLink href="/register" cta="about_hero">
+                  {t("heroCta")}
+                </TrackedLink>
+              }
+            />
+            <Button
+              size="lg"
+              variant="outline"
+              nativeButton={false}
+              render={
+                <TrackedLink href="/features" cta="about_hero_secondary">
+                  {t("heroSecondaryCta")}
+                </TrackedLink>
+              }
+            />
+          </div>
+          <p className="mt-4 text-xs text-muted-foreground">{t("trustLine")}</p>
+        </Reveal>
       </div>
 
       <div className="mx-auto max-w-2xl px-6 pb-24">

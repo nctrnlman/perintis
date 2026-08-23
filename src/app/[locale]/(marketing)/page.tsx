@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import {
+  ArrowRightLeft,
   BadgeCheck,
   FileCheck2,
   FileEdit,
+  GraduationCap,
   Languages,
   Mail,
   ListChecks,
   MessagesSquare,
   SearchCheck,
   ShieldCheck,
+  TrendingUp,
 } from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -21,6 +24,7 @@ import { TrackedLink } from "@/components/marketing/tracked-link";
 
 const reasonIcons = [SearchCheck, Languages, BadgeCheck];
 const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const personaIcons = [GraduationCap, ArrowRightLeft, TrendingUp];
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("home.meta");
@@ -36,6 +40,11 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations("home");
   const reasons = t.raw("reasons.items") as { title: string; description: string }[];
+  const personas = t.raw("personas.items") as {
+    title: string;
+    description: string;
+    helpsWith: string;
+  }[];
   const coreFeatures = t.raw("core.items") as { title: string; description: string }[];
   const upcomingModules = t.raw("upcoming.items") as string[];
   const atsShowcase = t.raw("showcase.atsCheck") as {
@@ -120,6 +129,39 @@ export default async function HomePage({
             />
           </div>
         </Reveal>
+      </section>
+
+      <section className="bg-card py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+              {t("personas.eyebrow")}
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              {t("personas.heading")}
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {personas.map((persona, index) => {
+              const Icon = personaIcons[index];
+              return (
+                <Reveal key={persona.title} delay={index * 100}>
+                  <div className="h-full rounded-2xl border border-border p-8">
+                    <div className="flex size-11 items-center justify-center rounded-full bg-muted">
+                      <Icon className="size-5 text-foreground" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold">{persona.title}</h3>
+                    <p className="mt-2 text-muted-foreground">{persona.description}</p>
+                    <p className="mt-4 text-sm font-medium text-foreground">
+                      {persona.helpsWith}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
       <section className="py-20">
