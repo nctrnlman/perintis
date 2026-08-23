@@ -141,16 +141,24 @@ export default async function HomePage({
                   </li>
                 ))}
               </ul>
-              <Button
-                size="lg"
-                className="mt-8"
-                nativeButton={false}
-                render={
-                  <TrackedLink href="/register" cta="ats_check_showcase">
-                    {atsShowcase.cta}
-                  </TrackedLink>
-                }
-              />
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={
+                    <TrackedLink href="/register" cta="ats_check_showcase">
+                      {atsShowcase.cta}
+                    </TrackedLink>
+                  }
+                />
+                <TrackedLink
+                  href="/features/ats-check"
+                  cta="ats_check_learn_more"
+                  className="text-sm font-medium text-foreground hover:underline"
+                >
+                  {t("learnMore")}
+                </TrackedLink>
+              </div>
             </Reveal>
             <Reveal delay={150}>
               <AtsPreviewCard
@@ -183,16 +191,24 @@ export default async function HomePage({
                   </li>
                 ))}
               </ul>
-              <Button
-                size="lg"
-                className="mt-8"
-                nativeButton={false}
-                render={
-                  <TrackedLink href="/register" cta="resume_builder_showcase">
-                    {resumeShowcase.cta}
-                  </TrackedLink>
-                }
-              />
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={
+                    <TrackedLink href="/register" cta="resume_builder_showcase">
+                      {resumeShowcase.cta}
+                    </TrackedLink>
+                  }
+                />
+                <TrackedLink
+                  href="/features/resume-builder"
+                  cta="resume_builder_learn_more"
+                  className="text-sm font-medium text-foreground hover:underline"
+                >
+                  {t("learnMore")}
+                </TrackedLink>
+              </div>
             </Reveal>
             <Reveal delay={150} className="lg:order-1">
               <ResumePreviewCard
@@ -227,16 +243,24 @@ export default async function HomePage({
                   </li>
                 ))}
               </ul>
-              <Button
-                size="lg"
-                className="mt-8"
-                nativeButton={false}
-                render={
-                  <TrackedLink href="/register" cta="cover_letter_showcase">
-                    {coverLetterShowcase.cta}
-                  </TrackedLink>
-                }
-              />
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={
+                    <TrackedLink href="/register" cta="cover_letter_showcase">
+                      {coverLetterShowcase.cta}
+                    </TrackedLink>
+                  }
+                />
+                <TrackedLink
+                  href="/features/cover-letter"
+                  cta="cover_letter_learn_more"
+                  className="text-sm font-medium text-foreground hover:underline"
+                >
+                  {t("learnMore")}
+                </TrackedLink>
+              </div>
             </Reveal>
             <Reveal delay={150}>
               <CoverLetterPreviewCard

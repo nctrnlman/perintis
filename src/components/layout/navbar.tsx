@@ -10,9 +10,31 @@ export async function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Perintis
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-foreground text-sm font-semibold text-background">
+            P
+          </span>
+          <span>
+            <span className="block text-sm leading-tight font-semibold">Perintis</span>
+            <span className="block text-xs leading-tight text-muted-foreground">
+              by Rhazes Labs
+            </span>
+          </span>
         </Link>
+        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+          <Link href="/features/ats-check" className="hover:text-foreground">
+            {t("atsCheck")}
+          </Link>
+          <Link href="/features/resume-builder" className="hover:text-foreground">
+            {t("resumeBuilder")}
+          </Link>
+          <Link href="/features/cover-letter" className="hover:text-foreground">
+            {t("coverLetter")}
+          </Link>
+          <Link href="/contact" className="hover:text-foreground">
+            {t("contact")}
+          </Link>
+        </nav>
         <div className="flex items-center gap-3">
           <LanguageToggle />
           <ThemeToggle />

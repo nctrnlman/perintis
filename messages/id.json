@@ -14,7 +14,10 @@
     "logout": "Keluar",
     "toastLoggedOut": "Anda telah keluar",
     "profile": "Profil",
+    "atsCheck": "Cek ATS",
     "resumeBuilder": "Resume Builder",
+    "coverLetter": "Cover Letter",
+    "contact": "Kontak",
     "dashboard": "Dashboard",
     "openMenu": "Buka menu",
     "closeMenu": "Tutup menu",
@@ -23,6 +26,10 @@
   "footer": {
     "madeBy": "Dibuat oleh Rhazes Labs",
     "copyright": "© {year} Rhazes Labs. Perintis.",
+    "atsCheck": "Cek ATS",
+    "resumeBuilder": "Resume Builder",
+    "coverLetter": "Cover Letter",
+    "contact": "Kontak",
     "privacyPolicy": "Kebijakan Privasi",
     "termsOfService": "Syarat Layanan"
   },
@@ -38,6 +45,7 @@
       "ctaPrimary": "Mulai Sekarang",
       "ctaSecondary": "Masuk"
     },
+    "learnMore": "Pelajari lebih lanjut",
     "showcase": {
       "atsCheck": {
         "eyebrow": "Cek Kompatibilitas ATS",
@@ -827,5 +835,129 @@
     "autoSaving": "Menyimpan otomatis...",
     "autoSaved": "Tersimpan",
     "autoSaveError": "Gagal menyimpan"
+  },
+  "featurePages": {
+    "atsCheck": {
+      "eyebrow": "Cek Kompatibilitas ATS",
+      "headline": "Cari tahu apakah resume Anda benar-benar bisa lolos ATS, sebelum dikirim.",
+      "subhead": "Kebanyakan resume tidak pernah sampai ke tangan manusia. Applicant Tracking System (ATS) membacanya lebih dulu, dan format yang terlihat rapi di mata Anda bisa jadi tidak terbaca oleh sistem. Perintis mengecek struktur, kelengkapan info kontak, kekuatan penulisan, dan kecocokan kata kunci, jadi Anda tahu persis apa yang perlu diperbaiki.",
+      "bullets": [
+        "Skor kompatibilitas instan dengan rincian jelas apa yang salah",
+        "Deteksi masalah format tersembunyi: tabel, kolom ganda, font tidak standar, teks tersembunyi di header/footer",
+        "Analisis kecocokan kata kunci opsional terhadap deskripsi lowongan tertentu",
+        "Lihat persis kata kunci apa yang akan ditemukan sistem ATS recruiter di resume Anda"
+      ],
+      "cta": "Cek Resume Anda Gratis",
+      "preview": {
+        "tierLabel": "Sangat Baik",
+        "summaryLabel": "3 hal sudah bagus, 1 area bisa ditingkatkan.",
+        "matchedLabel": "Cocok",
+        "missingLabel": "Belum Ada"
+      },
+      "faqTitle": "Pertanyaan yang sering diajukan",
+      "faq": [
+        {
+          "question": "Apa itu ATS dan kenapa penting?",
+          "answer": "Applicant Tracking System adalah software yang dipakai kebanyakan perusahaan untuk menyaring resume sebelum sampai ke recruiter. Kalau sistemnya tidak bisa membaca struktur resume Anda dengan benar, kandidat yang sebenarnya memenuhi syarat bisa tertolak otomatis, tidak peduli seberapa relevan pengalamannya."
+        },
+        {
+          "question": "Apakah Perintis menyimpan resume saya?",
+          "answer": "Ya, supaya Anda bisa lihat riwayat cek sebelumnya, tapi datanya privat untuk akun Anda dan tidak pernah dibagikan atau dijual. Lihat Kebijakan Privasi kami untuk detailnya."
+        },
+        {
+          "question": "Apakah kecocokan kata kunci lowongan wajib diisi?",
+          "answer": "Tidak, itu opsional. Pengecekan struktur dan konten tetap jalan meskipun kosong, menempel deskripsi lowongan hanya menambahkan skor kecocokan kata kunci khusus untuk posisi itu."
+        }
+      ],
+      "metaTitle": "Cek Resume ATS Gratis | Perintis",
+      "metaDescription": "Cek apakah resume Anda lolos sistem Applicant Tracking System. Dapatkan skor kompatibilitas instan, deteksi masalah format, dan analisis kecocokan kata kunci, gratis."
+    },
+    "resumeBuilder": {
+      "eyebrow": "Resume Builder",
+      "headline": "Ubah profil karir Anda jadi resume yang aman untuk ATS, dalam hitungan menit.",
+      "subhead": "Isi profil karir Anda sekali. Resume Builder mengubahnya jadi resume rapi satu kolom, diformat supaya aman dibaca sistem ATS, dengan bantuan AI untuk memperkuat setiap poin pencapaian.",
+      "bullets": [
+        "Terisi otomatis dari data Profil, tidak perlu ketik ulang riwayat kerja",
+        "AI membantu menulis ulang poin pencapaian agar terdengar lebih kuat, tanpa mengarang hal yang tidak ada di input Anda",
+        "Format rich text untuk poin pencapaian dan ringkasan",
+        "Unduh sebagai PDF siap kirim dalam format satu kolom yang aman untuk ATS"
+      ],
+      "cta": "Buat Resume Anda Gratis",
+      "preview": {
+        "name": "Dinda Pratama",
+        "role": "Product Designer",
+        "experienceLabel": "Pengalaman Kerja",
+        "bullets": [
+          "Memimpin desain ulang alur onboarding pengguna",
+          "Membangun design system yang dipakai lintas tim produk"
+        ],
+        "skillsLabel": "Skill",
+        "skills": ["Figma", "Design System", "User Research"]
+      },
+      "faqTitle": "Pertanyaan yang sering diajukan",
+      "faq": [
+        {
+          "question": "Apakah saya perlu isi Profil dulu?",
+          "answer": "Ya. Resume Builder mengambil data dari Profil Anda (pengalaman kerja, pendidikan, skill, dll), jadi mengisinya dulu memberi builder-nya bahan untuk disusun."
+        },
+        {
+          "question": "Kalau saya edit Profil nanti, apakah resume yang sudah dibuat ikut berubah?",
+          "answer": "Tidak. Setiap resume adalah snapshot yang diambil saat pertama dibuat, jadi tetap seperti aslinya meskipun Anda perbarui Profil setelahnya."
+        },
+        {
+          "question": "Apakah PDF yang diunduh benar-benar aman untuk ATS?",
+          "answer": "Ya. Formatnya satu kolom dengan font standar, tanpa tabel, kolom, atau gambar, format yang paling bisa dibaca dengan andal oleh sistem ATS."
+        }
+      ],
+      "metaTitle": "Resume Builder Aman ATS Gratis | Perintis",
+      "metaDescription": "Buat resume rapi dan aman untuk ATS dari profil karir Anda dalam hitungan menit, dengan bantuan AI untuk poin pencapaian. Gratis, format satu kolom, siap diunduh sebagai PDF."
+    },
+    "coverLetter": {
+      "eyebrow": "Cover Letter",
+      "headline": "Setiap lowongan berbeda. Cover letter Anda pun seharusnya begitu.",
+      "subhead": "Tempel deskripsi lowongan, dapatkan draf cover letter dari data Profil Anda yang sebenarnya, bukan template generik, siap diedit dan dikirim.",
+      "bullets": [
+        "Personal sesuai perusahaan dan posisi dari lowongan yang Anda tempel",
+        "Pilih nada formal atau santai, dan panjang singkat atau standar",
+        "Simpan, edit kapan saja, lalu unduh sebagai PDF atau Word"
+      ],
+      "cta": "Buat Cover Letter Anda Gratis",
+      "preview": {
+        "companyLabel": "Acme Corp",
+        "positionLabel": "Product Designer",
+        "greetingLine": "Kepada Tim Rekrutmen Acme Corp,",
+        "bodyLines": [
+          "Saya sangat tertarik melamar posisi Product Designer...",
+          "Di posisi saya saat ini, saya memimpin redesain yang..."
+        ],
+        "pdfLabel": "PDF",
+        "wordLabel": "Word"
+      },
+      "faqTitle": "Pertanyaan yang sering diajukan",
+      "faq": [
+        {
+          "question": "Apakah AI akan mengarang pengalaman yang tidak saya punya?",
+          "answer": "Tidak. Perintis menerapkan aturan ketat anti-mengarang: AI hanya merujuk pengalaman, skill, dan pencapaian yang sudah ada di Profil Anda. Kalau datanya tidak ada, AI tidak akan mengada-ada."
+        },
+        {
+          "question": "Bisakah saya edit cover letter yang dihasilkan?",
+          "answer": "Ya. Setelah dibuat, langsung terbuka di editor rich-text, jadi Anda bisa sesuaikan kata-kata, format, dan struktur sebelum diunduh."
+        },
+        {
+          "question": "Format apa saja yang bisa diunduh?",
+          "answer": "PDF dan Word (.docx), jadi Anda bisa sesuaikan dengan format yang diminta portal lamaran atau recruiter."
+        }
+      ],
+      "metaTitle": "Generator Cover Letter AI Gratis | Perintis",
+      "metaDescription": "Buat cover letter personal dari Profil dan deskripsi lowongan Anda, gratis. Pilih nada dan panjang, edit bebas, unduh sebagai PDF atau Word."
+    }
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "description": "Ada pertanyaan, masukan, atau menemukan bug? Hubungi langsung, saya baca semuanya sendiri.",
+    "developerLabel": "Dibuat oleh",
+    "about": "Perintis dibuat dan dikelola oleh Rhazes Devino, developer independen yang membangun tools untuk pencari kerja Indonesia di bawah Rhazes Labs.",
+    "metaTitle": "Kontak | Perintis",
+    "metaDescription": "Hubungi developer di balik Perintis, pertanyaan, masukan, dan laporan bug diterima dengan senang hati."
   }
 }

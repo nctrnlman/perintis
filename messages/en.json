@@ -14,7 +14,10 @@
     "logout": "Log out",
     "toastLoggedOut": "You've been logged out",
     "profile": "Profile",
+    "atsCheck": "ATS Check",
     "resumeBuilder": "Resume Builder",
+    "coverLetter": "Cover Letter",
+    "contact": "Contact",
     "dashboard": "Dashboard",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -23,6 +26,10 @@
   "footer": {
     "madeBy": "Made by Rhazes Labs",
     "copyright": "© {year} Rhazes Labs. Perintis.",
+    "atsCheck": "ATS Check",
+    "resumeBuilder": "Resume Builder",
+    "coverLetter": "Cover Letter",
+    "contact": "Contact",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
@@ -38,6 +45,7 @@
       "ctaPrimary": "Get Started",
       "ctaSecondary": "Log in"
     },
+    "learnMore": "Learn more",
     "showcase": {
       "atsCheck": {
         "eyebrow": "ATS Compatibility Check",
@@ -827,5 +835,129 @@
     "autoSaving": "Auto-saving...",
     "autoSaved": "Saved",
     "autoSaveError": "Failed to save"
+  },
+  "featurePages": {
+    "atsCheck": {
+      "eyebrow": "ATS Compatibility Check",
+      "headline": "Find out if your resume can actually pass an ATS, before you hit send.",
+      "subhead": "Most resumes never reach a human. An Applicant Tracking System (ATS) reads it first, and formatting that looks clean to your eyes can be unreadable to a parser. Perintis checks structure, contact-info completeness, writing strength, and keyword match, so you know exactly what to fix.",
+      "bullets": [
+        "Instant compatibility score with a clear breakdown of what's wrong",
+        "Detects hidden formatting issues: tables, multi-column layouts, non-standard fonts, text hidden in headers/footers",
+        "Optional keyword match analysis against a specific job posting",
+        "See exactly which keywords a recruiter's ATS search would find in your resume"
+      ],
+      "cta": "Check Your Resume Free",
+      "preview": {
+        "tierLabel": "Excellent",
+        "summaryLabel": "3 things look good, 1 area to improve.",
+        "matchedLabel": "Matched",
+        "missingLabel": "Missing"
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "What is an ATS and why does it matter?",
+          "answer": "An Applicant Tracking System is software most companies use to filter resumes before a recruiter ever sees them. If it can't parse your resume's structure correctly, qualified candidates get rejected automatically, regardless of experience."
+        },
+        {
+          "question": "Does Perintis store my resume?",
+          "answer": "Yes, so you can review past checks, but it's private to your account and never shared or sold. See our Privacy Policy for details."
+        },
+        {
+          "question": "Is the job posting keyword match required?",
+          "answer": "No, it's optional. The structural and content checks run regardless, pasting a job posting just adds a keyword match score specific to that role."
+        }
+      ],
+      "metaTitle": "Free ATS Resume Checker | Perintis",
+      "metaDescription": "Check if your resume passes Applicant Tracking Systems. Get an instant compatibility score, formatting issue detection, and keyword match analysis, free."
+    },
+    "resumeBuilder": {
+      "eyebrow": "Resume Builder",
+      "headline": "Turn your career profile into an ATS-safe resume in minutes.",
+      "subhead": "Fill in your career profile once. Resume Builder turns it into a clean, single-column resume formatted to be safely read by ATS systems, with AI assistance to strengthen every achievement bullet.",
+      "bullets": [
+        "Auto-filled from your Profile, no retyping your work history",
+        "AI helps rewrite achievement bullets to sound stronger, without inventing anything not in your input",
+        "Rich text formatting for bullet points and summaries",
+        "Download as a ready-to-send PDF in a single-column, ATS-safe format"
+      ],
+      "cta": "Build Your Resume Free",
+      "preview": {
+        "name": "Dinda Pratama",
+        "role": "Product Designer",
+        "experienceLabel": "Work Experience",
+        "bullets": [
+          "Led a redesign of the user onboarding flow",
+          "Built a design system adopted across product teams"
+        ],
+        "skillsLabel": "Skills",
+        "skills": ["Figma", "Design System", "User Research"]
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "Do I need to fill in my Profile first?",
+          "answer": "Yes. Resume Builder pulls from your Profile data (work experience, education, skills, etc.), so filling that in first gives the builder something to work with."
+        },
+        {
+          "question": "Will editing my Profile later change resumes I already built?",
+          "answer": "No. Each resume is a snapshot taken at creation time, so it stays exactly as you built it even if you update your Profile afterward."
+        },
+        {
+          "question": "Is the exported PDF really ATS-safe?",
+          "answer": "Yes. It's rendered as a single-column layout in a standard font, with no tables, columns, or images, the format ATS parsers read most reliably."
+        }
+      ],
+      "metaTitle": "Free ATS-Safe Resume Builder | Perintis",
+      "metaDescription": "Build a clean, ATS-safe resume from your career profile in minutes, with AI-assisted bullet points. Free, single-column format, ready to download as PDF."
+    },
+    "coverLetter": {
+      "eyebrow": "Cover Letter",
+      "headline": "Every job posting is different. Your cover letter should be too.",
+      "subhead": "Paste in a job posting and get a cover letter drafted from your real Profile data, not generic filler, ready to edit and send.",
+      "bullets": [
+        "Personalized to the company and role from the job posting you paste in",
+        "Choose a formal or casual tone, and a short or standard length",
+        "Save it, edit it anytime, then export as PDF or Word"
+      ],
+      "cta": "Draft Your Cover Letter Free",
+      "preview": {
+        "companyLabel": "Acme Corp",
+        "positionLabel": "Product Designer",
+        "greetingLine": "Dear Hiring Team at Acme Corp,",
+        "bodyLines": [
+          "I'm excited to apply for the Product Designer role...",
+          "In my current position, I led a redesign that..."
+        ],
+        "pdfLabel": "PDF",
+        "wordLabel": "Word"
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "Will the AI make up experience I don't have?",
+          "answer": "No. Perintis is built on a strict no-fabrication rule: the AI only references experience, skills, and achievements already present in your Profile. If the data isn't there, it won't invent it."
+        },
+        {
+          "question": "Can I edit the generated cover letter?",
+          "answer": "Yes. It opens directly in a rich-text editor after generating, so you can adjust wording, formatting, and structure before exporting."
+        },
+        {
+          "question": "What formats can I export to?",
+          "answer": "Both PDF and Word (.docx), so you can match whatever format an application portal or recruiter asks for."
+        }
+      ],
+      "metaTitle": "Free AI Cover Letter Generator | Perintis",
+      "metaDescription": "Generate a personalized cover letter from your Profile and a job posting, free. Choose your tone and length, edit freely, export as PDF or Word."
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "description": "Questions, feedback, or found a bug? Reach out directly, I read everything myself.",
+    "developerLabel": "Built by",
+    "about": "Perintis is built and maintained by Rhazes Devino, an independent developer building tools for Indonesian job seekers under Rhazes Labs.",
+    "metaTitle": "Contact | Perintis",
+    "metaDescription": "Get in touch with the developer behind Perintis, questions, feedback, and bug reports welcome."
   }
 }
