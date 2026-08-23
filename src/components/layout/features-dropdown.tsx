@@ -11,9 +11,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const FEATURES = [
-  { href: "/features/ats-check", icon: FileCheck2, labelKey: "atsCheck" },
-  { href: "/features/resume-builder", icon: FileEdit, labelKey: "resumeBuilder" },
-  { href: "/features/cover-letter", icon: Mail, labelKey: "coverLetter" },
+  {
+    href: "/features/ats-check",
+    icon: FileCheck2,
+    labelKey: "atsCheck",
+    descriptionKey: "atsCheckDescription",
+  },
+  {
+    href: "/features/resume-builder",
+    icon: FileEdit,
+    labelKey: "resumeBuilder",
+    descriptionKey: "resumeBuilderDescription",
+  },
+  {
+    href: "/features/cover-letter",
+    icon: Mail,
+    labelKey: "coverLetter",
+    descriptionKey: "coverLetterDescription",
+  },
 ] as const;
 
 export function FeaturesDropdown() {
@@ -21,15 +36,22 @@ export function FeaturesDropdown() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-1 text-sm text-muted-foreground outline-none hover:text-foreground">
+      <DropdownMenuTrigger className="group flex items-center gap-1 text-sm text-muted-foreground outline-none hover:text-foreground">
         {t("features")}
-        <ChevronDown className="size-3.5" />
+        <ChevronDown className="size-3.5 transition-transform duration-200 group-data-popup-open:rotate-180" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="min-w-56">
-        {FEATURES.map(({ href, icon: Icon, labelKey }) => (
-          <DropdownMenuItem key={href} render={<Link href={href} />}>
-            <Icon className="size-4" />
-            {t(labelKey)}
+      <DropdownMenuContent align="start" className="min-w-72">
+        {FEATURES.map(({ href, icon: Icon, labelKey, descriptionKey }) => (
+          <DropdownMenuItem
+            key={href}
+            render={<Link href={href} />}
+            className="items-start gap-3 py-2.5"
+          >
+            <Icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            <div className="flex flex-col gap-0.5">
+              <span className="font-medium text-foreground">{t(labelKey)}</span>
+              <span className="text-xs text-muted-foreground">{t(descriptionKey)}</span>
+            </div>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
