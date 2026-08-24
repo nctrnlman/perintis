@@ -16,12 +16,13 @@ model User {
   oauthProvider String?
   createdAt     DateTime @default(now())
 
-  profile         Profile?
-  resumes         Resume[]
-  atsChecks       ATSCheckAnalysis[]
-  resumeDocuments ResumeDocument[]
-  coverLetters    CoverLetter[]
-  applications    Application[]
+  profile           Profile?
+  resumes           Resume[]
+  atsChecks         ATSCheckAnalysis[]
+  resumeDocuments   ResumeDocument[]
+  coverLetters      CoverLetter[]
+  applications      Application[]
+  potentialAnalyses PotentialAnalysis[]
 }
 
 model Profile {
@@ -212,4 +213,12 @@ model InterviewRound {
   outcome       RoundOutcome @default(PENDING)
   notes         String?
   createdAt     DateTime     @default(now())
+}
+
+model PotentialAnalysis {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  results   Json
+  createdAt DateTime @default(now())
 }
