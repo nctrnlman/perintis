@@ -35,6 +35,8 @@
     "coverLetterDescription": "Generate a personalized cover letter",
     "applicationTracker": "Application Tracker",
     "applicationTrackerDescription": "Track applications on one board",
+    "careerFit": "Career Fit",
+    "careerFitDescription": "Find roles that match your skills",
     "seeAllFeatures": "See all features",
     "pricing": "Pricing",
     "blog": "Blog",
@@ -151,6 +153,21 @@
           "interviewingLabel": "Interviewing",
           "acceptedLabel": "Accepted"
         }
+      },
+      "careerFit": {
+        "eyebrow": "Career Fit",
+        "headline": "Find roles that genuinely fit you.",
+        "subhead": "The skills and experience in your Profile are automatically matched against common roles, with a clear explanation why, no unverifiable job-market claims.",
+        "bullets": [
+          "Matching based on the real skills already in your Profile, not guesswork",
+          "Every result comes with a reason, not just a score",
+          "See which skills you're still missing for each role"
+        ],
+        "cta": "Try Career Fit",
+        "preview": {
+          "strongLabel": "Strong Fit",
+          "goodLabel": "Good Fit"
+        }
       }
     },
     "personas": {
@@ -220,6 +237,10 @@
         {
           "title": "Application Tracker",
           "description": "Track every application from applied to offer, on one tidy board."
+        },
+        {
+          "title": "Career Fit",
+          "description": "Find roles that match your skills and experience, with a clear reason why."
         }
       ]
     },
@@ -1075,6 +1096,38 @@
       ],
       "metaTitle": "Free Job Application Tracker | Perintis",
       "metaDescription": "Track every job application on a clean board, log interview rounds, and see your own win rate. Free, integrated with Resume Builder and Cover Letter."
+    },
+    "careerFit": {
+      "eyebrow": "Career Fit",
+      "headline": "Find roles that genuinely fit you.",
+      "subhead": "Perintis automatically matches the skills and experience in your Profile against common roles, then explains why, with no unverifiable job-market claims.",
+      "bullets": [
+        "Matching based on the real skills already in your Profile, not guesswork",
+        "Every result comes with a reason, not just a score",
+        "See which skills you're still missing for each role"
+      ],
+      "cta": "Try Career Fit Free",
+      "preview": {
+        "strongLabel": "Strong Fit",
+        "goodLabel": "Good Fit"
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "How does Perintis decide which roles fit?",
+          "answer": "We match the skills and experience in your Profile against the common skills typically needed for each role, calculated automatically, not guessed by AI. AI is only used to explain the result in plain language."
+        },
+        {
+          "question": "Is this based on real job listing data?",
+          "answer": "No. Career Fit doesn't use any job listing, salary, or market-demand data. Every result is based purely on the skills and experience you've entered in your Profile."
+        },
+        {
+          "question": "Can I run this analysis more than once?",
+          "answer": "Yes. Every analysis is saved as history, so you can run it again anytime your Profile grows."
+        }
+      ],
+      "metaTitle": "Free Career Fit Analysis | Perintis",
+      "metaDescription": "Automatically match your skills and experience against common job roles, free. No job-market claims, purely based on your own Profile data."
     }
   },
   "contact": {

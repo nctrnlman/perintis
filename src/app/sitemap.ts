@@ -9,6 +9,7 @@ const STATIC_PATHS = [
   "/features/resume-builder",
   "/features/cover-letter",
   "/features/application-tracker",
+  "/features/career-fit",
   "/pricing",
   "/about",
   "/blog",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  Compass,
   FileCheck2,
   FileEdit,
   ListChecks,
@@ -12,7 +13,7 @@ import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/shared/reveal";
 import { buildAlternates } from "@/lib/site-urls";
 
-const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks, Compass];
 const moduleHrefs: (string | null)[] = [
   null,
   "/features/ats-check",
@@ -20,6 +21,7 @@ const moduleHrefs: (string | null)[] = [
   null,
   "/features/cover-letter",
   "/features/application-tracker",
+  "/features/career-fit",
 ];
 
 export async function generateMetadata({

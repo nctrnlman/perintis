@@ -35,6 +35,8 @@
     "coverLetterDescription": "Buat cover letter yang personal",
     "applicationTracker": "Application Tracker",
     "applicationTrackerDescription": "Lacak status lamaran di satu papan",
+    "careerFit": "Career Fit",
+    "careerFitDescription": "Temukan posisi yang cocok dengan skill Anda",
     "seeAllFeatures": "Lihat semua fitur",
     "pricing": "Harga",
     "blog": "Blog",
@@ -151,6 +153,21 @@
           "interviewingLabel": "Wawancara",
           "acceptedLabel": "Diterima"
         }
+      },
+      "careerFit": {
+        "eyebrow": "Career Fit",
+        "headline": "Temukan posisi yang benar-benar cocok dengan Anda.",
+        "subhead": "Skill dan pengalaman di Profil Anda dicocokkan otomatis dengan berbagai posisi umum, lengkap dengan alasannya, tanpa klaim pasar kerja yang tidak bisa dipertanggungjawabkan.",
+        "bullets": [
+          "Pencocokan berbasis skill nyata di Profil Anda, bukan tebakan",
+          "Setiap hasil dijelaskan alasannya, bukan sekadar skor",
+          "Lihat juga skill yang belum Anda punya untuk posisi tersebut"
+        ],
+        "cta": "Coba Career Fit",
+        "preview": {
+          "strongLabel": "Sangat Cocok",
+          "goodLabel": "Cocok"
+        }
       }
     },
     "personas": {
@@ -220,6 +237,10 @@
         {
           "title": "Application Tracker",
           "description": "Pantau setiap lamaran dari apply sampai offer, di satu papan yang rapi."
+        },
+        {
+          "title": "Career Fit",
+          "description": "Temukan posisi yang cocok dengan skill dan pengalaman Anda, lengkap dengan alasannya."
         }
       ]
     },
@@ -1075,6 +1096,38 @@
       ],
       "metaTitle": "Application Tracker Gratis untuk Lamaran Kerja | Perintis",
       "metaDescription": "Lacak setiap lamaran kerja di papan yang rapi, catat tahap wawancara, dan lihat tingkat keberhasilan Anda sendiri. Gratis, terintegrasi dengan Resume Builder dan Cover Letter."
+    },
+    "careerFit": {
+      "eyebrow": "Career Fit",
+      "headline": "Temukan posisi yang benar-benar cocok dengan Anda.",
+      "subhead": "Perintis mencocokkan skill dan pengalaman di Profil Anda dengan berbagai posisi umum secara otomatis, lalu menjelaskan alasannya, tanpa klaim pasar kerja yang tidak bisa dipertanggungjawabkan.",
+      "bullets": [
+        "Pencocokan berbasis skill nyata di Profil Anda, bukan tebakan",
+        "Setiap hasil dijelaskan alasannya, bukan sekadar skor",
+        "Lihat juga skill yang belum Anda punya untuk posisi tersebut"
+      ],
+      "cta": "Coba Career Fit Gratis",
+      "preview": {
+        "strongLabel": "Sangat Cocok",
+        "goodLabel": "Cocok"
+      },
+      "faqTitle": "Pertanyaan yang sering diajukan",
+      "faq": [
+        {
+          "question": "Bagaimana Perintis menentukan posisi yang cocok?",
+          "answer": "Kami mencocokkan skill dan pengalaman di Profil Anda dengan skill umum yang biasa dibutuhkan tiap posisi, dihitung otomatis, bukan tebakan AI. AI hanya membantu menjelaskan hasilnya dalam bahasa yang mudah dipahami."
+        },
+        {
+          "question": "Apakah hasilnya berdasarkan data lowongan kerja asli?",
+          "answer": "Tidak. Career Fit tidak menggunakan data lowongan, gaji, atau permintaan pasar kerja apa pun. Semua hasil murni berdasarkan skill dan pengalaman yang sudah Anda isi di Profil."
+        },
+        {
+          "question": "Apakah saya bisa menjalankan analisis ini lebih dari sekali?",
+          "answer": "Bisa. Setiap analisis tersimpan sebagai riwayat, jadi Anda bisa menjalankannya lagi kapan pun Profil Anda berkembang."
+        }
+      ],
+      "metaTitle": "Career Fit Gratis: Temukan Posisi yang Cocok | Perintis",
+      "metaDescription": "Cocokkan skill dan pengalaman Anda dengan berbagai posisi kerja secara otomatis, gratis. Tanpa klaim pasar kerja, murni berdasarkan data Profil Anda sendiri."
     }
   },
   "contact": {

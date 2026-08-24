@@ -3,6 +3,7 @@ import {
   ArrowRight,
   ArrowRightLeft,
   BadgeCheck,
+  Compass,
   FileCheck2,
   FileEdit,
   GraduationCap,
@@ -23,11 +24,12 @@ import { AtsPreviewCard } from "@/components/marketing/ats-preview-card";
 import { ResumePreviewCard } from "@/components/marketing/resume-preview-card";
 import { CoverLetterPreviewCard } from "@/components/marketing/cover-letter-preview-card";
 import { ApplicationTrackerPreviewCard } from "@/components/marketing/application-tracker-preview-card";
+import { CareerFitPreviewCard } from "@/components/marketing/career-fit-preview-card";
 import { TrackedLink } from "@/components/marketing/tracked-link";
 import { buildAlternates, SITE_URL } from "@/lib/site-urls";
 
 const reasonIcons = [SearchCheck, Languages, BadgeCheck];
-const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks, Compass];
 const coreHrefs: (string | null)[] = [
   null,
   "/features/ats-check",
@@ -35,6 +37,7 @@ const coreHrefs: (string | null)[] = [
   null,
   "/features/cover-letter",
   "/features/application-tracker",
+  "/features/career-fit",
 ];
 const personaIcons = [GraduationCap, ArrowRightLeft, TrendingUp];
 
@@ -122,6 +125,17 @@ export default async function HomePage({
       appliedLabel: string;
       interviewingLabel: string;
       acceptedLabel: string;
+    };
+  };
+  const careerFitShowcase = t.raw("showcase.careerFit") as {
+    eyebrow: string;
+    headline: string;
+    subhead: string;
+    bullets: string[];
+    cta: string;
+    preview: {
+      strongLabel: string;
+      goodLabel: string;
     };
   };
 
@@ -425,6 +439,54 @@ export default async function HomePage({
                 appliedLabel={applicationTrackerShowcase.preview.appliedLabel}
                 interviewingLabel={applicationTrackerShowcase.preview.interviewingLabel}
                 acceptedLabel={applicationTrackerShowcase.preview.acceptedLabel}
+              />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal>
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                {careerFitShowcase.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {careerFitShowcase.headline}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">{careerFitShowcase.subhead}</p>
+              <ul className="mt-6 space-y-3">
+                {careerFitShowcase.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-foreground" />
+                    <span className="text-muted-foreground">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={
+                    <TrackedLink href="/register" cta="career_fit_showcase">
+                      {careerFitShowcase.cta}
+                    </TrackedLink>
+                  }
+                />
+                <TrackedLink
+                  href="/features/career-fit"
+                  cta="career_fit_learn_more"
+                  className="text-sm font-medium text-foreground hover:underline"
+                >
+                  {t("learnMore")}
+                </TrackedLink>
+              </div>
+            </Reveal>
+            <Reveal delay={150}>
+              <CareerFitPreviewCard
+                strongLabel={careerFitShowcase.preview.strongLabel}
+                goodLabel={careerFitShowcase.preview.goodLabel}
               />
             </Reveal>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ChevronDown, FileCheck2, FileEdit, LayoutGrid, ListChecks, Mail } from "lucide-react";
+import { ChevronDown, Compass, FileCheck2, FileEdit, LayoutGrid, ListChecks, Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
   DropdownMenu,
@@ -35,6 +35,12 @@ const FEATURES = [
     icon: ListChecks,
     labelKey: "applicationTracker",
     descriptionKey: "applicationTrackerDescription",
+  },
+  {
+    href: "/features/career-fit",
+    icon: Compass,
+    labelKey: "careerFit",
+    descriptionKey: "careerFitDescription",
   },
 ] as const;
 
