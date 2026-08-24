@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 interface GreetingHeaderProps {
   name: string | null;
@@ -16,12 +16,11 @@ function getGreetingKey(hour: number): "morning" | "afternoon" | "evening" | "ni
 
 export function GreetingHeader({ name }: GreetingHeaderProps) {
   const t = useTranslations("dashboard.greeting");
-  const format = useFormatter();
-  const [now, setNow] = useState<Date | null>(null);
+  const [hour, setHour] = useState<number | null>(null);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => setNow(new Date()), 0);
-    const interval = setInterval(() => setNow(new Date()), 30_000);
+    const timeoutId = setTimeout(() => setHour(new Date().getHours()), 0);
+    const interval = setInterval(() => setHour(new Date().getHours()), 30_000);
     return () => {
       clearTimeout(timeoutId);
       clearInterval(interval);
@@ -29,17 +28,12 @@ export function GreetingHeader({ name }: GreetingHeaderProps) {
   }, []);
 
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-2">
+    <div>
       <h1 className="text-2xl font-semibold">
-        {now ? t(getGreetingKey(now.getHours())) : ""}
+        {hour !== null ? t(getGreetingKey(hour)) : ""}
         {name ? `, ${name}` : ""}
       </h1>
-      {now && (
-        <p className="text-sm text-muted-foreground">
-          {format.dateTime(now, { dateStyle: "full" })} &middot;{" "}
-          {format.dateTime(now, { timeStyle: "short" })}
-        </p>
-      )}
+      <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
     </div>
   );
 }
