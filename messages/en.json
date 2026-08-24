@@ -1381,7 +1381,8 @@
       "WITHDRAWN": "Withdrawn"
     },
     "card": {
-      "roundsCount": "{count} interview rounds"
+      "roundsCount": "{count} interview rounds",
+      "columnEmpty": "Nothing here yet"
     },
     "new": {
       "title": "Add Application",

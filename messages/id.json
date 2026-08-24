@@ -1381,7 +1381,8 @@
       "WITHDRAWN": "Ditarik"
     },
     "card": {
-      "roundsCount": "{count} tahap wawancara"
+      "roundsCount": "{count} tahap wawancara",
+      "columnEmpty": "Belum ada di sini"
     },
     "new": {
       "title": "Tambah Lamaran",

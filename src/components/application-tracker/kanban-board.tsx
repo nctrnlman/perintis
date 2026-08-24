@@ -3,7 +3,9 @@
 import { useState } from "react";
 import {
   DndContext,
+  DragOverlay,
   type DragEndEvent,
+  type DragStartEvent,
   PointerSensor,
   useDroppable,
   useSensor,
@@ -12,19 +14,11 @@ import {
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useTranslations } from "next-intl";
 import { toast } from "@/components/ui/toast";
-import { ApplicationCard } from "./application-card";
+import { ApplicationCard, ApplicationCardContent, type ApplicationCardData } from "./application-card";
+import { getStageColor } from "@/lib/application-tracker/stage-colors";
 import { updateApplicationStage } from "@/app/[locale]/(app)/application-tracker/actions";
 
-export interface KanbanApplication {
-  id: string;
-  token: string;
-  companyName: string;
-  positionTitle: string;
-  stage: string;
-  hasResume: boolean;
-  hasCoverLetter: boolean;
-  roundCount: number;
-}
+export type KanbanApplication = ApplicationCardData;
 
 const STAGES = [
   "WISHLIST",
@@ -40,12 +34,15 @@ function KanbanColumn({
   stage,
   label,
   applications,
+  emptyLabel,
 }: {
   stage: string;
   label: string;
   applications: KanbanApplication[];
+  emptyLabel: string;
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: stage });
+  const color = getStageColor(stage);
 
   return (
     <div
@@ -54,8 +51,9 @@ function KanbanColumn({
         isOver ? "bg-muted/50" : ""
       }`}
     >
-      <div className="flex items-center justify-between px-1 pb-3">
-        <h3 className="text-sm font-semibold">{label}</h3>
+      <div className="flex items-center gap-2 px-1 pb-3">
+        <span className={`size-1.5 shrink-0 rounded-full ${color.dot}`} />
+        <h3 className="flex-1 text-sm font-semibold">{label}</h3>
         <span className="text-xs text-muted-foreground">{applications.length}</span>
       </div>
       <SortableContext
@@ -63,17 +61,13 @@ function KanbanColumn({
         strategy={verticalListSortingStrategy}
       >
         <div className="flex flex-1 flex-col gap-2">
+          {applications.length === 0 && (
+            <p className="rounded-xl border border-dashed border-border p-4 text-center text-xs text-muted-foreground">
+              {emptyLabel}
+            </p>
+          )}
           {applications.map((application) => (
-            <ApplicationCard
-              key={application.id}
-              id={application.id}
-              token={application.token}
-              companyName={application.companyName}
-              positionTitle={application.positionTitle}
-              hasResume={application.hasResume}
-              hasCoverLetter={application.hasCoverLetter}
-              roundCount={application.roundCount}
-            />
+            <ApplicationCard key={application.id} {...application} />
           ))}
         </div>
       </SortableContext>
@@ -83,11 +77,20 @@ function KanbanColumn({
 
 export function KanbanBoard({ applications }: { applications: KanbanApplication[] }) {
   const t = useTranslations("applicationTracker.stages");
+  const tCard = useTranslations("applicationTracker.card");
   const tErrors = useTranslations("applicationTracker.editor");
   const [items, setItems] = useState(applications);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }));
 
+  const activeApplication = items.find((application) => application.id === activeId) ?? null;
+
+  function handleDragStart(event: DragStartEvent) {
+    setActiveId(String(event.active.id));
+  }
+
   function handleDragEnd(event: DragEndEvent) {
+    setActiveId(null);
     const { active, over } = event;
     if (!over) return;
 
@@ -119,17 +122,30 @@ export function KanbanBoard({ applications }: { applications: KanbanApplication[
   }
 
   return (
-    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+    <DndContext
+      sensors={sensors}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDragCancel={() => setActiveId(null)}
+    >
       <div className="flex gap-4 overflow-x-auto pb-4">
         {STAGES.map((stage) => (
           <KanbanColumn
             key={stage}
             stage={stage}
             label={t(stage)}
+            emptyLabel={tCard("columnEmpty")}
             applications={items.filter((application) => application.stage === stage)}
           />
         ))}
       </div>
+      <DragOverlay>
+        {activeApplication ? (
+          <div className="w-64 rotate-2">
+            <ApplicationCardContent {...activeApplication} dragging />
+          </div>
+        ) : null}
+      </DragOverlay>
     </DndContext>
   );
 }

@@ -14,6 +14,7 @@ import {
   type InterviewRoundItem,
 } from "@/components/application-tracker/interview-round-timeline";
 import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
+import { getStageColor } from "@/lib/application-tracker/stage-colors";
 import { updateApplicationFields } from "../actions";
 
 const STAGES = ["WISHLIST", "APPLIED", "INTERVIEWING", "OFFER", "ACCEPTED", "REJECTED", "WITHDRAWN"];
@@ -86,14 +87,18 @@ export function ApplicationEditorClient({
 
           <div className="space-y-1.5">
             <Label>{t("stageLabel")}</Label>
-            <Combobox
-              value={stage}
-              onChange={(value) => {
-                setStage(value);
-                handleChange();
-              }}
-              options={STAGES.map((value) => ({ value, label: tStages(value) }))}
-            />
+            <div className="flex items-center gap-2">
+              <span className={`size-2 shrink-0 rounded-full ${getStageColor(stage).dot}`} />
+              <Combobox
+                className="flex-1"
+                value={stage}
+                onChange={(value) => {
+                  setStage(value);
+                  handleChange();
+                }}
+                options={STAGES.map((value) => ({ value, label: tStages(value) }))}
+              />
+            </div>
             <input type="hidden" name="stage" value={stage} readOnly />
           </div>
 

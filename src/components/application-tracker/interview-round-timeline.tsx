@@ -3,11 +3,12 @@
 import { useState, useTransition } from "react";
 import { useTranslations, useFormatter } from "next-intl";
 import { Plus, Trash2 } from "lucide-react";
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Combobox } from "@/components/ui/combobox";
 import { toast } from "@/components/ui/toast";
+import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics-events";
 import {
   addInterviewRound,
@@ -23,6 +24,42 @@ export interface InterviewRoundItem {
   notes: string | null;
 }
 
+const OUTCOME_STYLES: Record<InterviewRoundItem["outcome"], string> = {
+  PENDING: "border-border text-muted-foreground",
+  PASSED: "border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+  FAILED: "border-red-500/40 bg-red-500/10 text-red-500",
+};
+
+function OutcomeToggle({
+  outcome,
+  onChange,
+  labels,
+}: {
+  outcome: InterviewRoundItem["outcome"];
+  onChange: (outcome: InterviewRoundItem["outcome"]) => void;
+  labels: Record<InterviewRoundItem["outcome"], string>;
+}) {
+  const options: InterviewRoundItem["outcome"][] = ["PENDING", "PASSED", "FAILED"];
+
+  return (
+    <div className="flex shrink-0 gap-1.5">
+      {options.map((option) => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => onChange(option)}
+          className={cn(
+            "rounded-full border px-2.5 py-1 text-xs font-medium transition-colors",
+            outcome === option ? OUTCOME_STYLES[option] : "border-border text-muted-foreground/60 hover:text-foreground"
+          )}
+        >
+          {labels[option]}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function InterviewRoundTimeline({
   applicationId,
   rounds,
@@ -32,11 +69,18 @@ export function InterviewRoundTimeline({
 }) {
   const t = useTranslations("applicationTracker.editor");
   const format = useFormatter();
+  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [label, setLabel] = useState("");
   const [scheduledAt, setScheduledAt] = useState("");
   const [notes, setNotes] = useState("");
   const [isAdding, startAddTransition] = useTransition();
+
+  const outcomeLabels: Record<InterviewRoundItem["outcome"], string> = {
+    PENDING: t("outcomePending"),
+    PASSED: t("outcomePassed"),
+    FAILED: t("outcomeFailed"),
+  };
 
   function handleAdd() {
     if (!label.trim()) return;
@@ -56,11 +100,18 @@ export function InterviewRoundTimeline({
       setScheduledAt("");
       setNotes("");
       setShowForm(false);
+      router.refresh();
     });
   }
 
   function handleOutcomeChange(roundId: string, outcome: string) {
-    updateInterviewRoundOutcome(roundId, outcome);
+    updateInterviewRoundOutcome(roundId, outcome).then((result) => {
+      if ("error" in result) {
+        toast.add({ title: t("toastRoundAddError"), type: "error" });
+        return;
+      }
+      router.refresh();
+    });
   }
 
   function handleDelete(roundId: string) {
@@ -70,6 +121,7 @@ export function InterviewRoundTimeline({
         return;
       }
       trackEvent("interview_round_deleted");
+      router.refresh();
     });
   }
 
@@ -131,15 +183,10 @@ export function InterviewRoundTimeline({
               )}
               {round.notes && <p className="mt-1 text-sm text-muted-foreground">{round.notes}</p>}
             </div>
-            <Combobox
-              className="w-36"
-              value={round.outcome}
-              onChange={(value) => handleOutcomeChange(round.id, value)}
-              options={[
-                { value: "PENDING", label: t("outcomePending") },
-                { value: "PASSED", label: t("outcomePassed") },
-                { value: "FAILED", label: t("outcomeFailed") },
-              ]}
+            <OutcomeToggle
+              outcome={round.outcome}
+              labels={outcomeLabels}
+              onChange={(outcome) => handleOutcomeChange(round.id, outcome)}
             />
             <Button variant="ghost" size="icon-sm" onClick={() => handleDelete(round.id)}>
               <Trash2 className="size-4" />
