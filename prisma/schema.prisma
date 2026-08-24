@@ -21,6 +21,7 @@ model User {
   atsChecks       ATSCheckAnalysis[]
   resumeDocuments ResumeDocument[]
   coverLetters    CoverLetter[]
+  applications    Application[]
 }
 
 model Profile {
@@ -118,6 +119,8 @@ model ResumeDocument {
   content   Json
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  applications Application[]
 }
 
 model Resume {
@@ -159,4 +162,54 @@ model CoverLetter {
   bodyHtml       String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  applications Application[]
+}
+
+enum ApplicationStage {
+  WISHLIST
+  APPLIED
+  INTERVIEWING
+  OFFER
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+enum RoundOutcome {
+  PENDING
+  PASSED
+  FAILED
+}
+
+model Application {
+  id               String           @id @default(cuid())
+  userId           String
+  user             User             @relation(fields: [userId], references: [id])
+  companyName      String
+  positionTitle    String
+  stage            ApplicationStage @default(APPLIED)
+  jobUrl           String?
+  location         String?
+  notes            String?
+  resumeDocumentId String?
+  resumeDocument   ResumeDocument?  @relation(fields: [resumeDocumentId], references: [id], onDelete: SetNull)
+  coverLetterId    String?
+  coverLetter      CoverLetter?     @relation(fields: [coverLetterId], references: [id], onDelete: SetNull)
+  appliedAt        DateTime?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  interviewRounds InterviewRound[]
+}
+
+model InterviewRound {
+  id            String       @id @default(cuid())
+  applicationId String
+  application   Application  @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  label         String
+  scheduledAt   DateTime?
+  outcome       RoundOutcome @default(PENDING)
+  notes         String?
+  createdAt     DateTime     @default(now())
 }
