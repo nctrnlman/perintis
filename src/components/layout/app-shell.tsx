@@ -20,7 +20,14 @@ import { UserMenu } from "@/components/layout/user-menu";
 import { HeaderClock } from "@/components/layout/header-clock";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
-const moduleRoutes: (string | null)[] = [null, "/ats-check", "/resume-builder", null, "/cover-letter", null];
+const moduleRoutes: (string | null)[] = [
+  null,
+  "/ats-check",
+  "/resume-builder",
+  null,
+  "/cover-letter",
+  "/application-tracker",
+];
 
 interface AppShellProps {
   userEmail: string;
