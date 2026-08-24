@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import {
+  Compass,
   FileCheck2,
   FileEdit,
   LayoutDashboard,
@@ -19,7 +20,7 @@ import { LanguageToggle } from "@/components/shared/language-toggle";
 import { UserMenu } from "@/components/layout/user-menu";
 import { HeaderClock } from "@/components/layout/header-clock";
 
-const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks, Compass];
 const moduleRoutes: (string | null)[] = [
   null,
   "/ats-check",
@@ -27,6 +28,7 @@ const moduleRoutes: (string | null)[] = [
   null,
   "/cover-letter",
   "/application-tracker",
+  "/career-fit",
 ];
 
 interface AppShellProps {
