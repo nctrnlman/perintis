@@ -321,7 +321,8 @@
       "atsChecksDone": "{count} checks run so far",
       "resumesCreated": "{count} resumes created so far",
       "coverLettersCreated": "{count} cover letters created so far",
-      "applicationCountStatus": "{count} applications tracked"
+      "applicationCountStatus": "{count} applications tracked",
+      "careerFitCountStatus": "{count} analyses run"
     },
     "howToLabel": "How to use",
     "greeting": {

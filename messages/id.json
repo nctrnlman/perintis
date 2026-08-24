@@ -321,7 +321,8 @@
       "atsChecksDone": "{count} pengecekan telah dilakukan",
       "resumesCreated": "{count} resume telah dibuat",
       "coverLettersCreated": "{count} cover letter dibuat sejauh ini",
-      "applicationCountStatus": "{count} lamaran dilacak"
+      "applicationCountStatus": "{count} lamaran dilacak",
+      "careerFitCountStatus": "{count} analisis dibuat"
     },
     "howToLabel": "Cara pakai",
     "greeting": {

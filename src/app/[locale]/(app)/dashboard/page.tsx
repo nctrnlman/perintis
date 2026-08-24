@@ -1,4 +1,5 @@
 import {
+  Compass,
   FileCheck2,
   FileEdit,
   Mail,
@@ -17,7 +18,7 @@ import { FeatureActionCard } from "@/components/dashboard/feature-action-card";
 import { ComingSoonStrip } from "@/components/dashboard/coming-soon-strip";
 import { computeProfileCompleteness } from "@/lib/profile-completeness";
 
-const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks, Compass];
 const moduleHrefs: (string | null)[] = [
   null,
   "/ats-check",
@@ -25,8 +26,9 @@ const moduleHrefs: (string | null)[] = [
   null,
   "/cover-letter",
   "/application-tracker",
+  "/career-fit",
 ];
-const ACTIVE_MODULE_INDICES = new Set([1, 2, 4, 5]);
+const ACTIVE_MODULE_INDICES = new Set([1, 2, 4, 5, 6]);
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
@@ -41,27 +43,35 @@ export default async function DashboardPage() {
     return null;
   }
 
-  const [profile, resumeCount, atsCheckCount, coverLetterCount, recentChecks, applicationCount] =
-    await Promise.all([
-      db.profile.findUnique({
-        where: { userId: user.id },
-        include: {
-          _count: {
-            select: { workExperiences: true, educations: true, skills: true },
-          },
+  const [
+    profile,
+    resumeCount,
+    atsCheckCount,
+    coverLetterCount,
+    recentChecks,
+    applicationCount,
+    careerFitCount,
+  ] = await Promise.all([
+    db.profile.findUnique({
+      where: { userId: user.id },
+      include: {
+        _count: {
+          select: { workExperiences: true, educations: true, skills: true },
         },
-      }),
-      db.resumeDocument.count({ where: { userId: user.id } }),
-      db.aTSCheckAnalysis.count({ where: { userId: user.id } }),
-      db.coverLetter.count({ where: { userId: user.id } }),
-      db.aTSCheckAnalysis.findMany({
-        where: { userId: user.id },
-        orderBy: { createdAt: "desc" },
-        take: 8,
-        select: { overallScore: true },
-      }),
-      db.application.count({ where: { userId: user.id } }),
-    ]);
+      },
+    }),
+    db.resumeDocument.count({ where: { userId: user.id } }),
+    db.aTSCheckAnalysis.count({ where: { userId: user.id } }),
+    db.coverLetter.count({ where: { userId: user.id } }),
+    db.aTSCheckAnalysis.findMany({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+      take: 8,
+      select: { overallScore: true },
+    }),
+    db.application.count({ where: { userId: user.id } }),
+    db.potentialAnalysis.count({ where: { userId: user.id } }),
+  ]);
 
   const firstName = profile?.fullName?.trim().split(/\s+/)[0] || null;
   const scoreHistory = recentChecks.map((check) => check.overallScore).reverse();
@@ -91,6 +101,10 @@ export default async function DashboardPage() {
     5:
       applicationCount > 0
         ? t("moduleStatus.applicationCountStatus", { count: applicationCount })
+        : undefined,
+    6:
+      careerFitCount > 0
+        ? t("moduleStatus.careerFitCountStatus", { count: careerFitCount })
         : undefined,
   };
 
