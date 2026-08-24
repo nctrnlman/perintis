@@ -381,6 +381,15 @@
           "Add a new application and pick its starting stage",
           "Drag the card between columns as its status changes"
         ]
+      },
+      {
+        "title": "Career Fit",
+        "description": "Find roles that best match your skills.",
+        "steps": [
+          "Open \"Career Fit\" in the sidebar",
+          "Click \"Analyze My Profile\"",
+          "See which roles fit, and why"
+        ]
       }
     ],
     "comingSoon": "Coming soon"
@@ -1485,5 +1494,38 @@
     "autoSaving": "Saving...",
     "autoSaved": "Saved",
     "autoSaveError": "Failed to save"
+  },
+  "careerFit": {
+    "title": "Career Fit",
+    "list": {
+      "title": "Career Fit",
+      "description": "See which roles best match your skills and experience.",
+      "newButton": "New Analysis",
+      "empty": "No analyses yet. Create your first one.",
+      "resultCount": "{count} roles found",
+      "delete": "Delete",
+      "toastDeleteSuccess": "Analysis deleted",
+      "toastDeleteError": "Failed to delete analysis"
+    },
+    "new": {
+      "title": "Unlock Your Potential",
+      "description": "We'll match the skills and experience in your Profile against common roles, then explain why each one fits.",
+      "submit": "Analyze My Profile",
+      "generating": "Analyzing your profile...",
+      "toastNoSkills": "Add some skills to your Profile before running this analysis.",
+      "toastGenerateError": "Something went wrong. Please try again."
+    },
+    "detail": {
+      "title": "Career Fit Results",
+      "backToList": "Back to list",
+      "matchedSkillsLabel": "Matched skills",
+      "missingSkillsLabel": "Skills to develop",
+      "toastDeleteError": "Failed to delete analysis"
+    },
+    "tiers": {
+      "STRONG": "Strong Fit",
+      "GOOD": "Good Fit",
+      "WORTH_EXPLORING": "Worth Exploring"
+    }
   }
 }

@@ -381,6 +381,15 @@
           "Tambahkan lamaran baru dan pilih status awalnya",
           "Seret kartu antar kolom saat status lamaran berubah"
         ]
+      },
+      {
+        "title": "Career Fit",
+        "description": "Temukan posisi yang paling cocok dengan skill Anda.",
+        "steps": [
+          "Buka menu \"Career Fit\" di sidebar",
+          "Klik \"Analisis Profil Saya\"",
+          "Lihat posisi yang cocok beserta alasannya"
+        ]
       }
     ],
     "comingSoon": "Segera hadir"
@@ -1485,5 +1494,38 @@
     "autoSaving": "Menyimpan otomatis...",
     "autoSaved": "Tersimpan",
     "autoSaveError": "Gagal menyimpan"
+  },
+  "careerFit": {
+    "title": "Career Fit",
+    "list": {
+      "title": "Career Fit",
+      "description": "Lihat posisi apa yang paling cocok dengan skill dan pengalaman Anda.",
+      "newButton": "Analisis Baru",
+      "empty": "Belum ada analisis. Buat yang pertama.",
+      "resultCount": "{count} posisi ditemukan",
+      "delete": "Hapus",
+      "toastDeleteSuccess": "Analisis dihapus",
+      "toastDeleteError": "Gagal menghapus analisis"
+    },
+    "new": {
+      "title": "Temukan Potensi Karir Anda",
+      "description": "Kami akan mencocokkan skill dan pengalaman di Profil Anda dengan berbagai posisi umum, lalu menjelaskan kenapa posisi itu cocok untuk Anda.",
+      "submit": "Analisis Profil Saya",
+      "generating": "Menganalisis profil Anda...",
+      "toastNoSkills": "Lengkapi skill di Profil Anda dulu sebelum menjalankan analisis ini.",
+      "toastGenerateError": "Terjadi kesalahan. Silakan coba lagi."
+    },
+    "detail": {
+      "title": "Hasil Career Fit",
+      "backToList": "Kembali ke daftar",
+      "matchedSkillsLabel": "Skill yang cocok",
+      "missingSkillsLabel": "Skill yang belum ada",
+      "toastDeleteError": "Gagal menghapus analisis"
+    },
+    "tiers": {
+      "STRONG": "Sangat Cocok",
+      "GOOD": "Cocok",
+      "WORTH_EXPLORING": "Layak Dicoba"
+    }
   }
 }
