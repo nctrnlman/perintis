@@ -33,6 +33,8 @@
     "resumeBuilderDescription": "Build a resume from your profile",
     "coverLetter": "Cover Letter",
     "coverLetterDescription": "Generate a personalized cover letter",
+    "applicationTracker": "Application Tracker",
+    "applicationTrackerDescription": "Track applications on one board",
     "seeAllFeatures": "See all features",
     "pricing": "Pricing",
     "blog": "Blog",
@@ -1014,6 +1016,39 @@
       ],
       "metaTitle": "Free AI Cover Letter Generator | Perintis",
       "metaDescription": "Generate a personalized cover letter from your Profile and a job posting, free. Choose your tone and length, edit freely, export as PDF or Word."
+    },
+    "applicationTracker": {
+      "eyebrow": "Application Tracker",
+      "headline": "One board for every application you're running.",
+      "subhead": "Log every application, track its status on a board you can drag and drop, and link it to the resume or cover letter you used, no more messy spreadsheets.",
+      "bullets": [
+        "Drag application cards between stages: Applied, Interviewing, Offer, all the way to the outcome",
+        "Log each interview round individually, from HR screens to the final round",
+        "See your win rate and interview conversion, calculated from your own application data"
+      ],
+      "cta": "Start Tracking Applications Free",
+      "preview": {
+        "appliedLabel": "Applied",
+        "interviewingLabel": "Interviewing",
+        "acceptedLabel": "Accepted"
+      },
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "Can I link a resume or cover letter I've already made?",
+          "answer": "Yes. When adding an application, you can optionally pick a resume from Resume Builder and/or a cover letter you've already created in Perintis."
+        },
+        {
+          "question": "How is this different from just using a spreadsheet?",
+          "answer": "Application Tracker gives you a board you can drag cards across directly, per-application interview round logging, and win-rate statistics calculated automatically from your own data."
+        },
+        {
+          "question": "Are the statistics compared against other applicants?",
+          "answer": "No. Every number, like win rate and interview conversion, is calculated purely from your own applications, never a comparison against anyone else."
+        }
+      ],
+      "metaTitle": "Free Job Application Tracker | Perintis",
+      "metaDescription": "Track every job application on a clean board, log interview rounds, and see your own win rate. Free, integrated with Resume Builder and Cover Letter."
     }
   },
   "contact": {

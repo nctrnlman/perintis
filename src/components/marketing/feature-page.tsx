@@ -9,6 +9,11 @@ interface FaqItem {
   answer: string;
 }
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface FeaturePageProps {
   eyebrow: string;
   headline: string;
@@ -19,6 +24,7 @@ interface FeaturePageProps {
   preview: ReactNode;
   faqTitle: string;
   faq: FaqItem[];
+  breadcrumb: BreadcrumbItem[];
 }
 
 export function FeaturePage({
@@ -31,6 +37,7 @@ export function FeaturePage({
   preview,
   faqTitle,
   faq,
+  breadcrumb,
 }: FeaturePageProps) {
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -42,11 +49,26 @@ export function FeaturePage({
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumb.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <section className="py-20">

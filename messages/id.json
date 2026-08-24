@@ -33,6 +33,8 @@
     "resumeBuilderDescription": "Susun resume dari profil Anda",
     "coverLetter": "Cover Letter",
     "coverLetterDescription": "Buat cover letter yang personal",
+    "applicationTracker": "Application Tracker",
+    "applicationTrackerDescription": "Lacak status lamaran di satu papan",
     "seeAllFeatures": "Lihat semua fitur",
     "pricing": "Harga",
     "blog": "Blog",
@@ -1014,6 +1016,39 @@
       ],
       "metaTitle": "Generator Cover Letter AI Gratis | Perintis",
       "metaDescription": "Buat cover letter personal dari Profil dan deskripsi lowongan Anda, gratis. Pilih nada dan panjang, edit bebas, unduh sebagai PDF atau Word."
+    },
+    "applicationTracker": {
+      "eyebrow": "Application Tracker",
+      "headline": "Satu papan untuk semua lamaran Anda.",
+      "subhead": "Catat setiap lamaran, pantau statusnya lewat papan yang bisa digeser langsung, dan tautkan ke resume atau cover letter yang Anda pakai, tanpa spreadsheet berantakan.",
+      "bullets": [
+        "Geser kartu lamaran antar status: Dilamar, Wawancara, Penawaran, sampai hasil akhir",
+        "Catat setiap tahap wawancara satu per satu, dari HR sampai user",
+        "Lihat tingkat keberhasilan dan konversi wawancara dari data lamaran Anda sendiri"
+      ],
+      "cta": "Mulai Lacak Lamaran Gratis",
+      "preview": {
+        "appliedLabel": "Dilamar",
+        "interviewingLabel": "Wawancara",
+        "acceptedLabel": "Diterima"
+      },
+      "faqTitle": "Pertanyaan yang sering diajukan",
+      "faq": [
+        {
+          "question": "Apakah saya bisa menautkan resume atau cover letter yang sudah saya buat?",
+          "answer": "Ya. Saat menambah lamaran, Anda bisa pilih resume dari Resume Builder dan/atau cover letter yang sudah dibuat sebelumnya di Perintis, keduanya opsional."
+        },
+        {
+          "question": "Apa bedanya dengan mencatat di spreadsheet biasa?",
+          "answer": "Application Tracker punya papan yang bisa digeser langsung antar status, pencatatan tahap wawancara per lamaran, dan statistik keberhasilan yang dihitung otomatis dari data Anda."
+        },
+        {
+          "question": "Apakah statistiknya dibandingkan dengan pelamar lain?",
+          "answer": "Tidak. Semua angka, seperti tingkat keberhasilan dan konversi wawancara, dihitung murni dari lamaran Anda sendiri, bukan perbandingan dengan orang lain."
+        }
+      ],
+      "metaTitle": "Application Tracker Gratis untuk Lamaran Kerja | Perintis",
+      "metaDescription": "Lacak setiap lamaran kerja di papan yang rapi, catat tahap wawancara, dan lihat tingkat keberhasilan Anda sendiri. Gratis, terintegrasi dengan Resume Builder dan Cover Letter."
     }
   },
   "contact": {

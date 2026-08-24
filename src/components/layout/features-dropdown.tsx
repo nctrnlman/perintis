@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ChevronDown, FileCheck2, FileEdit, LayoutGrid, Mail } from "lucide-react";
+import { ChevronDown, FileCheck2, FileEdit, LayoutGrid, ListChecks, Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import {
   DropdownMenu,
@@ -29,6 +29,12 @@ const FEATURES = [
     icon: Mail,
     labelKey: "coverLetter",
     descriptionKey: "coverLetterDescription",
+  },
+  {
+    href: "/features/application-tracker",
+    icon: ListChecks,
+    labelKey: "applicationTracker",
+    descriptionKey: "applicationTrackerDescription",
   },
 ] as const;
 

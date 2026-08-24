@@ -1,20 +1,35 @@
 import type { MetadataRoute } from "next";
 import { BLOG_SLUGS } from "@/lib/blog-slugs";
+import { localizedUrl } from "@/lib/site-urls";
+
+const STATIC_PATHS = [
+  "/",
+  "/features",
+  "/features/ats-check",
+  "/features/resume-builder",
+  "/features/cover-letter",
+  "/features/application-tracker",
+  "/pricing",
+  "/about",
+  "/blog",
+  "/contact",
+  "/privacy-policy",
+  "/terms-of-service",
+];
+
+const PATHS = [...STATIC_PATHS, ...BLOG_SLUGS.map((slug) => `/blog/${slug}`)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://perintis.devino.id";
-  return [
-    { url: base, lastModified: new Date() },
-    { url: `${base}/features`, lastModified: new Date() },
-    { url: `${base}/features/ats-check`, lastModified: new Date() },
-    { url: `${base}/features/resume-builder`, lastModified: new Date() },
-    { url: `${base}/features/cover-letter`, lastModified: new Date() },
-    { url: `${base}/pricing`, lastModified: new Date() },
-    { url: `${base}/about`, lastModified: new Date() },
-    { url: `${base}/blog`, lastModified: new Date() },
-    ...BLOG_SLUGS.map((slug) => ({ url: `${base}/blog/${slug}`, lastModified: new Date() })),
-    { url: `${base}/contact`, lastModified: new Date() },
-    { url: `${base}/privacy-policy`, lastModified: new Date() },
-    { url: `${base}/terms-of-service`, lastModified: new Date() },
-  ];
+  const lastModified = new Date();
+
+  return PATHS.map((path) => ({
+    url: localizedUrl("id", path),
+    lastModified,
+    alternates: {
+      languages: {
+        id: localizedUrl("id", path),
+        en: localizedUrl("en", path),
+      },
+    },
+  }));
 }

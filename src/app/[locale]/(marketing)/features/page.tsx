@@ -10,6 +10,7 @@ import {
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/shared/reveal";
+import { buildAlternates } from "@/lib/site-urls";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
 const moduleHrefs: (string | null)[] = [
@@ -18,7 +19,7 @@ const moduleHrefs: (string | null)[] = [
   "/features/resume-builder",
   null,
   "/features/cover-letter",
-  null,
+  "/features/application-tracker",
 ];
 
 export async function generateMetadata({
@@ -28,7 +29,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "featuresIndex" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: buildAlternates(locale, "/features"),
+  };
 }
 
 export default async function FeaturesIndexPage({

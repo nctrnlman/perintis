@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowRight,
   ArrowRightLeft,
   BadgeCheck,
   FileCheck2,
@@ -17,18 +18,37 @@ import { CheckCircle2 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
+import { Link } from "@/i18n/navigation";
 import { AtsPreviewCard } from "@/components/marketing/ats-preview-card";
 import { ResumePreviewCard } from "@/components/marketing/resume-preview-card";
 import { CoverLetterPreviewCard } from "@/components/marketing/cover-letter-preview-card";
 import { TrackedLink } from "@/components/marketing/tracked-link";
+import { buildAlternates, SITE_URL } from "@/lib/site-urls";
 
 const reasonIcons = [SearchCheck, Languages, BadgeCheck];
 const coreIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
+const coreHrefs: (string | null)[] = [
+  null,
+  "/features/ats-check",
+  "/features/resume-builder",
+  null,
+  "/features/cover-letter",
+  "/features/application-tracker",
+];
 const personaIcons = [GraduationCap, ArrowRightLeft, TrendingUp];
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations("home.meta");
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildAlternates(locale, "/"),
+  };
 }
 
 export default async function HomePage({
@@ -39,6 +59,7 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
+  const tDashboard = await getTranslations("dashboard");
   const reasons = t.raw("reasons.items") as { title: string; description: string }[];
   const personas = t.raw("personas.items") as {
     title: string;
@@ -91,8 +112,29 @@ export default async function HomePage({
     };
   };
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Perintis",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Perintis",
+      url: SITE_URL,
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <section className="mx-auto flex max-w-4xl flex-col items-center px-6 py-32 text-center">
         <Reveal>
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl">
@@ -142,20 +184,27 @@ export default async function HomePage({
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-3">
             {personas.map((persona, index) => {
               const Icon = personaIcons[index];
               return (
                 <Reveal key={persona.title} delay={index * 100}>
-                  <div className="h-full rounded-2xl border border-border p-8">
-                    <div className="flex size-11 items-center justify-center rounded-full bg-muted">
-                      <Icon className="size-5 text-foreground" />
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-background p-8 transition-transform duration-300 hover:scale-[1.02]">
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -top-4 -right-2 text-8xl font-bold tracking-tighter text-foreground/[0.05] select-none"
+                    >
+                      0{index + 1}
+                    </span>
+                    <div className="relative flex size-11 items-center justify-center rounded-full bg-primary/10">
+                      <Icon className="size-5 text-primary" />
                     </div>
-                    <h3 className="mt-5 text-xl font-semibold">{persona.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{persona.description}</p>
-                    <p className="mt-4 text-sm font-medium text-foreground">
-                      {persona.helpsWith}
-                    </p>
+                    <h3 className="relative mt-5 text-xl font-semibold">{persona.title}</h3>
+                    <p className="relative mt-2 text-muted-foreground">{persona.description}</p>
+                    <div className="relative mt-6 flex items-start gap-2 border-t border-border pt-5">
+                      <ArrowRight className="mt-0.5 size-4 shrink-0 text-primary" />
+                      <p className="text-sm font-medium text-foreground">{persona.helpsWith}</p>
+                    </div>
                   </div>
                 </Reveal>
               );
@@ -369,19 +418,30 @@ export default async function HomePage({
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {coreFeatures.map((feature, index) => {
               const Icon = coreIcons[index];
-              return (
-                <Reveal key={feature.title} delay={index * 80}>
-                  <div className="h-full rounded-2xl border border-border p-8 transition-transform hover:scale-[1.02]">
+              const href = coreHrefs[index];
+              const card = (
+                <div className="h-full rounded-2xl border border-border p-8 transition-transform hover:scale-[1.02]">
+                  <div className="flex items-center justify-between">
                     <div className="flex size-11 items-center justify-center rounded-full bg-muted">
                       <Icon className="size-5 text-foreground" />
                     </div>
-                    <h3 className="mt-5 text-xl font-semibold">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-2 text-muted-foreground">
-                      {feature.description}
-                    </p>
+                    {!href && (
+                      <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">
+                        {tDashboard("comingSoon")}
+                      </span>
+                    )}
                   </div>
+                  <h3 className="mt-5 text-xl font-semibold">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+              return (
+                <Reveal key={feature.title} delay={index * 80}>
+                  {href ? <Link href={href}>{card}</Link> : card}
                 </Reveal>
               );
             })}
