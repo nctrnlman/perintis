@@ -1,7 +1,6 @@
 import {
   FileCheck2,
   FileEdit,
-  Gauge,
   Mail,
   ListChecks,
   MessagesSquare,
@@ -10,16 +9,24 @@ import {
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
-import { ModuleCard } from "@/components/shared/module-card";
 import { Reveal } from "@/components/shared/reveal";
 import { GreetingHeader } from "@/components/dashboard/greeting-header";
-import { StatsRow } from "@/components/dashboard/stats-row";
+import { ScoreTrendCard } from "@/components/dashboard/score-trend-card";
 import { ProfileCompletenessCard } from "@/components/dashboard/profile-completeness-card";
-import { QuickStartCard } from "@/components/dashboard/quick-start-card";
+import { FeatureActionCard } from "@/components/dashboard/feature-action-card";
+import { ComingSoonStrip } from "@/components/dashboard/coming-soon-strip";
 import { computeProfileCompleteness } from "@/lib/profile-completeness";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks];
-const ACTIVE_MODULE_INDICES = new Set([1, 2, 4]);
+const moduleHrefs: (string | null)[] = [
+  null,
+  "/ats-check",
+  "/resume-builder",
+  null,
+  "/cover-letter",
+  "/application-tracker",
+];
+const ACTIVE_MODULE_INDICES = new Set([1, 2, 4, 5]);
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard");
@@ -34,43 +41,30 @@ export default async function DashboardPage() {
     return null;
   }
 
-  const [profile, resumeCount, atsCheckCount, coverLetterCount, latestCheck] = await Promise.all([
-    db.profile.findUnique({
-      where: { userId: user.id },
-      include: {
-        _count: {
-          select: { workExperiences: true, educations: true, skills: true },
+  const [profile, resumeCount, atsCheckCount, coverLetterCount, recentChecks, applicationCount] =
+    await Promise.all([
+      db.profile.findUnique({
+        where: { userId: user.id },
+        include: {
+          _count: {
+            select: { workExperiences: true, educations: true, skills: true },
+          },
         },
-      },
-    }),
-    db.resumeDocument.count({ where: { userId: user.id } }),
-    db.aTSCheckAnalysis.count({ where: { userId: user.id } }),
-    db.coverLetter.count({ where: { userId: user.id } }),
-    db.aTSCheckAnalysis.findFirst({
-      where: { userId: user.id },
-      orderBy: { createdAt: "desc" },
-    }),
-  ]);
+      }),
+      db.resumeDocument.count({ where: { userId: user.id } }),
+      db.aTSCheckAnalysis.count({ where: { userId: user.id } }),
+      db.coverLetter.count({ where: { userId: user.id } }),
+      db.aTSCheckAnalysis.findMany({
+        where: { userId: user.id },
+        orderBy: { createdAt: "desc" },
+        take: 8,
+        select: { overallScore: true },
+      }),
+      db.application.count({ where: { userId: user.id } }),
+    ]);
 
   const firstName = profile?.fullName?.trim().split(/\s+/)[0] || null;
-
-  const stats = [
-    {
-      label: t("stats.resumesLabel"),
-      value: String(resumeCount),
-      icon: FileEdit,
-    },
-    {
-      label: t("stats.atsChecksLabel"),
-      value: String(atsCheckCount),
-      icon: ShieldCheck,
-    },
-    {
-      label: t("stats.latestScoreLabel"),
-      value: latestCheck ? String(latestCheck.overallScore) : t("stats.noScoreYet"),
-      icon: Gauge,
-    },
-  ];
+  const scoreHistory = recentChecks.map((check) => check.overallScore).reverse();
 
   const completeness = computeProfileCompleteness({
     fullName: profile?.fullName ?? null,
@@ -94,58 +88,65 @@ export default async function DashboardPage() {
       coverLetterCount > 0
         ? t("moduleStatus.coverLettersCreated", { count: coverLetterCount })
         : undefined,
+    5:
+      applicationCount > 0
+        ? t("moduleStatus.applicationCountStatus", { count: applicationCount })
+        : undefined,
   };
 
-  const quickStartModules = modules
+  const activeFeatures = modules
     .map((module, index) => ({ ...module, index }))
-    .filter((module): module is typeof module & { steps: string[] } =>
-      ACTIVE_MODULE_INDICES.has(module.index) && Boolean(module.steps?.length)
-    );
+    .filter((module) => ACTIVE_MODULE_INDICES.has(module.index));
+
+  const comingSoonFeatures = modules
+    .map((module, index) => ({ ...module, index }))
+    .filter((module) => !ACTIVE_MODULE_INDICES.has(module.index));
 
   return (
     <div className="space-y-10">
       <GreetingHeader name={firstName} />
 
-      <StatsRow stats={stats} />
-
-      <ProfileCompletenessCard percentage={completeness.percentage} missing={completeness.missing} />
-
-      {quickStartModules.length > 0 && (
-        <div>
-          <h2 className="text-lg font-semibold">{t("quickStartTitle")}</h2>
-          <p className="mt-1 text-muted-foreground">{t("quickStartDescription")}</p>
-          <div className="mt-4 grid gap-6 sm:grid-cols-2">
-            {quickStartModules.map((module) => (
-              <Reveal key={module.title} delay={module.index * 60}>
-                <QuickStartCard
-                  icon={moduleIcons[module.index]}
-                  title={module.title}
-                  steps={module.steps}
-                />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      )}
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <Reveal>
+          <ScoreTrendCard
+            scores={scoreHistory}
+            resumeCount={resumeCount}
+            coverLetterCount={coverLetterCount}
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <ProfileCompletenessCard
+            percentage={completeness.percentage}
+            missing={completeness.missing}
+          />
+        </Reveal>
+      </div>
 
       <div>
-        <h2 className="text-lg font-semibold">{t("modulesTitle")}</h2>
-        <p className="mt-1 text-muted-foreground">{t("description")}</p>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.map((module, index) => (
-            <Reveal key={module.title} delay={index * 60}>
-              <ModuleCard
-                icon={moduleIcons[index]}
-                title={module.title}
-                description={module.description}
-                status={moduleStatuses[index]}
-                comingSoon={!ACTIVE_MODULE_INDICES.has(index)}
-                comingSoonLabel={t("comingSoon")}
+        <h2 className="text-lg font-semibold">{t("continueTitle")}</h2>
+        <p className="mt-1 text-muted-foreground">{t("continueDescription")}</p>
+        <div className="mt-4 grid gap-6 sm:grid-cols-3">
+          {activeFeatures.map((feature) => (
+            <Reveal key={feature.title} delay={feature.index * 60}>
+              <FeatureActionCard
+                icon={moduleIcons[feature.index]}
+                href={moduleHrefs[feature.index]!}
+                title={feature.title}
+                hint={moduleStatuses[feature.index] ?? feature.steps?.[0] ?? feature.description}
               />
             </Reveal>
           ))}
         </div>
       </div>
+
+      <ComingSoonStrip
+        title={t("comingSoonTitle")}
+        badgeLabel={t("comingSoon")}
+        items={comingSoonFeatures.map((feature) => ({
+          icon: moduleIcons[feature.index],
+          title: feature.title,
+        }))}
+      />
     </div>
   );
 }

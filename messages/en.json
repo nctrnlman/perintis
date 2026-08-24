@@ -302,7 +302,8 @@
     "moduleStatus": {
       "atsChecksDone": "{count} checks run so far",
       "resumesCreated": "{count} resumes created so far",
-      "coverLettersCreated": "{count} cover letters created so far"
+      "coverLettersCreated": "{count} cover letters created so far",
+      "applicationCountStatus": "{count} applications tracked"
     },
     "howToLabel": "How to use",
     "greeting": {

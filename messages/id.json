@@ -302,7 +302,8 @@
     "moduleStatus": {
       "atsChecksDone": "{count} pengecekan telah dilakukan",
       "resumesCreated": "{count} resume telah dibuat",
-      "coverLettersCreated": "{count} cover letter dibuat sejauh ini"
+      "coverLettersCreated": "{count} cover letter dibuat sejauh ini",
+      "applicationCountStatus": "{count} lamaran dilacak"
     },
     "howToLabel": "Cara pakai",
     "greeting": {
