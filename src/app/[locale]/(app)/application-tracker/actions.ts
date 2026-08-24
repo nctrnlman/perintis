@@ -8,6 +8,8 @@ import {
   createApplicationSchema,
   updateApplicationSchema,
   applicationStageValues,
+  addInterviewRoundSchema,
+  updateRoundOutcomeSchema,
 } from "@/lib/validations/application-tracker";
 
 function emptyToNull(value: string | undefined): string | null {
@@ -174,6 +176,89 @@ export async function deleteApplication(
   if (!existing || existing.userId !== user.id) return { error: "not-found" };
 
   await db.application.delete({ where: { id } });
+  revalidatePath("/application-tracker");
+  return { success: true };
+}
+
+export async function addInterviewRound(
+  applicationId: string,
+  formData: FormData
+): Promise<{ success: true } | { error: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "not-authenticated" };
+
+  const application = await db.application.findUnique({ where: { id: applicationId } });
+  if (!application || application.userId !== user.id) return { error: "not-found" };
+
+  const parsed = addInterviewRoundSchema.safeParse({
+    label: formData.get("label") ?? "",
+    scheduledAt: formData.get("scheduledAt") ?? "",
+    notes: formData.get("notes") ?? "",
+  });
+  if (!parsed.success) return { error: "validation-failed" };
+
+  const scheduledAtInput = parsed.data.scheduledAt?.trim();
+
+  await db.interviewRound.create({
+    data: {
+      applicationId,
+      label: parsed.data.label,
+      scheduledAt: scheduledAtInput ? new Date(scheduledAtInput) : null,
+      notes: emptyToNull(parsed.data.notes),
+    },
+  });
+
+  revalidatePath("/application-tracker");
+  return { success: true };
+}
+
+export async function updateInterviewRoundOutcome(
+  roundId: string,
+  outcome: string
+): Promise<{ success: true } | { error: string }> {
+  const parsed = updateRoundOutcomeSchema.safeParse({ outcome });
+  if (!parsed.success) return { error: "invalid-outcome" };
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "not-authenticated" };
+
+  const round = await db.interviewRound.findUnique({
+    where: { id: roundId },
+    include: { application: true },
+  });
+  if (!round || round.application.userId !== user.id) return { error: "not-found" };
+
+  await db.interviewRound.update({
+    where: { id: roundId },
+    data: { outcome: parsed.data.outcome },
+  });
+
+  revalidatePath("/application-tracker");
+  return { success: true };
+}
+
+export async function deleteInterviewRound(
+  roundId: string
+): Promise<{ success: true } | { error: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "not-authenticated" };
+
+  const round = await db.interviewRound.findUnique({
+    where: { id: roundId },
+    include: { application: true },
+  });
+  if (!round || round.application.userId !== user.id) return { error: "not-found" };
+
+  await db.interviewRound.delete({ where: { id: roundId } });
   revalidatePath("/application-tracker");
   return { success: true };
 }
