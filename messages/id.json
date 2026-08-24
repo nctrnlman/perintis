@@ -3,6 +3,18 @@
     "defaultTitle": "Perintis: setiap karir besar, dimulai dari langkah pertama",
     "description": "Perintis adalah toolkit karir berbasis AI untuk pencari kerja Indonesia: optimasi resume, cek kompatibilitas ATS, simulasi wawancara, dan pelacakan lamaran, dengan reasoning AI yang transparan."
   },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "description": "Halaman yang Anda cari mungkin sudah dipindahkan atau memang tidak pernah ada.",
+    "cta": "Kembali ke beranda",
+    "secondaryCta": "Lihat semua fitur"
+  },
+  "errorPage": {
+    "title": "Ada yang tidak beres",
+    "description": "Terjadi kesalahan tak terduga. Coba muat ulang halaman, atau kembali ke beranda.",
+    "retry": "Coba lagi",
+    "cta": "Kembali ke beranda"
+  },
   "cookieConsent": {
     "message": "Kami menggunakan cookie untuk analytics, agar bisa memahami cara Perintis digunakan dan terus memperbaikinya. Tidak ada data pribadi yang dijual.",
     "accept": "Setuju",
@@ -129,17 +141,17 @@
       "items": [
         {
           "title": "Baru Lulus",
-          "description": "Belum punya riwayat kerja panjang, dan hampir semua lowongan minta pengalaman 2+ tahun yang belum Anda punya.",
+          "description": "Belum punya riwayat kerja panjang. Hampir semua lowongan minta pengalaman 2+ tahun yang belum Anda punya.",
           "helpsWith": "Resume Builder mengubah pendidikan, proyek, dan magang Anda jadi resume yang terlihat siap, bukan kosong."
         },
         {
           "title": "Pindah Karir",
-          "description": "Pengalaman Anda nyata, cuma di bidang berbeda, dan sulit menjelaskan kenapa itu tetap membuat Anda kandidat yang tepat.",
+          "description": "Pengalaman Anda nyata, cuma di bidang berbeda. Sulit menjelaskan kenapa itu tetap membuat Anda kandidat yang tepat.",
           "helpsWith": "Cover Letter Generator menghubungkan skill yang sudah Anda punya langsung ke apa yang sebenarnya dibutuhkan posisi baru."
         },
         {
           "title": "Mengembangkan Karir",
-          "description": "Anda sudah punya pengalaman. Sekarang melamar ke posisi yang lebih besar, dan materi lamaran Anda perlu mengimbangi.",
+          "description": "Anda sudah punya pengalaman. Sekarang Anda melamar ke posisi yang lebih besar, dan materi lamaran perlu mengimbangi.",
           "helpsWith": "Cek ATS memastikan resume Anda benar-benar terbaca dulu sebelum dinilai, di level seniority mana pun."
         }
       ]
@@ -260,9 +272,20 @@
   "dashboard": {
     "title": "Dashboard",
     "description": "Setiap modul di bawah membantu satu tahap pencarian kerja Anda, dari menyiapkan profil hingga melacak lamaran.",
-    "modulesTitle": "Yang Bisa Anda Lakukan di Perintis",
-    "quickStartTitle": "Mulai Dari Sini",
-    "quickStartDescription": "Dua fitur ini sudah aktif dan siap dipakai sekarang.",
+    "continueTitle": "Lanjutkan",
+    "continueDescription": "Tiga fitur ini sudah aktif dan siap dipakai sekarang.",
+    "comingSoonTitle": "Segera Hadir",
+    "scoreTrend": {
+      "title": "Tren Skor ATS",
+      "latestLabel": "Skor terakhir",
+      "up": "naik {points} poin",
+      "down": "turun {points} poin",
+      "same": "stabil dari cek terakhir",
+      "singleCheckHint": "Jalankan sekali lagi untuk melihat tren perubahan skor.",
+      "emptyTitle": "Belum ada riwayat skor",
+      "emptyDescription": "Jalankan ATS Check pertama Anda untuk mulai melacak progres dari waktu ke waktu.",
+      "emptyCta": "Coba ATS Check"
+    },
     "profileCompleteness": {
       "title": "Kelengkapan Profil",
       "missingIntro": "Lengkapi bagian berikut agar Resume Builder dan Impor CV memberi hasil terbaik:",
@@ -333,7 +356,12 @@
       },
       {
         "title": "Application Tracker",
-        "description": "Lacak status lamaran Anda."
+        "description": "Lacak status lamaran Anda.",
+        "steps": [
+          "Buka menu \"Application Tracker\" di sidebar",
+          "Tambahkan lamaran baru dan pilih status awalnya",
+          "Seret kartu antar kolom saat status lamaran berubah"
+        ]
       }
     ],
     "comingSoon": "Segera hadir"
@@ -1075,6 +1103,10 @@
     "ctaHeading": "Siap mempraktikkannya?",
     "ctaButton": "Coba {feature} gratis",
     "moreFromBlog": "Artikel lainnya",
+    "share": "Bagikan artikel ini",
+    "searchPlaceholder": "Cari artikel...",
+    "allCategories": "Semua",
+    "noResults": "Tidak ada artikel yang cocok. Coba kata kunci atau kategori lain.",
     "posts": {
       "ats-friendly-resume": {
         "title": "Cara Membuat Resume yang Benar-Benar Lolos ATS",
@@ -1325,5 +1357,80 @@
         ]
       }
     }
+  },
+  "applicationTracker": {
+    "title": "Application Tracker",
+    "description": "Lacak setiap lamaran kerja Anda dari melamar sampai hasil akhir.",
+    "newButton": "Tambah Lamaran",
+    "empty": "Belum ada lamaran. Tambahkan lamaran pertama Anda.",
+    "stats": {
+      "total": "Total Lamaran",
+      "activePipeline": "Sedang Berjalan",
+      "winRate": "Tingkat Keberhasilan",
+      "interviewConversion": "Konversi Wawancara",
+      "notEnoughData": "Belum cukup data"
+    },
+    "stages": {
+      "WISHLIST": "Tersimpan",
+      "APPLIED": "Dilamar",
+      "INTERVIEWING": "Wawancara",
+      "OFFER": "Penawaran",
+      "ACCEPTED": "Diterima",
+      "REJECTED": "Ditolak",
+      "WITHDRAWN": "Ditarik"
+    },
+    "card": {
+      "roundsCount": "{count} tahap wawancara"
+    },
+    "new": {
+      "title": "Tambah Lamaran",
+      "description": "Catat lamaran baru untuk mulai melacak progresnya.",
+      "companyLabel": "Nama Perusahaan",
+      "positionLabel": "Posisi",
+      "stageLabel": "Status",
+      "jobUrlLabel": "Tautan Lowongan (opsional)",
+      "locationLabel": "Lokasi (opsional)",
+      "resumeLabel": "Resume Terkait (opsional)",
+      "resumeNone": "Tidak ada",
+      "coverLetterLabel": "Cover Letter Terkait (opsional)",
+      "coverLetterNone": "Tidak ada",
+      "submit": "Simpan Lamaran",
+      "toastCreateSuccess": "Lamaran berhasil ditambahkan",
+      "toastCreateError": "Gagal menambahkan lamaran"
+    },
+    "editor": {
+      "backToBoard": "Kembali ke papan",
+      "detailsTitle": "Detail Lamaran",
+      "companyLabel": "Nama Perusahaan",
+      "positionLabel": "Posisi",
+      "stageLabel": "Status",
+      "jobUrlLabel": "Tautan Lowongan",
+      "locationLabel": "Lokasi",
+      "appliedAtLabel": "Tanggal Melamar",
+      "notesLabel": "Catatan",
+      "resumeLabel": "Resume Terkait",
+      "resumeNone": "Tidak ada",
+      "coverLetterLabel": "Cover Letter Terkait",
+      "coverLetterNone": "Tidak ada",
+      "deleteButton": "Hapus Lamaran",
+      "toastDeleteError": "Gagal menghapus lamaran",
+      "roundsTitle": "Tahap Wawancara",
+      "roundsEmpty": "Belum ada tahap wawancara yang dicatat.",
+      "addRoundButton": "Tambah Tahap",
+      "roundLabelLabel": "Nama Tahap",
+      "roundLabelPlaceholder": "mis. Wawancara HR, Tes Teknis",
+      "roundDateLabel": "Tanggal (opsional)",
+      "roundNotesLabel": "Catatan (opsional)",
+      "roundSubmit": "Simpan Tahap",
+      "roundDelete": "Hapus",
+      "outcomePending": "Menunggu",
+      "outcomePassed": "Lolos",
+      "outcomeFailed": "Tidak Lolos",
+      "toastRoundAddError": "Gagal menambahkan tahap",
+      "toastRoundDeleteError": "Gagal menghapus tahap"
+    },
+    "autoSaving": "Menyimpan otomatis...",
+    "autoSaved": "Tersimpan",
+    "autoSaveError": "Gagal menyimpan"
   }
 }

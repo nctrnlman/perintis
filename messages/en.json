@@ -3,6 +3,18 @@
     "defaultTitle": "Perintis: every great career starts with a first step",
     "description": "Perintis is an AI-powered career toolkit for Indonesian jobseekers: resume optimization, ATS compatibility checks, mock interviews, and application tracking, with transparent AI reasoning."
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for may have moved or never existed.",
+    "cta": "Back to home",
+    "secondaryCta": "See all features"
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Try reloading the page, or head back home.",
+    "retry": "Try again",
+    "cta": "Back to home"
+  },
   "cookieConsent": {
     "message": "We use cookies for analytics, to understand how Perintis is used and improve it. No personal data is sold.",
     "accept": "Accept",
@@ -129,12 +141,12 @@
       "items": [
         {
           "title": "Just Graduated",
-          "description": "No long work history yet, and every job posting seems to want 2+ years of experience you don't have.",
+          "description": "No long work history yet. Every job posting seems to want 2+ years of experience you don't have.",
           "helpsWith": "Resume Builder turns your education, projects, and internships into a resume that reads as ready, not empty."
         },
         {
           "title": "Switching Careers",
-          "description": "Your experience is real, just in a different field, and it's hard to explain why that still makes you the right hire.",
+          "description": "Your experience is real, just in a different field. It's hard to explain why that still makes you the right hire.",
           "helpsWith": "Cover Letter Generator connects your existing skills directly to what the new role actually needs."
         },
         {
@@ -260,9 +272,20 @@
   "dashboard": {
     "title": "Dashboard",
     "description": "Each module below covers one stage of your job search, from setting up your profile to tracking applications.",
-    "modulesTitle": "What You Can Do in Perintis",
-    "quickStartTitle": "Start Here",
-    "quickStartDescription": "These two features are live and ready to use right now.",
+    "continueTitle": "Continue",
+    "continueDescription": "These three features are live and ready to use right now.",
+    "comingSoonTitle": "Coming Soon",
+    "scoreTrend": {
+      "title": "ATS Score Trend",
+      "latestLabel": "Latest score",
+      "up": "up {points} points",
+      "down": "down {points} points",
+      "same": "unchanged from last check",
+      "singleCheckHint": "Run it once more to start seeing your trend.",
+      "emptyTitle": "No score history yet",
+      "emptyDescription": "Run your first ATS Check to start tracking your progress over time.",
+      "emptyCta": "Try ATS Check"
+    },
     "profileCompleteness": {
       "title": "Profile Completeness",
       "missingIntro": "Fill in the following so Resume Builder and CV Import give you the best results:",
@@ -333,7 +356,12 @@
       },
       {
         "title": "Application Tracker",
-        "description": "Track the status of your applications."
+        "description": "Track the status of your applications.",
+        "steps": [
+          "Open \"Application Tracker\" in the sidebar",
+          "Add a new application and pick its starting stage",
+          "Drag the card between columns as its status changes"
+        ]
       }
     ],
     "comingSoon": "Coming soon"
@@ -1075,6 +1103,10 @@
     "ctaHeading": "Ready to put this into practice?",
     "ctaButton": "Try {feature} free",
     "moreFromBlog": "More from the blog",
+    "share": "Share this article",
+    "searchPlaceholder": "Search articles...",
+    "allCategories": "All",
+    "noResults": "No articles match. Try a different keyword or category.",
     "posts": {
       "ats-friendly-resume": {
         "title": "How to Write a Resume That Actually Passes an ATS",
@@ -1325,5 +1357,80 @@
         ]
       }
     }
+  },
+  "applicationTracker": {
+    "title": "Application Tracker",
+    "description": "Track every job application from applying to the final outcome.",
+    "newButton": "Add Application",
+    "empty": "No applications yet. Add your first one.",
+    "stats": {
+      "total": "Total Applications",
+      "activePipeline": "In Progress",
+      "winRate": "Win Rate",
+      "interviewConversion": "Interview Conversion",
+      "notEnoughData": "Not enough data yet"
+    },
+    "stages": {
+      "WISHLIST": "Wishlist",
+      "APPLIED": "Applied",
+      "INTERVIEWING": "Interviewing",
+      "OFFER": "Offer",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected",
+      "WITHDRAWN": "Withdrawn"
+    },
+    "card": {
+      "roundsCount": "{count} interview rounds"
+    },
+    "new": {
+      "title": "Add Application",
+      "description": "Log a new application to start tracking its progress.",
+      "companyLabel": "Company Name",
+      "positionLabel": "Position",
+      "stageLabel": "Stage",
+      "jobUrlLabel": "Job Posting URL (optional)",
+      "locationLabel": "Location (optional)",
+      "resumeLabel": "Linked Resume (optional)",
+      "resumeNone": "None",
+      "coverLetterLabel": "Linked Cover Letter (optional)",
+      "coverLetterNone": "None",
+      "submit": "Save Application",
+      "toastCreateSuccess": "Application added",
+      "toastCreateError": "Failed to add application"
+    },
+    "editor": {
+      "backToBoard": "Back to board",
+      "detailsTitle": "Application Details",
+      "companyLabel": "Company Name",
+      "positionLabel": "Position",
+      "stageLabel": "Stage",
+      "jobUrlLabel": "Job Posting URL",
+      "locationLabel": "Location",
+      "appliedAtLabel": "Applied Date",
+      "notesLabel": "Notes",
+      "resumeLabel": "Linked Resume",
+      "resumeNone": "None",
+      "coverLetterLabel": "Linked Cover Letter",
+      "coverLetterNone": "None",
+      "deleteButton": "Delete Application",
+      "toastDeleteError": "Failed to delete application",
+      "roundsTitle": "Interview Rounds",
+      "roundsEmpty": "No interview rounds logged yet.",
+      "addRoundButton": "Add Round",
+      "roundLabelLabel": "Round Name",
+      "roundLabelPlaceholder": "e.g. HR Interview, Technical Test",
+      "roundDateLabel": "Date (optional)",
+      "roundNotesLabel": "Notes (optional)",
+      "roundSubmit": "Save Round",
+      "roundDelete": "Delete",
+      "outcomePending": "Pending",
+      "outcomePassed": "Passed",
+      "outcomeFailed": "Failed",
+      "toastRoundAddError": "Failed to add round",
+      "toastRoundDeleteError": "Failed to delete round"
+    },
+    "autoSaving": "Saving...",
+    "autoSaved": "Saved",
+    "autoSaveError": "Failed to save"
   }
 }
