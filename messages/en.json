@@ -135,6 +135,22 @@
           "pdfLabel": "PDF",
           "wordLabel": "Word"
         }
+      },
+      "applicationTracker": {
+        "eyebrow": "Application Tracker",
+        "headline": "One board for every application you're running.",
+        "subhead": "Log every application, drag it across a Kanban board as its status changes, and link it to the resume or cover letter you used, no more messy spreadsheets.",
+        "bullets": [
+          "Drag application cards between stages: Applied, Interviewing, Offer, all the way to the outcome",
+          "Log each interview round individually, from HR screens to the final round",
+          "See your win rate and interview conversion, calculated from your own data"
+        ],
+        "cta": "Start Tracking Applications",
+        "preview": {
+          "appliedLabel": "Applied",
+          "interviewingLabel": "Interviewing",
+          "acceptedLabel": "Accepted"
+        }
       }
     },
     "personas": {

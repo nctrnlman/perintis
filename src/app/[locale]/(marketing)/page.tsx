@@ -22,6 +22,7 @@ import { Link } from "@/i18n/navigation";
 import { AtsPreviewCard } from "@/components/marketing/ats-preview-card";
 import { ResumePreviewCard } from "@/components/marketing/resume-preview-card";
 import { CoverLetterPreviewCard } from "@/components/marketing/cover-letter-preview-card";
+import { ApplicationTrackerPreviewCard } from "@/components/marketing/application-tracker-preview-card";
 import { TrackedLink } from "@/components/marketing/tracked-link";
 import { buildAlternates, SITE_URL } from "@/lib/site-urls";
 
@@ -109,6 +110,18 @@ export default async function HomePage({
       bodyLines: string[];
       pdfLabel: string;
       wordLabel: string;
+    };
+  };
+  const applicationTrackerShowcase = t.raw("showcase.applicationTracker") as {
+    eyebrow: string;
+    headline: string;
+    subhead: string;
+    bullets: string[];
+    cta: string;
+    preview: {
+      appliedLabel: string;
+      interviewingLabel: string;
+      acceptedLabel: string;
     };
   };
 
@@ -361,6 +374,57 @@ export default async function HomePage({
                 bodyLines={coverLetterShowcase.preview.bodyLines}
                 pdfLabel={coverLetterShowcase.preview.pdfLabel}
                 wordLabel={coverLetterShowcase.preview.wordLabel}
+              />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal className="lg:order-2">
+              <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+                {applicationTrackerShowcase.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {applicationTrackerShowcase.headline}
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                {applicationTrackerShowcase.subhead}
+              </p>
+              <ul className="mt-6 space-y-3">
+                {applicationTrackerShowcase.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-foreground" />
+                    <span className="text-muted-foreground">{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <Button
+                  size="lg"
+                  nativeButton={false}
+                  render={
+                    <TrackedLink href="/register" cta="application_tracker_showcase">
+                      {applicationTrackerShowcase.cta}
+                    </TrackedLink>
+                  }
+                />
+                <TrackedLink
+                  href="/features/application-tracker"
+                  cta="application_tracker_learn_more"
+                  className="text-sm font-medium text-foreground hover:underline"
+                >
+                  {t("learnMore")}
+                </TrackedLink>
+              </div>
+            </Reveal>
+            <Reveal delay={150} className="lg:order-1">
+              <ApplicationTrackerPreviewCard
+                appliedLabel={applicationTrackerShowcase.preview.appliedLabel}
+                interviewingLabel={applicationTrackerShowcase.preview.interviewingLabel}
+                acceptedLabel={applicationTrackerShowcase.preview.acceptedLabel}
               />
             </Reveal>
           </div>

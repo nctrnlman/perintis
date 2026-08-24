@@ -135,6 +135,22 @@
           "pdfLabel": "PDF",
           "wordLabel": "Word"
         }
+      },
+      "applicationTracker": {
+        "eyebrow": "Application Tracker",
+        "headline": "Satu papan untuk semua lamaran Anda.",
+        "subhead": "Catat setiap lamaran, geser statusnya lewat papan Kanban, dan tautkan ke resume atau cover letter yang Anda pakai, tanpa spreadsheet berantakan.",
+        "bullets": [
+          "Geser kartu lamaran antar status: Dilamar, Wawancara, Penawaran, sampai hasil akhir",
+          "Catat setiap tahap wawancara satu per satu, dari HR sampai user",
+          "Lihat tingkat keberhasilan dan konversi wawancara dari data Anda sendiri"
+        ],
+        "cta": "Mulai Lacak Lamaran",
+        "preview": {
+          "appliedLabel": "Dilamar",
+          "interviewingLabel": "Wawancara",
+          "acceptedLabel": "Diterima"
+        }
       }
     },
     "personas": {
