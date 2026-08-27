@@ -14,15 +14,6 @@ const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
   },
-  // Prisma's query engine binary is generated to a custom path
-  // (src/generated/prisma) and loaded dynamically at runtime by the
-  // generated client, so Next's static file-tracing (@vercel/nft) never
-  // detects it as a dependency and omits it from the deployed serverless
-  // function — causing "could not locate the Query Engine" in production
-  // even though it built fine locally. Force it into every route's trace.
-  outputFileTracingIncludes: {
-    "/*": ["./src/generated/prisma/**/*"],
-  },
 };
 
 export default withNextIntl(nextConfig);
