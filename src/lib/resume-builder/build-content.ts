@@ -45,7 +45,7 @@ interface ProfileWithRelations {
     name: string;
     client: string | null;
     role: string | null;
-    bullets: string[];
+    description: string | null;
     techStack: string[];
   }>;
   languages: Array<{ id: string; name: string; proficiency: string }>;
@@ -107,7 +107,7 @@ export function buildContentFromProfile(
     name: pr.name,
     client: pr.client ?? "",
     role: pr.role ?? "",
-    bullets: pr.bullets,
+    bullets: splitBullets(pr.description),
     techStack: pr.techStack,
   }));
 

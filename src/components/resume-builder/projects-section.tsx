@@ -78,7 +78,7 @@ export function ProjectsSection({ entries, onChange }: ProjectsSectionProps) {
 
       <div className="mt-6 space-y-4">
         {entries.map((entry) => (
-          <div key={entry.id} className="rounded-2xl border border-border p-6">
+          <div key={entry.id} className="rounded-xl border border-border p-4">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <p className="text-sm font-medium">{entry.name || t("newEntryLabel")}</p>
               <Button

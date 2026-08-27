@@ -33,6 +33,7 @@ export function ContactInfoCard({ personalInfo, onChange }: ContactInfoCardProps
           <Label htmlFor="rb-email">{t("emailLabel")}</Label>
           <Input
             id="rb-email"
+            type="email"
             value={personalInfo.email}
             onChange={(e) => handleFieldChange("email", e.target.value)}
           />
@@ -41,6 +42,7 @@ export function ContactInfoCard({ personalInfo, onChange }: ContactInfoCardProps
           <Label htmlFor="rb-phone">{t("phoneLabel")}</Label>
           <Input
             id="rb-phone"
+            type="tel"
             value={personalInfo.phone}
             onChange={(e) => handleFieldChange("phone", e.target.value)}
           />
@@ -57,6 +59,8 @@ export function ContactInfoCard({ personalInfo, onChange }: ContactInfoCardProps
           <Label htmlFor="rb-linkedin">{t("linkedinLabel")}</Label>
           <Input
             id="rb-linkedin"
+            type="url"
+            placeholder="https://linkedin.com/in/..."
             value={personalInfo.linkedinUrl}
             onChange={(e) => handleFieldChange("linkedinUrl", e.target.value)}
           />
@@ -65,6 +69,8 @@ export function ContactInfoCard({ personalInfo, onChange }: ContactInfoCardProps
           <Label htmlFor="rb-portfolio">{t("portfolioLabel")}</Label>
           <Input
             id="rb-portfolio"
+            type="url"
+            placeholder="https://..."
             value={personalInfo.portfolioUrl}
             onChange={(e) => handleFieldChange("portfolioUrl", e.target.value)}
           />

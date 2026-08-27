@@ -161,7 +161,7 @@ export function ResumePdfDocument({ content }: { content: ResumeContent }) {
                   ))}
                 {proj.techStack.length > 0 && (
                   <Text style={styles.paragraph}>
-                    Tech Stack: {proj.techStack.join(", ")}
+                    Tools & Skills: {proj.techStack.join(", ")}
                   </Text>
                 )}
               </View>

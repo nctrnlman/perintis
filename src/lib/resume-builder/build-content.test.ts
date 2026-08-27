@@ -45,7 +45,7 @@ const PROFILE_FIXTURE = {
       name: "Dulux Design Competition",
       client: null,
       role: "Lead Backend",
-      bullets: ["Built a platform."],
+      description: "Built a platform.",
       techStack: ["Next.js"],
     },
   ],
@@ -80,7 +80,7 @@ describe("buildContentFromProfile", () => {
     expect(content.educations[0].bullets).toEqual([]);
   });
 
-  it("copies project bullets and techStack as-is", () => {
+  it("splits project description into bullets, copying techStack as-is", () => {
     const content = buildContentFromProfile(PROFILE_FIXTURE, "budi@example.com");
     expect(content.projects[0].bullets).toEqual(["Built a platform."]);
     expect(content.projects[0].techStack).toEqual(["Next.js"]);

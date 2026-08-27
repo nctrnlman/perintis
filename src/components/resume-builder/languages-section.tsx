@@ -1,10 +1,14 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Combobox } from "@/components/ui/combobox";
+import { RequiredMark } from "@/components/shared/property-row";
 import type { LanguageEntry } from "@/lib/resume-builder/types";
+import { proficiencyOptions, toComboboxOptions } from "@/lib/combobox-options";
 
 interface LanguagesSectionProps {
   entries: LanguageEntry[];
@@ -13,10 +17,16 @@ interface LanguagesSectionProps {
 
 export function LanguagesSection({ entries, onChange }: LanguagesSectionProps) {
   const t = useTranslations("resumeBuilder.builder");
+  const locale = useLocale() as "id" | "en";
+  const [proficiency, setProficiency] = useState("");
 
-  function addEntry(name: string, proficiency: string) {
-    if (!name.trim() || !proficiency.trim()) return;
-    onChange([...entries, { id: crypto.randomUUID(), name: name.trim(), proficiency: proficiency.trim() }]);
+  function addEntry(name: string, proficiencyValue: string) {
+    if (!name.trim() || !proficiencyValue.trim()) return;
+    onChange([
+      ...entries,
+      { id: crypto.randomUUID(), name: name.trim(), proficiency: proficiencyValue.trim() },
+    ]);
+    setProficiency("");
   }
 
   function removeEntry(id: string) {
@@ -48,21 +58,26 @@ export function LanguagesSection({ entries, onChange }: LanguagesSectionProps) {
 
       <form
         action={(formData) => {
-          addEntry(String(formData.get("name") ?? ""), String(formData.get("proficiency") ?? ""));
+          addEntry(String(formData.get("name") ?? ""), proficiency);
         }}
         className="mt-6 flex flex-wrap items-end gap-3"
       >
         <div className="space-y-1.5">
           <label htmlFor="rb-lang-name" className="text-xs text-muted-foreground">
-            {t("nameLabel")}
+            {t("nameLabel")} <RequiredMark />
           </label>
           <Input id="rb-lang-name" name="name" required className="w-40" />
         </div>
         <div className="space-y-1.5">
-          <label htmlFor="rb-lang-proficiency" className="text-xs text-muted-foreground">
-            {t("proficiencyLabel")}
-          </label>
-          <Input id="rb-lang-proficiency" name="proficiency" required className="w-40" />
+          <span className="text-xs text-muted-foreground">
+            {t("proficiencyLabel")} <RequiredMark />
+          </span>
+          <Combobox
+            value={proficiency}
+            onChange={setProficiency}
+            options={toComboboxOptions(proficiencyOptions[locale])}
+            className="w-40"
+          />
         </div>
         <Button type="submit" variant="outline" size="sm">
           <Plus className="size-4" />

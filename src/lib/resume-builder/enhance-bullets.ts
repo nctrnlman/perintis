@@ -1,4 +1,5 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
+import { generateJson } from "@/lib/gemini";
 import { stripHtml } from "./strip-html";
 
 interface EnhanceBulletsInput {
@@ -12,8 +13,6 @@ export async function enhanceBullets({
   company,
   bullets,
 }: EnhanceBulletsInput): Promise<string[]> {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
   const plainBullets = bullets.map(stripHtml);
 
   const prompt = `Rewrite the following resume bullet points for a "${title}" role at "${company}" into polished, professional resume language.
@@ -26,24 +25,14 @@ Hard rules:
 Input bullets:
 ${plainBullets.map((b, i) => `${i + 1}. ${b}`).join("\n")}`;
 
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: prompt,
-    config: {
-      thinkingConfig: { thinkingBudget: 0 },
-      maxOutputTokens: 512,
-      responseMimeType: "application/json",
-      responseJsonSchema: {
-        type: Type.ARRAY,
-        items: { type: Type.STRING },
-      },
+  const text = await generateJson({
+    prompt,
+    maxOutputTokens: 512,
+    schema: {
+      type: Type.ARRAY,
+      items: { type: Type.STRING },
     },
   });
-
-  const text = response.text;
-  if (!text) {
-    throw new Error("Empty response from Gemini");
-  }
 
   const parsed = JSON.parse(text);
   if (!Array.isArray(parsed) || !parsed.every((item) => typeof item === "string")) {
