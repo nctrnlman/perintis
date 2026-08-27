@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { MailCheck } from "lucide-react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -19,6 +21,7 @@ export default function RegisterPage() {
   const tPassword = useTranslations("auth.password");
   const router = useRouter();
   const supabase = createClient();
+  const [confirmationSent, setConfirmationSent] = useState(false);
 
   const {
     register,
@@ -31,10 +34,13 @@ export default function RegisterPage() {
   });
 
   async function onSubmit(values: RegisterInput) {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
-      options: { data: { name: values.name } },
+      options: {
+        data: { name: values.name },
+        emailRedirectTo: `${window.location.origin}/auth/confirm`,
+      },
     });
 
     if (error) {
@@ -48,8 +54,36 @@ export default function RegisterPage() {
     }
 
     trackEvent("sign_up", { method: "email" });
+
+    if (!data.session) {
+      setConfirmationSent(true);
+      return;
+    }
+
     toast.add({ title: t("toastSuccessTitle"), type: "success" });
     router.push("/dashboard");
+  }
+
+  if (confirmationSent) {
+    return (
+      <Reveal className="rounded-2xl border border-border bg-card p-10 text-center">
+        <div className="mx-auto flex size-11 items-center justify-center rounded-full bg-muted">
+          <MailCheck className="size-5 text-foreground" />
+        </div>
+        <h1 className="mt-5 text-2xl font-semibold tracking-tight">
+          {t("confirmationSentTitle")}
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          {t("confirmationSentDescription")}
+        </p>
+        <Link
+          href="/login"
+          className="mt-6 inline-block text-sm font-medium text-primary hover:underline"
+        >
+          {t("backToLogin")}
+        </Link>
+      </Reveal>
+    );
   }
 
   return (

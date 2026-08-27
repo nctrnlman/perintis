@@ -24,3 +24,19 @@ export const forgotPasswordSchema = z.object({
 });
 
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
+
+export const updatePasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, "Password minimal 8 karakter")
+      .regex(/[A-Z]/, "Password harus mengandung huruf besar")
+      .regex(/[0-9]/, "Password harus mengandung angka"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Konfirmasi password tidak cocok",
+    path: ["confirmPassword"],
+  });
+
+export type UpdatePasswordInput = z.infer<typeof updatePasswordSchema>;
