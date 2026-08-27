@@ -1,16 +1,21 @@
-import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
-import { NewApplicationForm } from "./new-application-form";
+import { parseStageParam } from "@/lib/application-tracker/parse-stage-param";
+import { ApplicationTrackerBoard } from "@/components/application-tracker/application-tracker-board";
+import { NewApplicationSheet } from "@/components/application-tracker/new-application-sheet";
 
-export default async function NewApplicationPage() {
-  const t = await getTranslations("applicationTracker.new");
+export default async function NewApplicationPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const initialStage = parseStageParam(params.stage);
 
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
   if (!user) return null;
 
   const [resumes, coverLetters] = await Promise.all([
@@ -27,17 +32,17 @@ export default async function NewApplicationPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-semibold">{t("title")}</h1>
-      <p className="mt-1 text-muted-foreground">{t("description")}</p>
-
-      <NewApplicationForm
+    <>
+      <ApplicationTrackerBoard />
+      <NewApplicationSheet
+        closeMode="replace"
+        initialStage={initialStage}
         resumeOptions={resumes.map((resume) => ({ value: resume.id, label: resume.title }))}
         coverLetterOptions={coverLetters.map((letter) => ({
           value: letter.id,
           label: `${letter.companyName} — ${letter.positionTitle}`,
         }))}
       />
-    </div>
+    </>
   );
 }

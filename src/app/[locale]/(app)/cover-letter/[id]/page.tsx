@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
 import { decryptId } from "@/lib/id-crypto";
-import { CoverLetterEditorClient } from "./cover-letter-editor-client";
+import { CoverLetterListBoard } from "@/components/cover-letter/cover-letter-list-board";
+import { CoverLetterDetailSheet } from "@/components/cover-letter/cover-letter-detail-sheet";
 
 export default async function CoverLetterEditorPage({
   params,
@@ -32,12 +33,16 @@ export default async function CoverLetterEditorPage({
   }
 
   return (
-    <CoverLetterEditorClient
-      id={coverLetter.id}
-      token={token}
-      initialCompanyName={coverLetter.companyName}
-      initialPositionTitle={coverLetter.positionTitle}
-      initialBodyHtml={coverLetter.bodyHtml}
-    />
+    <>
+      <CoverLetterListBoard />
+      <CoverLetterDetailSheet
+        closeMode="replace"
+        id={coverLetter.id}
+        token={token}
+        initialCompanyName={coverLetter.companyName}
+        initialPositionTitle={coverLetter.positionTitle}
+        initialBodyHtml={coverLetter.bodyHtml}
+      />
+    </>
   );
 }

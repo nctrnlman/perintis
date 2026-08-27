@@ -8,3 +8,11 @@ export function scoreFindings(findings: Finding[]): number {
   }
   return Math.max(0, score);
 }
+
+export type ScoreTier = "excellent" | "good" | "needsWork";
+
+export function getScoreTier(score: number): ScoreTier {
+  if (score >= 90) return "excellent";
+  if (score >= 70) return "good";
+  return "needsWork";
+}

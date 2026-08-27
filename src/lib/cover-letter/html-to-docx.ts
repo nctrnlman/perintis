@@ -1,5 +1,7 @@
-import { BorderStyle, Paragraph, TextRun } from "docx";
+import { AlignmentType, BorderStyle, Paragraph, TextRun } from "docx";
 import { parseBlocks, type Block, type InlineSegment } from "./parse-rich-text";
+
+const BODY_SPACING = { after: 240, line: 300 };
 
 function segmentsToRuns(segments: InlineSegment[]): TextRun[] {
   return segments.map(
@@ -22,16 +24,27 @@ function blockToParagraph(block: Block, numberedIndex: number): Paragraph {
   }
 
   if (block.type === "bulletItem") {
-    return new Paragraph({ children: segmentsToRuns(block.segments), bullet: { level: 0 } });
+    return new Paragraph({
+      children: segmentsToRuns(block.segments),
+      bullet: { level: 0 },
+      alignment: AlignmentType.JUSTIFIED,
+      spacing: BODY_SPACING,
+    });
   }
 
   if (block.type === "numberedItem") {
     return new Paragraph({
       children: [new TextRun({ text: `${numberedIndex}. ` }), ...segmentsToRuns(block.segments)],
+      alignment: AlignmentType.JUSTIFIED,
+      spacing: BODY_SPACING,
     });
   }
 
-  return new Paragraph({ children: segmentsToRuns(block.segments) });
+  return new Paragraph({
+    children: segmentsToRuns(block.segments),
+    alignment: AlignmentType.JUSTIFIED,
+    spacing: BODY_SPACING,
+  });
 }
 
 export function htmlToDocxParagraphs(html: string): Paragraph[] {

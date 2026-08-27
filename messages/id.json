@@ -7,16 +7,26 @@
     "title": "Halaman tidak ditemukan",
     "description": "Halaman yang Anda cari mungkin sudah dipindahkan atau memang tidak pernah ada.",
     "cta": "Kembali ke beranda",
-    "secondaryCta": "Lihat semua fitur"
+    "secondaryCta": "Lihat semua fitur",
+    "quickLinksLabel": "Atau langsung coba salah satu fitur ini"
   },
   "errorPage": {
     "title": "Ada yang tidak beres",
     "description": "Terjadi kesalahan tak terduga. Coba muat ulang halaman, atau kembali ke beranda.",
     "retry": "Coba lagi",
-    "cta": "Kembali ke beranda"
+    "cta": "Kembali ke beranda",
+    "errorId": "ID Error"
+  },
+  "appError": {
+    "title": "Halaman ini gagal dimuat",
+    "description": "Terjadi kesalahan tak terduga. Coba lagi, atau kembali ke dashboard.",
+    "retry": "Coba lagi",
+    "cta": "Kembali ke dashboard"
   },
   "cookieConsent": {
+    "title": "Sebelum lanjut...",
     "message": "Kami menggunakan cookie untuk analytics, agar bisa memahami cara Perintis digunakan dan terus memperbaikinya. Tidak ada data pribadi yang dijual.",
+    "privacyLink": "Baca Kebijakan Privasi",
     "accept": "Setuju",
     "decline": "Tolak"
   },
@@ -56,6 +66,8 @@
     "atsCheck": "Cek ATS",
     "resumeBuilder": "Resume Builder",
     "coverLetter": "Cover Letter",
+    "applicationTracker": "Application Tracker",
+    "careerFit": "Career Fit",
     "pricing": "Harga",
     "about": "Tentang Kami",
     "blog": "Blog",
@@ -279,7 +291,10 @@
       "haveAccount": "Sudah punya akun?",
       "loginLink": "Masuk",
       "toastSuccessTitle": "Akun berhasil dibuat",
-      "toastErrorTitle": "Pendaftaran gagal"
+      "toastErrorTitle": "Pendaftaran gagal",
+      "confirmationSentTitle": "Cek email Anda",
+      "confirmationSentDescription": "Kami sudah mengirim link konfirmasi ke email Anda. Klik link itu untuk mengaktifkan akun sebelum bisa masuk.",
+      "backToLogin": "Kembali ke halaman masuk"
     },
     "login": {
       "title": "Masuk ke Perintis",
@@ -306,14 +321,29 @@
       "sentTitle": "Cek email Anda",
       "sentDescription": "Kami sudah mengirim tautan untuk reset password.",
       "toastErrorTitle": "Gagal mengirim"
+    },
+    "updatePassword": {
+      "title": "Set password baru",
+      "description": "Masukkan password baru untuk akun Anda.",
+      "passwordLabel": "Password Baru",
+      "passwordHint": "Minimal 8 karakter, dengan huruf besar dan angka.",
+      "confirmPasswordLabel": "Konfirmasi Password",
+      "submit": "Simpan Password Baru",
+      "submitting": "Menyimpan...",
+      "toastSuccessTitle": "Password berhasil diperbarui",
+      "toastErrorTitle": "Gagal memperbarui password"
     }
   },
   "dashboard": {
     "title": "Dashboard",
     "description": "Setiap modul di bawah membantu satu tahap pencarian kerja Anda, dari menyiapkan profil hingga melacak lamaran.",
     "continueTitle": "Lanjutkan",
-    "continueDescription": "Tiga fitur ini sudah aktif dan siap dipakai sekarang.",
+    "continueDescription": "Fitur-fitur ini sudah aktif dan siap dipakai sekarang.",
     "comingSoonTitle": "Segera Hadir",
+    "insights": {
+      "heading": "Ringkasan Aktivitas Anda",
+      "seeAll": "Lihat semua"
+    },
     "scoreTrend": {
       "title": "Tren Skor ATS",
       "latestLabel": "Skor terakhir",
@@ -421,11 +451,15 @@
       "title": "Cek Kompatibilitas ATS",
       "description": "Riwayat pengecekan resume Anda.",
       "empty": "Belum ada pengecekan. Unggah resume pertama Anda.",
+      "emptyTitle": "Cek resume pertama Anda",
       "newButton": "Cek Resume Baru",
+      "tableNo": "No.",
       "tableFilename": "Nama File",
       "tableScore": "Skor",
       "tableFindings": "Temuan",
       "tableDate": "Tanggal",
+      "tableActions": "Aksi",
+      "viewDetail": "Detail",
       "searchPlaceholder": "Cari nama file...",
       "filterAll": "Semua",
       "findingsCount": "{count} masalah",
@@ -435,14 +469,21 @@
       "pageInfo": "Halaman {page} dari {totalPages}",
       "delete": "Hapus",
       "toastDeleteSuccess": "Pengecekan dihapus",
-      "toastDeleteError": "Gagal menghapus pengecekan"
+      "toastDeleteError": "Gagal menghapus pengecekan",
+      "stats": {
+        "total": "Total Cek",
+        "excellentCount": "Sangat Baik",
+        "goodCount": "Baik",
+        "needsWorkCount": "Perlu Perbaikan",
+        "addedThisWeek": "Minggu Ini"
+      }
     },
     "upload": {
       "title": "Unggah Resume",
       "description": "Format PDF atau DOCX, maksimal 5MB.",
       "dropzoneLabel": "Seret file ke sini atau klik untuk memilih",
       "dropzoneHint": "PDF atau DOCX, maks. 5MB",
-      "jobPostingLabel": "Deskripsi Lowongan (opsional)",
+      "jobPostingLabel": "Deskripsi Lowongan",
       "jobPostingPlaceholder": "Tempel deskripsi lowongan kerja di sini untuk analisis kecocokan kata kunci...",
       "jobPostingHint": "Jika diisi, kami akan bandingkan resume Anda dengan kata kunci penting dari lowongan ini.",
       "analyzing": "Membaca resume Anda...",
@@ -754,9 +795,12 @@
       "title": "Skills",
       "empty": "Belum ada skill ditambahkan.",
       "nameLabel": "Nama Skill",
-      "categoryLabel": "Kategori (opsional)",
+      "categoryLabel": "Kategori",
       "addButton": "Tambah",
       "toastAddSuccess": "Skill ditambahkan",
+      "toastDuplicate": "Skill ini sudah ada di daftar",
+      "showMore": "+{count} lainnya",
+      "showLess": "Sembunyikan",
       "toastDeleteSuccess": "Skill dihapus",
       "toastError": "Terjadi kesalahan"
     },
@@ -767,7 +811,7 @@
       "nameLabel": "Nama Sertifikasi",
       "issuerLabel": "Penerbit",
       "issueDateLabel": "Tanggal Terbit",
-      "urlLabel": "URL (opsional)",
+      "urlLabel": "URL",
       "save": "Simpan",
       "saving": "Menyimpan...",
       "cancel": "Batal",
@@ -781,12 +825,17 @@
       "addButton": "Tambah Proyek",
       "editButton": "Ubah Proyek",
       "nameLabel": "Nama Proyek",
-      "clientLabel": "Klien (opsional)",
+      "clientLabel": "Klien",
       "roleLabel": "Peran",
-      "bulletsLabel": "Poin-poin (satu per baris)",
-      "techStackLabel": "Tech Stack (pisahkan dengan koma)",
+      "descriptionLabel": "Deskripsi",
+      "techStackLabel": "Tools / Skill yang Digunakan (pisahkan dengan koma)",
       "boldLabel": "Tebal",
       "italicLabel": "Miring",
+      "bulletListLabel": "Poin-poin",
+      "orderedListLabel": "Daftar Bernomor",
+      "strikeLabel": "Coret",
+      "codeLabel": "Kode",
+      "horizontalRuleLabel": "Garis Pemisah",
       "save": "Simpan",
       "saving": "Menyimpan...",
       "cancel": "Batal",
@@ -805,6 +854,9 @@
       "proficiencyLabel": "Level",
       "addButton": "Tambah",
       "toastAddSuccess": "Bahasa ditambahkan",
+      "toastDuplicate": "Bahasa ini sudah ada di daftar",
+      "showMore": "+{count} lainnya",
+      "showLess": "Sembunyikan",
       "toastDeleteSuccess": "Bahasa dihapus",
       "toastError": "Terjadi kesalahan"
     }
@@ -814,6 +866,7 @@
       "title": "Resume Builder",
       "description": "Buat resume ATS-safe dari data Profil Anda.",
       "empty": "Belum ada resume dibuat. Buat resume pertama Anda.",
+      "emptyTitle": "Buat resume pertama Anda",
       "newButton": "Buat Resume Baru",
       "tableTitle": "Judul",
       "tableDate": "Terakhir Diubah",
@@ -825,7 +878,14 @@
       "delete": "Hapus",
       "toastDeleteSuccess": "Resume dihapus",
       "toastDeleteError": "Gagal menghapus resume",
-      "toastCreateError": "Gagal membuat resume"
+      "toastCreateError": "Gagal membuat resume",
+      "tableNo": "No.",
+      "tableActions": "Aksi",
+      "viewDetail": "Lihat Detail",
+      "stats": {
+        "total": "Total Resume",
+        "addedThisWeek": "Ditambahkan Minggu Ini"
+      }
     },
     "builder": {
       "titleLabel": "Judul Resume (internal, tidak muncul di PDF)",
@@ -862,7 +922,7 @@
       "urlLabel": "URL",
       "clientLabel": "Klien",
       "roleLabel": "Peran",
-      "techStackLabel": "Tech Stack (pisahkan dengan koma)",
+      "techStackLabel": "Tools / Skill yang Digunakan (pisahkan dengan koma)",
       "categoryLabel": "Kategori",
       "proficiencyLabel": "Level",
       "nameLabel": "Nama",
@@ -874,13 +934,12 @@
       "applyAll": "Terapkan Semua",
       "discardSuggestion": "Batalkan",
       "toastEnhanceError": "Gagal menyusun ulang. Coba lagi sebentar lagi.",
-      "saveButton": "Simpan Perubahan",
-      "saving": "Menyimpan...",
-      "toastSaveSuccess": "Resume disimpan",
-      "toastSaveError": "Gagal menyimpan resume",
-      "previewButton": "Preview",
       "downloadButton": "Download PDF",
-      "backToList": "Kembali ke daftar"
+      "backToList": "Kembali ke daftar",
+      "previewTitle": "Pratinjau",
+      "autoSaving": "Menyimpan...",
+      "autoSaved": "Tersimpan",
+      "autoSaveError": "Gagal menyimpan"
     }
   },
   "coverLetter": {
@@ -888,18 +947,29 @@
       "title": "Cover Letter",
       "description": "Buat dan simpan cover letter yang disesuaikan untuk setiap lowongan yang Anda lamar.",
       "empty": "Belum ada cover letter. Buat yang pertama.",
+      "emptyTitle": "Buat cover letter pertama Anda",
       "newButton": "Buat Cover Letter",
+      "tableNo": "No.",
       "tableCompany": "Perusahaan",
       "tablePosition": "Posisi",
       "tableDate": "Terakhir Diperbarui",
+      "tableActions": "Aksi",
+      "viewDetail": "Detail",
       "searchPlaceholder": "Cari berdasarkan perusahaan...",
+      "filterAll": "Semua",
       "noResults": "Tidak ada hasil yang cocok.",
       "prevPage": "Sebelumnya",
       "nextPage": "Berikutnya",
       "pageInfo": "Halaman {page} dari {totalPages}",
       "delete": "Hapus",
       "toastDeleteSuccess": "Cover letter dihapus",
-      "toastDeleteError": "Gagal menghapus cover letter"
+      "toastDeleteError": "Gagal menghapus cover letter",
+      "stats": {
+        "total": "Total Cover Letter",
+        "formalCount": "Nada Formal",
+        "casualCount": "Nada Santai",
+        "addedThisWeek": "Dibuat Minggu Ini"
+      }
     },
     "new": {
       "title": "Buat Cover Letter",
@@ -967,6 +1037,25 @@
         "matchedLabel": "Cocok",
         "missingLabel": "Belum Ada"
       },
+      "howItWorksTitle": "Cara Kerjanya",
+      "howItWorksSteps": [
+        {
+          "title": "Unggah Resume Anda",
+          "description": "Format PDF atau DOCX, maksimal 5MB. Bisa tempel deskripsi lowongan sekalian kalau ingin dicek kecocokan kata kuncinya."
+        },
+        {
+          "title": "Analisis Otomatis",
+          "description": "Sistem memeriksa struktur, kelengkapan info kontak, kekuatan penulisan, dan kecocokan kata kunci dalam hitungan detik."
+        },
+        {
+          "title": "Lihat Skor & Temuan",
+          "description": "Skor kompatibilitas lengkap dengan rincian apa yang perlu diperbaiki, dari masalah format sampai kata kunci yang hilang."
+        },
+        {
+          "title": "Pantau Progres",
+          "description": "Cari, filter, dan lihat statistik dari seluruh riwayat cek Anda kapan pun, untuk melihat progres dari waktu ke waktu."
+        }
+      ],
       "faqTitle": "Pertanyaan yang sering diajukan",
       "faq": [
         {
@@ -1046,6 +1135,25 @@
         "pdfLabel": "PDF",
         "wordLabel": "Word"
       },
+      "howItWorksTitle": "Cara Kerjanya",
+      "howItWorksSteps": [
+        {
+          "title": "Isi Detail Lowongan",
+          "description": "Nama perusahaan, posisi, dan deskripsi lowongan yang Anda lamar."
+        },
+        {
+          "title": "Pilih Nada & Panjang",
+          "description": "Formal atau santai, singkat atau standar, sesuaikan dengan budaya perusahaan yang dituju."
+        },
+        {
+          "title": "AI Menyusun Draf",
+          "description": "Berdasarkan skill dan pengalaman nyata di Profil Anda, bukan template generik."
+        },
+        {
+          "title": "Edit & Unduh",
+          "description": "Sempurnakan langsung di editor rich-text, lalu unduh sebagai PDF atau Word kapan pun siap."
+        }
+      ],
       "faqTitle": "Pertanyaan yang sering diajukan",
       "faq": [
         {
@@ -1070,8 +1178,9 @@
       "subhead": "Catat setiap lamaran, pantau statusnya lewat papan yang bisa digeser langsung, dan tautkan ke resume atau cover letter yang Anda pakai, tanpa spreadsheet berantakan.",
       "bullets": [
         "Geser kartu lamaran antar status: Dilamar, Wawancara, Penawaran, sampai hasil akhir",
+        "Klik lamaran untuk lihat detailnya di panel samping, lengkap dengan link ke resume dan cover letter yang dipakai, tanpa pindah halaman",
         "Catat setiap tahap wawancara satu per satu, dari HR sampai user",
-        "Lihat tingkat keberhasilan dan konversi wawancara dari data lamaran Anda sendiri"
+        "Lihat statistik dari data Anda sendiri: tingkat keberhasilan, konversi wawancara, sampai pengingat lamaran yang perlu ditindaklanjuti"
       ],
       "cta": "Mulai Lacak Lamaran Gratis",
       "preview": {
@@ -1079,6 +1188,25 @@
         "interviewingLabel": "Wawancara",
         "acceptedLabel": "Diterima"
       },
+      "howItWorksTitle": "Cara Kerjanya",
+      "howItWorksSteps": [
+        {
+          "title": "Tambah Lamaran",
+          "description": "Lewat panel cepat di samping, langsung dari papan Kanban, tanpa perlu pindah halaman."
+        },
+        {
+          "title": "Geser di Papan Kanban",
+          "description": "Pindahkan status lamaran dari wishlist, dilamar, wawancara, sampai hasil akhir."
+        },
+        {
+          "title": "Detail di Panel Samping",
+          "description": "Klik kartu untuk lihat & edit detail, catat tahap wawancara, dan buka resume atau cover letter yang dipakai."
+        },
+        {
+          "title": "Pantau Statistik",
+          "description": "Win rate, konversi wawancara, dan pengingat otomatis untuk lamaran yang sudah lama tidak ada progres."
+        }
+      ],
       "faqTitle": "Pertanyaan yang sering diajukan",
       "faq": [
         {
@@ -1111,6 +1239,21 @@
         "strongLabel": "Sangat Cocok",
         "goodLabel": "Cocok"
       },
+      "howItWorksTitle": "Cara Kerjanya",
+      "howItWorksSteps": [
+        {
+          "title": "Skill dari Profil Anda",
+          "description": "Diambil langsung dari skill dan pengalaman yang sudah Anda isi, tanpa perlu input ulang."
+        },
+        {
+          "title": "Dicocokkan Otomatis",
+          "description": "Dibandingkan dengan berbagai posisi umum berdasarkan kecocokan skill nyata, bukan tebakan AI."
+        },
+        {
+          "title": "Reasoning yang Jelas",
+          "description": "AI menjelaskan kenapa setiap posisi cocok, plus skill apa yang masih perlu dikembangkan."
+        }
+      ],
       "faqTitle": "Pertanyaan yang sering diajukan",
       "faq": [
         {
@@ -1175,7 +1318,7 @@
       }
     ],
     "offeringsHeading": "Yang Sudah Aktif Sekarang",
-    "offeringsDescription": "Tiga tools, semuanya gratis, dengan lebih banyak lagi yang akan datang.",
+    "offeringsDescription": "Lima tools, semuanya gratis, dengan lebih banyak lagi yang akan datang.",
     "whoHeading": "Siapa di Baliknya",
     "whoBody": "Perintis dirancang, dibangun, dan dikelola oleh satu orang, dari baris kode pertama sampai copy di halaman ini. Pertanyaan, masukan, atau ide selalu diterima dengan senang hati.",
     "closingHeading": "Siap mencobanya sendiri?",
@@ -1210,9 +1353,9 @@
   },
   "blog": {
     "metaTitle": "Blog | Perintis",
-    "metaDescription": "10 panduan praktis dan langsung ke intinya soal resume, cover letter, dan cara lolos ATS, untuk pencari kerja Indonesia.",
+    "metaDescription": "12 panduan praktis dan langsung ke intinya soal resume, cover letter, cara lolos ATS, dan strategi lamaran kerja, untuk pencari kerja Indonesia.",
     "heading": "Dari blog kami",
-    "description": "10 panduan praktis dan langsung ke intinya soal resume, cover letter, dan cara lolos ATS.",
+    "description": "12 panduan praktis dan langsung ke intinya soal resume, cover letter, cara lolos ATS, dan strategi lamaran kerja.",
     "backToBlog": "Kembali ke blog",
     "readingTime": "{minutes} menit baca",
     "ctaHeading": "Siap mempraktikkannya?",
@@ -1470,6 +1613,54 @@
             "body": "Penyesuaian tercepat seringkali bukan tulisan baru, tapi penyusunan ulang. Pindahkan poin dan peran paling relevan ke atas, dorong yang kurang relevan ke bawah atau potong untuk lamaran spesifik ini. Pindaian pertama recruiter paling penting, taruh kecocokan terbaik Anda untuk posisi ini di tempat yang akan tertangkap pindaian itu."
           }
         ]
+      },
+      "track-job-applications": {
+        "title": "Kenapa Melamar ke Banyak Tempat Percuma Tanpa Sistem Pelacakan",
+        "excerpt": "Melamar lebih banyak tidak ada gunanya kalau Anda sendiri lupa sudah melamar ke mana dan sampai tahap apa.",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Tips Karir",
+        "sections": [
+          {
+            "heading": "Melamar banyak itu percuma kalau Anda kehilangan jejaknya",
+            "body": "Semakin banyak lowongan yang dilamar, semakin mudah lupa detail penting: resume versi mana yang dikirim ke perusahaan mana, apakah sudah follow up, atau kapan terakhir kali ada kabar. Spreadsheet yang niatnya rapi seringkali berhenti diupdate setelah minggu pertama, dan begitu itu terjadi, usaha melamar banyak tempat berubah jadi kebingungan, bukan peluang."
+          },
+          {
+            "heading": "Status lamaran bukan cuma \"sudah kirim\" atau \"belum\"",
+            "body": "Satu lamaran bisa melewati banyak tahap: masih dipertimbangkan, sudah dilamar, masuk wawancara, dapat penawaran, atau ditolak. Mencatatnya sebagai satu status biner menyembunyikan informasi yang justru paling berguna, yaitu di tahap mana sebenarnya setiap lamaran itu berhenti, dan pola apa yang muncul kalau dilihat semuanya sekaligus."
+          },
+          {
+            "heading": "Follow-up yang telat biasanya karena lupa, bukan sengaja",
+            "body": "Kebanyakan orang tidak sengaja mengabaikan follow-up, mereka cuma tidak sadar sudah berapa lama sejak update terakhir. Tanpa pengingat yang jelas soal lamaran mana yang sudah lama tidak bergerak, momen tepat untuk follow-up sering terlewat begitu saja, sampai akhirnya terasa terlalu telat untuk dikirim."
+          },
+          {
+            "heading": "Simpan riwayat wawancara di tempat yang sama dengan lamarannya",
+            "body": "Catatan wawancara yang tersebar di notes app, chat, dan ingatan sendiri sulit dihubungkan kembali ke lamaran aslinya. Menyimpan setiap tahap wawancara, dari screening HR sampai user, langsung di bawah lamaran yang sama membuat seluruh cerita satu lamaran bisa dilihat sekali lihat, tanpa harus mengingat-ingat."
+          }
+        ]
+      },
+      "which-jobs-to-apply-to": {
+        "title": "Cara Menentukan Posisi Mana yang Benar-Benar Layak Dilamar",
+        "excerpt": "Melamar ke semua lowongan yang terlihat menarik bukan strategi, itu cuma menunda pertanyaan yang seharusnya dijawab lebih dulu: skill Anda sebenarnya cocok di mana?",
+        "publishedLabel": "Dipublikasikan Agustus 2026",
+        "category": "Tips Karir",
+        "sections": [
+          {
+            "heading": "Melamar sebanyak-banyaknya bukan strategi pencarian kerja",
+            "body": "Mengirim lamaran ke setiap lowongan yang kelihatan relevan terasa produktif, tapi tanpa penyaringan awal, sebagian besar waktu dan energi itu habis untuk posisi yang sebenarnya jauh dari kecocokan skill Anda. Effort yang sama, kalau diarahkan ke posisi yang benar-benar align, biasanya menghasilkan respons yang jauh lebih baik."
+          },
+          {
+            "heading": "Judul posisi menyesatkan, skill yang dibutuhkan tidak",
+            "body": "Judul yang sama, misalnya \"Product Manager\" atau \"Marketing Specialist\", bisa berarti sangat berbeda antar perusahaan tergantung skill apa yang sebenarnya mereka butuhkan. Berpatokan pada judul saja gampang menyesatkan; yang lebih layak dilihat adalah daftar skill dan tanggung jawab konkret di balik judul tersebut."
+          },
+          {
+            "heading": "Bandingkan skill yang Anda punya dengan yang biasanya dibutuhkan",
+            "body": "Alih-alih menebak, akan lebih jelas kalau skill dan pengalaman yang sudah Anda punya dibandingkan langsung dengan skill umum yang biasa dicari untuk arketipe posisi tertentu. Dari situ terlihat jelas mana posisi yang overlap-nya kuat, mana yang cuma sebagian, dan mana yang memang belum waktunya."
+          },
+          {
+            "heading": "Skill yang belum Anda punya itu peta belajar, bukan alasan berhenti",
+            "body": "Menemukan gap skill untuk posisi tertentu bukan berarti posisi itu tertutup selamanya. Itu justru informasi paling actionable: Anda jadi tahu persis skill apa yang perlu diasah dulu sebelum melamar posisi itu dengan lebih percaya diri, dibanding melamar buta tanpa tahu di mana sebenarnya Anda berdiri."
+          }
+        ]
       }
     }
   },
@@ -1478,11 +1669,17 @@
     "description": "Lacak setiap lamaran kerja Anda dari melamar sampai hasil akhir.",
     "newButton": "Tambah Lamaran",
     "empty": "Belum ada lamaran. Tambahkan lamaran pertama Anda.",
+    "emptyTitle": "Lacak lamaran pertama Anda",
+    "scrollHint": "Geser untuk melihat semua status",
     "stats": {
       "total": "Total Lamaran",
       "activePipeline": "Sedang Berjalan",
       "winRate": "Tingkat Keberhasilan",
       "interviewConversion": "Konversi Wawancara",
+      "addedThisWeek": "Ditambahkan Minggu Ini",
+      "staleCount": "Perlu Ditindaklanjuti",
+      "staleCountHint": "Belum diperbarui 14+ hari",
+      "byStageTitle": "Sebaran per Status",
       "notEnoughData": "Belum cukup data"
     },
     "stages": {
@@ -1502,13 +1699,17 @@
       "title": "Tambah Lamaran",
       "description": "Catat lamaran baru untuk mulai melacak progresnya.",
       "companyLabel": "Nama Perusahaan",
+      "companyPlaceholder": "Contoh: Google",
       "positionLabel": "Posisi",
+      "positionPlaceholder": "Contoh: Software Engineer",
       "stageLabel": "Status",
-      "jobUrlLabel": "Tautan Lowongan (opsional)",
-      "locationLabel": "Lokasi (opsional)",
-      "resumeLabel": "Resume Terkait (opsional)",
+      "jobUrlLabel": "Tautan Lowongan",
+      "jobUrlPlaceholder": "https://...",
+      "locationLabel": "Lokasi",
+      "locationPlaceholder": "Contoh: Jakarta / Remote",
+      "resumeLabel": "Resume Terkait",
       "resumeNone": "Tidak ada",
-      "coverLetterLabel": "Cover Letter Terkait (opsional)",
+      "coverLetterLabel": "Cover Letter Terkait",
       "coverLetterNone": "Tidak ada",
       "submit": "Simpan Lamaran",
       "toastCreateSuccess": "Lamaran berhasil ditambahkan",
@@ -1518,16 +1719,24 @@
       "backToBoard": "Kembali ke papan",
       "detailsTitle": "Detail Lamaran",
       "companyLabel": "Nama Perusahaan",
+      "companyPlaceholder": "Contoh: Google",
       "positionLabel": "Posisi",
+      "positionPlaceholder": "Contoh: Software Engineer",
       "stageLabel": "Status",
       "jobUrlLabel": "Tautan Lowongan",
+      "jobUrlPlaceholder": "https://...",
       "locationLabel": "Lokasi",
+      "locationPlaceholder": "Contoh: Jakarta / Remote",
       "appliedAtLabel": "Tanggal Melamar",
       "notesLabel": "Catatan",
       "resumeLabel": "Resume Terkait",
       "resumeNone": "Tidak ada",
+      "viewResume": "Lihat resume",
       "coverLetterLabel": "Cover Letter Terkait",
       "coverLetterNone": "Tidak ada",
+      "viewCoverLetter": "Lihat cover letter",
+      "notSet": "Belum diisi",
+      "openLink": "Buka tautan",
       "deleteButton": "Hapus Lamaran",
       "toastDeleteError": "Gagal menghapus lamaran",
       "roundsTitle": "Tahap Wawancara",
@@ -1535,8 +1744,8 @@
       "addRoundButton": "Tambah Tahap",
       "roundLabelLabel": "Nama Tahap",
       "roundLabelPlaceholder": "mis. Wawancara HR, Tes Teknis",
-      "roundDateLabel": "Tanggal (opsional)",
-      "roundNotesLabel": "Catatan (opsional)",
+      "roundDateLabel": "Tanggal",
+      "roundNotesLabel": "Catatan",
       "roundSubmit": "Simpan Tahap",
       "roundDelete": "Hapus",
       "outcomePending": "Menunggu",
@@ -1556,14 +1765,37 @@
       "description": "Lihat posisi apa yang paling cocok dengan skill dan pengalaman Anda.",
       "newButton": "Analisis Baru",
       "empty": "Belum ada analisis. Buat yang pertama.",
+      "emptyTitle": "Temukan potensi karier Anda",
       "resultCount": "{count} posisi ditemukan",
       "delete": "Hapus",
       "toastDeleteSuccess": "Analisis dihapus",
-      "toastDeleteError": "Gagal menghapus analisis"
+      "toastDeleteError": "Gagal menghapus analisis",
+      "prevPage": "Sebelumnya",
+      "nextPage": "Berikutnya",
+      "pageInfo": "Halaman {page} dari {totalPages}",
+      "searchPlaceholder": "Cari berdasarkan posisi atau kategori...",
+      "filterAll": "Semua",
+      "noResults": "Tidak ada analisis yang cocok. Coba kata kunci atau filter lain.",
+      "tableNo": "No.",
+      "tableSummary": "Ringkasan",
+      "tableDate": "Tanggal",
+      "tableActions": "Aksi",
+      "viewDetail": "Detail"
+    },
+    "stats": {
+      "totalAnalyses": "Total Analisis",
+      "totalStrongMatches": "Total Sangat Cocok",
+      "topRoleHint": "{count}x Sangat Cocok",
+      "noTopRole": "Belum ada yang Sangat Cocok"
     },
     "new": {
       "title": "Temukan Potensi Karir Anda",
       "description": "Kami akan mencocokkan skill dan pengalaman di Profil Anda dengan berbagai posisi umum, lalu menjelaskan kenapa posisi itu cocok untuk Anda.",
+      "steps": [
+        "Skill dan pengalaman diambil langsung dari Profil Anda",
+        "Dicocokkan otomatis dengan berbagai posisi umum",
+        "AI menjelaskan alasannya dalam bahasa yang mudah dipahami"
+      ],
       "submit": "Analisis Profil Saya",
       "generating": "Menganalisis profil Anda...",
       "toastNoSkills": "Lengkapi skill di Profil Anda dulu sebelum menjalankan analisis ini.",

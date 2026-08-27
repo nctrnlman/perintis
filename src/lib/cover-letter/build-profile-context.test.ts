@@ -19,7 +19,9 @@ const PROFILE_FIXTURE = {
   ],
   skills: [{ name: "TypeScript" }, { name: "PostgreSQL" }],
   certifications: [{ name: "AWS Certified Developer", issuer: "Amazon" }],
-  projects: [{ name: "Internal Tooling", role: "Lead", bullets: ["Cut deploy time by half"] }],
+  projects: [
+    { name: "Internal Tooling", role: "Lead", description: "<p>Cut deploy time by half</p>" },
+  ],
 };
 
 describe("buildProfileContext", () => {

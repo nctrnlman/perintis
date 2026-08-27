@@ -14,7 +14,7 @@ export interface ProfileContextInput {
   educations: { institution: string; degree: string | null; fieldOfStudy: string | null }[];
   skills: { name: string }[];
   certifications: { name: string; issuer: string }[];
-  projects: { name: string; role: string | null; bullets: string[] }[];
+  projects: { name: string; role: string | null; description: string | null }[];
 }
 
 function descriptionLines(description: string | null): string[] {
@@ -72,7 +72,7 @@ export function buildProfileContext(profile: ProfileContextInput): string {
   if (profile.projects.length > 0) {
     const entries = profile.projects
       .map((p) => {
-        const bullets = p.bullets.filter(Boolean);
+        const bullets = descriptionLines(p.description);
         const detail = bullets.length > 0 ? `\n  - ${bullets.join("\n  - ")}` : "";
         return `- ${p.name}${p.role ? ` (${p.role})` : ""}${detail}`;
       })

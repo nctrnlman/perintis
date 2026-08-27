@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
-import { decryptId } from "@/lib/id-crypto";
-import { ApplicationEditorClient } from "./application-editor-client";
+import { decryptId, encryptId } from "@/lib/id-crypto";
+import { ApplicationTrackerBoard } from "@/components/application-tracker/application-tracker-board";
+import { ApplicationDetailSheet } from "@/components/application-tracker/application-detail-sheet";
 
-export default async function ApplicationEditorPage({
+export default async function ApplicationDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -39,23 +40,32 @@ export default async function ApplicationEditorPage({
   if (!application || application.userId !== user.id) notFound();
 
   return (
-    <ApplicationEditorClient
-      id={application.id}
-      initialCompanyName={application.companyName}
-      initialPositionTitle={application.positionTitle}
-      initialStage={application.stage}
-      initialJobUrl={application.jobUrl ?? ""}
-      initialLocation={application.location ?? ""}
-      initialNotes={application.notes ?? ""}
-      initialAppliedAt={application.appliedAt ? application.appliedAt.toISOString().slice(0, 10) : ""}
-      initialResumeDocumentId={application.resumeDocumentId ?? ""}
-      initialCoverLetterId={application.coverLetterId ?? ""}
-      resumeOptions={resumes.map((resume) => ({ value: resume.id, label: resume.title }))}
-      coverLetterOptions={coverLetters.map((letter) => ({
-        value: letter.id,
-        label: `${letter.companyName} — ${letter.positionTitle}`,
-      }))}
-      rounds={application.interviewRounds}
-    />
+    <>
+      <ApplicationTrackerBoard />
+      <ApplicationDetailSheet
+        closeMode="replace"
+        id={application.id}
+        initialCompanyName={application.companyName}
+        initialPositionTitle={application.positionTitle}
+        initialStage={application.stage}
+        initialJobUrl={application.jobUrl ?? ""}
+        initialLocation={application.location ?? ""}
+        initialNotes={application.notes ?? ""}
+        initialAppliedAt={application.appliedAt ? application.appliedAt.toISOString().slice(0, 10) : ""}
+        initialResumeDocumentId={application.resumeDocumentId ?? ""}
+        initialCoverLetterId={application.coverLetterId ?? ""}
+        resumeOptions={resumes.map((resume) => ({
+          value: resume.id,
+          label: resume.title,
+          token: encryptId(resume.id),
+        }))}
+        coverLetterOptions={coverLetters.map((letter) => ({
+          value: letter.id,
+          label: `${letter.companyName} — ${letter.positionTitle}`,
+          token: encryptId(letter.id),
+        }))}
+        rounds={application.interviewRounds}
+      />
+    </>
   );
 }

@@ -31,12 +31,18 @@ export async function GET(
     notFound();
   }
 
+  const profile = await db.profile.findUnique({ where: { userId: user.id } });
+
   const buffer = await renderToBuffer(
     <CoverLetterPdfDocument
       companyName={coverLetter.companyName}
-      positionTitle={coverLetter.positionTitle}
       createdAt={coverLetter.createdAt}
       bodyHtml={coverLetter.bodyHtml}
+      fullName={profile?.fullName ?? null}
+      email={user.email ?? null}
+      phone={profile?.phone ?? null}
+      linkedinUrl={profile?.linkedinUrl ?? null}
+      location={profile?.location ?? null}
     />
   );
 

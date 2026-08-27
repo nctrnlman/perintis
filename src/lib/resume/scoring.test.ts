@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scoreFindings } from "./scoring";
+import { getScoreTier, scoreFindings } from "./scoring";
 import type { Finding } from "./types";
 
 function finding(severity: Finding["severity"]): Finding {
@@ -31,5 +31,22 @@ describe("scoreFindings", () => {
   it("floors at 0", () => {
     const findings = Array.from({ length: 10 }, () => finding("critical"));
     expect(scoreFindings(findings)).toBe(0);
+  });
+});
+
+describe("getScoreTier", () => {
+  it("returns excellent for 90 and above", () => {
+    expect(getScoreTier(90)).toBe("excellent");
+    expect(getScoreTier(100)).toBe("excellent");
+  });
+
+  it("returns good for 70 to 89", () => {
+    expect(getScoreTier(70)).toBe("good");
+    expect(getScoreTier(89)).toBe("good");
+  });
+
+  it("returns needsWork below 70", () => {
+    expect(getScoreTier(69)).toBe("needsWork");
+    expect(getScoreTier(0)).toBe("needsWork");
   });
 });

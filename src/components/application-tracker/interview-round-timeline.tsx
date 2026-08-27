@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
+import { RequiredMark } from "@/components/shared/property-row";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics-events";
 import {
@@ -126,9 +127,9 @@ export function InterviewRoundTimeline({
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div>
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{t("roundsTitle")}</h2>
+        <h2 className="text-base font-semibold">{t("roundsTitle")}</h2>
         <Button variant="outline" size="sm" onClick={() => setShowForm((prev) => !prev)}>
           <Plus className="size-4" />
           {t("addRoundButton")}
@@ -136,9 +137,11 @@ export function InterviewRoundTimeline({
       </div>
 
       {showForm && (
-        <div className="mt-5 space-y-3 rounded-xl border border-border p-4">
+        <div className="mt-3 space-y-3 rounded-xl border border-border p-4">
           <div className="space-y-1.5">
-            <Label htmlFor="roundLabel">{t("roundLabelLabel")}</Label>
+            <Label htmlFor="roundLabel">
+              {t("roundLabelLabel")} <RequiredMark />
+            </Label>
             <Input
               id="roundLabel"
               value={label}
@@ -165,7 +168,7 @@ export function InterviewRoundTimeline({
         </div>
       )}
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-3 space-y-3">
         {rounds.length === 0 && !showForm && (
           <p className="text-sm text-muted-foreground">{t("roundsEmpty")}</p>
         )}

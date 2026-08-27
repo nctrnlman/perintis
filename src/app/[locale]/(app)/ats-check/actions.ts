@@ -1,9 +1,13 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
 import { encryptId } from "@/lib/id-crypto";
+import { analyzeContent } from "@/lib/resume/content-analysis";
 import { analyzeDocxStructure, extractDocxText } from "@/lib/resume/docx";
+import { extractResumeKeywords, type ResumeKeywords } from "@/lib/resume/extract-keywords";
+import { matchKeywords, type KeywordMatchResult } from "@/lib/resume/match-keywords";
 import { analyzePdfStructure, extractPdfText } from "@/lib/resume/pdf";
 import { scoreFindings } from "@/lib/resume/scoring";
 
@@ -21,7 +25,10 @@ function detectFileType(bytes: Uint8Array): "pdf" | "docx" | "unknown" {
 
 export async function uploadAndAnalyzeResume(
   formData: FormData
-): Promise<{ token: string } | { error: string }> {
+): Promise<
+  | { token: string; jobMatchFailed: boolean; keywordExtractionFailed: boolean }
+  | { error: string }
+> {
   const supabase = await createClient();
   const {
     data: { user },
@@ -67,6 +74,33 @@ export async function uploadAndAnalyzeResume(
   }
 
   const overallScore = scoreFindings(findings);
+  const contentFindings = analyzeContent(rawText);
+
+  const jobPostingText = String(formData.get("jobPostingText") ?? "").trim();
+  let keywordMatch: KeywordMatchResult | null = null;
+  let jobMatchFailed = false;
+  if (jobPostingText) {
+    try {
+      keywordMatch = await matchKeywords(rawText, jobPostingText);
+    } catch (err) {
+      // Keyword matching is a bonus on top of the structural check — if it
+      // fails, the upload should still succeed with the structural results.
+      // The caller surfaces jobMatchFailed to the user instead of staying silent.
+      console.error("[ats-check] Keyword matching failed:", err);
+      jobMatchFailed = true;
+    }
+  }
+
+  let resumeKeywords: ResumeKeywords | null = null;
+  let keywordExtractionFailed = false;
+  try {
+    resumeKeywords = await extractResumeKeywords(rawText);
+  } catch (err) {
+    // Same resilience rule as keyword matching — this is a bonus insight,
+    // not something that should block the upload from succeeding.
+    console.error("[ats-check] Resume keyword extraction failed:", err);
+    keywordExtractionFailed = true;
+  }
 
   const resume = await db.resume.create({
     data: {
@@ -83,8 +117,29 @@ export async function uploadAndAnalyzeResume(
       resumeId: resume.id,
       overallScore,
       structuralFindings: JSON.parse(JSON.stringify(findings)),
+      contentFindings: JSON.parse(JSON.stringify(contentFindings)),
+      jobPostingText: jobPostingText || null,
+      keywordFindings: keywordMatch ? JSON.parse(JSON.stringify(keywordMatch)) : undefined,
+      resumeKeywords: resumeKeywords ? JSON.parse(JSON.stringify(resumeKeywords)) : undefined,
     },
   });
 
-  return { token: encryptId(analysis.id) };
+  return { token: encryptId(analysis.id), jobMatchFailed, keywordExtractionFailed };
+}
+
+export async function deleteAtsCheckAnalysis(
+  id: string
+): Promise<{ success: true } | { error: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "not-authenticated" };
+
+  const existing = await db.aTSCheckAnalysis.findUnique({ where: { id } });
+  if (!existing || existing.userId !== user.id) return { error: "not-found" };
+
+  await db.aTSCheckAnalysis.delete({ where: { id } });
+  revalidatePath("/ats-check");
+  return { success: true };
 }

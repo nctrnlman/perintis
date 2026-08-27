@@ -2,6 +2,7 @@
 
 import { useTransition } from "react";
 import { useTranslations } from "next-intl";
+import { Trash2 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
@@ -26,7 +27,8 @@ export function DeleteApplicationButton({ id }: { id: string }) {
   }
 
   return (
-    <Button variant="ghost" onClick={handleDelete} disabled={isPending}>
+    <Button variant="ghost" size="sm" onClick={handleDelete} disabled={isPending}>
+      <Trash2 className="size-4" />
       {t("deleteButton")}
     </Button>
   );

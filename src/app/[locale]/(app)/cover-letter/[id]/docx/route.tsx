@@ -31,11 +31,17 @@ export async function GET(
     notFound();
   }
 
+  const profile = await db.profile.findUnique({ where: { userId: user.id } });
+
   const document = buildCoverLetterDocx({
     companyName: coverLetter.companyName,
-    positionTitle: coverLetter.positionTitle,
     createdAt: coverLetter.createdAt,
     bodyHtml: coverLetter.bodyHtml,
+    fullName: profile?.fullName ?? null,
+    email: user.email ?? null,
+    phone: profile?.phone ?? null,
+    linkedinUrl: profile?.linkedinUrl ?? null,
+    location: profile?.location ?? null,
   });
 
   const buffer = await Packer.toBuffer(document);

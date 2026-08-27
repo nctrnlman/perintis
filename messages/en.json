@@ -7,16 +7,26 @@
     "title": "Page not found",
     "description": "The page you're looking for may have moved or never existed.",
     "cta": "Back to home",
-    "secondaryCta": "See all features"
+    "secondaryCta": "See all features",
+    "quickLinksLabel": "Or jump straight into one of these"
   },
   "errorPage": {
     "title": "Something went wrong",
     "description": "An unexpected error occurred. Try reloading the page, or head back home.",
     "retry": "Try again",
-    "cta": "Back to home"
+    "cta": "Back to home",
+    "errorId": "Error ID"
+  },
+  "appError": {
+    "title": "This page failed to load",
+    "description": "An unexpected error occurred. Try again, or head back to the dashboard.",
+    "retry": "Try again",
+    "cta": "Back to dashboard"
   },
   "cookieConsent": {
+    "title": "Before you continue...",
     "message": "We use cookies for analytics, to understand how Perintis is used and improve it. No personal data is sold.",
+    "privacyLink": "Read Privacy Policy",
     "accept": "Accept",
     "decline": "Decline"
   },
@@ -56,6 +66,8 @@
     "atsCheck": "ATS Check",
     "resumeBuilder": "Resume Builder",
     "coverLetter": "Cover Letter",
+    "applicationTracker": "Application Tracker",
+    "careerFit": "Career Fit",
     "pricing": "Pricing",
     "about": "About",
     "blog": "Blog",
@@ -279,7 +291,10 @@
       "haveAccount": "Already have an account?",
       "loginLink": "Log in",
       "toastSuccessTitle": "Account created",
-      "toastErrorTitle": "Sign up failed"
+      "toastErrorTitle": "Sign up failed",
+      "confirmationSentTitle": "Check your email",
+      "confirmationSentDescription": "We've sent a confirmation link to your email. Click it to activate your account before you can log in.",
+      "backToLogin": "Back to log in"
     },
     "login": {
       "title": "Log in to Perintis",
@@ -306,14 +321,29 @@
       "sentTitle": "Check your email",
       "sentDescription": "We've sent you a link to reset your password.",
       "toastErrorTitle": "Failed to send"
+    },
+    "updatePassword": {
+      "title": "Set a new password",
+      "description": "Enter a new password for your account.",
+      "passwordLabel": "New Password",
+      "passwordHint": "At least 8 characters, with an uppercase letter and a number.",
+      "confirmPasswordLabel": "Confirm Password",
+      "submit": "Save New Password",
+      "submitting": "Saving...",
+      "toastSuccessTitle": "Password updated successfully",
+      "toastErrorTitle": "Failed to update password"
     }
   },
   "dashboard": {
     "title": "Dashboard",
     "description": "Each module below covers one stage of your job search, from setting up your profile to tracking applications.",
     "continueTitle": "Continue",
-    "continueDescription": "These three features are live and ready to use right now.",
+    "continueDescription": "These features are live and ready to use right now.",
     "comingSoonTitle": "Coming Soon",
+    "insights": {
+      "heading": "Your Activity at a Glance",
+      "seeAll": "See all"
+    },
     "scoreTrend": {
       "title": "ATS Score Trend",
       "latestLabel": "Latest score",
@@ -421,11 +451,15 @@
       "title": "ATS Compatibility Check",
       "description": "Your resume check history.",
       "empty": "No checks yet. Upload your first resume.",
+      "emptyTitle": "Check your first resume",
       "newButton": "Check New Resume",
+      "tableNo": "No.",
       "tableFilename": "Filename",
       "tableScore": "Score",
       "tableFindings": "Findings",
       "tableDate": "Date",
+      "tableActions": "Actions",
+      "viewDetail": "Detail",
       "searchPlaceholder": "Search filename...",
       "filterAll": "All",
       "findingsCount": "{count, plural, =0 {No issues} one {# issue} other {# issues}}",
@@ -435,14 +469,21 @@
       "pageInfo": "Page {page} of {totalPages}",
       "delete": "Delete",
       "toastDeleteSuccess": "Check deleted",
-      "toastDeleteError": "Failed to delete check"
+      "toastDeleteError": "Failed to delete check",
+      "stats": {
+        "total": "Total Checks",
+        "excellentCount": "Excellent",
+        "goodCount": "Good",
+        "needsWorkCount": "Needs Work",
+        "addedThisWeek": "This Week"
+      }
     },
     "upload": {
       "title": "Upload Resume",
       "description": "PDF or DOCX format, 5MB maximum.",
       "dropzoneLabel": "Drag a file here or click to browse",
       "dropzoneHint": "PDF or DOCX, max 5MB",
-      "jobPostingLabel": "Job Posting (optional)",
+      "jobPostingLabel": "Job Posting",
       "jobPostingPlaceholder": "Paste the job posting text here for keyword match analysis...",
       "jobPostingHint": "If filled in, we'll compare your resume against the important keywords from this posting.",
       "analyzing": "Reading your resume...",
@@ -754,9 +795,12 @@
       "title": "Skills",
       "empty": "No skills added yet.",
       "nameLabel": "Skill Name",
-      "categoryLabel": "Category (optional)",
+      "categoryLabel": "Category",
       "addButton": "Add",
       "toastAddSuccess": "Skill added",
+      "toastDuplicate": "This skill is already in your list",
+      "showMore": "+{count} more",
+      "showLess": "Show less",
       "toastDeleteSuccess": "Skill deleted",
       "toastError": "Something went wrong"
     },
@@ -767,7 +811,7 @@
       "nameLabel": "Certification Name",
       "issuerLabel": "Issuer",
       "issueDateLabel": "Issue Date",
-      "urlLabel": "URL (optional)",
+      "urlLabel": "URL",
       "save": "Save",
       "saving": "Saving...",
       "cancel": "Cancel",
@@ -781,12 +825,17 @@
       "addButton": "Add Project",
       "editButton": "Edit Project",
       "nameLabel": "Project Name",
-      "clientLabel": "Client (optional)",
+      "clientLabel": "Client",
       "roleLabel": "Role",
-      "bulletsLabel": "Bullet Points (one per line)",
-      "techStackLabel": "Tech Stack (comma-separated)",
+      "descriptionLabel": "Description",
+      "techStackLabel": "Tools / Skills Used (comma-separated)",
       "boldLabel": "Bold",
       "italicLabel": "Italic",
+      "bulletListLabel": "Bullet List",
+      "orderedListLabel": "Numbered List",
+      "strikeLabel": "Strikethrough",
+      "codeLabel": "Code",
+      "horizontalRuleLabel": "Horizontal Rule",
       "save": "Save",
       "saving": "Saving...",
       "cancel": "Cancel",
@@ -805,6 +854,9 @@
       "proficiencyLabel": "Proficiency",
       "addButton": "Add",
       "toastAddSuccess": "Language added",
+      "toastDuplicate": "This language is already in your list",
+      "showMore": "+{count} more",
+      "showLess": "Show less",
       "toastDeleteSuccess": "Language deleted",
       "toastError": "Something went wrong"
     }
@@ -814,6 +866,7 @@
       "title": "Resume Builder",
       "description": "Build ATS-safe resumes from your Profile data.",
       "empty": "No resumes yet. Create your first one.",
+      "emptyTitle": "Create your first resume",
       "newButton": "Create New Resume",
       "tableTitle": "Title",
       "tableDate": "Last Updated",
@@ -825,7 +878,14 @@
       "delete": "Delete",
       "toastDeleteSuccess": "Resume deleted",
       "toastDeleteError": "Failed to delete resume",
-      "toastCreateError": "Failed to create resume"
+      "toastCreateError": "Failed to create resume",
+      "tableNo": "No.",
+      "tableActions": "Actions",
+      "viewDetail": "View Detail",
+      "stats": {
+        "total": "Total Resumes",
+        "addedThisWeek": "Added This Week"
+      }
     },
     "builder": {
       "titleLabel": "Resume Title (internal, not shown on the PDF)",
@@ -862,7 +922,7 @@
       "urlLabel": "URL",
       "clientLabel": "Client",
       "roleLabel": "Role",
-      "techStackLabel": "Tech Stack (comma-separated)",
+      "techStackLabel": "Tools / Skills Used (comma-separated)",
       "categoryLabel": "Category",
       "proficiencyLabel": "Proficiency",
       "nameLabel": "Name",
@@ -874,13 +934,12 @@
       "applyAll": "Apply All",
       "discardSuggestion": "Discard",
       "toastEnhanceError": "Couldn't rewrite that. Try again shortly.",
-      "saveButton": "Save Changes",
-      "saving": "Saving...",
-      "toastSaveSuccess": "Resume saved",
-      "toastSaveError": "Failed to save resume",
-      "previewButton": "Preview",
       "downloadButton": "Download PDF",
-      "backToList": "Back to list"
+      "backToList": "Back to list",
+      "previewTitle": "Preview",
+      "autoSaving": "Saving...",
+      "autoSaved": "Saved",
+      "autoSaveError": "Failed to save"
     }
   },
   "coverLetter": {
@@ -888,18 +947,29 @@
       "title": "Cover Letter",
       "description": "Generate and save cover letters tailored to each job you apply to.",
       "empty": "No cover letters yet. Create your first one.",
+      "emptyTitle": "Create your first cover letter",
       "newButton": "Create Cover Letter",
+      "tableNo": "No.",
       "tableCompany": "Company",
       "tablePosition": "Position",
       "tableDate": "Last Updated",
+      "tableActions": "Actions",
+      "viewDetail": "Detail",
       "searchPlaceholder": "Search by company...",
+      "filterAll": "All",
       "noResults": "No matching results.",
       "prevPage": "Previous",
       "nextPage": "Next",
       "pageInfo": "Page {page} of {totalPages}",
       "delete": "Delete",
       "toastDeleteSuccess": "Cover letter deleted",
-      "toastDeleteError": "Failed to delete cover letter"
+      "toastDeleteError": "Failed to delete cover letter",
+      "stats": {
+        "total": "Total Cover Letters",
+        "formalCount": "Formal Tone",
+        "casualCount": "Casual Tone",
+        "addedThisWeek": "Added This Week"
+      }
     },
     "new": {
       "title": "Create Cover Letter",
@@ -967,6 +1037,25 @@
         "matchedLabel": "Matched",
         "missingLabel": "Missing"
       },
+      "howItWorksTitle": "How It Works",
+      "howItWorksSteps": [
+        {
+          "title": "Upload Your Resume",
+          "description": "PDF or DOCX, up to 5MB. Paste a job posting too if you want a keyword match check."
+        },
+        {
+          "title": "Automatic Analysis",
+          "description": "The system checks structure, contact-info completeness, writing strength, and keyword match in seconds."
+        },
+        {
+          "title": "See Your Score & Findings",
+          "description": "A compatibility score with a clear breakdown of what to fix, from formatting issues to missing keywords."
+        },
+        {
+          "title": "Track Your Progress",
+          "description": "Search, filter, and see stats across your whole check history any time, to watch your progress over time."
+        }
+      ],
       "faqTitle": "Frequently asked questions",
       "faq": [
         {
@@ -1046,6 +1135,25 @@
         "pdfLabel": "PDF",
         "wordLabel": "Word"
       },
+      "howItWorksTitle": "How It Works",
+      "howItWorksSteps": [
+        {
+          "title": "Fill In the Job Details",
+          "description": "Company name, position, and the job posting you're applying to."
+        },
+        {
+          "title": "Choose Tone & Length",
+          "description": "Formal or casual, short or standard, matched to the culture of the company you're applying to."
+        },
+        {
+          "title": "AI Drafts It",
+          "description": "Based on the real skills and experience in your Profile, not a generic template."
+        },
+        {
+          "title": "Edit & Download",
+          "description": "Polish it directly in the rich-text editor, then export as PDF or Word whenever it's ready."
+        }
+      ],
       "faqTitle": "Frequently asked questions",
       "faq": [
         {
@@ -1070,8 +1178,9 @@
       "subhead": "Log every application, track its status on a board you can drag and drop, and link it to the resume or cover letter you used, no more messy spreadsheets.",
       "bullets": [
         "Drag application cards between stages: Applied, Interviewing, Offer, all the way to the outcome",
+        "Click an application to see its details in a side panel, complete with links to the resume and cover letter you used, no page reload needed",
         "Log each interview round individually, from HR screens to the final round",
-        "See your win rate and interview conversion, calculated from your own application data"
+        "See stats from your own data: win rate, interview conversion, and a reminder for applications that need follow-up"
       ],
       "cta": "Start Tracking Applications Free",
       "preview": {
@@ -1079,6 +1188,25 @@
         "interviewingLabel": "Interviewing",
         "acceptedLabel": "Accepted"
       },
+      "howItWorksTitle": "How It Works",
+      "howItWorksSteps": [
+        {
+          "title": "Add an Application",
+          "description": "Through a quick side panel right from the Kanban board, no page reload needed."
+        },
+        {
+          "title": "Drag It Across the Board",
+          "description": "Move an application's stage from wishlist, applied, interviewing, all the way to the outcome."
+        },
+        {
+          "title": "Detail in a Side Panel",
+          "description": "Click a card to view and edit details, log interview rounds, and open the resume or cover letter you used."
+        },
+        {
+          "title": "Track Your Stats",
+          "description": "Win rate, interview conversion, and an automatic reminder for applications that have gone quiet."
+        }
+      ],
       "faqTitle": "Frequently asked questions",
       "faq": [
         {
@@ -1111,6 +1239,21 @@
         "strongLabel": "Strong Fit",
         "goodLabel": "Good Fit"
       },
+      "howItWorksTitle": "How It Works",
+      "howItWorksSteps": [
+        {
+          "title": "Skills From Your Profile",
+          "description": "Pulled straight from the skills and experience you've already filled in, no re-entry needed."
+        },
+        {
+          "title": "Automatically Matched",
+          "description": "Compared against common role archetypes based on real skill overlap, not AI guesswork."
+        },
+        {
+          "title": "Clear Reasoning",
+          "description": "The AI explains why each role fits, plus which skills you'd still need to develop."
+        }
+      ],
       "faqTitle": "Frequently asked questions",
       "faq": [
         {
@@ -1175,7 +1318,7 @@
       }
     ],
     "offeringsHeading": "What's live today",
-    "offeringsDescription": "Three tools, all free, with more on the way.",
+    "offeringsDescription": "Five tools, all free, with more on the way.",
     "whoHeading": "Who's behind it",
     "whoBody": "Perintis is designed, built, and maintained by one person, from the first line of code to the copy on this page. Questions, feedback, or ideas are always welcome.",
     "closingHeading": "Ready to see it for yourself?",
@@ -1210,9 +1353,9 @@
   },
   "blog": {
     "metaTitle": "Blog | Perintis",
-    "metaDescription": "10 practical, no-fluff guides on resumes, cover letters, and getting past the ATS, for Indonesian job seekers.",
+    "metaDescription": "12 practical, no-fluff guides on resumes, cover letters, getting past the ATS, and job-search strategy, for Indonesian job seekers.",
     "heading": "From the blog",
-    "description": "10 practical, no-fluff guides on resumes, cover letters, and getting past the ATS.",
+    "description": "12 practical, no-fluff guides on resumes, cover letters, getting past the ATS, and job-search strategy.",
     "backToBlog": "Back to blog",
     "readingTime": "{minutes} min read",
     "ctaHeading": "Ready to put this into practice?",
@@ -1470,6 +1613,54 @@
             "body": "The fastest tailoring often isn't new writing, it's reordering. Move your most relevant bullets and roles higher, push less relevant ones lower or cut them for this specific application. A recruiter's first scan matters most, put your best match for this job where that scan will land."
           }
         ]
+      },
+      "track-job-applications": {
+        "title": "Why Applying to More Jobs Is Pointless Without a Tracking System",
+        "excerpt": "Applying to more places doesn't help if you've lost track of where you applied and how far each one got.",
+        "publishedLabel": "Published August 2026",
+        "category": "Career Tips",
+        "sections": [
+          {
+            "heading": "Applying broadly is wasted effort once you lose the thread",
+            "body": "The more jobs you apply to, the easier it is to forget which resume version went where, whether you already followed up, or when you last heard anything. A spreadsheet that starts out tidy usually stops getting updated after the first week, and once that happens, a broad job search turns into confusion instead of opportunity."
+          },
+          {
+            "heading": "An application's status is more than \"sent\" or \"not sent\"",
+            "body": "A single application can move through several real stages: still on your wishlist, applied, in interviews, offered, or rejected. Tracking it as one binary status hides the most useful information of all: exactly where each application actually stalled, and what patterns show up once you can see them all at once."
+          },
+          {
+            "heading": "Late follow-ups are usually forgetfulness, not neglect",
+            "body": "Most people don't skip follow-ups on purpose, they just lose track of how long it's been since the last update. Without a clear signal for applications that have gone quiet, the right moment to follow up slips by unnoticed, until it starts to feel too late to send one."
+          },
+          {
+            "heading": "Keep interview history attached to the application itself",
+            "body": "Interview notes scattered across a notes app, chat threads, and memory are hard to reconnect to the original application later. Logging every round, from the initial HR screen to the final interview, directly under that same application means the whole story is visible at a glance, no reconstruction required."
+          }
+        ]
+      },
+      "which-jobs-to-apply-to": {
+        "title": "How to Decide Which Roles Are Actually Worth Applying To",
+        "excerpt": "Applying to every listing that looks interesting isn't a strategy, it just postpones a question you should answer first: where do your skills actually fit?",
+        "publishedLabel": "Published August 2026",
+        "category": "Career Tips",
+        "sections": [
+          {
+            "heading": "Applying to everything isn't a job search strategy",
+            "body": "Sending applications to every role that looks relevant feels productive, but without an upfront filter, most of that time and energy goes toward positions that are actually a poor skill match. The same effort, aimed at roles that genuinely align, tends to get a much better response."
+          },
+          {
+            "heading": "Job titles mislead, the underlying skills don't",
+            "body": "The same title, say \"Product Manager\" or \"Marketing Specialist\", can mean very different things across companies depending on what skills they actually need. Anchoring on the title alone is easy to get wrong; what's worth looking at is the concrete skill list and responsibilities behind it."
+          },
+          {
+            "heading": "Compare what you have against what a role typically needs",
+            "body": "Instead of guessing, it helps to compare the skills and experience you already have directly against the skills commonly required for a given role archetype. That makes it obvious which roles have strong overlap, which are partial, and which genuinely aren't a fit yet."
+          },
+          {
+            "heading": "Missing skills are a roadmap, not a reason to stop",
+            "body": "Finding a skill gap for a role doesn't mean that role is closed off forever. It's actually the most actionable information you can get: you now know exactly what to build up before applying with real confidence, instead of applying blind without knowing where you actually stand."
+          }
+        ]
       }
     }
   },
@@ -1478,11 +1669,17 @@
     "description": "Track every job application from applying to the final outcome.",
     "newButton": "Add Application",
     "empty": "No applications yet. Add your first one.",
+    "emptyTitle": "Track your first application",
+    "scrollHint": "Scroll to see all statuses",
     "stats": {
       "total": "Total Applications",
       "activePipeline": "In Progress",
       "winRate": "Win Rate",
       "interviewConversion": "Interview Conversion",
+      "addedThisWeek": "Added This Week",
+      "staleCount": "Needs Follow-up",
+      "staleCountHint": "No update in 14+ days",
+      "byStageTitle": "By Status",
       "notEnoughData": "Not enough data yet"
     },
     "stages": {
@@ -1502,13 +1699,17 @@
       "title": "Add Application",
       "description": "Log a new application to start tracking its progress.",
       "companyLabel": "Company Name",
+      "companyPlaceholder": "e.g. Google",
       "positionLabel": "Position",
+      "positionPlaceholder": "e.g. Software Engineer",
       "stageLabel": "Stage",
-      "jobUrlLabel": "Job Posting URL (optional)",
-      "locationLabel": "Location (optional)",
-      "resumeLabel": "Linked Resume (optional)",
+      "jobUrlLabel": "Job Posting URL",
+      "jobUrlPlaceholder": "https://...",
+      "locationLabel": "Location",
+      "locationPlaceholder": "e.g. Jakarta / Remote",
+      "resumeLabel": "Linked Resume",
       "resumeNone": "None",
-      "coverLetterLabel": "Linked Cover Letter (optional)",
+      "coverLetterLabel": "Linked Cover Letter",
       "coverLetterNone": "None",
       "submit": "Save Application",
       "toastCreateSuccess": "Application added",
@@ -1518,16 +1719,24 @@
       "backToBoard": "Back to board",
       "detailsTitle": "Application Details",
       "companyLabel": "Company Name",
+      "companyPlaceholder": "e.g. Google",
       "positionLabel": "Position",
+      "positionPlaceholder": "e.g. Software Engineer",
       "stageLabel": "Stage",
       "jobUrlLabel": "Job Posting URL",
+      "jobUrlPlaceholder": "https://...",
       "locationLabel": "Location",
+      "locationPlaceholder": "e.g. Jakarta / Remote",
       "appliedAtLabel": "Applied Date",
       "notesLabel": "Notes",
       "resumeLabel": "Linked Resume",
       "resumeNone": "None",
+      "viewResume": "View resume",
       "coverLetterLabel": "Linked Cover Letter",
       "coverLetterNone": "None",
+      "viewCoverLetter": "View cover letter",
+      "notSet": "Not set",
+      "openLink": "Open link",
       "deleteButton": "Delete Application",
       "toastDeleteError": "Failed to delete application",
       "roundsTitle": "Interview Rounds",
@@ -1535,8 +1744,8 @@
       "addRoundButton": "Add Round",
       "roundLabelLabel": "Round Name",
       "roundLabelPlaceholder": "e.g. HR Interview, Technical Test",
-      "roundDateLabel": "Date (optional)",
-      "roundNotesLabel": "Notes (optional)",
+      "roundDateLabel": "Date",
+      "roundNotesLabel": "Notes",
       "roundSubmit": "Save Round",
       "roundDelete": "Delete",
       "outcomePending": "Pending",
@@ -1556,14 +1765,37 @@
       "description": "See which roles best match your skills and experience.",
       "newButton": "New Analysis",
       "empty": "No analyses yet. Create your first one.",
+      "emptyTitle": "Discover your career potential",
       "resultCount": "{count} roles found",
       "delete": "Delete",
       "toastDeleteSuccess": "Analysis deleted",
-      "toastDeleteError": "Failed to delete analysis"
+      "toastDeleteError": "Failed to delete analysis",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageInfo": "Page {page} of {totalPages}",
+      "searchPlaceholder": "Search by role or category...",
+      "filterAll": "All",
+      "noResults": "No analyses match. Try a different search or filter.",
+      "tableNo": "No.",
+      "tableSummary": "Summary",
+      "tableDate": "Date",
+      "tableActions": "Actions",
+      "viewDetail": "Detail"
+    },
+    "stats": {
+      "totalAnalyses": "Total Analyses",
+      "totalStrongMatches": "Total Strong Matches",
+      "topRoleHint": "{count}x Strong Fit",
+      "noTopRole": "No strong fit yet"
     },
     "new": {
       "title": "Unlock Your Potential",
       "description": "We'll match the skills and experience in your Profile against common roles, then explain why each one fits.",
+      "steps": [
+        "Skills and experience pulled straight from your Profile",
+        "Automatically matched against common role archetypes",
+        "AI explains the reasoning in plain language"
+      ],
       "submit": "Analyze My Profile",
       "generating": "Analyzing your profile...",
       "toastNoSkills": "Add some skills to your Profile before running this analysis.",
