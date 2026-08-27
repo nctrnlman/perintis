@@ -16,7 +16,12 @@ import { ScoreTrendCard } from "@/components/dashboard/score-trend-card";
 import { ProfileCompletenessCard } from "@/components/dashboard/profile-completeness-card";
 import { FeatureActionCard } from "@/components/dashboard/feature-action-card";
 import { ComingSoonStrip } from "@/components/dashboard/coming-soon-strip";
+import { ApplicationTrackerInsightCard } from "@/components/dashboard/application-tracker-insight-card";
+import { CareerFitInsightCard } from "@/components/dashboard/career-fit-insight-card";
 import { computeProfileCompleteness } from "@/lib/profile-completeness";
+import { computeApplicationStats } from "@/lib/application-tracker/stats";
+import { computeCareerFitAggregateStats } from "@/lib/career-fit/stats";
+import type { CareerFitResult } from "@/components/career-fit/career-fit-result-card";
 
 const moduleIcons = [FileCheck2, ShieldCheck, FileEdit, MessagesSquare, Mail, ListChecks, Compass];
 const moduleHrefs: (string | null)[] = [
@@ -51,6 +56,8 @@ export default async function DashboardPage() {
     recentChecks,
     applicationCount,
     careerFitCount,
+    applications,
+    potentialAnalyses,
   ] = await Promise.all([
     db.profile.findUnique({
       where: { userId: user.id },
@@ -71,7 +78,20 @@ export default async function DashboardPage() {
     }),
     db.application.count({ where: { userId: user.id } }),
     db.potentialAnalysis.count({ where: { userId: user.id } }),
+    db.application.findMany({
+      where: { userId: user.id },
+      select: { stage: true, createdAt: true, updatedAt: true },
+    }),
+    db.potentialAnalysis.findMany({
+      where: { userId: user.id },
+      select: { results: true },
+    }),
   ]);
+
+  const applicationStats = computeApplicationStats(applications);
+  const careerFitStats = computeCareerFitAggregateStats(
+    potentialAnalyses.map((analysis) => analysis.results as unknown as CareerFitResult[])
+  );
 
   const firstName = profile?.fullName?.trim().split(/\s+/)[0] || null;
   const scoreHistory = recentChecks.map((check) => check.overallScore).reverse();
@@ -136,9 +156,27 @@ export default async function DashboardPage() {
         </Reveal>
       </div>
 
+      {(applicationCount > 0 || careerFitCount > 0) && (
+        <div>
+          <h2 className="text-lg font-semibold">{t("insights.heading")}</h2>
+          <div className="mt-4 grid gap-6 sm:grid-cols-2">
+            {applicationCount > 0 && (
+              <Reveal>
+                <ApplicationTrackerInsightCard stats={applicationStats} />
+              </Reveal>
+            )}
+            {careerFitCount > 0 && (
+              <Reveal delay={80}>
+                <CareerFitInsightCard stats={careerFitStats} />
+              </Reveal>
+            )}
+          </div>
+        </div>
+      )}
+
       <div>
         <h2 className="text-lg font-semibold">{t("continueTitle")}</h2>
-        <p className="mt-1 text-muted-foreground">{t("continueDescription")}</p>
+        <p className="mt-1 text-sm text-muted-foreground">{t("continueDescription")}</p>
         <div className="mt-4 grid gap-6 sm:grid-cols-3">
           {activeFeatures.map((feature) => (
             <Reveal key={feature.title} delay={feature.index * 60}>

@@ -9,6 +9,7 @@ import { CookieConsentProvider } from "@/components/shared/cookie-consent-provid
 import { CookieConsentBanner } from "@/components/shared/cookie-consent-banner";
 import { Analytics } from "@/components/shared/analytics";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/site-urls";
 import "../globals.css";
 
 const inter = Inter({
@@ -36,11 +37,20 @@ export async function generateMetadata({
   const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t("defaultTitle"),
       template: "%s | Perintis",
     },
     description: t("description"),
+    openGraph: {
+      siteName: "Perintis",
+      locale: locale === "id" ? "id_ID" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
     ...(googleSiteVerification
       ? { verification: { google: googleSiteVerification } }
       : {}),

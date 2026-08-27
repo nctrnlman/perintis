@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   // which breaks when Turbopack/webpack tries to bundle it into a chunk.
   // Loading it unbundled (as a normal Node dependency) sidesteps that.
   serverExternalPackages: ["pdfjs-dist"],
+  // Our root layout lives under the [locale] dynamic segment, so a fully
+  // unmatched path (no locale-scoped not-found.tsx to catch it) needs this
+  // to get a branded 404 instead of Next's generic fallback.
+  experimental: {
+    globalNotFound: true,
+  },
 };
 
 export default withNextIntl(nextConfig);
