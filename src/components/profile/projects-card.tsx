@@ -6,10 +6,11 @@ import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/toast";
+import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
 import { SaveStatus } from "@/components/profile/save-status";
+import { RequiredMark } from "@/components/shared/property-row";
 import {
   addProject,
   deleteProject,
@@ -22,7 +23,7 @@ interface ProjectItem {
   name: string;
   client: string | null;
   role: string | null;
-  bullets: string[];
+  description: string | null;
   techStack: string[];
 }
 
@@ -30,14 +31,23 @@ interface ProjectsCardProps {
   projects: ProjectItem[];
 }
 
-function ProjectFields({ item }: { item: ProjectItem | null }) {
+function ProjectFields({
+  item,
+  onFieldChange,
+}: {
+  item: ProjectItem | null;
+  onFieldChange?: () => void;
+}) {
   const t = useTranslations("profile.projects");
+  const [description, setDescription] = useState(item?.description ?? "");
 
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="proj-name">{t("nameLabel")}</Label>
+          <Label htmlFor="proj-name">
+            {t("nameLabel")} <RequiredMark />
+          </Label>
           <Input id="proj-name" name="name" defaultValue={item?.name ?? ""} required />
         </div>
         <div className="space-y-1.5">
@@ -58,13 +68,23 @@ function ProjectFields({ item }: { item: ProjectItem | null }) {
         </div>
       </div>
       <div className="space-y-1.5">
-        <Label htmlFor="proj-bullets">{t("bulletsLabel")}</Label>
-        <Textarea
-          id="proj-bullets"
-          name="bullets"
-          defaultValue={item?.bullets.join("\n") ?? ""}
-          rows={4}
+        <Label>{t("descriptionLabel")}</Label>
+        <RichTextEditor
+          value={description}
+          onChange={(html) => {
+            setDescription(html);
+            onFieldChange?.();
+          }}
+          boldLabel={t("boldLabel")}
+          italicLabel={t("italicLabel")}
+          bulletListLabel={t("bulletListLabel")}
+          orderedListLabel={t("orderedListLabel")}
+          strikeLabel={t("strikeLabel")}
+          codeLabel={t("codeLabel")}
+          horizontalRuleLabel={t("horizontalRuleLabel")}
+          allowExtendedFormatting
         />
+        <input type="hidden" name="description" value={description} readOnly />
       </div>
     </>
   );
@@ -80,12 +100,12 @@ function EditProjectForm({ item, onClose }: { item: ProjectItem; onClose: () => 
     <form
       ref={formRef}
       onChange={handleChange}
-      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+      className="mt-4 space-y-4 border-t border-border pt-4"
     >
       <div className="flex items-center justify-end">
         <SaveStatus status={status} />
       </div>
-      <ProjectFields item={item} />
+      <ProjectFields item={item} onFieldChange={handleChange} />
       <Button type="button" variant="outline" onClick={onClose}>
         {t("close")}
       </Button>
@@ -143,7 +163,7 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div className="rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("title")}</h2>
         {!formOpen && (
@@ -161,7 +181,7 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
       {projects.length > 0 && (
         <div className="mt-6 space-y-4">
           {projects.map((proj) => (
-            <div key={proj.id} className="rounded-2xl border border-border p-6">
+            <div key={proj.id} className="rounded-xl border border-border p-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-medium">
@@ -191,12 +211,11 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
                   </Button>
                 </div>
               </div>
-              {proj.bullets.length > 0 && (
-                <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-muted-foreground">
-                  {proj.bullets.map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
+              {proj.description && (
+                <div
+                  className="mt-3 text-sm text-muted-foreground [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-xs [&_hr]:my-2 [&_hr]:border-border [&_li_p]:inline [&_ol]:my-0 [&_ol]:list-decimal [&_ol]:list-outside [&_ol]:space-y-0.5 [&_ol]:pl-5 [&_p]:m-0 [&_ul]:my-0 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:space-y-0.5 [&_ul]:pl-5"
+                  dangerouslySetInnerHTML={{ __html: proj.description }}
+                />
               )}
               {proj.techStack.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -222,7 +241,7 @@ export function ProjectsCard({ projects }: ProjectsCardProps) {
       {formOpen && editingId === null && (
         <form
           action={handleAddSubmit}
-          className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+          className="mt-6 space-y-4 rounded-xl border border-border p-4"
         >
           <ProjectFields item={null} />
           <div className="flex gap-2">

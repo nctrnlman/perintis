@@ -47,6 +47,7 @@ export async function updatePersonalInfo(
     portfolioUrl: formData.get("portfolioUrl") ?? "",
     targetRole: formData.get("targetRole") ?? "",
     targetIndustry: formData.get("targetIndustry") ?? "",
+    summary: formData.get("summary") ?? "",
   });
 
   if (!parsed.success) return { error: "validation-failed" };
@@ -272,15 +273,6 @@ function parseTechStack(formData: FormData): string[] {
     .filter(Boolean);
 }
 
-function parseBullets(formData: FormData): string[] {
-  const raw = formData.get("bullets");
-  if (typeof raw !== "string" || !raw.trim()) return [];
-  return raw
-    .split("\n")
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
-
 export async function addCertification(
   formData: FormData
 ): Promise<{ success: true } | { error: string }> {
@@ -334,7 +326,7 @@ export async function addProject(
     name: formData.get("name") ?? "",
     client: formData.get("client") ?? "",
     role: formData.get("role") ?? "",
-    bullets: parseBullets(formData),
+    description: formData.get("description") ?? "",
     techStack: parseTechStack(formData),
   });
 
@@ -346,7 +338,7 @@ export async function addProject(
       name: parsed.data.name,
       client: parsed.data.client || null,
       role: parsed.data.role || null,
-      bullets: parsed.data.bullets,
+      description: parsed.data.description || null,
       techStack: parsed.data.techStack,
     },
   });
@@ -369,7 +361,7 @@ export async function updateProject(
     name: formData.get("name") ?? "",
     client: formData.get("client") ?? "",
     role: formData.get("role") ?? "",
-    bullets: parseBullets(formData),
+    description: formData.get("description") ?? "",
     techStack: parseTechStack(formData),
   });
 
@@ -381,7 +373,7 @@ export async function updateProject(
       name: parsed.data.name,
       client: parsed.data.client || null,
       role: parsed.data.role || null,
-      bullets: parsed.data.bullets,
+      description: parsed.data.description || null,
       techStack: parsed.data.techStack,
     },
   });

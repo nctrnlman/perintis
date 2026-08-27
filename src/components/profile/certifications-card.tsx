@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
+import { RequiredMark } from "@/components/shared/property-row";
 import {
   addCertification,
   deleteCertification,
@@ -25,12 +26,9 @@ interface CertificationsCardProps {
   certifications: CertificationItem[];
 }
 
-function formatMonthYear(date: Date): string {
-  return date.toLocaleDateString("id-ID", { month: "short", year: "numeric" });
-}
-
 export function CertificationsCard({ certifications }: CertificationsCardProps) {
   const t = useTranslations("profile.certifications");
+  const format = useFormatter();
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
 
@@ -65,7 +63,7 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div className="rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("title")}</h2>
         {!formOpen && (
@@ -85,7 +83,7 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
           {certifications.map((cert) => (
             <div
               key={cert.id}
-              className="flex items-start justify-between gap-4 rounded-2xl border border-border p-6"
+              className="flex items-start justify-between gap-4 rounded-xl border border-border p-4"
             >
               <div>
                 <h3 className="font-medium">
@@ -105,7 +103,7 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
                 <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                 {cert.issueDate && (
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {formatMonthYear(cert.issueDate)}
+                    {format.dateTime(cert.issueDate, { month: "short", year: "numeric" })}
                   </p>
                 )}
               </div>
@@ -125,15 +123,19 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
       {formOpen && (
         <form
           action={handleSubmit}
-          className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+          className="mt-6 space-y-4 rounded-xl border border-border p-4"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
-              <Label htmlFor="cert-name">{t("nameLabel")}</Label>
+              <Label htmlFor="cert-name">
+                {t("nameLabel")} <RequiredMark />
+              </Label>
               <Input id="cert-name" name="name" required />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="cert-issuer">{t("issuerLabel")}</Label>
+              <Label htmlFor="cert-issuer">
+                {t("issuerLabel")} <RequiredMark />
+              </Label>
               <Input id="cert-issuer" name="issuer" required />
             </div>
             <div className="space-y-1.5">
@@ -142,7 +144,7 @@ export function CertificationsCard({ certifications }: CertificationsCardProps) 
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="cert-url">{t("urlLabel")}</Label>
-              <Input id="cert-url" name="url" />
+              <Input id="cert-url" name="url" type="url" placeholder="https://..." />
             </div>
           </div>
           <div className="flex gap-2">

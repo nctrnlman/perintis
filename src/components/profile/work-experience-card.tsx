@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,7 @@ import { toast } from "@/components/ui/toast";
 import { RichTextEditor } from "@/components/resume-builder/rich-text-editor";
 import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
 import { SaveStatus } from "@/components/profile/save-status";
+import { RequiredMark } from "@/components/shared/property-row";
 import {
   addWorkExperience,
   deleteWorkExperience,
@@ -32,10 +33,6 @@ interface WorkExperienceCardProps {
   experiences: WorkExperienceItem[];
 }
 
-function formatMonthYear(date: Date): string {
-  return date.toLocaleDateString("id-ID", { month: "short", year: "numeric" });
-}
-
 function toDateInputValue(date: Date | null): string {
   return date ? date.toISOString().slice(0, 10) : "";
 }
@@ -49,16 +46,21 @@ function ExperienceFields({
 }) {
   const t = useTranslations("profile.workExperience");
   const [description, setDescription] = useState(item?.description ?? "");
+  const [startDate, setStartDate] = useState(toDateInputValue(item?.startDate ?? null));
 
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="we-title">{t("titleLabel")}</Label>
+          <Label htmlFor="we-title">
+            {t("titleLabel")} <RequiredMark />
+          </Label>
           <Input id="we-title" name="title" defaultValue={item?.title ?? ""} required />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="we-company">{t("companyLabel")}</Label>
+          <Label htmlFor="we-company">
+            {t("companyLabel")} <RequiredMark />
+          </Label>
           <Input id="we-company" name="company" defaultValue={item?.company ?? ""} required />
         </div>
         <div className="space-y-1.5">
@@ -74,12 +76,18 @@ function ExperienceFields({
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="we-start">{t("startDateLabel")}</Label>
+          <Label htmlFor="we-start">
+            {t("startDateLabel")} <RequiredMark />
+          </Label>
           <Input
             id="we-start"
             name="startDate"
             type="date"
-            defaultValue={toDateInputValue(item?.startDate ?? null)}
+            value={startDate}
+            onChange={(e) => {
+              setStartDate(e.target.value);
+              onFieldChange?.();
+            }}
             required
           />
         </div>
@@ -90,6 +98,7 @@ function ExperienceFields({
             name="endDate"
             type="date"
             defaultValue={toDateInputValue(item?.endDate ?? null)}
+            min={startDate || undefined}
           />
         </div>
         <p className="text-xs text-muted-foreground sm:col-span-2">{t("stillWorkingLabel")}</p>
@@ -127,7 +136,7 @@ function EditExperienceForm({ item, onClose }: { item: WorkExperienceItem; onClo
     <form
       ref={formRef}
       onChange={handleChange}
-      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+      className="mt-4 space-y-4 border-t border-border pt-4"
     >
       <div className="flex items-center justify-end">
         <SaveStatus status={status} />
@@ -142,6 +151,7 @@ function EditExperienceForm({ item, onClose }: { item: WorkExperienceItem; onClo
 
 export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
   const t = useTranslations("profile.workExperience");
+  const format = useFormatter();
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -190,7 +200,7 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div className="rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("title")}</h2>
         {!formOpen && (
@@ -208,13 +218,16 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
       {experiences.length > 0 && (
         <div className="mt-6 space-y-4">
           {experiences.map((exp) => (
-            <div key={exp.id} className="rounded-2xl border border-border p-6">
+            <div key={exp.id} className="rounded-xl border border-border p-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-medium">{exp.title}</h3>
                   <p className="text-sm text-muted-foreground">{exp.company}</p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {formatMonthYear(exp.startDate)} – {exp.endDate ? formatMonthYear(exp.endDate) : t("present")}
+                    {format.dateTime(exp.startDate, { month: "short", year: "numeric" })} –{" "}
+                    {exp.endDate
+                      ? format.dateTime(exp.endDate, { month: "short", year: "numeric" })
+                      : t("present")}
                   </p>
                 </div>
                 <div className="flex shrink-0 gap-2">
@@ -266,7 +279,7 @@ export function WorkExperienceCard({ experiences }: WorkExperienceCardProps) {
       {formOpen && editingId === null && (
         <form
           action={handleAddSubmit}
-          className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+          className="mt-6 space-y-4 rounded-xl border border-border p-4"
         >
           <ExperienceFields item={null} />
           <div className="flex gap-2">

@@ -153,12 +153,12 @@ describe("projectSchema", () => {
     expect(projectSchema.safeParse({ name: "" }).success).toBe(false);
   });
 
-  it("accepts a valid project with bullets and techStack", () => {
+  it("accepts a valid project with description and techStack", () => {
     const result = projectSchema.safeParse({
       name: "Dulux Design Competition",
       client: "Dulux Indonesia",
       role: "Lead Backend",
-      bullets: ["Built a high-traffic competition platform."],
+      description: "<ul><li>Built a high-traffic competition platform.</li></ul>",
       techStack: ["Next.js", "Node.js"],
     });
     expect(result.success).toBe(true);

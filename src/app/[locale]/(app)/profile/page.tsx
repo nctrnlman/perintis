@@ -1,7 +1,9 @@
+import { UserRound } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { db } from "@/lib/db";
 import { ensureProfileRecord } from "@/lib/ensure-profile";
+import { ImportResumeCard } from "@/components/profile/import-resume-card";
 import { PersonalInfoCard } from "@/components/profile/personal-info-card";
 import { WorkExperienceCard } from "@/components/profile/work-experience-card";
 import { EducationCard } from "@/components/profile/education-card";
@@ -36,19 +38,35 @@ export default async function ProfilePage() {
   });
 
   return (
-    <div className="mx-auto max-w-3xl space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold">{t("title")}</h1>
-        <p className="mt-1 text-muted-foreground">{t("description")}</p>
+    <div className="mx-auto max-w-5xl space-y-8">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+            <UserRound className="size-4" />
+          </span>
+          <div>
+            <h1 className="text-xl font-semibold">{t("title")}</h1>
+            <p className="mt-0.5 text-sm text-muted-foreground">{t("description")}</p>
+          </div>
+        </div>
+        <ImportResumeCard />
       </div>
 
-      <PersonalInfoCard profile={profile} />
-      <WorkExperienceCard experiences={profile.workExperiences} />
-      <EducationCard educations={profile.educations} />
-      <SkillsCard skills={profile.skills} />
-      <CertificationsCard certifications={profile.certifications} />
-      <ProjectsCard projects={profile.projects} />
-      <LanguagesCard languages={profile.languages} />
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="lg:col-span-2">
+          <PersonalInfoCard profile={profile} />
+        </div>
+        <div className="lg:col-span-2">
+          <WorkExperienceCard experiences={profile.workExperiences} />
+        </div>
+        <EducationCard educations={profile.educations} />
+        <CertificationsCard certifications={profile.certifications} />
+        <div className="lg:col-span-2">
+          <ProjectsCard projects={profile.projects} />
+        </div>
+        <SkillsCard skills={profile.skills} />
+        <LanguagesCard languages={profile.languages} />
+      </div>
     </div>
   );
 }

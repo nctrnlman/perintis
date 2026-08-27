@@ -93,15 +93,15 @@ model Certification {
 }
 
 model Project {
-  id        String   @id @default(cuid())
-  profileId String
-  profile   Profile  @relation(fields: [profileId], references: [id])
-  name      String
-  client    String?
-  role      String?
-  bullets   String[]
-  techStack String[]
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  profileId   String
+  profile     Profile  @relation(fields: [profileId], references: [id])
+  name        String
+  client      String?
+  role        String?
+  description String?
+  techStack   String[]
+  createdAt   DateTime @default(now())
 }
 
 model Language {

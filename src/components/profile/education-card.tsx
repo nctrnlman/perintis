@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/toast";
 import { useAutoSaveForm } from "@/hooks/use-auto-save-form";
 import { SaveStatus } from "@/components/profile/save-status";
+import { RequiredMark } from "@/components/shared/property-row";
 import {
   addEducation,
   deleteEducation,
@@ -29,21 +30,20 @@ interface EducationCardProps {
   educations: EducationItem[];
 }
 
-function formatMonthYear(date: Date): string {
-  return date.toLocaleDateString("id-ID", { month: "short", year: "numeric" });
-}
-
 function toDateInputValue(date: Date | null): string {
   return date ? date.toISOString().slice(0, 10) : "";
 }
 
 function EducationFields({ item }: { item: EducationItem | null }) {
   const t = useTranslations("profile.education");
+  const [startDate, setStartDate] = useState(toDateInputValue(item?.startDate ?? null));
 
   return (
     <div className="grid gap-4 sm:grid-cols-2">
       <div className="space-y-1.5">
-        <Label htmlFor="edu-institution">{t("institutionLabel")}</Label>
+        <Label htmlFor="edu-institution">
+          {t("institutionLabel")} <RequiredMark />
+        </Label>
         <Input
           id="edu-institution"
           name="institution"
@@ -60,12 +60,15 @@ function EducationFields({ item }: { item: EducationItem | null }) {
         <Input id="edu-field" name="fieldOfStudy" defaultValue={item?.fieldOfStudy ?? ""} />
       </div>
       <div className="space-y-1.5">
-        <Label htmlFor="edu-start">{t("startDateLabel")}</Label>
+        <Label htmlFor="edu-start">
+          {t("startDateLabel")} <RequiredMark />
+        </Label>
         <Input
           id="edu-start"
           name="startDate"
           type="date"
-          defaultValue={toDateInputValue(item?.startDate ?? null)}
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
           required
         />
       </div>
@@ -76,6 +79,7 @@ function EducationFields({ item }: { item: EducationItem | null }) {
           name="endDate"
           type="date"
           defaultValue={toDateInputValue(item?.endDate ?? null)}
+          min={startDate || undefined}
         />
       </div>
     </div>
@@ -92,7 +96,7 @@ function EditEducationForm({ item, onClose }: { item: EducationItem; onClose: ()
     <form
       ref={formRef}
       onChange={handleChange}
-      className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+      className="mt-4 space-y-4 border-t border-border pt-4"
     >
       <div className="flex items-center justify-end">
         <SaveStatus status={status} />
@@ -107,6 +111,7 @@ function EditEducationForm({ item, onClose }: { item: EducationItem; onClose: ()
 
 export function EducationCard({ educations }: EducationCardProps) {
   const t = useTranslations("profile.education");
+  const format = useFormatter();
   const [isPending, startTransition] = useTransition();
   const [formOpen, setFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -155,7 +160,7 @@ export function EducationCard({ educations }: EducationCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div className="rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("title")}</h2>
         {!formOpen && (
@@ -173,7 +178,7 @@ export function EducationCard({ educations }: EducationCardProps) {
       {educations.length > 0 && (
         <div className="mt-6 space-y-4">
           {educations.map((edu) => (
-            <div key={edu.id} className="rounded-2xl border border-border p-6">
+            <div key={edu.id} className="rounded-xl border border-border p-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-medium">{edu.institution}</h3>
@@ -183,8 +188,10 @@ export function EducationCard({ educations }: EducationCardProps) {
                     </p>
                   )}
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {formatMonthYear(edu.startDate)}
-                    {edu.endDate ? ` – ${formatMonthYear(edu.endDate)}` : ""}
+                    {format.dateTime(edu.startDate, { month: "short", year: "numeric" })}
+                    {edu.endDate
+                      ? ` – ${format.dateTime(edu.endDate, { month: "short", year: "numeric" })}`
+                      : ""}
                   </p>
                 </div>
                 <div className="flex shrink-0 gap-2">
@@ -218,7 +225,7 @@ export function EducationCard({ educations }: EducationCardProps) {
       {formOpen && editingId === null && (
         <form
           action={handleAddSubmit}
-          className="mt-6 space-y-4 rounded-2xl border border-border p-6"
+          className="mt-6 space-y-4 rounded-xl border border-border p-4"
         >
           <EducationFields item={null} />
           <div className="flex gap-2">

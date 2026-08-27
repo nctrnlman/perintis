@@ -65,7 +65,7 @@ export const projectSchema = z.object({
   name: z.string().min(1, "Nama proyek wajib diisi"),
   client: z.string().optional(),
   role: z.string().optional(),
-  bullets: z.array(z.string()).default([]),
+  description: z.string().optional(),
   techStack: z.array(z.string()).default([]),
 });
 

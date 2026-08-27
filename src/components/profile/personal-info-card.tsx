@@ -55,7 +55,7 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
 
   if (!editing) {
     return (
-      <div className="rounded-2xl border border-border p-8">
+      <div className="rounded-2xl border border-border p-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">{t("title")}</h2>
           <Button variant="ghost" size="icon-sm" onClick={() => setEditing(true)} aria-label={t("edit")}>
@@ -72,7 +72,11 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
             {t("empty")}
           </button>
         ) : (
-          <button type="button" onClick={() => setEditing(true)} className="mt-6 block w-full text-left">
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            className="-m-3 mt-3 block w-full rounded-xl p-3 text-left transition-colors hover:bg-muted/50"
+          >
             <div className="grid gap-4 sm:grid-cols-2">
               <InfoRow label={t("fullNameLabel")} value={profile.fullName} />
               <InfoRow label={t("phoneLabel")} value={profile.phone} />
@@ -104,7 +108,7 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-border p-8">
+    <div className="rounded-2xl border border-border p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">{t("title")}</h2>
         <div className="flex items-center gap-3">
@@ -130,7 +134,7 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="phone">{t("phoneLabel")}</Label>
-            <Input id="phone" name="phone" defaultValue={profile.phone ?? ""} />
+            <Input id="phone" name="phone" type="tel" defaultValue={profile.phone ?? ""} />
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="location">{t("locationLabel")}</Label>
@@ -141,6 +145,8 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
             <Input
               id="linkedinUrl"
               name="linkedinUrl"
+              type="url"
+              placeholder="https://linkedin.com/in/..."
               defaultValue={profile.linkedinUrl ?? ""}
             />
           </div>
@@ -149,6 +155,8 @@ export function PersonalInfoCard({ profile }: PersonalInfoCardProps) {
             <Input
               id="portfolioUrl"
               name="portfolioUrl"
+              type="url"
+              placeholder="https://..."
               defaultValue={profile.portfolioUrl ?? ""}
             />
           </div>
