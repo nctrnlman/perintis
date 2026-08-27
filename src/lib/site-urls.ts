@@ -1,4 +1,4 @@
-export const SITE_URL = "https://perintis.devino.id";
+export const SITE_URL = process.env.SITE_URL ?? "http://localhost:3000";
 
 /**
  * Builds a full public URL for a given locale and path. The "id" locale is

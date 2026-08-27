@@ -42,3 +42,10 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# AI-assisted development scaffolding (skills, specs/plans, reference
+# samples, local Claude Code config) — not part of the shipped app.
+/dev/
+/.claude/
+/.agents/
+/skills-lock.json
