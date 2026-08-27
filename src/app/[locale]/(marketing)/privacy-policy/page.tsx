@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { LegalDocument } from "@/components/legal/legal-document";
+import { buildAlternates } from "@/lib/site-urls";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("legal.privacyPolicy");
-  return { title: t("title"), description: t("description") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "legal.privacyPolicy" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildAlternates(locale, "/privacy-policy"),
+  };
 }
 
 export default async function PrivacyPolicyPage({
@@ -16,9 +27,11 @@ export default async function PrivacyPolicyPage({
   const t = await getTranslations("legal.privacyPolicy");
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-24">
-      <h1 className="text-3xl font-semibold">{t("title")}</h1>
-      <p className="mt-6 text-muted-foreground">{t("body")}</p>
-    </div>
+    <LegalDocument
+      title={t("title")}
+      lastUpdated={t("lastUpdated")}
+      intro={t("intro")}
+      sections={t.raw("sections")}
+    />
   );
 }

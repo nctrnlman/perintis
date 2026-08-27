@@ -10,6 +10,8 @@ const FOOTER_COLUMNS = [
       { href: "/features/ats-check", labelKey: "atsCheck" },
       { href: "/features/resume-builder", labelKey: "resumeBuilder" },
       { href: "/features/cover-letter", labelKey: "coverLetter" },
+      { href: "/features/application-tracker", labelKey: "applicationTracker" },
+      { href: "/features/career-fit", labelKey: "careerFit" },
       { href: "/pricing", labelKey: "pricing" },
     ],
   },

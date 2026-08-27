@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/shared/reveal";
+import { BlogFilter } from "@/components/marketing/blog-filter";
 import { BLOG_SLUGS } from "@/lib/blog-slugs";
+import { buildAlternates } from "@/lib/site-urls";
 
 interface BlogPostSummary {
   title: string;
@@ -18,7 +19,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: buildAlternates(locale, "/blog"),
+  };
 }
 
 export default async function BlogIndexPage({
@@ -29,6 +34,10 @@ export default async function BlogIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("blog");
+  const posts = BLOG_SLUGS.map((slug) => ({
+    slug,
+    ...(t.raw(`posts.${slug}`) as BlogPostSummary),
+  }));
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-24">
@@ -37,30 +46,12 @@ export default async function BlogIndexPage({
         <p className="mt-4 text-lg text-muted-foreground">{t("description")}</p>
       </Reveal>
 
-      <div className="mt-14 space-y-8">
-        {BLOG_SLUGS.map((slug, index) => {
-          const post = t.raw(`posts.${slug}`) as BlogPostSummary;
-          return (
-            <Reveal key={slug} delay={index * 80}>
-              <Link
-                href={`/blog/${slug}`}
-                className="block rounded-2xl border border-border p-8 transition-transform hover:scale-[1.01]"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                    {post.category}
-                  </span>
-                  <p className="text-xs text-muted-foreground">{post.publishedLabel}</p>
-                </div>
-                <h2 className="mt-3 text-xl font-semibold">{post.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {post.excerpt}
-                </p>
-              </Link>
-            </Reveal>
-          );
-        })}
-      </div>
+      <BlogFilter
+        posts={posts}
+        allCategoriesLabel={t("allCategories")}
+        searchPlaceholder={t("searchPlaceholder")}
+        noResultsLabel={t("noResults")}
+      />
     </div>
   );
 }

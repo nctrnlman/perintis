@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { TrackedLink } from "@/components/marketing/tracked-link";
+import { buildAlternates, SITE_URL } from "@/lib/site-urls";
 
 export async function generateMetadata({
   params,
@@ -13,7 +14,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pricing" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: buildAlternates(locale, "/pricing"),
+  };
 }
 
 export default async function PricingPage({
@@ -27,8 +32,34 @@ export default async function PricingPage({
   const included = t.raw("included") as string[];
   const faq = t.raw("faq") as { question: string; answer: string }[];
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "Perintis",
+      url: SITE_URL,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "IDR" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+  ];
+
   return (
-    <div className="mx-auto max-w-2xl px-6 py-24">
+    <div className="mx-auto max-w-3xl px-6 py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Reveal className="text-center">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{t("heading")}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{t("subhead")}</p>

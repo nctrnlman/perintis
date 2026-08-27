@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
-import { BadgeCheck, FileCheck2, FileEdit, Languages, Mail, SearchCheck } from "lucide-react";
+import {
+  BadgeCheck,
+  Compass,
+  FileCheck2,
+  FileEdit,
+  Languages,
+  ListChecks,
+  Mail,
+  SearchCheck,
+} from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { TrackedLink } from "@/components/marketing/tracked-link";
 import { DEVELOPER_LINKS } from "@/lib/developer-links";
+import { buildAlternates } from "@/lib/site-urls";
 
 const principleIcons = [SearchCheck, Languages, BadgeCheck];
 const liveFeatures = [
   { href: "/features/ats-check", icon: FileCheck2, labelKey: "atsCheck" },
   { href: "/features/resume-builder", icon: FileEdit, labelKey: "resumeBuilder" },
   { href: "/features/cover-letter", icon: Mail, labelKey: "coverLetter" },
+  { href: "/features/application-tracker", icon: ListChecks, labelKey: "applicationTracker" },
+  { href: "/features/career-fit", icon: Compass, labelKey: "careerFit" },
 ] as const;
 
 export async function generateMetadata({
@@ -21,7 +33,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: buildAlternates(locale, "/about"),
+  };
 }
 
 export default async function AboutPage({

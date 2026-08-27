@@ -9,6 +9,8 @@ export const BLOG_SLUGS = [
   "linkedin-vs-resume",
   "cover-letter-tone",
   "tailor-resume-per-job",
+  "track-job-applications",
+  "which-jobs-to-apply-to",
 ] as const;
 
 export type BlogSlug = (typeof BLOG_SLUGS)[number];
@@ -32,6 +34,11 @@ export const BLOG_POST_CTA: Record<BlogSlug, { href: string; featureLabelKey: st
   "linkedin-vs-resume": { href: "/features", featureLabelKey: "features" },
   "cover-letter-tone": { href: "/features/cover-letter", featureLabelKey: "coverLetter" },
   "tailor-resume-per-job": { href: "/features/resume-builder", featureLabelKey: "resumeBuilder" },
+  "track-job-applications": {
+    href: "/features/application-tracker",
+    featureLabelKey: "applicationTracker",
+  },
+  "which-jobs-to-apply-to": { href: "/features/career-fit", featureLabelKey: "careerFit" },
 };
 
 interface ReadableSection {

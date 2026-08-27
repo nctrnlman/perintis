@@ -5,7 +5,10 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/shared/reveal";
 import { TrackedLink } from "@/components/marketing/tracked-link";
+import { XIcon, LinkedinIcon } from "@/components/layout/brand-icons";
+import { MessageCircle } from "lucide-react";
 import { BLOG_POST_CTA, BLOG_SLUGS, estimateReadingMinutes, type BlogSlug } from "@/lib/blog-slugs";
+import { buildAlternates, localizedUrl } from "@/lib/site-urls";
 
 interface BlogPostContent {
   title: string;
@@ -40,7 +43,11 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "blog" });
   const post = t.raw(`posts.${slug}`) as BlogPostContent;
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: buildAlternates(locale, `/blog/${slug}`),
+  };
 }
 
 export default async function BlogPostPage({
@@ -61,8 +68,54 @@ export default async function BlogPostPage({
   const cta = BLOG_POST_CTA[slug];
   const otherSlugs = BLOG_SLUGS.filter((s) => s !== slug).slice(0, 3);
 
+  const postUrl = localizedUrl(locale, `/blog/${slug}`);
+  const shareLinks = [
+    {
+      label: "X",
+      icon: XIcon,
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(post.title)}`,
+    },
+    {
+      label: "LinkedIn",
+      icon: LinkedinIcon,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`,
+    },
+    {
+      label: "WhatsApp",
+      icon: MessageCircle,
+      href: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${postUrl}`)}`,
+    },
+  ];
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Perintis", item: localizedUrl(locale, "/") },
+      { "@type": "ListItem", position: 2, name: t("heading"), item: localizedUrl(locale, "/blog") },
+      { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: postUrl,
+  };
+
   return (
     <article className="mx-auto max-w-2xl px-6 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+
       <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
         &larr; {t("backToBlog")}
       </Link>
@@ -81,6 +134,22 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
           <p className="mt-4 text-xl leading-relaxed text-muted-foreground">{post.excerpt}</p>
+
+          <div className="mt-6 flex items-center gap-3">
+            <span className="text-xs font-medium text-muted-foreground">{t("share")}</span>
+            {shareLinks.map((share) => (
+              <a
+                key={share.label}
+                href={share.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={share.label}
+                className="flex size-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <share.icon className="size-4" />
+              </a>
+            ))}
+          </div>
         </header>
       </Reveal>
 

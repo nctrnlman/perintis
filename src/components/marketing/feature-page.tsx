@@ -14,6 +14,11 @@ interface BreadcrumbItem {
   url: string;
 }
 
+interface HowItWorksStep {
+  title: string;
+  description: string;
+}
+
 interface FeaturePageProps {
   eyebrow: string;
   headline: string;
@@ -22,6 +27,8 @@ interface FeaturePageProps {
   cta: string;
   ctaId: string;
   preview: ReactNode;
+  howItWorksTitle?: string;
+  howItWorksSteps?: HowItWorksStep[];
   faqTitle: string;
   faq: FaqItem[];
   breadcrumb: BreadcrumbItem[];
@@ -35,6 +42,8 @@ export function FeaturePage({
   cta,
   ctaId,
   preview,
+  howItWorksTitle,
+  howItWorksSteps,
   faqTitle,
   faq,
   breadcrumb,
@@ -105,6 +114,31 @@ export function FeaturePage({
           </div>
         </div>
       </section>
+
+      {howItWorksSteps && howItWorksSteps.length > 0 && (
+        <section className="py-20">
+          <div className="mx-auto max-w-5xl px-6">
+            <Reveal>
+              <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
+                {howItWorksTitle}
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {howItWorksSteps.map((step, index) => (
+                <Reveal key={step.title} delay={index * 80}>
+                  <span className="flex size-9 items-center justify-center rounded-full bg-foreground text-sm font-semibold text-background">
+                    {index + 1}
+                  </span>
+                  <h3 className="mt-4 font-semibold">{step.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-card py-20">
         <div className="mx-auto max-w-3xl px-6">

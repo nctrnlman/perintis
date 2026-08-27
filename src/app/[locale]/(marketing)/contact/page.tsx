@@ -3,6 +3,7 @@ import { Handshake } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/shared/reveal";
 import { DEVELOPER_LINKS } from "@/lib/developer-links";
+import { buildAlternates } from "@/lib/site-urls";
 
 const BUSINESS_EMAIL = "rhazesd@gmail.com";
 
@@ -13,7 +14,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: buildAlternates(locale, "/contact"),
+  };
 }
 
 export default async function ContactPage({
@@ -27,7 +32,7 @@ export default async function ContactPage({
   const businessMailto = `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(t("businessEmailSubject"))}`;
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-24">
+    <div className="mx-auto max-w-3xl px-6 py-24">
       <Reveal>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("title")}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{t("description")}</p>

@@ -1,12 +1,18 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site-urls";
+
+const PROTECTED_PATHS = ["/dashboard", "/ats-check", "/cover-letter", "/profile", "/resume-builder"];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/dashboard"],
+      disallow: [
+        ...PROTECTED_PATHS,
+        ...PROTECTED_PATHS.map((path) => `/en${path}`),
+      ],
     },
-    sitemap: "https://perintis.devino.id/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

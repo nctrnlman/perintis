@@ -27,8 +27,10 @@ export default async function ApplicationTrackerFeaturePage({
   setRequestLocale(locale);
   const t = await getTranslations("featurePages.applicationTracker");
   const tNav = await getTranslations("nav");
+  const tStats = await getTranslations("applicationTracker.stats");
   const bullets = t.raw("bullets") as string[];
   const faq = t.raw("faq") as { question: string; answer: string }[];
+  const howItWorksSteps = t.raw("howItWorksSteps") as { title: string; description: string }[];
 
   return (
     <FeaturePage
@@ -38,6 +40,8 @@ export default async function ApplicationTrackerFeaturePage({
       bullets={bullets}
       cta={t("cta")}
       ctaId="features_application_tracker"
+      howItWorksTitle={t("howItWorksTitle")}
+      howItWorksSteps={howItWorksSteps}
       breadcrumb={[
         { name: "Perintis", url: localizedUrl(locale, "/") },
         { name: tNav("features"), url: localizedUrl(locale, "/features") },
@@ -48,6 +52,8 @@ export default async function ApplicationTrackerFeaturePage({
           appliedLabel={t("preview.appliedLabel")}
           interviewingLabel={t("preview.interviewingLabel")}
           acceptedLabel={t("preview.acceptedLabel")}
+          totalLabel={tStats("total")}
+          staleLabel={tStats("staleCount")}
         />
       }
       faqTitle={t("faqTitle")}

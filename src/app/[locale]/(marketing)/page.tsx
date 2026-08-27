@@ -64,6 +64,7 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations("home");
   const tDashboard = await getTranslations("dashboard");
+  const tAppTrackerStats = await getTranslations("applicationTracker.stats");
   const reasons = t.raw("reasons.items") as { title: string; description: string }[];
   const personas = t.raw("personas.items") as {
     title: string;
@@ -439,6 +440,8 @@ export default async function HomePage({
                 appliedLabel={applicationTrackerShowcase.preview.appliedLabel}
                 interviewingLabel={applicationTrackerShowcase.preview.interviewingLabel}
                 acceptedLabel={applicationTrackerShowcase.preview.acceptedLabel}
+                totalLabel={tAppTrackerStats("total")}
+                staleLabel={tAppTrackerStats("staleCount")}
               />
             </Reveal>
           </div>
