@@ -1,22 +1,19 @@
+import { getScoreTier, type ScoreTier } from "@/lib/resume/scoring";
+
 interface ScoreRingProps {
   score: number;
   size?: number;
+  suffix?: string;
 }
 
-function getScoreTier(score: number): "excellent" | "good" | "needsWork" {
-  if (score >= 90) return "excellent";
-  if (score >= 70) return "good";
-  return "needsWork";
-}
-
-const TIER_COLOR: Record<ReturnType<typeof getScoreTier>, string> = {
+const TIER_COLOR: Record<ScoreTier, string> = {
   excellent: "stroke-emerald-500 text-emerald-500",
   good: "stroke-amber-500 text-amber-500",
   needsWork: "stroke-red-500 text-red-500",
 };
 
-export function ScoreRing({ score, size = 140 }: ScoreRingProps) {
-  const strokeWidth = 10;
+export function ScoreRing({ score, size = 140, suffix = "" }: ScoreRingProps) {
+  const strokeWidth = Math.max(4, Math.round(size * 0.07));
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const clamped = Math.max(0, Math.min(100, score));
@@ -49,8 +46,12 @@ export function ScoreRing({ score, size = 140 }: ScoreRingProps) {
           className={`transition-all duration-700 ease-out ${TIER_COLOR[tier].split(" ")[0]}`}
         />
       </svg>
-      <span className={`absolute text-3xl font-semibold ${TIER_COLOR[tier].split(" ")[1]}`}>
+      <span
+        className={`absolute font-semibold tabular-nums ${TIER_COLOR[tier].split(" ")[1]}`}
+        style={{ fontSize: Math.max(13, Math.round(size * 0.22)) }}
+      >
         {score}
+        {suffix}
       </span>
     </div>
   );
