@@ -22,6 +22,7 @@ const STAGE_ORDER = [
 ] as const;
 
 interface StatItem {
+  id: "total" | "activePipeline" | "winRate" | "interviewConversion" | "addedThisWeek" | "staleCount";
   icon: LucideIcon;
   label: string;
   value: string;
@@ -29,27 +30,48 @@ interface StatItem {
   warn?: boolean;
 }
 
-export function ApplicationStatsRow({ stats }: { stats: ApplicationStats }) {
+const COMPACT_ITEM_IDS: StatItem["id"][] = ["total", "activePipeline", "staleCount"];
+
+export function ApplicationStatsRow({
+  stats,
+  compact = false,
+}: {
+  stats: ApplicationStats;
+  compact?: boolean;
+}) {
   const t = useTranslations("applicationTracker.stats");
   const tStages = useTranslations("applicationTracker.stages");
 
   const items: StatItem[] = [
-    { icon: Briefcase, label: t("total"), value: String(stats.total) },
-    { icon: Zap, label: t("activePipeline"), value: String(stats.activePipeline) },
+    { id: "total", icon: Briefcase, label: t("total"), value: String(stats.total) },
     {
+      id: "activePipeline",
+      icon: Zap,
+      label: t("activePipeline"),
+      value: String(stats.activePipeline),
+    },
+    {
+      id: "winRate",
       icon: Trophy,
       label: t("winRate"),
       value: stats.winRate === null ? "—" : `${stats.winRate}%`,
       title: stats.winRate === null ? t("notEnoughData") : undefined,
     },
     {
+      id: "interviewConversion",
       icon: MessagesSquare,
       label: t("interviewConversion"),
       value: stats.interviewConversion === null ? "—" : `${stats.interviewConversion}%`,
       title: stats.interviewConversion === null ? t("notEnoughData") : undefined,
     },
-    { icon: CalendarPlus, label: t("addedThisWeek"), value: String(stats.addedThisWeek) },
     {
+      id: "addedThisWeek",
+      icon: CalendarPlus,
+      label: t("addedThisWeek"),
+      value: String(stats.addedThisWeek),
+    },
+    {
+      id: "staleCount",
       icon: AlertTriangle,
       label: t("staleCount"),
       value: String(stats.staleCount),
@@ -58,10 +80,16 @@ export function ApplicationStatsRow({ stats }: { stats: ApplicationStats }) {
     },
   ];
 
+  const visibleItems = compact
+    ? items.filter((item) => COMPACT_ITEM_IDS.includes(item.id))
+    : items;
+
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        {items.map((item) => {
+      <div
+        className={`grid grid-cols-2 gap-3 ${compact ? "sm:grid-cols-3" : "sm:grid-cols-3 lg:grid-cols-6"}`}
+      >
+        {visibleItems.map((item) => {
           const Icon = item.icon;
           return (
             <div
@@ -93,21 +121,23 @@ export function ApplicationStatsRow({ stats }: { stats: ApplicationStats }) {
         })}
       </div>
 
-      <div className="rounded-xl border border-border p-3">
-        <p className="text-xs font-medium text-muted-foreground">{t("byStageTitle")}</p>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          {STAGE_ORDER.map((stage) => (
-            <span
-              key={stage}
-              className="flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs"
-            >
-              <span className={`size-1.5 shrink-0 rounded-full ${getStageColor(stage).dot}`} />
-              {tStages(stage)}
-              <span className="font-medium tabular-nums">{stats.perStage[stage]}</span>
-            </span>
-          ))}
+      {!compact && (
+        <div className="rounded-xl border border-border p-3">
+          <p className="text-xs font-medium text-muted-foreground">{t("byStageTitle")}</p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {STAGE_ORDER.map((stage) => (
+              <span
+                key={stage}
+                className="flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs"
+              >
+                <span className={`size-1.5 shrink-0 rounded-full ${getStageColor(stage).dot}`} />
+                {tStages(stage)}
+                <span className="font-medium tabular-nums">{stats.perStage[stage]}</span>
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

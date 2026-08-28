@@ -137,10 +137,10 @@ export default async function DashboardPage() {
     .filter((module) => !ACTIVE_MODULE_INDICES.has(module.index));
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <GreetingHeader name={firstName} />
 
-      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
         <Reveal>
           <ScoreTrendCard
             scores={scoreHistory}
@@ -159,7 +159,7 @@ export default async function DashboardPage() {
       {(applicationCount > 0 || careerFitCount > 0) && (
         <div>
           <h2 className="text-lg font-semibold">{t("insights.heading")}</h2>
-          <div className="mt-4 grid gap-6 sm:grid-cols-2">
+          <div className="mt-3.5 grid gap-5 sm:grid-cols-2">
             {applicationCount > 0 && (
               <Reveal>
                 <ApplicationTrackerInsightCard stats={applicationStats} />
@@ -177,7 +177,7 @@ export default async function DashboardPage() {
       <div>
         <h2 className="text-lg font-semibold">{t("continueTitle")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("continueDescription")}</p>
-        <div className="mt-4 grid gap-6 sm:grid-cols-3">
+        <div className="mt-3.5 grid gap-5 sm:grid-cols-3">
           {activeFeatures.map((feature) => (
             <Reveal key={feature.title} delay={feature.index * 60}>
               <FeatureActionCard

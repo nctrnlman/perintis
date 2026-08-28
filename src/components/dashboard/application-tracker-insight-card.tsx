@@ -9,10 +9,10 @@ export async function ApplicationTrackerInsightCard({ stats }: { stats: Applicat
   const tApp = await getTranslations("applicationTracker");
 
   return (
-    <div className="rounded-2xl border border-border p-6">
+    <div className="rounded-2xl border border-border p-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
             <ListChecks className="size-4" />
           </span>
           <h2 className="text-sm font-semibold">{tApp("title")}</h2>
@@ -22,7 +22,7 @@ export async function ApplicationTrackerInsightCard({ stats }: { stats: Applicat
         </Link>
       </div>
       <div className="mt-4">
-        <ApplicationStatsRow stats={stats} />
+        <ApplicationStatsRow stats={stats} compact />
       </div>
     </div>
   );

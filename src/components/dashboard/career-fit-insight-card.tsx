@@ -9,10 +9,10 @@ export async function CareerFitInsightCard({ stats }: { stats: CareerFitAggregat
   const tCareerFit = await getTranslations("careerFit");
 
   return (
-    <div className="rounded-2xl border border-border p-6">
+    <div className="rounded-2xl border border-border p-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
             <Compass className="size-4" />
           </span>
           <h2 className="text-sm font-semibold">{tCareerFit("title")}</h2>

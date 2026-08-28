@@ -20,7 +20,7 @@ export function ComingSoonStrip({ title, badgeLabel, items }: ComingSoonStripPro
           const Icon = item.icon;
           return (
             <div key={item.title} className="flex flex-1 items-center gap-3 p-5">
-              <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-muted">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted">
                 <Icon className="size-4 text-muted-foreground" />
               </div>
               <p className="flex-1 text-sm font-medium">{item.title}</p>
